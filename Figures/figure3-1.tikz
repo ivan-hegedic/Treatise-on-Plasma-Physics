@@ -1,0 +1,66 @@
+\tikzset{arc arrow/.style args={%
+    to pos #1 with length #2}{
+    decoration={
+        markings,
+         mark=at position 0 with {\pgfextra{%
+         \pgfmathsetmacro{\tmpArrowTime}{#2/(\pgfdecoratedpathlength)}
+         \xdef\tmpArrowTime{\tmpArrowTime}}},
+        mark=at position {#1-\tmpArrowTime} with {\coordinate(@1);},
+        mark=at position {#1-2*\tmpArrowTime/3} with {\coordinate(@2);},
+        mark=at position {#1-\tmpArrowTime/3} with {\coordinate(@3);},
+        mark=at position {#1} with {\coordinate(@4);
+        \draw[-{Stealth[length=#2,bend]}]       
+        (@1) .. controls (@2) and (@3) .. (@4);},
+        },
+     postaction=decorate,
+     }
+}
+
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{Stealth[length=10pt, bend]}}}, postaction={decorate}}}
+
+\begin{tikzpicture}[my arrow/.style={arc arrow=to pos #1 with length 2mm}]
+    \coordinate (L1) at (-5, 2);
+    \coordinate (O1) at (0, 3);
+    \coordinate (R1) at (5, 2);
+    \draw[name path=1L, thick, black, my arrow/.list={0.2,0.45,0.7},-{Stealth[length=2mm,bend]}] (L1) to[out=-30, in=180] (O1) to[out=0, in=-150] (R1);
+
+    \coordinate (L2) at (-5, 1);
+    \coordinate (O2) at (0, 1.5);
+    \coordinate (R2) at (5, 1);
+    \draw[name path=L2, thick, black, my arrow/.list={0.2,0.45,0.7},-{Stealth[length=2mm,bend]}] (L2) to[out=-20, in=180] (O2) to[out=0, in=-160] (R2);
+    
+    \coordinate (L3) at (-5, 0);
+    \coordinate (O3) at (0, 0);
+    \coordinate (R3) at (5, 0);
+    \draw[name path=L3, thick, black, my arrow/.list={0.2,0.45,0.7},-{Stealth[length=2mm,bend]}] (L3) to[out=0, in=180] (O3) to[out=0, in=180] (R3);
+    
+    \coordinate (L4) at (-5, -1);
+    \coordinate (O4) at (0, -1.5);
+    \coordinate (R4) at (5, -1);
+    \draw[name path=L4, thick, black, my arrow/.list={0.2,0.45,0.7},-{Stealth[length=2mm,bend]}] (L4) to[out=20, in=180] (O4) to[out=0, in=160] (R4);
+    
+    \coordinate (L5) at (-5, -2);
+    \coordinate (O5) at (0, -3);
+    \coordinate (R5) at (5, -2);
+    \draw[name path=L5, thick, black, my arrow/.list={0.2,0.45,0.7},-{Stealth[length=2mm,bend]}] (L5) to[out=30, in=180] (O5) to[out=0, in=150] (R5);
+
+    \draw[thick, dashed] (0, -3.5) -- (0, 3.5);
+    \draw[thick, fill, black] (0, 0) circle (2pt);
+    \node[anchor=north east] at (0, -0.1) {$\mathbf{B}_0$};
+    \draw[thick, dashed] (3, -3.5) -- (3, 3.5);
+    \draw[thick, fill, black] (3, 0) circle (2pt);
+    \node[anchor=north east] at (3, -0.05) {$\mathbf{B}_\text{m}$};
+    \draw[thick, dashed] (-2.75, -3.5) -- (-2.75, 3.5);
+    \draw[thick, fill, black] (-2.75, 0) circle (2pt);
+    \node[anchor=north east] at (-2.75, -0.05) {$\mathbf{B}_\text{m}$};
+    \node[anchor=north east] at (-2, -2.5) {$\mathbf{B}$};
+
+    \draw[line width=1.75pt, ->-={0.25}] (-3.8, 2.025) arc(42.5:317.5:0.25cm and 3cm);
+    \draw[line width=1.75pt, ->-={0.25}] (4.15, 2.025) arc(42.5:317.5:0.25cm and 3cm);
+
+    \node[anchor=south east] at (-4.2, 2.2) {$I$};
+    \node[anchor=south east] at (3.7, 2.2) {$I$};
+
+    \draw[thick, blue!80, my arrow/.list={0.2, 0.45, 0.7}, -{Stealth[length=2mm, bend]}] (-2.6, 1.275) to[out=195, in=195] (-2.6, 1.625) to[out=15, in=180] (0, 2.6) to[out=0, in=165] (2.85, 1.65) to[out=-15, in=-15] (2.85, 1.3) to[out=165, in=0] (0, 2) to[out=180, in=15] (-2.6, 1.275);
+    \node[anchor=south east] at (-0.25, 2.02) {$\color{blue}\mathcal{C}$};
+\end{tikzpicture}

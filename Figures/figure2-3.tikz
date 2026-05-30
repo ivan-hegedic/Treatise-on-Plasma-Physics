@@ -1,0 +1,52 @@
+\tikzset{
+    arw/.style args={#1and#2with step#3}{%
+    postaction=decorate,
+    decoration={
+      markings,
+      mark={between positions #1 and #2 step #3 with \arrow{Stealth[bend]}}
+    }
+  }
+}
+
+\begin{tikzpicture}
+
+    \draw[dashed, black] (0, -3) -- (0, 3) node[pos=0.38, fill=white] {$z=0$};
+    \node at (-2.2, 2.65) {$\mathbf{B}$};
+
+    \foreach \n in {-6, ..., -2} {
+        \draw[thick, black] (\n, 2) circle (0.2cm);
+        \draw[thick, black, fill] (\n, 2) circle (1.25pt);
+        \draw[thick, black] (\n, -2) circle (0.2cm);
+        \draw[thick, black] ({\n+0.2/sqrt(2)}, {-2+0.2/sqrt(2)}) -- ({\n-0.2/sqrt(2)}, {-2-0.2/sqrt(2)});
+        \draw[thick, black] ({\n-0.2/sqrt(2)}, {-2+0.2/sqrt(2)}) -- ({\n+0.2/sqrt(2)}, {-2-0.2/sqrt(2)});
+    }
+
+    \foreach \n in {2, ..., 6} {
+        \draw[thick, black] (\n, 2) circle (0.2cm);
+        \draw[thick, black, fill] (\n, -2) circle (1.25pt);
+        \draw[thick, black] (\n, -2) circle (0.2cm);
+        \draw[thick, black] ({\n+0.2/sqrt(2)}, {2+0.2/sqrt(2)}) -- ({\n-0.2/sqrt(2)}, {2-0.2/sqrt(2)});
+        \draw[thick, black] ({\n-0.2/sqrt(2)}, {2+0.2/sqrt(2)}) -- ({\n+0.2/sqrt(2)}, {2-0.2/sqrt(2)});
+    }
+
+    \draw[thick, black, arw=0.1 and 1 with step 50pt] (-6.5, 1.3333) .. controls (0, 1.3333) and (-1, 1.5) .. (-2, 3);
+    \draw[thick, black, arw=0.25 and 1 with step 50pt] (-6.5, 0.6667) .. controls (0.25, 0.6667) and (-0.25, 1) .. (-0.75, 3);
+    \draw[thick, black, arw=0.1 and 1 with step 50pt] (-6.5, 0) -- (0, 0);
+    \draw[thick, black, arw=0.25 and 1 with step 50pt] (-6.5, -0.6667) .. controls (0.25, -0.6667) and (-0.25, -1) .. (-0.75, -3);
+    \draw[thick, black, arw=0.1 and 1 with step 50pt] (-6.5, -1.3333) .. controls (0, -1.3333) and (-1, -1.5) .. (-2, -3);
+
+    \draw[thick, black, arw=0.1 and 1 with step 50pt] (6.5, 1.3333) .. controls (0, 1.3333) and (1, 1.5) .. (2, 3);
+    \draw[thick, black, arw=0.25 and 1 with step 50pt] (6.5, 0.6667) .. controls (-0.25, 0.6667) and (0.25, 1) .. (0.75, 3);
+    \draw[thick, black, arw=0.1 and 1 with step 50pt] (6.5, 0) -- (0, 0);
+    \draw[thick, black, arw=0.25 and 1 with step 50pt] (6.5, -0.6667) .. controls (-0.25, -0.6667) and (0.25, -1) .. (0.75, -3);
+    \draw[thick, black, arw=0.1 and 1 with step 50pt] (6.5, -1.3333) .. controls (0, -1.3333) and (1, -1.5) .. (2, -3);
+
+    \draw[thick, blue, -{Stealth[bend]}] (-6.5, 1) to[out=0, in=135] (-5.575, 0.725);
+    \draw[thick, blue, arw=0.4 and 1 with step 50pt] (-5.5, 0.625) to[out=-45, in=225] (-3.5, 0.7) to[out=45, in = 145, looseness=0.8] (-1.4, 1);
+    \draw[thick, blue, arw=0.6 and 1 with step 50pt] (-1.28, 0.87) .. controls (-1, 0.5) and (0, 1) .. (-0.5, 1.5);
+    \draw[thick, blue, arw=0.4 and 1 with step 50pt] (-0.5, 1.5) .. controls (-2, 3) and (1, 4) .. (1.4, 1);
+    \draw[thick, blue, arw=0 and 1 with step 50pt] (1.4, 1) .. controls (2, -5) and (3, 3) .. (3.4, 1);
+    \draw[thick, blue, arw=0.3 and 1 with step 70pt] (3.4, 1) .. controls (4.2, -4.5) and (4.75, 2.5) .. (5.1, 0.85);
+    \draw[thick, blue, fill] (5.1, 0.85) circle (1pt);
+    
+\end{tikzpicture}

@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    \begin{axis}[
+            width=0.95\linewidth,
+            colormap={blackwhite}{gray(0cm)=(0); gray(1cm)=(0)},
+            domain=0.001:2,
+            y domain=0:4,
+            view={0}{90},
+            axis background/.style={fill=white},
+            xlabel={$r/r_0$},
+            ylabel={$z/r_0$},
+            xlabel near ticks,
+            ylabel near ticks,
+            ylabel style={rotate=-90, anchor=east}]
+        \addplot3[contour gnuplot={levels={-12, -7.75, -4, -1.5, -0.5, 0.3, 0.6, 0.85}, labels=false},
+            samples=60,
+            ultra thick]
+        { (2 - x^2 - 4*y^2) * x^2 };
+        \addplot3[ultra thick,
+            contour gnuplot={levels={0}, labels=false, draw color=red},
+            samples=80]
+        { (2 - x^2 - 4*y^2) * x^2 };
+    \end{axis}
+\end{tikzpicture}

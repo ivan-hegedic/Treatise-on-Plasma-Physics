@@ -1,0 +1,10 @@
+\begin{tikzpicture}[scale=1.0, every text node part/.style={align=center}, auto, line/.style ={draw, thick, -latex',shorten >=2pt}]
+    \matrix[row sep=1cm,column sep=1cm] {
+        \node (Lorentz) {Lorentz equation\\ gives $\mathbf{x}_i(t)$, $\mathbf{v_i(t)}$ for all particles from $\mathbf{E}(\mathbf{x}, t)$ and $\mathbf{B}(\mathbf{x},t)$.}; \\
+        \node (Maxwell) {Maxwell equations\\ give $\mathbf{E}(\mathbf{x}, t)$ and $\mathbf{B}(\mathbf{x}, t)$ from $\mathbf{x}_i(t)$, $\mathbf{v}_i(t)$ of each particle.}; \\
+    };
+    \begin{scope}[every path/.style=line]
+        \path (Maxwell.west) -|-[distance=1cm] (Lorentz.west);
+        \path (Lorentz.east) -|-[distance=-1cm] (Maxwell.east);
+    \end{scope}
+\end{tikzpicture}

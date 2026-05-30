@@ -1,0 +1,336 @@
+\chapter{Tokamaks and toroidally confined plasmas}
+
+\section{Hamiltonian formalism applied to tokamaks}
+
+The most effective tool to represent magnetic field-lines in any magnetic confinement system is the method of Hamiltonian formalism, which successfully models both the regular and the chaotic behaviour of magnetic field-lines. We have already discussed the canonical representation of magnetic field-lines, and here, we will formally employ the variational formalism to describe the magnetic field structure in tokamaks as axisymmetric confinement systems.
+
+\quad Consider a magnetic field-line parametrised by $\mathbf{r}(\tau)$ in three-dimensional space. We define the action of the magnetic field-line over its segment bounded by $\mathbf{r}_1$ and $\mathbf{r}_2$ as the curvilinear integral of the magnetic vector potential $\mathbf{A}$ producing the magnetic field:
+
+\begin{equation}
+    \label{eq-5-185}
+    S[\mathbf{r}(\tau)]=\int_{\mathbf{r}_1}^{\mathbf{r}_2}\mathbf{A}(\mathbf{r}(\tau))\cdot\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}\tau}\,\text{d}\tau
+\end{equation}
+
+Applying the variational principle of analytical mechanics to the magnetic action defined above gives:
+
+\begin{equation}
+    \delta S[\mathbf{r}(\tau)]=\delta\int_{\mathbf{r}_1}^{\mathbf{r}_2}\mathbf{A}(\mathbf{r}(\tau))\cdot\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}\tau}\,\mathrm{d}\tau=0\implies\mathcal{L}:=\mathbf{A}\cdot\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}\tau}\text{ satisfies }\frac{\mathrm{d}}{\mathrm{d}\tau}\left(\frac{\partial\mathcal{L}}{\partial\dot{\mathbf{r}}}\right)-\frac{\partial\mathcal{L}}{\partial\mathbf{r}}=\mathbf{0}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial r^i}=\frac{\partial}{\partial r^i}(A_j\dot{r}^j)=\frac{\partial A_j}{\partial r^i}\frac{\mathrm{d}r^j}{\mathrm{d}\tau}\quad\text{and}\quad\frac{\mathrm{d}}{\mathrm{d}\tau}\left(\frac{\partial\mathcal{L}}{\partial\dot{r}^i}\right)=\frac{\mathrm{d}A_i}{\mathrm{d}\tau}=\frac{\partial A_i}{\partial r^j}\frac{\mathrm{d}r^j}{\mathrm{d}\tau}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial A_i}{\partial r^j}\frac{\mathrm{d}r^j}{\mathrm{d}\tau}-\frac{\partial A_j}{\partial r^i}\frac{\mathrm{d}r^j}{\mathrm{d}\tau}=\left(\frac{\partial A_i}{\partial r^j}-\frac{\partial A_j}{\partial r^i}\right)\frac{\mathrm{d}r^j}{\mathrm{d}\tau}=\left(\left[\nabla\times\mathbf{A}\right]\times\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}\tau}\right)_i=0
+\end{equation}
+
+which is physically interpreted as the fact that $\mathbf{B}$ is parallel to $\dot{\mathrm{r}}(\tau)$ as provided by the definition of a magnetic field-line. The \textit{shortest} path in terms of magnetic vector potential between two points $\mathbf{r}_1$ and $\mathbf{r}_2$ is thus precisely the one following the magnetic field-line connecting the two points. Compare the above action with the usual classical mechanical action given by:
+
+\begin{equation}
+    S[\mathbf{r}(\tau)]=\int_{\mathbf{r}_1}^{\mathbf{r}_2}\left(\mathbf{p}\cdot\text{d}\mathbf{r}-\mathcal{H}\,\text{d}t\right)
+\end{equation}
+
+where $(\mathbf{r},\mathbf{p})$ are canonical conjugate variables, $\mathcal{H}$ is the Hamiltonian of the system, and $t$ is time. Moreover, recall Hamilton's equations:
+
+\begin{equation}
+    \frac{\mathrm{d}\mathbf{r}}{\mathrm{d}t}=\frac{\partial\mathcal{H}}{\partial\mathbf{p}}\qquad\frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t}=-\frac{\partial\mathcal{H}}{\partial\mathbf{r}}
+\end{equation}
+
+Now, let $(u,v,w)$ be an orthogonal coordinate system and $(A_u,A_v,A_w)$ the corresponding components of the vector potential $\mathbf{A}$. We choose an appropriate gauge $\mathbf{A}\to\mathbf{A}+\nabla g$ such that $A_w=-\partial g/\partial w$. The component $A_w$ is hence eliminated. Let $\mathbf{r}(\tau)=(U(\tau),V(\tau),W(\tau))$ in the orthogonal system, so that the momenta read $P_u=A_u(U,V,W)$ and $P_v=A_v(U,V,W)$. A fundamental result in analytical mechanics is the existence of a set of canonical coordinates such that the transformed Hamiltonian is identically zero: $\mathcal{H}=\mathcal{H}(U, V, P_u, P_v)=0$. The action given in equation (\ref{eq-5-185}) is thus expressed as:
+
+\begin{equation}
+    \label{eq-5-188}
+    S[\mathbf{r}(\tau)]=\int_{\mathbf{r}_1}^{\mathbf{r}_2}\left(P_u\,\text{d}U+P_v\,\text{d}V-\mathcal{H}\,\text{d}\tau\right)\Longleftrightarrow S[\mathbf{r}(\tau)]=\int_{\mathbf{r}_1}^{\mathbf{r}_2}\left(A_u\,\mathrm{d}U+A_v\,\mathrm{d}V\right)=\int_{\mathbf{r}_1}^{\mathbf{r}_2}\mathbf{A}\cdot\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}\tau}\,\mathrm{d}\tau
+\end{equation}
+
+Behold the resemblance with equation (\ref{eq-5-188}). The corresponding field-line is, in the particular set of canonical coordinates, described by autonomous Hamilton's equations:
+
+\begin{equation}
+    \frac{\mathrm{d}U}{\mathrm{d}\tau}=\frac{\partial\mathcal{H}}{\partial P_u},\qquad\frac{\mathrm{d}V}{\mathrm{d}\tau}=\frac{\partial\mathcal{H}}{\partial P_v},\qquad\frac{\mathrm{d}P_u}{\mathrm{d}\tau}=-\frac{\partial\mathcal{H}}{\partial U},\qquad\frac{\mathrm{d}P_v}{\mathrm{d}\tau}=-\frac{\partial\mathcal{H}}{\partial V}
+\end{equation}
+
+Since the Hamiltonian is identically zero in this set of coordinates, we have the freedom to choose:
+
+\begin{equation}
+    \mathcal{H}(U,V,P_u,P_v)=P_u-A_u(U,V,W(P_v,U,V))=0
+\end{equation}
+
+by expressing the third coordinate $W$ via $P_v\equiv A_v$, $U$ and $V$. An equally valid choice is expressing $\mathcal{H}=P_v-A_v(U,V,W(P_u,U,V))$. The particular choice of the Hamiltonian depends on whether the variable $U$ (or $V$) can be considered as a time-like independent variable that does not change its direction. Then, the field-lines can be expressed via a non-autonomous Hamiltonian system. Choose $U=\tau$ so that the $U$ variable is the time-like variable:
+
+\begin{equation}
+    \frac{\mathrm{d}V}{\mathrm{d}U}=\frac{\partial\mathcal{H}_u}{\partial P_v},\qquad\frac{\mathrm{d}P_v}{\mathrm{d}U}=-\frac{\partial\mathcal{H}}{\partial V}
+\end{equation}
+
+where $\mathcal{H}_u=-A_u(U,V,W(P_v,U,V))$. This two-dimensional system is known as a \textit{one-and-a-half degrees-of-freedom} Hamiltonian system, since the time-like variable moves in only one direction (positive time). We now consider the particular form of the Hamiltonian equations for a tokamak, that is, a toroidal system. Let $(\rho, \varphi, z)$ be a cylindrical coordinate system whose $z$-axis is directed along the symmetry axis, and $\varphi$ is the azimuthal, that is, the toroidal angle. We can relate these to the quasi-toroidal coordinate system $(r,\theta,\varphi)$ as follows:
+
+\begin{equation}
+    \rho=R_0+r\cos{\theta},\qquad z=r\sin{\theta},\qquad r=\sqrt{(\rho-R_0)^2+z^2},\qquad\theta=\arctan{\left(\frac{z}{\rho-R_0}\right)}
+\end{equation}
+
+The local quantity presented by the ratio $\varepsilon=r/R_0$ is called the \textit{inverse aspect} ratio. Let $(A_R, A_\Phi, A_Z)$ be the components of the magnetic vector potential $\mathbf{A}$ in the cylindrical coordinate system $(\rho,\varphi,z)$. We choose $W=\rho(\tau)$, so that the canonical variables and the Hamiltonian read:
+
+\begin{equation}
+    P_Z=A_Z(\rho(\tau),\varphi(\tau), z(\tau)),\qquad P_\Phi=\rho(\tau)A_\Phi,\qquad u=\varphi,\qquad v=z
+\end{equation}
+
+Let us denote $R=\rho(\tau)$, $\Phi=\varphi(\tau)$, and $Z=z(\tau)$ as spatial coordinates along a particular magnetic field line, distinguished by the capital letters just like $(U,V,W)$. The Hamiltonian reads:
+
+\begin{equation}
+    \mathcal{H}(Z,\Phi,P_Z,P_\Phi)=P_\Phi-R(Z,P_Z)A_\Phi(R(Z,P_Z),\Phi,Z)=0
+\end{equation}
+
+so that the corresponding Hamilton's equations read:
+
+\begin{equation}
+    \frac{\mathrm{d}Z}{\mathrm{d}\tau}=\frac{\partial\mathcal{H}}{\partial P_Z},\qquad\frac{\mathrm{d}\Phi}{\mathrm{d}\tau}=\frac{\partial\mathcal{H}}{\partial P_\Phi},\qquad\frac{\mathrm{d}P_Z}{\mathrm{d}\tau}=-\frac{\partial\mathcal{H}}{\partial Z},\qquad\frac{\mathrm{d}P_\Phi}{\mathrm{d}\tau}=-\frac{\partial\mathcal{H}}{\partial\Phi}
+\end{equation}
+
+Axisymmetry allows us to choose the toroidal angle as the time-like independent variable, so that:
+
+\begin{equation}
+    \label{eq-5-200}
+    \frac{\mathrm{d}Z}{\mathrm{d}\Phi}=\frac{\partial\mathcal{H}}{\partial P_Z},\qquad\frac{\mathrm{d}P_Z}{\mathrm{d}\Phi}=-\frac{\partial\mathcal{H}}{\partial Z}
+\end{equation}
+
+and $\mathcal{H}_\varphi=-RA_\varphi$. The relation between the canonical variables $(Z, P_Z)$ and the geometrical coordinates $(R, \Phi, Z)$ on a magnetic field-line is given by $P_Z=A_Z(R, \Phi, Z)$. In the case of weakly diamagnetic plasmas, the Maxwell-Ampère law gives $B_\Phi=B_0R_0/R$, so that $A_Z=B_0R_0\ln{R/R_0}$, and one has $P_Z=B_0R_0\ln{({R}/{R_0})}$. The magnetic field components in the cylindrical systems are given as:
+
+\begin{equation}
+    \label{eq-5-201}
+    B_R=-\frac{\partial A_\varphi}{\partial Z}=\frac{1}{R}\frac{\partial\psi_\text{tor}}{\partial Z},\qquad B_\Phi=-\frac{\partial\psi_\text{tor}}{\partial R},\qquad B_Z=-\frac{\partial\psi_\text{tor}}{\partial P_Z}
+\end{equation}
+
+where we had identified the Hamiltonian with the reduced toroidal magnetic flux, $\psi_\text{tor}=\Phi_\text{tor}/2\pi$
+
+\subsection{Action-angle variables for magnetic field-lines}
+
+Consider an equilibrium plasma with nested toroidal magnetic surfaces. Any torus presents only two irreducible closed contours along the poloidal and the toroidal direction, which we denote as $\mathcal{C}_\text{pol}$ and $\mathcal{C}_\text{tor}$, respectively. We shall consider specifically the poloidal and toroidal angles as canonical coordinates of the Hamiltonian system, whose conjugate momenta are $\psi_\text{pol}$ and $\psi_\text{tor}$. In its action-angle form, $\mathcal{H}=\mathcal{H}(\psi_\text{pol},\psi_\text{tor})$ only, and the Hamilton equations take the form:
+
+\begin{equation}
+    \frac{\mathrm{d}\theta}{\mathrm{d}\tau}=\frac{\partial\mathcal{H}}{\partial\psi_\text{pol}}=\omega_\theta,\qquad\frac{\mathrm{d}\varphi}{\mathrm{d}\tau}=\frac{\partial\mathcal{H}}{\partial\psi_\text{tor}}=\omega_\varphi,\qquad\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\tau}=0=\frac{\mathrm{d}\psi_\text{tor}}{\mathrm{d}\tau}
+\end{equation}
+
+where the Hamiltonian is $\mathcal{H}(\theta,\varphi)=\psi_\text{tor}-RA_\varphi(R,\varphi,Z)=0$. The radial and axial cylindrical coordinates, $R$ and $Z$, are thus functions of $(\psi_\text{pol},\theta)$, and $\omega_\theta$ and $\omega_\varphi$ are the \textit{frequencies} of the system. Formally, the action-angle variables are introduced via the appropriate canonical transformation determined by the generating function:
+
+\begin{equation}
+    \label{eq-x-8-2}
+    F(\psi_\text{pol},\psi_\text{tor};\varphi,Z)=\int_{Z_0}^ZP_Z(Z';\psi_\text{pol})\,\text{d}Z'+\int_{\varphi_0}^\varphi P_\varphi(\varphi';\psi_\text{tor})\,\text{d}\varphi'
+\end{equation}
+
+where $Z_0$ and $\varphi_0$ are arbitrary constants. The above gives the following relations:
+
+\begin{equation}
+    \psi_\text{pol}=\frac{1}{2\pi}\oint_{\mathcal{C}_\theta}P_Z(Z;\psi_\text{pol})\,\text{d}Z,\qquad\psi_\text{tor}=\frac{1}{2\pi}\oint_{\mathcal{C}_\varphi}P_\varphi(\varphi;\psi_\text{tor})\,\text{d}\varphi,\qquad\theta=\frac{\partial F}{\partial\psi_\text{tor}},\qquad\varphi=\frac{\partial F}{\partial\psi_\text{pol}}
+\end{equation}
+
+The above integrals precisely represent the (disk) poloidal and the toroidal magnetic fluxes, so it shall tacitly be known that $\psi_\text{pol}$ and $\psi_\text{tor}$ represent the reduced fluxes, that is, fluxes divided by $2\pi$. The rotational transform $\hcancel{\iota}(\psi_\text{pol})$, that is, the safety factor $q(\psi_\text{pol})$ can then be determined via (\ref{eq-5-200}):
+
+\begin{equation}
+    q(\psi_\text{pol})=\frac{\mathrm{d}\psi_\text{tor}}{\mathrm{d}\psi_\text{pol}}=\frac{\mathrm{d}\varphi}{\mathrm{d}\theta}=\frac{\Delta\varphi}{2\pi}=\frac{1}{2\pi}\oint_{\mathcal{C}_\varphi}\frac{\mathrm{d}Z}{\partial\psi_\text{pol}/\partial P_Z}
+\end{equation}
+
+\section{Single-null divertor tokamak}
+
+We now illustrate the action-angle Hamiltonian formalism for a magnetic-field-structure model equivalent to that in tokamaks. The considered topologically equivalent poloidal magnetic flux is given by:
+
+\begin{equation}
+    \label{eq-5-202}
+    \psi_\text{pol}(R,Z)=\frac{\beta^2}{2}\left[\ln{\left(\frac{R}{R_0}\right)}\right]^2-\frac{\alpha^2Z^2}{2}\left(1-\frac{Z^2}{2Z_0^2}\right)
+\end{equation}
+
+where $\alpha$ and $\beta$ are some parameters, while the magnetic axis radius is located at $(R_0, Z_0)$. The magnetic surface profile is illustrated in Figure \ref{fig-5-4}. The first term is precisely the normalised momentum $P_Z/B_0R_0$, as determined via relations (\ref{eq-5-201}). Here, we reinstate the preference for $\varphi$ to serve as the time-like independent variable, given axisymmetry. Hamilton's equations are given as follows:
+
+\begin{equation}
+    \label{eq-5-203}
+    \frac{\mathrm{d}Z}{\mathrm{d}\varphi}=\frac{\partial\psi_\text{pol}}{\partial P_Z}=\beta^2P_Z,\qquad\frac{\mathrm{d}P_Z}{\mathrm{d}\varphi}=-\frac{\partial\psi_\text{pol}}{\partial Z}=\alpha^2Z\left(1-\frac{Z^2}{Z_0^2}\right)
+\end{equation}
+
+The fixed points of the system of equations (\ref{eq-5-203}) are determined via:
+
+\begin{equation}
+    \frac{\mathrm{d}Z}{\mathrm{d}\varphi}\stackrel{!}{=}0=\frac{\partial\psi_\text{pol}}{\partial P_Z}\qquad\frac{\mathrm{d}P_Z}{\mathrm{d}\varphi}\stackrel{!}{=}0=-\frac{\partial\psi_\text{pol}}{\partial Z}
+\end{equation}
+
+which correspond to a zero poloidal magnetic field via equations (\ref{eq-5-201}). This particular system contains two fixed points: one is a \textit{hyperbolic} fixed point, which is stable in one canonical direction and unstable in the other, at $(Z_s,p_s)=(0,0)$, and corresponds to the so-called \textit{X-point}; one \textit{elliptic} fixed point, which is stable in both canonical directions, at $(Z_s,p_s)=(Z_0,0)$, corresponding to the magnetic axis, and is usually referred to as the \textit{O-point}. The Hamiltonian flow-field is hyperbolic around the X-point, and elliptic in the neighbourhood of the O-point. The extrema of poloidal flux are found at $(R=R_0, Z=\pm Z_0)$ and $(R=R_0, Z=0)$. Moreover, the points $(R=R_0, Z=\pm Z_0)$ correspond to minima of poloidal flux, while the point $(R=R_0,Z=0)$ is a saddle point at which also $\psi_\text{pol}(R=R_0,Z=0)=0$. Namely, the separatrix passes through the saddle point, which is therefore called the X-point. The global minimum of the poloidal flux is equal to $\Psi_\text{pol}=-\alpha^2Z_0^2/4$ at the magnetic axis. We shall now explore the applications of the action-angle formalism to each type of magnetic surface.
+
+\begin{figure}[H]
+    \centering
+    \input{Figures/figure5-4.tikz}
+    \captionsetup{justification=centering}
+    \caption{Magnetic surface contours topologically equivalent to those in tokamaks. The separatrix corresponding to zero magnetic flux is traced in red.}
+    \label{fig-5-4}
+\end{figure}
+
+\begin{enumerate}
+    \item Closed field-lines: Having chosen a gauge such that $A_R=0$, the reduced toroidal flux can be expressed as an action variable:
+
+    \begin{equation}
+        \psi_\text{tor}=\frac{1}{2\pi}\iint_{S_\varphi}B_\varphi\,\mathrm{d}S=\frac{1}{2\pi}\oint_{\mathcal{C}_\theta}\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}=\frac{1}{2\pi}\oint_{\mathcal{C}_\theta}A_Z\,\mathrm{d}Z=\frac{1}{2\pi}\oint_{\mathcal{C}_\theta}P_Z\,\mathrm{d}Z
+    \end{equation}
+
+    where $\mathcal{C}_\theta$ is the intersection curve of any poloidal plane and the magnetic surface labelled by the poloidal flux $2\pi\psi_\text{pol}$. We may now express the momentum $P_Z$ via equation (\ref{eq-5-202}), giving:
+
+    \begin{equation*}
+        \psi_\text{tor}=\frac{1}{\pi}\int_{Z_\text{min}}^{Z_\text{max}}P_Z\,\mathrm{d}Z=\frac{B_0R_0\sqrt{2}}{\pi\beta}\int_{Z_\text{min}}^{Z^\text{max}}\sqrt{\psi_\text{pol}+\frac{\alpha^2Z^2}{2}\left(1-\frac{Z^2}{2Z_0^2}\right)}\mathrm{d}Z=
+    \end{equation*}
+    
+    \begin{equation}
+        \label{eq-x-8-25}
+        =\left\{\frac{Z_\text{max/min}^2}{Z_0^2}=1\pm\sqrt{1+\frac{\psi_\text{pol}}{|\Psi_\text{pol}|}}\right\}=\frac{B_0R_0\alpha}{\pi\beta Z_0\sqrt{2}}\int_{Z_\text{min}}^{Z_\text{max}}\sqrt{(Z_\text{max}^2-Z^2)(Z^2-Z_\text{min}^2)}\,\mathrm{d}Z
+    \end{equation}
+
+    where $Z_\text{min}$ and $Z_\text{max}$ are the lowest and, respectively, the highest points of the closed curve $\mathcal{C}_\theta$ along the positive axial direction in the upper half-space. Note again that $\Psi_\text{pol}$ denotes the magnetic poloidal disk flux at the magnetic axis. One may express the integral in terms of elliptic integrals:
+
+    \begin{equation*}
+        \int_{Z_\text{min}}^{Z_\text{max}}\sqrt{(Z_\text{max}^2-Z^2)(Z^2-Z_\text{min}^2)}\,\text{d}Z=\left\{Z^2=Z_\text{max}^2\cos^2{\phi}+Z_\text{min}^2\sin^2{\phi}\right\}=
+    \end{equation*}
+
+    \begin{equation*}
+        =\left\{\mathrm{d}Z=-\frac{(Z_\text{max}^2-Z_\text{min}^2)}{Z}\sin{\phi}\cos{\phi}\,\mathrm{d}\phi\right\}=(Z_\text{max}^2-Z_\text{min}^2)^2\int_0^{\pi/2}\frac{\sin^2{\phi}\cos^2{\phi}\,\text{d}\phi}{\sqrt{Z_\text{max}^2\cos^2{\phi}+Z_\text{min}^2\sin^2{\phi}}}=
+    \end{equation*}
+
+    \begin{equation}
+        =\left\{k^2={1-\frac{Z_\text{min}^2}{Z_\text{max}^2}}\right\}=Z_\text{max}^3k^4\left[\int_0^{\pi/2}\left(\frac{\sin^2{\phi}}{\sqrt{1-k^2\sin^2{\phi}}}-\frac{\sin^4{\phi}}{\sqrt{1-k^2\sin^2{\phi}}}\right)\text{d}\phi\right]
+    \end{equation}
+
+    We now introduce $\Delta(\phi)=\sqrt{1-k^2\sin^2{\phi}}$, so that $\sin^2{\phi}=(1-\Delta^2(\phi))/k^2$:
+
+    \begin{equation}
+        \int_0^{\pi/2}\frac{\sin^2{\phi}}{\Delta(\phi)}\,\text{d}\phi=\frac{1}{k^2}\int_0^{\pi/2}\frac{\mathrm{d}\phi}{\Delta(\phi)}-\frac{1}{k^2}\int_0^{\pi/2}\Delta(\phi)\,\mathrm{d}\phi=\frac{K(k)-E(k)}{k^2}
+    \end{equation}
+
+    \begin{equation*}
+        \int_0^{\pi/2}\frac{\sin^4{\phi}}{\Delta(\phi)}\,\mathrm{d}\phi=\frac{1}{k^4}\int_0^{\pi/2}\frac{\mathrm{d}\phi}{\Delta(\phi)}-\frac{2}{k^4}\int_0^{\pi/2}\Delta(\phi)\,\mathrm{d}\phi+\frac{1}{k^4}\int_0^{\pi/2}\Delta^3(\phi)\,\mathrm{d}\phi=
+    \end{equation*}
+
+    where we recognise $K(k)$ and $E(k)$. The last integral is evaluated by first considering the product $\Delta(\phi)\sin{\phi}\cos{\phi}$ and differentiating:
+
+    \begin{equation*}
+        \frac{\mathrm{d}}{\mathrm{d}\phi}\left(\Delta(\phi)\sin{\phi}\cos{\phi}\right)=(\cos^2{\phi}-\sin^2{\phi})\Delta(\phi)-\frac{k^2\sin^2{\phi}\cos^2{\phi}}{\Delta(\phi)}=
+    \end{equation*}
+
+    \begin{equation*}
+        =\frac{(1-2\sin^2{\phi})(1-k^2\sin^2{\phi})-k^2\sin^2{\phi}(1-\sin^2{\phi})}{\Delta(\phi)}=\frac{1-2(1+k^2)\sin^2{\phi}+3k^2\sin^2{\phi}}{\Delta(\phi)}\implies
+    \end{equation*}
+
+    \begin{equation}
+        \implies k^2\frac{\mathrm{d}}{\mathrm{d}\phi}\left(\Delta(\phi)\sin{\phi}\cos{\phi}\right)=3\Delta^3(\phi)+(2k^2-4)\Delta(\phi)+\frac{1-k^2}{\Delta(\phi)}
+    \end{equation}
+
+    Integrating the obtained result over $(0,\pi/2)$ and noting that the left-hand side evaluates to zero since $\sin{(0)}=\cos{(\pi/2)}=0$, we obtain:
+
+    \begin{equation}
+        \int_0^{\pi/2}\Delta^3(\phi)\,\mathrm{d}\phi=\frac{(4-2k^2)E(k)-(1-k^2)K(k)}{3}
+    \end{equation}
+
+    This provides us with the final result:
+
+    \begin{equation*}
+        \int_{Z_\text{min}}^{Z_\text{max}}\sqrt{(Z_\text{max}^2-Z^2)(Z^2-Z_\text{min}^2)}\,\mathrm{d}Z=\frac{Z_\text{max}}{3}\left[(Z_\text{max}^2+Z_\text{min}^2)E(k)-2Z_\text{min}^2K(k)\right]
+    \end{equation*}
+
+    where, again, $k^2=1-Z_\text{min}^2/Z_\text{max}^2$. Substituting the result into equation (\ref{eq-x-8-25}), we obtain:
+
+    \begin{equation}
+        \psi_\text{tor}=\frac{2B_0R_0Z_0^2\alpha}{3\pi\beta\sqrt{2-k^2}}\left[E(k)-2\frac{1-k^2}{2-k^2}K(k)\right]\quad\text{where}\quad k^2=\frac{2\sqrt{1+\psi_\text{pol}/|\Psi_\text{pol}|}}{1+\sqrt{1+\psi_\text{pol}/|\Psi_\text{pol}|}}
+    \end{equation}
+
+    Note that this marks our first concrete encounter with the bijective relation between the toroidal and the poloidal magnetic fluxes, $\psi_\text{tor}$ and $\psi_\text{pol}$. The safety factor then follows trivially by differentiating the above with respect to the poloidal flux, $\psi_\text{pol}$. Moreover, we find that the total toroidal flux of the magnetic axis is zero, a trivial yet important result for the coherence of our considerations. Notably, the magnetic axis is indeed characterised by extremal poloidal disk flux, but zero toroidal flux since its volume, and consequently its cross-section, is identically zero. The toroidal magnetic flux of the separatrix is given by substituting $\psi_\text{pol}=0$, so that $k=1$. Due to the divergence of $K(k)$ as $k$ approaches unity, one has to take the limit $k\to1^-$. The elliptic integral of the first kind has a logarithmic singularity at $k=1$, namely:
+
+    \begin{equation}
+        \lim_{k\to1^-}K(k)\simeq\ln{\left(\frac{4}{\sqrt{1-k^2}}\right)}\implies\lim_{k\to1^-}2(1-k^2)K(k)=0
+    \end{equation}
+
+    while the elliptic integral of the second kind converges to unity as $k\to1^-$. This gives:
+
+    \begin{equation}
+        \Psi_\text{tor}=\frac{2}{3\pi}B_0R_0Z_0\frac{\alpha Z_0}{\beta}\quad\text{within the separatrix}
+    \end{equation}
+
+    as the reduced magnetic toroidal flux enclosed by the separatrix. To determine the conjugate angle variable $\theta$, let $\theta=0$ at $Z=Z_\text{max}$. Since we have chosen $\varphi$ as the independent time-like variable, the generating function given in (\ref{eq-x-8-2}) reduces to an integral over the vertical coordinate $Z'$ only, so that the angle $\theta$ is simply given via the relation:
+
+    \begin{equation*}
+        \theta(Z)=\frac{\partial}{\partial\psi_\text{tor}}\int_Z^{Z_\text{max}}P_Z(Z';\psi_\text{pol})\,\mathrm{d}Z'=\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\psi_\text{tor}}\int_Z^{Z_\text{max}}\frac{\partial P_Z}{\partial\psi_\text{pol}}\,\mathrm{d}Z'=\frac{B_0^2R_0^2}{\beta^2}\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\psi_\text{tor}}\int_Z^{Z_\text{max}}\frac{\mathrm{d}Z'}{P_Z}=
+    \end{equation*}
+
+    \begin{equation*}
+        =\frac{B_0R_0}{\beta\sqrt{2}}\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\psi_\text{tor}}\int_Z^{Z_\text{max}}\frac{\mathrm{d}Z'}{\sqrt{\psi_\text{pol}+\frac{\alpha^2Z^2}{2}\left(1-\frac{Z^2}{2Z_0^2}\right)}}=\left\{\frac{Z_\text{max/min}^2}{Z_0^2}=1\pm\sqrt{1+\frac{\psi_\text{pol}}{|\Psi_\text{pol}|}}\right\}=
+    \end{equation*}
+    
+    \begin{equation*}
+        ={B_0R_0Z_0}\frac{\sqrt{2}}{\alpha\beta}\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\psi_\text{tor}}\int_Z^{Z_\text{max}}\frac{\mathrm{d}Z'}{\sqrt{(Z_\text{max}^2-Z'^2)(Z'^2-Z_\text{min}^2)}}=\left\{\sin^2{\phi}=\frac{Z_\text{max}^2-Z'^2}{Z_\text{max}^2-Z_\text{min}^2}\right\}=
+    \end{equation*}
+    
+    \begin{equation}
+        \label{eq-5-212}
+        =\frac{B_0R_0Z_0\sqrt{2}}{\alpha\beta Z_\text{max}}\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\psi_\text{tor}}F\left(\arcsin{\left[\frac{Z_\text{max}^2-Z^2}{Z_\text{max}^2-Z_\text{min}^2}\right],\sqrt{1-\frac{Z_\text{min}^2}{Z_\text{max}^2}}}\right)
+    \end{equation}
+
+    where $F(\phi,k)$ is the incomplete elliptic integral of the first kind. Imposing the condition that $\theta(Z=Z_\text{min})=\pi$, we find an expression for the safety factor:
+
+    \begin{equation}
+        q(\psi_\text{pol})=\left(\frac{\mathrm{d}\psi_\text{pol}}{\mathrm{d}\psi_\text{tor}}\right)^{-1}=\frac{B_0R_0}{\pi\alpha\beta}K\left(k\right)\sqrt{2-k^2}
+    \end{equation}
+
+    which, by inverting relation (\ref{eq-5-212}), gives the field-line coordinates $Z(\theta)$, $R(\theta)$ as follows:
+
+    \begin{equation*}
+        Z(\theta)=Z_\text{max}\,\mathrm{dn}(K(k)\theta/\pi;k)\quad\text{and}
+    \end{equation*}
+    
+    \begin{equation}
+        R(\theta)=R_0\exp{\left[-\frac{Z_0\sqrt{2}\alpha}{\beta}\sqrt{1+\frac{\psi_\text{pol}}{|\Psi_\text{pol}|}}\mathrm{sn}(K(k)\theta/\pi;k)\,\mathrm{cn}(K(k)\theta/\pi;k)\right]}
+    \end{equation}
+
+    where $k$ retains its meaning, while $\mathrm{sn}(u;k)$, $\mathrm{cn}(u;k)$, and $\mathrm{dn}(u;k)$ denote the Jacobi elliptic sine, elliptic cosine, and the delta amplitude functions. The dependence on $\varphi$ is found via the rotational transform.
+
+    \item Open field-lines: The reduced toroidal flux is defined for the open field-lines by requiring that it is a continuous function of the reduced poloidal flux at the separatrix. The contour is thus the intersection curve of the considered magnetic surface with the poloidal plane starting and ending on the $Z=0$ plane after a single full turn, that is:
+
+    \begin{equation}
+        \psi_\text{tor}=\frac{1}{2\pi}\oint_{\mathcal{C}_\text{pol}}P_Z(Z;\psi_\text{pol})\,\text{d}Z=\frac{B_0R_0\alpha}{\pi Z_0\beta\sqrt{2}}\int_0^{Z_\text{max}}\sqrt{\frac{\psi_\text{pol}}{|\Psi_\text{pol}|}Z_0^4+2Z_0^2Z^2-Z^4}\,\mathrm{d}Z
+    \end{equation}
+
+    where, now, $\psi_\text{pol}>0$. The biquadratic form inside the integral presents two purely real and two purely imaginary roots, so it factorises as follows:
+
+    \begin{equation}
+        \int_0^{Z_\text{max}}\sqrt{(Z_\text{max}^2-Z^2)(Z^2+Z_\text{img}^2)}\,\mathrm{d}Z=\frac{2\sqrt{2}kZ_0^3}{3\sqrt{2-k^2}}\left[E\left(\frac{1}{k}\right)+\frac{k^2-1}{2-k^2}K\left(\frac{1}{k}\right)\right]
+    \end{equation}
+
+    where the integral was evaluated in a similar fashion to the previous case. Substituting:
+
+    \begin{equation}
+        \psi_\text{tor}=\frac{2B_0R_0Z_0^2\alpha}{3\pi\beta}\frac{k}{\sqrt{2-k^2}}\left[E\left(\frac{1}{k}\right)+\frac{k^2-1}{2-k^2}K\left(\frac{1}{k}\right)\right]\quad\text{where}\quad k^2=\frac{2\sqrt{1+\psi_\text{pol}/|\Psi_\text{pol}|}}{1+\sqrt{1+\psi_\text{pol}/|\Psi_\text{pol}|}}
+    \end{equation}
+
+    All other relations that have been treated in the previous case can be determined by an analogous treatment. We shall, however, determine the expression of the safety factor by using the conditions $\theta(Z=Z_\text{max})=0$ and $\theta(Z=0)=\pi$, so that:
+
+    \begin{equation}
+        q(\psi_\text{pol})=\frac{B_0R_0}{\pi\alpha\beta}K\left(\frac{1}{k}\right)\frac{\sqrt{2-k^2}}{k}
+    \end{equation}
+
+    \item Separatrix: All details regarding the magnetic separatrix can be obtained by taking the limit $k\to1$ via either of the considerations above. Notably, in the limit $k\to1$, we have $\mathrm{dn}(u;k=1)=\mathrm{cn}(u;k=1)=\mathrm{sech}(u)$, and $\mathrm{sn}(u;k=1)=\tanh(u)$, $K(k)/\pi q(\psi_\text{pol})\to\alpha\beta/B_0R_0$. The magnetic field-lines on the separatrix are determined via the following relations:
+
+    \begin{equation}
+        Z(\Phi)=\frac{Z_0\sqrt{2}}{\cosh{(\alpha\beta\Phi/B_0R_0)}},\qquad R(\Phi)=R_0\exp{\left[-\frac{\alpha Z_0\sqrt{2}}{\beta}\frac{\sinh{(\alpha\beta\Phi/B_0R_0)}}{\cosh^2{(\alpha\beta\Phi/B_0R_0)}}\right]}
+    \end{equation}
+
+    The safety factor exhibits logarithmic asymptotics near the separatrix:
+
+    \begin{equation}
+        q(\psi_\text{pol})=\frac{B_0R_0}{2\pi\alpha\beta}\ln{\left(\frac{16Z_0^2\alpha^2}{|\psi_\text{pol}|}\right)}+\mathcal{O}(\psi_\text{pol})\qquad(\psi_\text{pol}\to\pm0)
+    \end{equation}
+\end{enumerate}
+
+\section{Equilibrium fields of toroidally confined plasmas}
+
+\subsection{Equilibrium plasmas with circular cross-section}
+
+The most elementary model of equilibrious toroidally confined plasmas is given by the so-called \textit{standard magnetic field} prescribed as follows:
+
+\begin{equation}
+    \mathbf{B}(r,\theta)=B_\varphi\mathbf{\hat{e}}_\varphi+B_\theta\mathbf{\hat{e}}_\theta=\frac{B_0}{1+\varepsilon\cos{\theta}}\left(\mathbf{\hat{e}}_\varphi+\frac{r}{q(r)R_0}\mathbf{\hat{e}}_\theta\right)
+\end{equation}
+
+where $(r,\theta)$ denote the quasi-toroidal radial and poloidal coordinates, $B_0$ is the magnetic field strength at the magnetic axis located at $(R_0, Z_0)$, and $q(r)$ is the safety factor. Even though idealised, this model exhibits many characteristics of general toroidally confined plasmas, such as the radial decay of the azimuthal magnetic field, $B_\varphi\propto1/\rho$, and nested magnetic surfaces. Here, the latter are concentric regular tori described by $r=\text{const}$.
+
+\subsection{Elongated equilibrium plasmas}

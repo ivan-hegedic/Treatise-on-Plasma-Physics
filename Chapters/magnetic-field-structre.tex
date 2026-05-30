@@ -1,0 +1,1485 @@
+\chapter{Magnetic field structure}
+
+\label{magnetic-field-structure}
+
+In this chapter, an in-depth analysis of the geometric properties of magnetic fields will be presented, with emphasis on field-lines. The latter are commonly used in practice to define specific coordinate systems. The concepts developed in the chapter will provide a foundation for constructing the aforementioned coordinate systems, which, in turn, underpin the theory of magnetic confinement. The necessity of magnetically confining plasmas arises from the fact that their temperatures frequently reach extremely high values. These temperatures can be high enough to destroy or even melt container walls, measuring instruments, and any other equipment. In plasma physics, the main types of plasma confinement are magnetic and inertial. The latter originates in atomic physics, whereas magnetic confinement relies on the theory of charged-particle motion in magnetic fields. It is, thus, the objective of this chapter to introduce the fundamental geometric properties of general magnetic field structures.
+
+\section{Magnetic field-lines}
+
+A magnetic field-line is, by definition, a curve whose tangent, at each point, is parallel to the magnetic field $\mathbf{B}$. Let $\mathrm{d}\boldsymbol{\ell}$ be the following equivalent expressions that describe an infinitesimal element of the curve, then a field-line:
+
+\begin{equation}
+    \mathbf{B}\propto\mathrm{d}\boldsymbol{\ell}\quad\quad \text{or}\quad\quad\mathbf{B}\times\mathrm{d}\boldsymbol{\ell}=\mathbf{0}
+\end{equation}
+
+Using the natural parametrization, i.e., arc length, we obtain the following equation:
+
+\begin{equation}
+    \label{eq-6-2}
+    \frac{\mathbf{B}}{\|\mathbf{B}\|}=\frac{\mathrm{d}\boldsymbol{\ell}}{\|\mathrm{d}\boldsymbol{\ell}\|}
+\end{equation}
+
+It is possible to determine the magnetic field-lines by solving equation (\ref{eq-6-2}) in components. Let us then consider a magnetic field-line parametrized by its arc length $\ell$. The velocity vector of the curve is then the unit length vector, whose direction is $\mathbf{\hat{B}}$. By taking the scalar product of the velocity vector with itself, it follows:
+
+\begin{equation}
+    \mathbf{\hat{B}}^2=1\implies\mathbf{\hat{B}}\cdot\diff{\mathbf{\hat{B}}}{\ell}=0\implies\mathbf{\hat{B}}\perp\diff{\mathbf{\hat{B}}}{\ell}
+\end{equation}
+
+The curvature vector of the considered magnetic field-line is, by definition, given by:
+
+\begin{equation}
+    \boldsymbol{\kappa}=\diff{\mathbf{\hat{B}}}{\ell}\biggr|_{\text{along }\mathbf{\hat{B}}}
+\end{equation}
+
+It should be noted that the partial derivative with respect to $\ell$ is equivalent to the directional derivative along the magnetic field-line, i.e., along $\mathbf{\hat{B}}$:
+
+\begin{equation}
+    \frac{\partial}{\partial\ell}\equiv\mathbf{\hat{B}}\cdot\nabla=\diff{}{\ell}\biggr|_{\text{along }\mathbf{\hat{B}}}
+\end{equation}
+
+It follows that the following expression gives the curvature vector:
+
+\begin{equation}
+    \boldsymbol{\kappa}=(\mathbf{\hat{B}}\cdot\nabla)\mathbf{\hat{B}}=-\mathbf{\hat{B}}\times(\nabla\times\mathbf{\hat{B}})\implies\boldsymbol{\kappa}\perp\mathbf{B}
+\end{equation}
+
+So far, we have considered the curvature of a magnetic field-line in the absence of any other field. When a field-line belongs entirely to a surface, it is appropriate to distinguish the components of the curvature. We will define the normal curvature as the perpendicular component of the curvature $\boldsymbol{\kappa}$ to the considered surface, and the geodesic curvature as the tangential component of $\boldsymbol{\kappa}$ to the surface. In plasma systems, it is only convenient to employ magnetic fields in a manner to construct a useful coordinate system. We will thus construct a contravariant coordinate system $(u, v, w)$ in such a way that $w$ designates the coordinate of any point along a field-line $\mathbf{B}$. To make the following approach less abstract, this third coordinate can be represented by the arc length $\ell$ of the field-line in question. The surfaces to which magnetic field-lines naturally belong are precisely the magnetic surfaces, of which we will later provide a rigorous definition. These magnetic surfaces can be envisaged as surfaces of $u=\text{const.}$ Then, it is often desirable to know the components of the curvature perpendicular and tangent to a surface of $u=\text{const.}$ Let $\mathbf{n}$ be the unit vector in the direction in which the curvature $\boldsymbol{\kappa}$ lies. The vectors $\mathbf{n}$, $\nabla u$, and $\nabla v$ are then all perpendicular to the magnetic field $\mathbf{B}$, and therefore belong to the same surface. We want to decompose the normal vector $\mathbf{n}$ into two components, one of which is along $\nabla u$ (perpendicular to the surfaces of $u=\text{const.}$) and the other is tangent to the aforementioned surfaces. The choice of $\nabla v$ is not sufficient, because the unit vectors of the coordinate system do not necessarily generate an orthonormal basis. We will find the component of $\nabla v$ parallel to $\nabla u$, then subtract it from $\nabla v$. Let $\mathbf{\hat{u}}=\nabla u/\|\nabla u\|$:
+
+\begin{equation}
+    \label{eq-6-7}
+    (\nabla v)_\parallel=(\mathbf{\hat{u}}\cdot\nabla v)\,\mathbf{\hat{u}}\quad\quad\text{and}\quad\quad(\nabla v)_\perp=(\mathbf{\hat{u}}\times\nabla v)\times\mathbf{\hat{u}}
+\end{equation}
+
+The curvature $\boldsymbol{\kappa}$ can be easily found under the following expression:
+
+\begin{equation}
+    \boldsymbol{\kappa}=\kappa_u\nabla u+\kappa_v\nabla v\quad\quad\text{since}\quad\quad\boldsymbol{\kappa}\perp\mathbf{B}\implies\boldsymbol{\kappa}\perp\nabla w
+\end{equation}
+
+By making use of the equation (\ref{eq-6-7}), we recover the desired components:
+
+\begin{equation}
+    \boldsymbol{\kappa}=\left[\kappa_u\|\nabla u\|+\kappa_v(\mathbf{\hat{u}}\cdot\nabla v)\right]\mathbf{\hat{u}}+\kappa_v(\mathbf{\hat{u}}\times\nabla v)\times\mathbf{\hat{u}}
+\end{equation}
+
+The first term corresponds to the normal curvature, along $\mathbf{\hat{N}}$, and the second to the geodesic curvature:
+
+\begin{equation}
+    \kappa_\text{N}=\kappa_u\|\nabla u\|+\kappa_v\|\nabla v\|\cos{\angle\left(\nabla u,\nabla v\right)}\quad\quad\text{and}\quad\quad\kappa_\text{G}=\kappa_v\|\nabla v\|\sin{\angle\left(\nabla u,\nabla v\right)}
+\end{equation}
+
+\subsection{Magnetic pressure and tension}
+
+\label{subsec-magnetic-tensionandpressure}
+
+It proves instructive to examine the way to attribute certain fictitious forces to magnetic field-lines in a medium traversed by a current. This will serve as a foundation when considering the concepts of magnetic pressure and tension. In a neutral, or even quasi-neutral, medium, the Lorentz force density and the Maxwell-Ampère equation allow us to write:
+
+\begin{equation}
+    \label{eq-5-11}
+    \mathbf{f}_\text{L}=\diff{\mathbf{F}_\text{L}}{V}=\mathbf{J}\times\mathbf{B}=\frac{1}{\mu_0}\left(\nabla\times\mathbf{B}\right)\times\mathbf{B}=\frac{1}{\mu_0}\left(\mathbf{B}\cdot\nabla\right)\mathbf{B}-\frac{1}{2\mu_0}\nabla\mathbf{B}^2
+\end{equation}
+
+This is equivalent to the following expression by employing the results of the previous section:
+
+\begin{equation}
+    \mathbf{f}_\text{L}=\frac{\mathbf{B}^2}{\mu_0}\boldsymbol{\kappa}+\frac{\partial}{\partial\ell}\left(\frac{\mathbf{B}^2}{2\mu_0}\right)\mathbf{\hat{B}}-\nabla\left(\frac{\mathbf{B}^2}{2\mu_0}\right)
+\end{equation}
+
+We will then introduce the Frenet-Serret frame attached to the considered line in such a way that:
+
+\begin{equation}
+    \mathbf{t}=\mathbf{\hat{B}},\quad\mathbf{n}=\boldsymbol{\hat{\kappa}}\quad\text{and}\quad\mathbf{b}=\mathbf{t}\times\mathbf{n}
+\end{equation}
+
+where $\mathbf{b}$ designates the unit binormal vector to the magnetic field-line in question:
+
+\begin{equation}
+    \label{eq-6-14}
+    \mathbf{f}=\frac{\mathbf{B}^2}{\mu_0}\kappa\,\mathbf{n}-\frac{\partial}{\partial\mathbf{n}}\left(\frac{\mathbf{B}^2}{2\mu_0}\right)-\frac{\partial}{\partial\mathbf{b}}\left(\frac{\mathbf{B}^2}{2\mu_0}\right)
+\end{equation}
+
+The contribution of magnetic pressure corresponds to the last two terms above. The magnetic pressure tends to compress the magnetic field-lines in the normal plane, i.e., generated by $\mathbf{n}$ and $\mathbf{b}$:
+
+\begin{equation}
+    \label{eq-5-15}
+    \nabla p_\text{mag}=\frac{\partial}{\partial\mathbf{n}}\left(\frac{\mathbf{B}^2}{2\mu_0}\right)+\frac{\partial}{\partial\mathbf{b}}\left(\frac{\mathbf{B}^2}{2\mu_0}\right)
+\end{equation}
+
+The first term of the expression (\ref{eq-6-14}) represents the magnetic tension. This tension is indeed a fictitious force that pulls on a magnetic field-line in the tangential direction to this line. This is more evident when considering the length of the field-line. We will represent the number of magnetic field-lines per unit area by the magnitude of the magnetic field. The surface belonging to a single field-line is qualitatively of the order of $1/|\mathbf{B}|$. The tension per unit length on a single magnetic field-line is thus given by:
+
+\begin{equation}
+    \label{eq-5-16}
+    \diff{\mathbf{T}_\text{mag}}{\ell}=\frac{\mathbf{B}^2}{\mu_0}\frac{\boldsymbol{\kappa}}{\|\mathbf{B}\|}=\frac{\|\mathbf{B}\|}{\mu_0}\boldsymbol{\kappa}
+\end{equation}
+
+\section{Magnetic surfaces}
+
+Any surface or, more precisely, two-dimensional subdomain, contoured by a particular set of magnetic field-lines that ergodically cover the subdomain, is called a \textit{magnetic surface}. We distinguish between magnetic surfaces in toroidal and open systems. The equation of a magnetic field-line can be expressed in Hamiltonian form. Hamiltonian theory guarantees the existence of magnetic surfaces provided there is a direction of symmetry. Moreover, it is worth discussing why, instead of closed systems, we employed the terminology of toroidal systems. Notice that the most interesting form of a magnetic surface is that of a two-dimensional manifold, in which case there exists a bijective, diffeomorphic parametrisation. If such a surface exists and has no edges, that is, it does not intersect its domain of definition, and if the magnetic field vanishes nowhere on it, the manifold must, by a non-trivial result of topology, be a toroid. In other words, it must be topologically equivalent to a torus. This type of topology is employed specifically in tokamaks and stellarators.
+
+\quad Even without much mathematical rigour, only using our considerations of motion of charged particles in magnetic fields, let us consider the situation of confining a plasma in a circular magnetic field, as illustrated in Figure (\ref{fig3-3}):
+
+\begin{equation}
+    \label{eq3-1}
+    q\mathbf{v}_\mathrm{d}=\left(mv_\parallel^2+\frac{1}{2}mv_\perp^2\right)\frac{\mathbf{R}\times\mathbf{B}}{\mathbf{R}^2\mathbf{B}^2}=\left(mv_\parallel^2+\frac{1}{2}mv_\perp^2\right)\frac{\mathbf{B}\times\boldsymbol{\kappa}}{\mathbf{B}^2}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{1}{\input{Figures/figure3-3.tikz}}
+    \caption{Circular $\mathbf{B}$ field.}
+    \label{fig3-3}
+\end{figure}
+
+The drift velocity depends on the sign of the charge. Under the hypothesis of a purely circular, or even cylindrical, magnetic field, it appears clearly that a non-uniform charge distribution will develop promptly, with the ion current being progressively pushed upward. In contrast, electrons undergo downward displacement. This non-uniform charge distribution will generate an electric field. This field, in turn, induces an $\mathbf{E} \times \mathbf{B}$ drift in the radial direction, and thus a net radial movement for all charges, causing the plasma to escape the imposed confinement. It is therefore necessary to design a magnetic field shape that does not allow for the appearance of a non-uniform distribution. One plausible approach is to modify the magnetic field-lines by winding them around a torus. Taking into account expression (\ref{eq3-1}), it is easy to see that the drift velocity tends to confine all particles to the surface of the torus, as illustrated by Figure \ref{fig3-4}.
+
+\subsection{Confinement in open systems via mirrors and cusps}
+
+The results of subsections (\ref{sec2-9-1}) and (\ref{sec2-9-2}) indicate a potential method for confining a plasma between two zones characterized by high magnetic field densities, induced by electric currents. These are commonly produced by two Helmholtz coils, as illustrated in Figure (\ref{fig-3-1}). The two particle-deflection zones are often referred to as \textit{magnetic mirrors}. Under the assumption of a magnetic field that varies adiabatically in space—for example, the one examined in subsection (\ref{sec2-5-2})—the maintenance of plasma confinement exerted by the two mirrors is satisfactory for short time scales.
+
+\begin{figure}[H]
+    \centering
+    \scalebox{1.75}{\input{Figures/figure3-4.tikz}}
+    \caption{Toroidal magnetic field-line and the associated drift.}
+    \label{fig3-4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{1}{\input{Figures/figure3-1.tikz}}
+    \caption{Magnetic mirrors and an illustrative trajectory of a confined particle.}
+    \label{fig-3-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{0.95}{\input{Figures/figure3-2.tikz}}
+    \caption{Magnetic cusps and an illustrative trajectory of a confined particle.}
+    \label{fig3-2}
+\end{figure}
+
+\quad When considering a single particle trapped between the two zones, confinement will be maintained continuously by the two mirrors due to symmetry. However, in the case of a plasma with a high abundance of particles, they will progressively collide. The targeted particles undergo a velocity change, which can lead to their entry into the loss cone. Indeed, interparticle collisions tend to equalize the distribution of particles in phase space $(\mathbf{p}, \mathbf{x})$. Consequently, an increasing number of particles enter the loss cone, leading to the plasma's progressive escape from confinement.
+
+\quad Just as with magnetic mirrors, characterized by zones of high magnetic field density, it is possible to design magnetic \textit{cusps}. An example was examined in sub-subsection (\ref{sec2-10-2-2}). The condition for the passage of a particle approaching the cusp is given by inequality (\ref{eq2-127}). Thus, particles whose velocity does not satisfy this inequality undergo deflection. This suggests a method of plasma confinement that creates two cusp zones, as illustrated in Figure \ref{fig3-2}. A particle will not penetrate the cusp zones provided that the velocity component parallel to the magnetic field in the centre is not large enough to satisfy inequality (\ref{eq2-127}).
+
+\subsection{Constructing magnetic surfaces in open systems}
+
+Mirror-type magnetic devices do not have magnetic surfaces contoured by a single field-line, so it is necessary to define the shape of these surfaces. The natural choice of the cross-section is precisely that of the circular cross-section at the centre of the device.
+
+\subsection{Constructing magnetic surfaces in toroidal systems}
+
+Toroidal systems are characterized by cylindrical or toroidal symmetry, depending on the type of confinement device. We will then name the symmetry coordinate \textit{ignorable}. Thanks to this symmetry, Hamiltonian theory guarantees us the existence of surfaces. It should be noted that, in practice, toroidal confinement devices do not necessarily have to be symmetric. In this case, magnetic surfaces can be approximated by neglecting the perturbations that cause the asymmetry. In principle, magnetic surfaces in asymmetric devices can be determined experimentally or numerically. It should be noted that, in a tokamak, a toroidal/parallel plasma current is required to determine the existence of magnetic surfaces, since, in this case, the magnetic field is (partially) created by this current. However, in a stellarator, the magnetic field is produced by coils located outside the device, so the plasma plays no role in the structure of the magnetic fields.
+
+\quad Among all the magnetic surfaces contoured by magnetic field-lines, it is possible to define the surfaces to which belong the field-lines that close on themselves after one or more transits around the device. In this case, it is necessary to construct or define these magnetic surfaces because a single field-line does not describe them. These magnetic surfaces are called rational surfaces because the ratio of the number of transits in the poloidal direction and in the toroidal direction is a sensible number. A set of these field-lines then defines a rational magnetic surface. Since the set of real numbers is dense, any irrational number can be approximated more and more closely by a rational number, and vice versa. The same applies to magnetic surfaces. To construct a coordinate system from magnetic surfaces, one must choose these surfaces appropriately. The typical approach, that is, the zeroth approximation of the actual magnetic field structure, relies on the isotropic magnetohydrodynamic equilibrium equation $\mathbf{J}\times\mathbf{B}=\nabla P_\text{MHD}$. The constancy of the magnetohydrodynamic pressure characterizes these magnetic surfaces, because $\mathbf{B}\cdot\nabla P_\text{MHD}=0$, and the plasma currents are defined there, because $\mathbf{J}\cdot\nabla P_\text{MHD}=0$. In a neutral plasma, charge conservation reduces to $\nabla\cdot\mathbf{J}=0$. The same goes: $\nabla\cdot\mathbf{B}=0$. Moreover, the isotropic magnetohydrodynamic equilibrium gives us:
+
+\begin{equation}
+    \label{eq-6-17}
+    \nabla\oint_\Gamma\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}=\oint_\Gamma\nabla\left(\frac{1}{\|\mathbf{B}\|}\right)\mathrm{d}\ell=-\oint_\Gamma\frac{(\mathbf{B}\cdot\nabla)\mathbf{B}}{\|\mathbf{B}\|^3}\,\mathrm{d}\ell
+\end{equation}
+
+where $\Gamma$ is a magnetic field-line belonging to a rational surface $\Sigma_\mathbb{Q}$. It follows:
+
+\begin{equation}
+    (\mathbf{B}\cdot\nabla)\mathbf{B}=-\mathbf{B}\times\left(\nabla\times\mathbf{B}\right)=\mu_0\mathbf{J}\times\mathbf{B}=\mu_0\nabla P_\text{MHD}\perp\Sigma_\mathbb{Q}
+\end{equation}
+
+Therefore, the integral of the equation (\ref{eq-6-17}) is uniform on a rational magnetic surface, independently of the magnetic field-line on which it is evaluated. When considering the field-lines associated with irrational surfaces, this integral does not exist because these lines do not close on themselves. The violation of this uniformity can occur even when considering rational surfaces. This is due to the device's asymmetry, which induces island or magnetic-chain formation that we, for now, ignore but will address later. In an asymmetric device, according to ideal magnetohydrodynamics, rational surfaces are unstable and tend to tear, leading to the formation of fibre-like structures characterized by multiple magnetic axes.
+
+\quad It is debatable to claim that simple magnetohydrodynamic equilibrium is not too gross an approximation. This model ignores the effects of resistivity, viscosity, inertia, and the finite Larmor radius. In principle, one must solve a time-evolution problem. Even if the system under consideration tends to evolve towards a coherent stationary state characterized by certain magnetic surfaces, these surfaces need not be identical to those predicted by ideal magnetohydrodynamics. From a pragmatic point of view, we will assume the existence of an adequate set of magnetic surfaces whose cross-sections form a set of smooth, closed curves. This indeed yields the zero-order approximation to the system's real magnetic structure. We will refer to the degenerate magnetic surfaces with zero volume as magnetic axes. It is indeed a magnetic field-line that closes after exactly one toroidal transit. Magnetic axes do not necessarily have to be circular; they can be helical, as in the case of a stellarator.
+
+\section{Elementary curvilinear coordinate systems}
+
+A coordinate system is a framework for specifying the location of a point in space using a unique n-tuple. In three-dimensional space, a coordinate system consists of three families of adequate coordinate surfaces, so that a point is defined by the intersection of three surfaces, one for each family. The coordinate curves are intersections of two coordinate surfaces. Moreover, we will use only direct coordinate systems where the product of unit vectors $\mathbf{\hat{e}}_i\cdot(\mathbf{\hat{e}}_j\times\mathbf{\hat{e}}_k)$ is positive when $(i, j, k)$ is a cyclic permutation of $(1,2,3)$.
+
+\subsection{General non-orthogonal coordinate systems}
+
+For non-orthogonal coordinates, there are two sets of natural basis vectors to represent general vector quantities. The first set consists of $(\nabla\varrho,\nabla\theta,\nabla\zeta)$ where:
+
+\begin{equation}
+    \nabla\varrho=\frac{\partial\varrho}{\partial x}\,\mathbf{\hat{e}}_\text{x}+\frac{\partial\varrho}{\partial y}\,\mathbf{\hat{e}}_\text{y}+\frac{\partial\varrho}{\partial z}\,\mathbf{\hat{e}}_\text{z}
+\end{equation}
+
+The definitions of $\nabla\theta$ and $\nabla\zeta$ are analogous. The coordinate system $(x, y, z)$ with the associated triple of basis vectors $(\mathbf{\hat{e}}_\text{x}, \mathbf{\hat{e}}_\text{y}, \mathbf{\hat{e}}_\text{z})$ corresponds to the standard Cartesian coordinate system. The second set consists of $(\partial\mathbf{r}/\partial\varrho, \partial\mathbf{r}/\partial\theta, \partial\mathbf{r}/\partial\zeta)$ where:
+
+\begin{equation}
+    \frac{\partial\mathbf{r}}{\partial \varrho}=\frac{\partial x}{\partial\varrho}\,\mathbf{\hat{e}}_\text{x}+\frac{\partial y}{\partial\varrho}\,\mathbf{\hat{e}}_\text{y}+\frac{\partial z}{\partial\varrho}\,\mathbf{\hat{e}}_\text{z}
+\end{equation}
+
+The definitions of $\partial\mathbf{r}/\partial\theta$ and $\partial\mathbf{r}/\partial\zeta$ are analogous. If the coordinates $(\varrho, \theta, \zeta)$ were orthogonal, then $\nabla\varrho$ and $\partial\mathbf{r}/\partial\varrho$ would be parallel. These directions are generally not parallel. We can decompose any vector into components with respect to these two sets of basis vectors so that:
+
+\begin{equation}
+    \label{eq-6-21}
+    \mathbf{B}=B_\varrho\nabla\varrho+B_\theta\nabla\theta+B_\zeta\nabla\zeta\quad\text{and}\quad\mathbf{B}=B^\varrho\frac{\partial\mathbf{r}}{\partial\varrho}+B^\theta\frac{\partial\mathbf{r}}{\partial\theta}+B^\zeta\frac{\partial\mathbf{r}}{\partial\zeta}
+\end{equation}
+
+We can establish the link between the two sets of basis vectors as follows. First note that the vector $\partial\mathbf{r}/\partial\varrho$ points, by definition, in a direction along which the coordinates $\theta$ and $\zeta$ do not increase, then:
+
+\begin{equation}
+    \label{eq-6-22}
+    \frac{\partial\mathbf{r}}{\partial\varrho}\cdot\nabla\theta=0\quad\text{and}\quad\frac{\partial\mathbf{r}}{\partial\varrho}\cdot\nabla\zeta=0\implies\frac{\partial\mathbf{r}}{\partial\varrho}=J\nabla\theta\times\nabla\zeta
+\end{equation}
+
+where $J$ is a coefficient. To determine it, we consider a step $\mathrm{d}\mathbf{x}$ at fixed $\theta$ and $\zeta$, then $\mathrm{d}\varrho=\nabla\varrho\cdot\mathrm{d}\mathbf{x}$. This gives us $\nabla\varrho\cdot(\partial\mathbf{x}/\partial\varrho)=1$. By taking the scalar product of the equation (\ref{eq-6-22}) with $\nabla\varrho$:
+
+\begin{equation}
+    \label{eq-6-23}
+    J=\frac{1}{\nabla\varrho\cdot(\nabla\theta\times\nabla\zeta)}=\frac{\partial(x, y, z)}{\partial(\varrho, \theta, \zeta)}
+\end{equation}
+
+Thus, $J$ is precisely the Jacobian generated by the transformation of coordinates. It is evident that we will obtain the same for the other coordinates, then:
+
+\begin{equation}
+    \label{eq-6-24}
+    \mathbf{B}=\frac{1}{J}\left(B^\varrho\nabla\theta\times\nabla\zeta+B^\theta\nabla\zeta\times\nabla\varrho+B^\zeta\nabla\varrho\times\nabla\theta\right)
+\end{equation}
+
+So far, the vector $\mathbf{B}$ was any vector. Let us rely on the case of the magnetic field. If there are \textit{good} magnetic surfaces, then $\mathbf{B}\cdot\nabla\varrho=0$. By taking the scalar product of the equation (\ref{eq-6-24}) with $\nabla\varrho$, we obtain that $B^\varrho=0$. There are then five non-zero components ($B^\theta$, $B^\zeta$, $B_\varrho$, $B_\theta$, $B_\zeta$) of $\mathbf{B}$ in the two decompositions.
+
+\subsubsection{Cylindrical-toroidal or pseudo-toroidal system}
+
+In toroidal plasma confinement, coordinate systems are defined by toroidal topology. The \textit{good} toroidal coordinates form a three-dimensional version of bipolar coordinates and have been used only occasionally in plasma equilibrium calculations. The cylindrical-toroidal coordinate system is actually a cylindrical coordinate system, characterized by the triple $(r, \varphi, z)$, which has been toroidalized by replacing the cylindrical coordinates with $(\rho, \theta, \zeta)$. The coordinate surfaces $\rho=\text{const.}$ are a perfect torus of major radius $R$. The circle of radius $R$ in the horizontal plane is called the minor axis, and the axis $\mathbf{\hat{z}}$ is called the central axis. The radius $\rho$ measures the distance from a point to the minor axis. The coordinate surfaces $\theta=\text{const.}$ are partial cones that touch the minor axis. The third family of coordinate surfaces, $\zeta=\text{const.}$, consists of planes that touch the central axis. It should be noted that it was necessary to reverse the direction of the azimuthal angle, i.e. $\zeta=\pi/2-\varphi$ so that the triple $(\rho, \theta, \zeta)$ is a direct coordinate system where $\boldsymbol{\hat{\rho}}\cdot(\boldsymbol{\hat{\theta}}\times\boldsymbol{\hat{\zeta}})>0$. The angle $\theta$ is also called the poloidal angle, and $\zeta$ the toroidal angle. The transformation from the cylindrical-toroidal coordinate system to the Cartesian one is trivially given by the following:
+
+\vspace*{-12pt}
+
+\begin{gather}
+    x=(R+\rho\cos(\theta))\sin(\zeta)\\
+    y=(R+\rho\cos(\theta))\cos(\zeta)\\
+    z=\rho\sin(\theta)
+\end{gather}
+
+\vspace*{-2pt}
+
+When $R=0$, the pseudo-toroidal coordinate system degenerates into a spherical coordinate system.
+
+\subsubsection{Generalized cylindrical-toroidal system}
+
+In theoretical plasma physics, it is convenient to choose magnetic surfaces as the first family of coordinate surfaces, regardless of their shape. We label these surfaces by $\varrho=\text{const.}$. We will soon identify $\varrho$ with certain more precise measurable quantities, such as, for example, the magnetic flux enclosed by the surface, its volume, or the pressure. The coordinate surfaces $\theta=\text{const.}$ and $\zeta=\text{const.}$ are also generalized. The former are linked to the magnetic axis and generally form surfaces similar to partial cones. The coordinate surfaces $\theta=\text{const.}$ can be envisioned by continuously folding, stretching, or squeezing the partial cones of the elementary system from the previous sub-subsection. Since the topology of the $\theta=\text{const.}$ surfaces is identical to that of the elementary system, we use the same notation. The coordinate $\theta$ then represents a generalized poloidal angle. The same applies to the $\zeta=\text{const.}$ surfaces where $\zeta$ represents a generalized toroidal angle. It should be noted that the terms \textit{poloidal} and \textit{toroidal} no longer present the corresponding \textit{elementary} angles, but adequate surfaces whose shape depends on the structure of the magnetic fields under consideration. \quad The reason why we would like to work with these coordinates is obvious. For analytical calculations, it is convenient to choose natural coordinates so that the geometry of the problem is simple. Thus, the complex geometric characteristics of the problem that exist in a neutral coordinate system, for example, in the Cartesian system, are handled by coordinate transformations. In theoretical plasma physics, it is convenient to choose the angular coordinates $\theta$ and $\zeta$ such that the magnetic field-lines appear straight, that is to say, that $\mathrm{d}\theta/\mathrm{d}\zeta$ is a constant along a field-line, or, more precisely, a flux function. There exists a choice of coordinates $\theta$ and $\zeta$ for which the field-lines $\mathbf{B}$, and the currents $\mathbf{J}$ are, at least one of the two, straight lines. It is customary to designate these coordinates as \textit{magnetic coordinates} or \textit{flux coordinates}. They will be denoted by $\theta_\text{f}$ and $\zeta_\text{f}$ and will be the subject of the following chapter. To recapitulate, if the magnetic field $\mathbf{B}$ is known everywhere, the same is true for the current $\mathbf{J}$; it is then appropriate to find $\theta_\text{f}$ and $\zeta_\text{f}$ such that both are straight lines in the coordinate system $(\varrho, \theta_\text{f}, \zeta_\text{f})$. It is possible to construct an intermediate coordinate system $(\varrho, \theta_\text{e}, \zeta_\text{e})$, called \textit{elementary}, like the pseudo-toroidal system, and then deform the surfaces $\theta_\text{e}=\text{const.}$ and $\zeta_\text{e}=\text{const.}$ of the system until the natural system presents the desired properties.
+
+\subsubsection{Illustrative example of the generalized cylindrical-toroidal system}
+
+We consider a magnetic field in a circular, axisymmetric tokamak, in which the surfaces of constant flux form perfect, non-concentric tori. The minor axis coincides with the system's magnetic axis. The magnetic field-lines are assumed to traverse the magnetic surfaces with a constant pitch. We will also presume that the rotational transform (defined rigorously below) $\hcancel{\iota}=3$, which is to say that a magnetic field-line makes three poloidal transits for every toroidal transit. If we note the points where $\mathbf{B}$ crosses a surface at $\theta_\text{e}=\text{const.}$ and transfer them into coordinates $(\theta_\text{e}, \zeta_\text{e})$, we observe a non-linear behaviour of the magnetic field-lines. To make the magnetic field-lines appear as straight lines in the coordinate system $(\varrho, \theta_\text{f}, \zeta_\text{f})$, the arc length of a considered field-line must follow the angle $\theta_\text{f}$ linearly. This approach is equivalent to isolating a magnetic surface resembling a torus and constructing the angles $\theta_\text{f}$ from the centre of the intersection of the magnetic surface with a poloidal plane, which is indeed a circle. It should be noted that the magnetic axis does not coincide with this centre. The magnetic field-lines now appear as straight lines in terms of coordinates $\theta_\text{f}$ and $\zeta_\text{f}$ on the surface $\varrho=\text{const.}$ It should be remarked that the transformation between $\theta_\text{e}$ and $\theta_\text{f}$ is not linear.
+
+\subsubsection{Interlude on the Clebsch coordinate systems}
+
+\label{clebschinterlude}
+
+An alternative flux coordinate system, though more complicated, in toroidal devices is the Clebsch coordinate system, $(\varrho, \beta, \ell)$. Again, $\varrho$ represents the magnetic surfaces, while $\beta$ represents the magnetic field-lines within a magnetic surface, and $\ell$ is the arc length of a magnetic field-line. A surface $\beta=\text{const.}$ is indeed a ribbon extending from the magnetic axis and crossing the magnetic surfaces $\varrho=\text{const.}$ following the magnetic field-lines.
+
+\begin{figure}[H]
+    \centering
+    \scalebox{1}{\input{Figures/figure5-3.tikz}}
+    \captionsetup{justification=centering}
+    \caption{Magnetic field in a circular tokamak. The torus represents a surface $\varrho=\text{const.}$ The ribbon is indeed a surface $\beta=\text{const.}$ The intersection of the two is a curve of the coordinate $\ell$ which follows a magnetic field-line.}
+    \label{fig5-3}
+\end{figure}
+
+The potential troubles of the surfaces of $\ell=\text{const.}$ are not evident at first glance. First, one could choose an arbitrary origin where $\ell=0$ for all field-lines. This could be a common poloidal plane, then the surfaces of $\ell=\text{const.}$ must be constructed. The arc length $\ell$ as well as the surfaces $\ell=\text{const.}$ are affected by the pitch of the magnetic field-lines, which is generally not uniform on a magnetic surface. A necessary consequence of such surfaces: $\ell=\text{const.}$ is the non-correspondence between $\mathbf{B}$ and $\nabla\ell$, that is to say, the two need not be parallel. However, it is essential to emphasize that the operator $\mathbf{B}\cdot\nabla$ reduces to $B(\partial/\partial\ell)$ in this coordinate system. We will encounter another problem when considering irrational magnetic surfaces. Such a surface can be envisioned as being constructed from a single field-line, because the latter covers the surface in question ergodically. Thus, on this surface, there will exist only a single point to which we could attribute the value $\ell=0$. Also, since a single field-line covers the magnetic surface and field-lines reside on surfaces $\beta=\text{const.}$, it might seem that $\beta=0$ everywhere on the magnetic surface. Although irrational surfaces can, in principle, be parametrised solely by the arc length $\ell$, this is not useful in practice. Rational surfaces also pose a problem. If a field-line closes upon itself after a certain number of toroidal transits, then there exist intervals of $\beta$ that intertwine. A possible exit from this problematic situation is to introduce \textit{cuts} in the magnetic surface and restrict the coordinate $\ell$ to a single toroidal transit. All these troubles are still not resolved, because the coordinate $\beta$ is no longer specified as single-valued according to this convention, because the curve of the coordinate $\ell$ does not close upon itself after a toroidal transit, unlike the angles $\theta$ and $\zeta$ in the pseudo-toroidal coordinate system. Although the Clebsch coordinate system can be very useful for theoretical developments, it poses several practical challenges.
+
+\quad Unlike toroidal devices, the Clebsch system presents itself as helpful as it is well-defined once applied to open devices. Single-valued specification problems are avoided because open systems have two ends and are therefore aperiodic.
+
+\section{Labelling magnetic surfaces}
+
+Before developing flux coordinate systems in detail, it is necessary to identify appropriate measures that represent the magnetic surfaces. We will again distinguish between the two cases: toroidal systems and open systems. Regarding toroidal systems, we first consider the magnetic fluxes enclosed by and outside of the magnetic surfaces. We will increasingly distinguish between toroidal flux, poloidal ribbon flux, and poloidal disk flux. We will also rely on measures such as the enclosed volume and the pressure exerted on the magnetic surfaces. We will finally give a precise definition of the magnetic axis.
+
+\subsection{Labelling magnetic surfaces in toroidal systems}
+
+A suitable way to label magnetic surfaces is to use magnetic flux. Since magnetic field-lines are tangent to magnetic surfaces, the flux inside or outside a magnetic surface is conserved. We then denominate magnetic surfaces as surfaces of constant flux, or briefly, flux surfaces. We assume that a coordinate system $(\varrho,\theta,\zeta)$ has been established, where $\theta=\theta(x,y,z)$ and $\zeta=\zeta(x,y,z)$. There exist several magnetic fluxes that can serve to label a magnetic surface with a unique value. First, the toroidal flux:
+
+\begin{equation}
+    \Phi_\text{tor}=\iint_{S_\text{tor}}\mathbf{B}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+where $S_\text{tor}$ is a surface produced by cutting a magnetic surface with a poloidal surface of $\zeta=\text{const}$, then, the poloidal fluxes inside and outside the magnetic surfaces can serve as labels. The poloidal flux inside a magnetic surface is measured through a ribbon of $\theta=\text{const.}$ between the magnetic axis and the surface considered:
+
+\begin{equation}
+    \Phi_\text{pol}^\text{r}=\iint_{S_\text{pol}^\text{r}}\mathbf{B}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+The flux outside a magnetic surface is given by integrating $\mathbf{B}$ on a disk-like surface tangent everywhere to the surface and bounded by a curve of coordinate $\zeta=\text{const.}$ on this surface:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}=\iint_{S_\text{pol}^\mathrm{d}}\mathbf{B}\cdot\mathrm{d}S
+\end{equation}
+
+The latter includes the tokamak transformer flux and does not require reference to the magnetic axis. To compare the two poloidal fluxes, it is convenient to choose the disk forming part of the approximately circular surface bounded by the magnetic axis. It is evident that the two fluxes are complementary with respect to the net flux in the system, so we have the following equality:
+
+\begin{equation}
+    \label{eq-5-32}
+    \mathrm{d}\Phi_\text{pol}^\text{r}+\mathrm{d}\Phi_\text{pol}^\mathrm{d}=0\implies\nabla\Phi_\text{pol}^\text{r}+\nabla\Phi_\text{pol}^\mathrm{d}=\mathbf{0}
+\end{equation}
+
+We will see later that, when a transformer flux acts on the surfaces $\Phi_\text{pol}^\mathrm{d}=\text{const.}$, the latter contract at a velocity $\mathbf{v}$, such that $\mathbf{v}\cdot\nabla\Phi_\text{pol}^\mathrm{d}+\partial\Phi_\text{pol}^\mathrm{d}/\partial t=0$. This velocity is indeed equal to the $\mathbf{E}\times\mathbf{B}$ drift in the case of a fully ionized ideal plasma. From the point of view of poloidal ribbons, we draw the same conclusion, so the choice of poloidal flux is arbitrary.
+
+\quad To develop the formalism of flux coordinates, we need more specific expressions for toroidal and poloidal fluxes. We consider the following integral:
+
+\begin{equation}
+    \iiint_V\mathbf{B}\cdot\nabla\zeta\,\mathrm{d}^3\mathbf{r}=\iint_V\nabla\cdot(\mathbf{B}\zeta)\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+where $V$ denotes the volume enclosed by a magnetic surface. The second form follows easily because $\nabla\cdot\mathbf{B}=0$. We further consider a toroidal surface, cut by a poloidal surface at $\zeta=\text{const}$. Let $\zeta=0$, then the volume is enclosed by three surfaces: $S_\text{torus}$, $S_{\zeta=0}$ and $S_{\zeta=2\pi}$:
+
+\begin{equation}
+    \iiint_V\nabla\cdot(\mathbf{B}\zeta)\,\mathrm{d}^3\mathbf{r}=\oiint_{\partial V}\mathbf{B}\zeta\cdot\mathrm{d}\mathbf{S}=\iint_{S_\text{torus}}\underbrace{\mathbf{B}\zeta\cdot\mathrm{d}\mathbf{S}}_{\mathbf{B}\perp\mathrm{d}\mathbf{S}}+\iint_{S_{\zeta=0}}\underbrace{\mathbf{B}\zeta}_0\cdot\mathrm{d}\mathbf{S}+\iint_{S_{\zeta=2\pi}}\underbrace{\mathbf{B}\zeta}_{2\pi\mathbf{B}}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+First note that the flux through $S_{\zeta=2\pi}$ corresponds to the toroidal flux. An expression follows then of a form invariant to the choice of functions $\theta$ and $\zeta$. Analogously, we also find the expression for the poloidal flux through the ribbons:
+
+\begin{equation}
+    \label{eq-6-34}
+    \Phi_\text{tor}=\frac{1}{2\pi}\iiint_V\mathbf{B}\cdot\nabla\zeta\,\mathrm{d}^3\mathbf{r}\quad\text{and}\quad\Phi_\text{pol}^\text{r}=\frac{1}{2\pi}\iiint_V\mathbf{B}\cdot\nabla\theta\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+There are various labels for magnetic surfaces other than fluxes. We designate by \textit{flux function} any function or variable uniform on a magnetic surface. These functions are independent of coordinates $\theta$ and $\zeta$ and only depend on the label of the magnetic surfaces. A prominent example of a flux function is precisely the volume enclosed by a magnetic surface:
+
+\begin{equation}
+    V=\iiint_V\mathrm{d}^3\mathbf{r}=\iiint_V J\,\mathrm{d}\varrho\,\mathrm{d}\theta\,\mathrm{d}\zeta=\iiint_V\frac{\mathrm{d}\varrho\,\mathrm{d}\theta\,\mathrm{d}\zeta}{\nabla\varrho\cdot(\nabla\theta\times\nabla\zeta)}
+\end{equation}
+
+Another flux quantity is the scalar pressure in ideal magnetohydrodynamic equilibrium, since $\nabla p=\mathbf{J}\times\mathbf{B}\implies\mathbf{B}\cdot\nabla p=0$, thus $p=p(\varrho)$. This can always pose a problem when $\partial p/\partial\varrho=0$.
+
+\quad Certain flux quantities are more adequate than others. For example, the pressure $p$ and the poloidal flux through the \textit{disks} $\Phi_\text{pol}^\mathrm{d}$ decrease with distance from the centre of the magnetic axis. To have a direct coordinate system, one would then have to reverse the direction of another coordinate, for example, $\zeta$. This modification introduces additional issues with integration paths; therefore, it is convenient to add a negative sign to these two flux quantities. Thus, the following flux quantities can represent the first flux coordinate: $\varrho\equiv\Phi_\text{tor}$, $\varrho\equiv\Phi_\text{pol}^\text{r}$, $\varrho\equiv-\Phi_\text{pol}^\mathrm{d}$, $\varrho\equiv V$, and $\varrho\equiv -p$.
+
+\subsection{Rotational transform in toroidal systems}
+
+\label{subsec-rot-transform}
+
+It is pertinent to introduce a parameter describing the rotation of the magnetic field in a toroidal system. We have implicitly introduced this parameter when considering the toroidal confinement method. We denominate the net poloidal angle traversed $\Delta\theta$ after a toroidal transit of $\Delta\zeta=2\pi$ as the rotational transform angle $\iota$. This angle is defined for a magnetic surface by the average of the rotational transforms of each independent magnetic field-line:
+
+\begin{equation}
+    \iota=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n\iota_k
+\end{equation}
+
+The angle of the rotational transform is, by definition, a flux quantity. It is clear that, on an irrational surface, $n=1$ because there exists a single field-line that covers the surface ergodically. It is customary to introduce another quantity called \textit{rotational transform}, equal to the number of poloidal transits per toroidal transit:
+
+\begin{equation}
+    \hcancel{\iota}=\frac{\iota}{2\pi}
+\end{equation}
+
+It is evident that $\hcancel{\iota}\in\mathbb{Q}$ on rational surfaces and that $\hcancel{\iota}\in\mathbb{R}\setminus\mathbb{Q}$ on irrational surfaces. We can also introduce the safety factor commonly encountered in literature regarding tokamaks:
+
+\begin{equation}
+    q=\frac{1}{\hcancel{\iota}}
+\end{equation}
+
+In coordinate systems where magnetic field-lines are straight lines, the slope of these lines on a magnetic surface is given by:
+
+\begin{equation}
+    \diff{\theta}{\zeta}=\hcancel{\iota}\quad\text{or else}\quad\diff{\zeta}{\theta}=q
+\end{equation}
+
+The rotational transform can be related to the poloidal and toroidal components of the magnetic field and to their respective fluxes. The expression is given in equation \ref{eq-6-56}, since a complete demonstration requires understanding flux coordinates. In general plasma literature, stellarators additionally use $\varrho\equiv\hcancel{\iota}$, $\varrho\equiv-q$ along with $\varrho\equiv-p$ and $\varrho\equiv-\Phi_\text{pol}^\mathrm{d}$ as the first flux coordinate, while tokamaks usually use $\varrho\equiv q$ and $\varrho\equiv-\hcancel{\iota}$. In any case, it is only appropriate to choose a radially increasing flux function as the first flux coordinate to ensure a direct coordinate system.
+
+\subsection{Magnetic axis}
+
+A magnetic surface parametrised by a flux quantity is defined by the equation $\mathbf{B}\cdot\nabla\varrho=0$. Degenerate magnetic surfaces correspond precisely to the magnetic axes defined by $\nabla\varrho=\mathbf{0}$. The preceding equation means that there is no singularity of the gradient of the considered flux quantity when the volume of the surface tends towards zero. The physical meaning is obvious. When $V\to0$, $\Phi\propto r^2$, where $r$ represents the distance to the centre of the magnetic axis. Therefore, $\nabla\Phi\propto r$ when $V\to0$ so that $\nabla\Phi\to\mathbf{0}$. For any other flux quantity, provided that ${\mathrm{d}\varrho}/{\mathrm{d}\Phi}$ is non-singular at the magnetic axis, one must use:
+
+\begin{equation}
+    \nabla\varrho(\Phi)=\frac{\mathrm{d}\varrho}{\mathrm{d}\Phi}\nabla\Phi
+\end{equation}
+
+\subsection{Labelling magnetic surfaces in open systems}
+
+For magnetic mirrors, no additional remark on the volumes enclosed by magnetic surfaces is necessary. In open systems, there exist two magnetic field fluxes, namely the axial flux $\Phi_\text{ax}$ and the azimuthal flux $\Phi_\text{az}$. Pressure is not as helpful in this case because plasma phenomena are often anisotropic with respect to directions along and across a magnetic field-line.
+
+\section{Flux coordinate systems}
+
+The following section is entirely dedicated to the theoretical development of flux coordinate systems. These coordinate systems are established in such a manner that magnetic field-lines are \textit{straight} lines when expressed in terms of flux coordinates. Magnetic field-lines are evidently not straight lines in most cases; it is only that the field-line equation simplifies to that of a straight line in these coordinates.
+
+\subsection{Boozer flux coordinate system}
+
+\label{subsec-5-5-1}
+
+We return to the contravariant expression of a magnetic field (\ref{eq-6-21}). By a previous result, we eliminated the component along $\varrho$, thus:
+
+\begin{equation}
+    \label{eq-6-41}
+    \mathbf{B}=B^\theta\frac{\partial\mathbf{r}}{\partial\theta}+B^\zeta\frac{\partial\mathbf{r}}{\partial\zeta}=B^\theta J\nabla\zeta\times\nabla\varrho+B^\zeta J\nabla\varrho\times\nabla\theta
+\end{equation}
+
+The divergence of the magnetic field gives us a link between the two components:
+
+\begin{equation}
+    \label{eq-6-42}
+    \nabla\cdot\mathbf{B}=\frac{\partial}{\partial\theta}(JB^\theta)+\frac{\partial}{\partial\zeta}(JB^\zeta)=0
+\end{equation}
+
+This being an implicit equation linking the two components, there exists a function $\nu(\varrho, \theta, \zeta)\in \mathcal{C}^2$:
+
+\begin{equation}
+    \label{eq-5-45}
+    B^\theta=-\frac{1}{J}\frac{\partial\nu}{\partial\zeta}\quad\text{and}\quad B^\zeta=\frac{1}{J}\frac{\partial\nu}{\partial\theta}\implies-\frac{\partial^2\nu}{\partial\zeta\partial\theta}+\frac{\partial^2\nu}{\partial\theta\partial\zeta}=0
+\end{equation}
+
+We can now introduce the following expression of the magnetic field:
+
+\begin{equation}
+    \label{eq-6-44}
+    \mathbf{B}=\nabla\varrho\times\left(\frac{\partial\nu}{\partial\theta}\nabla\theta+\frac{\partial\nu}{\partial\zeta}\nabla\zeta\right)
+\end{equation}
+
+Since $\nabla\varrho\times\nabla\varrho=\mathbf{0}$, we find a new expression often called \textit{Clebsch form}:
+
+\begin{equation}
+    \label{eq-clebsch-form}
+    \mathbf{B}=\nabla\varrho\times\nabla\nu\implies\mathbf{B}\cdot\nabla\nu=0
+\end{equation}
+
+Certain magnetic field-lines therefore belong to the surfaces of $\nu=\text{const}$. Since surfaces $\varrho=\text{const.}$ also contain field-lines, we thus obtain an implicit equation describing a field-line for a chosen $\varrho$:
+
+\begin{equation}
+    \nu(\varrho=\text{const},\theta,\zeta)=\text{const.}
+\end{equation}
+
+Since the magnetic field is a single-valued function for all $(\varrho, \theta, \zeta)$, the same applies to $\nabla\varrho\times\nabla\nu$. This indeed imposes certain constraints on the form of the function $\nu(\varrho, \theta, \zeta)$. It is then necessary that $\nabla\varrho\times\nabla\nu$ be periodic in $\theta$ and in $\zeta$. Otherwise, $\mathbf{B}$ would not be defined as single-valued. It is evident that the general form of $\nu$ is given as follows:
+
+\begin{equation}
+    \label{eq-6-47}
+    \nu(\varrho, \theta, \zeta)=P(\varrho)\theta+Q(\varrho)\zeta+\Tilde{\nu}(\varrho, \theta, \zeta)
+\end{equation}
+
+where $\Tilde{\nu}(\varrho, \theta, \zeta)$ is a function purely periodic in $\theta$ and $\zeta$. Returning to equation (\ref{eq-6-34}):
+
+\begin{equation*}
+    \diff{\Phi_\text{tor}}{\varrho}=\frac{1}{2\pi}\diff{}{\varrho}\iiint_VJ\mathbf{B}\cdot\nabla\zeta\,\mathrm{d}\varrho\,\mathrm{d}\theta\,\mathrm{d}\zeta=\frac{1}{2\pi}\int_0^{2\pi}\int_0^{2\pi}J\mathbf{B}\cdot\nabla\zeta\,\mathrm{d}\theta\,\mathrm{d}\zeta=
+\end{equation*}
+
+\begin{equation*}
+    =\frac{1}{2\pi}\int_0^{2\pi}\int_0^{2\pi}JB^\zeta\,\mathrm{d}\theta\,\mathrm{d}\zeta=\frac{1}{2\pi}\int_0^{2\pi}\int_0^{2\pi}\frac{\partial\nu}{\partial\theta}\,\mathrm{d}\theta\,\mathrm{d}\zeta=\Bigg\{\frac{\partial\nu}{\partial\theta}=P(\varrho)+\frac{\partial\Tilde{\nu}}{\partial\theta}\Bigg\}=
+\end{equation*}
+
+\begin{equation}
+    =\frac{1}{2\pi}\int_0^{2\pi}\int_0^{2\pi}\left(P(\varrho)+\frac{\partial\Tilde{\nu}}{\partial\theta}\right)\,\mathrm{d}\theta\,\mathrm{d}\zeta=2\pi P(\varrho)+\underbrace{\Tilde{\nu}\bigr|_0^{2\pi}}_0\implies\diff{\Phi_\text{tor}}{\varrho}=2\pi P(\varrho)
+\end{equation}
+
+An entirely analogous approach gives us the derivative of the poloidal flux with respect to $\varrho$:
+
+\begin{equation}
+    \diff{\Phi_\text{pol}^\text{r}}{\varrho}=-2\pi Q(\varrho)
+\end{equation}
+
+We return to the expression of the auxiliary function $\nu(\varrho, \theta, \zeta)$:
+
+\begin{equation}
+    \label{eq-5-51}
+    \nu(\varrho, \theta, \zeta)=\frac{1}{2\pi}\left(\theta\diff{\Phi_\text{tor}}{\varrho}-\zeta\diff{\Phi_\text{pol}^\text{r}}{\varrho}\right)+\Tilde{\nu}(\varrho, \theta, \zeta)
+\end{equation}
+
+In the case where $\Tilde{\nu}$ is zero or a flux function, the coordinates $\theta$ and $\zeta$ introduced at the beginning are already flux coordinates. Recall that the magnetic field-lines lie on the surfaces of $\nu=\text{const}$. Thus, the previous equation provides us with an equation of a field-line as a straight line because the derivatives of the fluxes are flux functions:
+
+\begin{equation}
+    \theta\diff{\Phi_\text{tor}}{\varrho}-\zeta\diff{\Phi_\text{pol}^{r}}{\varrho}=\text{const.}
+\end{equation}
+
+We will henceforth pursue the following notation: $\theta=\theta_\text{f}$ and $\zeta=\zeta_\text{f}$. If the function $\Tilde{\nu}$ is not zero or a flux function, it suffices to introduce a change of variables:
+
+\begin{equation}
+    \label{eq-5-53}
+    \theta_\text{f}=\theta+2\pi\Tilde{\nu}\bigg/\diff{\Phi_\text{tor}}{\varrho}\quad\text{and}\quad\zeta_\text{f}=\zeta\quad\quad\text{or else}\quad\quad\theta_\text{f}=\theta\quad\text{and}\quad\zeta_\text{f}=\zeta-2\pi\Tilde{\nu}\bigg/\diff{\Phi_\text{pol}^\text{r}}{\varrho}
+\end{equation}
+
+This allows us to write the auxiliary function $\nu$ as follows:
+
+\begin{equation}
+    \nu(\varrho, \theta_\text{f}, \zeta_\text{f})=\frac{\theta_\text{f}}{2\pi}\diff{\Phi_\text{tor}}{\varrho}-\frac{\zeta_\text{f}}{2\pi}\diff{\Phi_\text{pol}^\text{r}}{\varrho}
+\end{equation}
+
+The components of the magnetic field are thus given in an exquisite form:
+
+\begin{equation}
+    \label{eq-6-54}
+    \mathbf{B}=\frac{1}{2\pi J_\text{f}}\diff{\Phi_\text{pol}^\text{r}}{\varrho}\nabla\theta_\text{f}+\frac{1}{2\pi J_\text{f}}\diff{\Phi_\text{tor}}{\varrho}\nabla\zeta_\text{f}
+\end{equation}
+
+We can now return to the expression of the rotational transform:
+
+\begin{equation}
+    \hcancel{\iota}=\diff{\theta_\text{f}}{\zeta_\text{f}}=\frac{\mathbf{B}\cdot\nabla\theta_\text{f}}{\mathbf{B}\cdot\nabla\zeta_\text{f}}=\frac{B^{\theta_\text{f}}}{B^{\zeta_\text{f}}}=\diff{\Phi_\text{pol}^\text{r}}{\varrho}\Bigg/\diff{\Phi_\text{tor}}{\varrho}=\diff{\Phi_\text{pol}^\text{r}}{\Phi_\text{tor}}
+\end{equation}
+
+When considering magnetic fields present in tokamaks, it is common to retain the symmetry angle $\zeta=\zeta_\text{f}$ and, consequently, to change the poloidal coordinate. We modify expression (\ref{eq-6-54}) using the rotational transform to obtain a simple contravariant expression of the magnetic field:
+
+\begin{equation}
+    \label{eq-6-56}
+    \mathbf{B}=\frac{1}{2\pi J_\text{f}}\diff{\Phi_\text{tor}}{\varrho}\left(\hcancel{\iota}\nabla\theta_\text{f}+\nabla\zeta_\text{f}\right)
+\end{equation}
+
+Boozer coordinates are defined by fixing the components $B_{\theta_\text{f}}$ and $B_{\zeta_\text{f}}$ of the magnetic field on magnetic surfaces. They are precisely given by equation (\ref{eq-6-56}). We could introduce a new variable $\alpha_\text{f}=\hcancel{\iota}\theta_\text{f}+\zeta_\text{f}$ to simplify the previous expression:
+
+\begin{equation}
+    \mathbf{B}=\frac{1}{2\pi J_\text{f}}\diff{\Phi_\text{tor}}{\varrho}\nabla\alpha_\text{f}
+\end{equation}
+
+We seek the expression of the current $\mathbf{J}$ in these coordinates. The condition of ideal magnetohydrodynamic equilibrium gives us:
+
+\begin{equation}
+    \nabla p=\mathbf{J}\times\mathbf{B}\implies\mathbf{J}\cdot\nabla p=0\implies\mathbf{J}\perp\nabla p
+\end{equation}
+
+Since pressure is a flux function, this suggests that the expression of the current turns out to be of the following form:
+
+\begin{equation}
+    \mathbf{J}=J^{\theta} J\nabla\varrho\times\nabla\theta+J^{\zeta}J\nabla\varrho\times\nabla\zeta
+\end{equation}
+
+We evoke the hypothesis of quasi-neutrality and apply it to the continuity equation:
+
+\begin{equation}
+    \frac{\partial\rho}{\partial t}+\nabla\cdot\mathbf{J}=0\stackrel{\rho=0}{\implies}\nabla\cdot\mathbf{J}=\frac{\partial}{\partial\theta}(JJ^{\theta})+\frac{\partial}{\partial\zeta}(JJ^{\zeta})=0
+\end{equation}
+
+This gives us the same conditions as for the magnetic field, namely equations (\ref{eq-6-41}) and (\ref{eq-6-42}). There exists then a function $\mu(\varrho, \theta, \zeta)$ such that:
+
+\begin{equation}
+    J^{\theta}=-\frac{1}{J}\frac{\partial\mu}{\partial\zeta}\quad\text{and}\quad J^{\zeta}=\frac{1}{J}\frac{\partial\mu}{\partial\zeta}
+\end{equation}
+
+The expression of the current thus takes the familiar form like expression (\ref{eq-6-44}):
+
+\begin{equation}
+    \mathbf{J}=\nabla\varrho\times\left(\frac{\partial\mu}{\partial\theta}\nabla\theta+\frac{\partial\mu}{\partial\zeta}\nabla\zeta\right)
+\end{equation}
+
+By a previous reasoning, specifically the one that allowed us to obtain equation (\ref{eq-6-47}), we write:
+
+\begin{equation}
+    \label{eq-5-64}
+    \mu(\varrho, \theta, \zeta)=R(\varrho)\theta+S(\varrho)\zeta+\Tilde{\mu}(\varrho, \theta, \zeta)
+\end{equation}
+
+where $\Tilde{\mu}(\varrho, \theta, \zeta)$ is a periodic function in $\theta$ and $\zeta$. The Maxwell-Ampère equation allows us to link functions $R$, $S$ and $\Tilde{\mu}$ to those of the magnetic field, namely $\nabla\times\mathbf{B}=\mu_0\mathbf{J}$. However, we omit this part, as it consists only of linking the corresponding components. We then return to the expression of the magnetic field (\ref{eq-6-21}) and search for its covariant components. We return to expression (\ref{eq-6-41}):
+
+\begin{equation}
+    \label{eq-6-64}
+    \mathbf{B}=\frac{\nabla\varrho}{2\pi}\times\nabla\left(\diff{\Phi_\text{tor}}{\varrho}\theta_\text{f}-\diff{\Phi_\text{pol}^\text{r}}{\varrho}\zeta_\text{f}\right)=\frac{\nabla\varrho}{2\pi}\times\nabla\left(\diff{\Phi_\text{tor}}{\varrho}\theta_\text{f}+\diff{\Phi_\text{pol}^\mathrm{d}}{\varrho}\zeta_\text{f}\right)
+\end{equation}
+
+In tokamaks, it is customary to use the safety factor as well as the poloidal flux $\Phi_\text{pol}^\text{r}$ as the flux label:
+
+\begin{equation}
+    \label{eq-6-65}
+    \mathbf{B}=\frac{\nabla\Phi_\text{pol}^\text{r}}{2\pi}\times\nabla\left(q\theta_\text{f}-\zeta_\text{f}\right)
+\end{equation}
+
+In contrast, stellarator literature uses toroidal flux as the flux label as well as the rotational transform:
+
+\begin{equation}
+    \mathbf{B}=\frac{\nabla\Phi_\text{tor}}{2\pi}\times\nabla\left(\theta_\text{f}-\hcancel{\iota}\zeta_\text{f}\right)
+\end{equation}
+
+The general Clebsch form of the magnetic field can be written as a sum of two components:
+
+\begin{equation}
+    \mathbf{B}=\frac{1}{2\pi}\diff{\Phi_\text{pol}^\text{r}}{\varrho}\nabla\zeta_\text{f}\times\nabla\varrho+\frac{1}{2\pi}\diff{\Phi_\text{tor}}{\varrho}\nabla\varrho\times\nabla\theta_\text{f}=\mathbf{B}_\text{pol}+\mathbf{B}_\text{tor}
+\end{equation}
+
+where $\mathbf{B}_\text{pol}$ and $\mathbf{B}_\text{tor}$ denote the poloidal and toroidal vectorial components of the magnetic field. It is important to emphasize that $\mathbf{B}_\text{pol}$ is parallel to $\mathbf{\hat{e}}_{\theta_\text{f}}$, but $\mathbf{B}_\text{pol}$ is not parallel to $\nabla\theta_\text{f}$. The same applies to $\mathbf{B}_\text{tor}$. To find the covariant components, it is appropriate to return to equation (\ref{eq-6-64}):
+
+\begin{equation}
+    J_\text{f}=\frac{1}{\nabla\theta_\text{f}\cdot(\nabla\zeta_\text{f}\times\nabla\varrho)}=\frac{1}{2\pi}\diff{\Phi_\text{pol}^\text{r}}{\varrho}\frac{1}{\mathbf{B}\cdot\nabla\theta_\text{f}}=\frac{1}{2\pi B^{\theta_\text{f}}}\diff{\Phi_\text{pol}^\text{r}}{\varrho}
+\end{equation}
+
+We can easily find these components using the metric tensor of the flux coordinate system:
+
+\begin{equation}
+    B_i=(g_{ij})_\text{f}B^j=g_{i\theta_\text{f}}B^{\theta_\text{f}}+g_{i\zeta_\text{f}}B^{\zeta_\text{f}}
+\end{equation}
+
+In tokamaks, it is customary to choose $\Psi=\Phi_\text{pol}^\text{r}/2\pi$ as the first flux coordinate, so that the Jacobian is then simply $J_\text{f}=1/B^{\theta_\text{f}}=1/(\mathbf{B}\cdot\nabla\theta_\text{f})$.
+
+\subsection{Flux-surface average}
+
+The flux-surface average of some function $f(\mathbf{r})$ is defined by the volume average over an infinitesimally small shell of volume $\Delta V$ between two magnetic surfaces of volumes $V$ and $V+\Delta V$, thus:
+
+\begin{equation}
+    \label{eq-6-x-x}
+    \langle f(\mathbf{r})\rangle=\lim_{\Delta V\to0}\frac{1}{\Delta V}\iiint_{\Delta V}f(\mathbf{r})\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+The elementary volume element $\mathrm{d}^3\mathbf{r}$ is, by definition, equal to $\mathrm{d}^3\mathbf{r}=|\mathrm{d}\mathbf{r}(\varrho)\cdot\mathrm{d}\mathbf{S}(\varrho)|$, where $\mathrm{d}\mathbf{r}(\varrho)$ is the infinitesimal change in the position along the flux coordinate $\varrho$. In contrast, $\mathrm{d}\mathbf{S}(\varrho)$ is the oriented infinitesimal surface vector; thus, with adequate orientation, we may drop the absolute value brackets. Because the differential surface element is tangential to the considered magnetic surface, we find:
+
+\begin{equation}
+    \mathrm{d}\mathbf{S}(\varrho)=\frac{\nabla\varrho}{\|\nabla\varrho\|}\,\mathrm{d}S(\varrho)\implies\mathrm{d}^3\mathbf{r}=\mathrm{d}\mathbf{r}(\varrho)\cdot\frac{\nabla\varrho}{\|\nabla\varrho\|}\,\mathrm{d}S(\varrho)\equiv\frac{\mathrm{d}\varrho\,\mathrm{d}S(\varrho)}{\|\nabla\varrho\|}
+\end{equation}
+
+This, in turn, results in the following equivalence:
+
+\begin{equation}
+    \langle f(\mathbf{r})\rangle=\frac{\mathrm{d}\varrho}{\mathrm{d}V}\iint_{S(\varrho)}\frac{f(\mathbf{r})}{\|\nabla\varrho\|}\,\mathrm{d}S(\varrho)
+\end{equation}
+
+Of course, simplifications arise when choosing the volume enclosed by magnetic surfaces as the flux coordinate. In arbitrary generalised toroidal coordinates $(\varrho,\theta,\zeta)$, where the Jacobian is given by $J=\left[\nabla\varrho\cdot(\nabla\theta\times\nabla\zeta)\right]^{-1}$, the infinitesimal surface element is given by $\mathrm{d}S=J\|\nabla\varrho\|\,\mathrm{d}\theta\,\mathrm{d}\zeta$. The flux-surface average, which is now evaluated over a closed magnetic surface, simplifies to:
+
+\begin{equation}
+    \langle f(\mathbf{r})\rangle=\diff{\varrho}{V}\oiint_{S(\varrho)}Jf(\mathbf{r})\,\mathrm{d}\theta\,\mathrm{d}\zeta
+\end{equation}
+
+Notice that setting $f(\mathbf{r})=1$ gives:
+
+\begin{equation}
+    \diff{V}{\varrho}=\int_0^{2\pi}\int_{0}^{2\pi}J\,\mathrm{d}\theta\,\mathrm{d}\zeta
+\end{equation}
+
+which reduces to unity for the choice $\varrho=V$.
+
+\subsubsection{Flux-surface average in axisymmetric systems}
+
+In axisymmetric systems, the flux-surface average further simplifies because there is no $\zeta$-dependence, so that the integral over $\zeta$ contributes a multiplicative factor of $2\pi$ to both the numerator and the denominator in equation (\ref{eq-6-x-x}); thus, integration over $\theta$ suffices.
+
+\quad Furthermore, in axisymmetric systems, the flux-surface average is sometimes defined as the closed loop integral along a magnetic field-line as follows:
+
+\begin{equation}
+    \langle f(\mathbf{r})\rangle=\frac{\oint f(\mathbf{r})\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}}{\oint\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}}
+\end{equation}
+
+To show that the two definitions are equivalent, we shall resort to a Clebsch coordinate system where magnetic field-lines are straight lines formed by the intersection of magnetic surfaces given by $\varrho=\text{const.}$ and of surfaces $q\theta-\zeta=\text{const.}$ where $q$ is the safety factor. The magnetic field-line, that is, $\mathbf{B}$, is thus locally determined as follows:
+
+\begin{equation}
+    \mathbf{B}\propto\nabla\varrho\times\nabla(q\theta-\zeta)
+\end{equation}
+
+where the proportionality constant shall be determined below. Taking the dot product with $\nabla\theta$:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla\theta\propto\left[\nabla\varrho\times\nabla(q\theta)+\nabla\zeta\times\nabla\varrho\right]\cdot\nabla\theta=\left[\nabla\varrho\times\frac{\mathrm{d}q}{\mathrm{d}\varrho}\theta\nabla\varrho+q\nabla\varrho\times\nabla\theta+\nabla\varrho\cdot(\nabla\theta\times\nabla\zeta)\right]\cdot\nabla\theta
+\end{equation}
+
+The first term vanishes since $\nabla\varrho\times\nabla\varrho=0$, the second term vanishes since $\nabla\varrho\times\nabla\theta\perp\nabla\theta$, while the residual term is simply the Jacobian. The equation of a magnetic field-line by components gives:
+
+\begin{equation}
+    \frac{\mathrm{d}\ell}{\|\mathbf{B}\|}=\frac{\mathrm{d}\theta}{\mathbf{B}\cdot\nabla\theta}
+\end{equation}
+
+We thus see that, in axisymmetric devices, the integrands of the two definitions of the flux-surface average are equivalent up to a proportionality factor, which we shall determine as follows. Recall equation (\ref{eq-6-65}). Since $\Phi_\text{pol}^\text{r}$ is a flux function, it depends only on the flux coordinate; therefore, applying the chain rule for derivatives gives:
+
+\begin{equation}
+    \mathbf{B}(\varrho,\theta,\zeta)=\frac{1}{2\pi}\frac{\mathrm{d}\Phi_\text{pol}^\text{r}}{\mathrm{d}\varrho}\nabla\varrho\times\nabla(q\theta-\zeta)
+\end{equation}
+
+The proportionality factor is thus a flux function and does not contribute to the integral over $\theta$, as it cancels out in the numerator and the denominator. The two definitions are thus equivalent in axisymmetric systems. Notice that the $\oint\frac{\mathrm{d}l}{\|\mathbf{B}\|}$ flux-surface average being equivalent to the flux-surface average over a single period of $\theta$, it is not necessary to evaluate the integral over a closed loop, but over the arc spanning a period of $\theta$. In the case of distinguishing rational from irrational magnetic surfaces, one evidently cannot evaluate the complete closed-loop integral on irrational surfaces. Our previous discussions of the restrictions imposed by rational and irrational surfaces, respectively, remain valid.
+
+\subsection{Magnetic differential equation}
+
+\label{subsec-5-5-3}
+
+We refer to equations of the following type as magnetic differential equations:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla f=S
+\end{equation}
+
+where $S$ is a source term, and $f$ is an unknown single-valued function as the sought-after solution of the differential equation, both assumed to be scalar fields, $f=f(\mathbf{r})$, $S=S(\mathbf{r})$. Our subsequent discussions of the magnetic differential equations will primarily concern toroidal systems, as open systems impose fewer restrictions on their properties.
+
+\begin{enumerate}
+    \item The single-valuedness of $f$ determines a first condition on $S$:
+
+    \begin{equation}
+        \mathbf{B}\cdot\nabla f=\|\mathbf{B}\|\frac{\partial f}{\partial\ell}=S\implies f(\ell)=f(0)+\int_0^\ell\frac{S}{\|\mathbf{B}\|}\,\mathrm{d}\ell
+    \end{equation}
+
+    The solution $f$ is assumed to be single-valued, so the source term must obey the condition:
+
+    \begin{equation}
+        \label{magnetic-diff-eq-condition-1}
+        \oint S\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}=0
+    \end{equation}
+
+    The closed-loop integral is, naturally, taken on rational magnetic surfaces. The condition above must be satisfied for every closed field-line, automatically belonging to some rational surface.
+
+    \item A second condition is that the flux-surface average of the equation is zero:
+    
+    \begin{equation}
+        \label{magnetic-diff-eq-condition-2}
+        \langle S\rangle=\frac{\oint S\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}}{\oint\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}}=\diff{\varrho}{V}\oiint_{\Sigma(\varrho)}JS\,\mathrm{d}\theta\,\mathrm{d}\zeta=0
+    \end{equation}
+    
+    \end{enumerate}
+
+These two conditions are, in principle, \textit{satisfiably} dependent, but also independent. The former implies the latter only if rational magnetic surfaces form a dense set in the system under consideration. The second condition is necessary to account for regularity on irrational magnetic surfaces if the rational surfaces did in fact not form a dense set. The regularity of the magnetic differential equation requires both conditions, since the second condition does not imply the first, while the first is not well-defined on irrational magnetic surfaces.
+
+\quad The general solution of the magnetic differential equation is thus given as a sum of the particular solution, $f_\text{p}$, and a homogeneous solution, $f_\text{h}$, which, in particular, satisfies:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla f_\text{h}=0\implies\frac{\partial f_\text{h}}{\partial\ell}=0
+\end{equation}
+
+Thus, the homogeneous solution is a flux function, but only in toroidal systems. To find the particular solution, we resort to rewriting the equation in terms of Boozer coordinates, $(\varrho, \theta_\text{f}, \zeta_\text{f})$, which is particularly motivated by the fact that magnetic field-lines are straight in these coordinate systems. The equation is thus equivalent to:
+
+\begin{equation}
+    B^i\frac{\partial f_\text{p}}{\partial u^i}=S\implies\underbrace{B^\varrho}_{0}\frac{\partial f_\text{p}}{\partial\varrho}+B^{\theta_\text{f}}\frac{\partial f_\text{p}}{\partial\theta_\text{f}}+B^{\zeta_\text{f}}\frac{\partial f_\text{p}}{\partial\zeta_\text{f}}=S
+\end{equation}
+
+Notice $B^\varrho=0$. The other contravariant components of $\mathbf{B}$ contain the Jacobian in the denominator. Thus, the differential equation can be Fourier-transformed over $\theta_\text{f}$ and $\zeta_\text{f}$. Let $a_{mn}(\varrho)$ be the expansion coefficients in the Fourier series of $J_\text{f}S$. The flux-average integral condition requires that $a_{00}(\varrho)=0$ on all flux surfaces. The first condition, however, fixes $\sum_{m,n}a_{mn}(\varrho\in\mathbb{Q})/(m\hcancel{\iota}-n)=0$, so that $a_{mn}(\varrho\in\mathbb{Q})$ must vanish on their respective rational surfaces where $m\hcancel{\iota}-n=0$. A swift conclusion is that $f$ can be reconstructed from its harmonics $f_{mn}$ pondered by coefficients $\Tilde{a}_{mn}(\varrho)=a_{mn}(\varrho)/(m\hcancel{\iota}-n)$ along with a constant factor independent of $m$ or $n$. Lastly, it shall be worth noting that in tokamaks, $f$ and $S$ are generally independent of $\zeta$, so that their Fourier expansions are executed only with respect to $\theta$.
+
+\subsection{Ideal-MHD-equilibrium conditions for toroidal systems}
+
+\label{mhd-conditions}
+
+This subsection is dedicated to further examine the periodic function $\Tilde{\mu}(\varrho,\theta,\zeta)$ in equation (\ref{eq-5-64}). We begin by inputting the contravariant expressions of the current density and magnetic field, namely expressions given in equations (\ref{eq-6-54}) and (\ref{eq-5-126}). Note that the latter can be readily derived from our previous considerations; it is only convenient to use a result we will obtain later.
+
+\begin{equation}
+    \diff{p}{\varrho}\nabla\varrho=J^{\theta_\text{f}}B^{\zeta_\text{f}}\mathbf{e}_{\theta_\text{f}}\times\mathbf{e}_{\zeta_\text{f}}+J^{\zeta_\text{f}}B^{\theta_\text{f}}\mathbf{e}_{\zeta_\text{f}}\times\mathbf{e}_{\theta_\text{f}}\Longleftrightarrow\diff{p}{\varrho}=J_\text{f}\left(J^{\theta_\text{f}}B^{\zeta_\text{f}}-J^{\zeta_\text{f}}B^{\theta_\text{f}}\right)
+\end{equation}
+
+The other components of the ideal magnetohydrodynamic equilibrium equation are trivially zero. The contravariant components are given as follows:
+
+\begin{equation}
+    B^i=\frac{1}{2\pi J_\text{f}}\begin{pmatrix}
+        0\\\diff{\Phi_\text{pol}^\text{r}}{\varrho}\\\diff{\Phi_\text{tor}}{\varrho}        
+    \end{pmatrix}\quad\text{and}\quad J^\mathrm{i}=\frac{1}{2\pi J_\text{f}}\begin{pmatrix}
+        0\\\diff{I_\text{pol}^\text{r}}{\varrho}-2\pi\frac{\partial\Tilde{\mu}}{\partial\zeta_\text{f}}\\
+        \diff{I_\text{tor}}{\varrho}+2\pi\frac{\partial\Tilde{\mu}}{\partial\theta_\text{f}}
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    \diff{p}{\varrho}=\frac{1}{4\pi^2J_\text{f}}\left(-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}+\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}-2\pi\diff{\Phi_\text{pol}^\text{r}}{\varrho}\frac{\partial\Tilde{\mu}}{\partial\theta_\text{f}}-2\pi\diff{\Phi_\text{tor}}{\varrho}\frac{\partial\Tilde{\mu}}{\partial\zeta_\text{f}}\right)
+\end{equation}
+
+Notice that the last two terms in the brackets correspond to the dot product $4\pi^2J_\text{f}\mathbf{B}\cdot\nabla\Tilde{\mu}$, giving:
+
+\begin{equation}
+    \frac{1}{4\pi^2J_\text{f}}\left(-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}+\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}\right)-\mathbf{B}\cdot\nabla\Tilde{\mu}=\diff{p}{\varrho}
+\end{equation}
+
+Notice that this is, in fact, a magnetic differential equation for $\Tilde{\mu}$. Rearranging:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla\Tilde{\mu}=\frac{1}{4\pi^2J_\text{f}}\left(-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}+\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}\right)-\diff{p}{\varrho}
+\end{equation}
+
+Thus, the source term must satisfy the two conditions discussed in subsection \ref{subsec-5-5-3}:
+
+\begin{equation}
+    \mathrm{d}\varrho\int_0^{2\pi}\int_0^{2\pi}\left[\frac{1}{4\pi^2J_\text{f}}\left(-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}+\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}\right)-\diff{p}{\varrho}\right]J_\text{f}\,\mathrm{d}\theta_\text{f}\,\mathrm{d}\zeta_\text{f}=0
+\end{equation}
+
+All quantities in the integrand are flux functions:
+
+\begin{equation}
+    \label{eq-5-92}
+    \diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}=\diff{p}{\varrho}\int_0^{2\pi}\int_0^{2\pi}J_\text{f}\,\mathrm{d}\theta_\text{f}\,\mathrm{d}\zeta_\text{f}=\diff{p}{\varrho}\diff{V}{\varrho}
+\end{equation}
+
+The other solvability condition is that the closed-loop integral along a magnetic field-line vanishes. Note that we shall employ the equation of a magnetic field-line, namely:
+
+\begin{equation}
+    \diff{p}{\varrho}\oint\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}=\Bigg\{\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}=\frac{\mathrm{d}\zeta_\text{f}}{B^{\zeta_\text{f}}}, B^{\zeta_\text{f}}=\frac{1}{2\pi J_\text{f}}\diff{\Phi_\text{tor}}{\varrho}\Bigg\}=\oint\left(\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}\right)\frac{\mathrm{d}\zeta_\text{f}}{B^{\zeta_\text{f}}}=
+\end{equation}
+
+\begin{equation}
+    =\frac{\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}}{2\pi\diff{\Phi_\text{tor}}{\varrho}}\int_0^{2N\pi}\,\mathrm{d}\zeta_\text{f}=\frac{\diff{I_\text{pol}^\text{r}}{\varrho}\diff{\Phi_\text{tor}}{\varrho}-\diff{I_\text{tor}}{\varrho}\diff{\Phi_\text{pol}^\text{r}}{\varrho}}{\diff{\Phi_\text{tor}}{\varrho}}N
+\end{equation}
+
+where $N$ denotes the number of toroidal transits necessary for the magnetic field-line to close upon itself. Using the result given by equation (\ref{eq-5-92}), we find:
+
+\begin{equation}
+    \diff{p}{\varrho}\oint\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}=N\diff{V}{\varrho}\diff{p}{\varrho}\Big/\diff{\Phi_\text{tor}}{\varrho}\Longleftrightarrow\diff{p}{\varrho}\left(\diff{V}{\Phi_\text{tor}}-\frac{1}{N}\oint\frac{\mathrm{d}\ell}{\|\mathbf{B}\|}\right)=0
+\end{equation}
+
+Note that the loop integral in the equation above is commonly referred to as the \textit{proper length} of a magnetic field-line. For magnetic surfaces where $\diff{p}{\varrho}\neq0$, we find that the loop integral in the previous expression must be the same for all magnetic field-lines belonging to the same magnetic surface. Thus, on a common magnetic surface, all magnetic field-lines must have the same proper length. This condition is often referred to as the \textit{current-closure condition} in the plasma physics literature. If it is satisfied, the system is said to possess true magnetic surfaces. In all axisymmetric systems, e.g., tokamaks, this condition is, indeed, satisfied. In non-axisymmetric systems, like stellarators, it is not. In a more advanced context, when the current closure condition is violated, the Fourier coefficients of $\Tilde{\mu}$ will exhibit resonant denominators of the form $m\hcancel{\iota}-n$ leading to divergent currents and magnetic island formation.
+
+\quad The magnetic differential equation for $\Tilde{\mu}$ is thus found in a simpler form:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla\Tilde{\mu}=\diff{p}{\varrho}\left(\frac{1}{4\pi^2J_\text{f}}\diff{V}{\varrho}-1\right)\Longleftrightarrow\diff{\Phi_\text{pol}^\text{r}}{\varrho}\frac{\partial\Tilde{\mu}}{\partial\theta_\text{f}}+\diff{\Phi_\text{tor}}{\varrho}\frac{\partial\Tilde{\mu}}{\partial\zeta_\text{f}}=\frac{1}{2\pi}\diff{p}{\varrho}\left(\diff{V}{\varrho}-4\pi^2J_\text{f}\right)
+\end{equation}
+
+We return our attention to the flux-surface average of the inverse Jacobian, $\mathcal{J}_\text{f}=J_\text{f}^{-1}$ that is:
+
+\begin{equation}
+    \label{eq-5-97}
+    \langle\mathcal{J}_\text{f}\rangle=\frac{\int_0^{2\pi}\int_0^{2\pi}\mathrm{d}\theta_\text{f}\,\mathrm{d}\zeta_\text{f}}{\int_0^{2\pi}\int_0^{2\pi}J_\text{f}\,\mathrm{d}\theta_\text{f}\,\mathrm{d}\zeta_\text{f}}=4\pi^2\Big/\diff{V}{\varrho}\implies\diff{V}{\varrho}=\frac{4\pi^2}{\langle\mathcal{J}_\text{f}\rangle}
+\end{equation}
+
+Consequently, the magnetic differential equation becomes:
+
+\begin{equation}
+    \label{eq-5-98}
+    \mathbf{B}\cdot\nabla\Tilde{\mu}=\diff{p}{\varrho}\left(\frac{1}{\langle\mathcal{J}_\text{f}\rangle}-J_\text{f}\right)\Longleftrightarrow\diff{\Phi_\text{pol}^\text{r}}{\varrho}\frac{\partial\Tilde{\mu}}{\partial\theta_\text{f}}+\diff{\Phi_\text{tor}}{\varrho}\frac{\partial\Tilde{\mu}}{\partial\zeta_\text{f}}=2\pi\diff{p}{\varrho}\left(\frac{1}{\langle\mathcal{J}_\text{f}\rangle}-J_\text{f}\right)
+\end{equation}
+
+To solve for the unknown function $\Tilde{\mu}(\varrho,\theta_\text{f},\zeta_\text{f})$, one must solve its magnetic differential equation given by (\ref{eq-5-98}), which is usually done using Fourier expansions of $\Tilde{\mu}(\varrho,\theta_\text{f},\zeta_\text{f})$ and $J_\text{f}$.
+
+\subsection{Symmetric flux coordinates in a tokamak}
+
+In an ideal axisymmetric tokamak, it seems natural to choose the symmetric angle as the generalized toroidal coordinate. The surfaces $\zeta=\text{const.}$ are vertical planes and $\nabla\zeta$ is oriented in the direction of symmetry. We will name this angle $\zeta=\zeta_\text{o}$ to highlight its symmetric properties. Toroidal symmetry allows us to conclude that flux surfaces are orthogonal to surfaces $\zeta_\text{o}=\text{const}$, that is $\nabla\Phi\cdot\nabla\zeta_\text{o}=0$. We want to use the symmetry coordinate $\zeta_\text{o}$ to make the most of the symmetry. It is necessary to construct surfaces $\theta_\text{o}=\text{const.}$ so that $\nabla\theta_\text{o}\cdot\nabla\zeta_\text{o}=0$. These two conditions are equivalent to the curves of coordinate $\zeta_\text{o}$ being circles in the toroidal plane.
+
+\quad In general, we cannot say $\nabla\varrho\cdot\nabla\theta_\text{o}=0$, because toroidal symmetry does not allow imposing such a condition. We return to expression (\ref{eq-6-65}) of the magnetic field:
+
+\begin{equation}
+    \label{eq-6-70}
+    \mathbf{B}=\frac{q}{2\pi}\nabla\Phi_\text{pol}^\text{r}\times\nabla\theta_\text{o}+\frac{1}{2\pi}\nabla\zeta_\text{o}\times\nabla\Phi_\text{pol}^\text{r}
+\end{equation}
+
+Since $\nabla\Phi_\text{pol}^\text{r}\cdot\nabla\zeta_0=0=\nabla\theta_\text{o}\cdot\nabla\zeta_\text{o}$, then $\nabla\Phi_\text{pol}^\text{r}\times\nabla\theta_\text{o}\parallel\nabla\zeta_\text{o}$, hence $\nabla\Phi_\text{pol}^\text{r}\times\nabla\theta_\text{o}=\kappa\nabla\zeta_\text{o}$:
+
+\begin{equation}
+    \mathbf{B}=\frac{q\kappa}{2\pi}\nabla\zeta_\text{o}+\frac{1}{2\pi}\nabla\zeta_\text{o}\times\nabla\Phi_\text{pol}^\text{r}
+\end{equation}
+
+Equation (\ref{eq-6-23}) gives us the value of $\kappa$:
+
+\begin{equation}
+    \kappa=\frac{\nabla\zeta_\text{o}\cdot(\nabla\Phi_\text{pol}^\text{r}\times\nabla\theta_\text{o})}{\|\nabla\zeta_\text{o}\|^2}=\frac{1}{J_\text{o}\|\nabla\zeta_\text{o}\|^2}
+\end{equation}
+
+We can introduce the radius of curvature $R$ of a curve of the coordinate $\zeta_\text{o}$ as $\|\nabla\zeta_\text{o}\|=1/R$:
+
+\begin{equation}
+    \kappa=\frac{R^2}{J_\text{o}}\implies\mathbf{B}_\text{tor}=\frac{qR^2}{2\pi J_\text{o}}\nabla\zeta_\text{o}=\frac{I}{2\pi}\nabla\zeta_\text{o}
+\end{equation}
+
+where we have defined a function $I$. An important property of this function is that it is a flux function, i.e. $I=I(\Phi_\text{pol}^\text{r})$. We begin the demonstration with the Maxwell-Ampère equation:
+
+\begin{equation}
+    \nabla\times\mathbf{B}=\mu_0\mathbf{J}\implies \mu_0J^i=\varepsilon^{ijk}\partial_jB_k\implies\mu_0J^{\Phi_\text{pol}^\text{r}}=\frac{1}{J_\text{o}}\left(\frac{\partial B_{\zeta_\text{o}}}{\partial\theta_\text{o}}-\frac{\partial B_{\theta_\text{o}}}{\partial\zeta_\text{o}}\right)=\frac{1}{J_\text{o}}\frac{\partial B_{\zeta_\text{o}}}{\partial\theta_\text{o}}
+\end{equation}
+
+where the disappearing term vanishes due to toroidal symmetry. Recall that, from the point of view of ideal magnetohydrodynamics, pressure is a function of flux. Then, the ideal magnetohydrodynamic equilibrium equation imposes the following condition:
+
+\begin{equation}
+    \mathbf{J}\times\mathbf{B}=\nabla p\implies\mathbf{J}\cdot\nabla p=0\implies\mathbf{J}\cdot\nabla\Phi_\text{pol}^\text{r}=J^{\Phi_\text{pol}^\text{r}}=0\implies\frac{\partial B_{\zeta_\text{o}}}{\partial\theta_0}=0
+\end{equation}
+
+Consequently, the toroidal component of the magnetic field does not depend on the poloidal angle $\theta_\text{o}$. It is thus a flux function $B_{\zeta_\text{o}}=B_{\zeta_\text{o}}(\Phi_\text{pol}^\text{r})$. This concludes the proof.
+
+\begin{equation}
+    B_{\zeta_\text{o}}=\mathbf{B}\cdot\mathbf{\hat{e}}_{\zeta_\text{o}}=\frac{q\kappa}{2\pi}\underbrace{\nabla\zeta_\text{o}\cdot\mathbf{\hat{e}}_{\zeta_\text{o}}}_1+\frac{1}{2\pi}\underbrace{(\overbrace{\nabla\zeta_\text{o}\times\nabla\Phi_\text{pol}^\text{r}}^{\perp\mathbf{\hat{e}}_{\zeta_\text{o}}})\cdot\mathbf{\hat{e}}_{\zeta_\text{o}}}_0=\frac{I}{2\pi}\implies I=I(\Phi_\text{pol}^\text{r})
+\end{equation}
+
+It turns out to be opportune to evaluate the Jacobian of transformation between Cartesian coordinates and those of Boozer. The magnetic field vector can be written in covariant form:
+
+\begin{equation}
+    \label{eq-6-77}
+    \mathbf{B}=B_{\Phi_\text{pol}^\text{r}}\nabla\Phi_\text{pol}^\text{r}+B_{\theta_\text{o}}\nabla\theta_\text{o}+B_{\zeta_\text{o}}\nabla\zeta_\text{o}=\beta(\Phi_\text{pol}^\text{r}, \theta_\text{o}, \zeta_\text{o})\nabla\Phi_\text{pol}^\text{r}+I(\Phi_\text{pol}^\text{r})\nabla\theta_\text{o}+G(\Phi_\text{pol}^\text{r})\nabla\zeta_\text{o}
+\end{equation}
+
+Taking the dot product of the previous equation with equation (\ref{eq-6-70}), it follows:
+
+\begin{equation}
+    \mathbf{B}^2=\frac{q}{2\pi}(\nabla\Phi_\text{pol}^\text{r}\times\nabla\theta_\text{o})\cdot B_{\zeta_\text{o}}\nabla\zeta_\text{o}+\frac{1}{2\pi}(\nabla\zeta_\text{o}\times\nabla\Phi_\text{pol}^\text{r})\cdot B_{\theta_\text{o}}\nabla\theta_\text{o}=\frac{1}{2\pi J}\left(G(\Phi_\text{tor}^\text{r})+\hcancel{\iota}I(\Phi_\text{tor}^\text{r})\right)
+\end{equation}
+
+It is customary to define the first flux coordinate as $\Psi=\Phi_\text{tor}^\text{r}/2\pi$, then:
+
+\begin{equation}
+    \label{eq-6-79}
+    J=\frac{1}{\nabla\Psi\cdot(\nabla\theta_\text{o}\times\nabla\zeta_\text{o})}=\frac{G(\Psi)+\hcancel{\iota}I(\Psi)}{\mathbf{B}^2}
+\end{equation}
+
+Consequently, on a magnetic surface $\Psi=\text{const.}$, the Jacobian is a function of the magnetic field.
+
+\subsection{General Clebsch-type flux coordinate systems}
+
+We shall now formally develop specific useful properties of flux coordinate systems of Clebsch-type, in particular, retaking subsection \ref{clebschinterlude}, and specifically, equation (\ref{eq-clebsch-form}). As it has not been discussed above, the auxiliary function $\nu(\varrho,\theta_\text{f},\zeta_\text{f})$ is, in fact, a stream function. Notice also that the Clebsch form exhibits a specific property analogous to gauge invariance. Namely, let $f$ be an arbitrary differentiable function of a single argument, then:
+
+\begin{equation}
+    \nabla\varrho\times\nabla(\nu+f(\varrho))=\nabla\varrho\times\nabla\nu+\nabla\varrho\times\frac{\mathrm{d}f}{\mathrm{d}\varrho}\nabla\varrho=\nabla\varrho\times\nabla\nu
+\end{equation}
+
+and similarly for $\varrho\to\varrho+f(\nu)$. This property is only the consequence of the equivalence between the magnetic vector potential $\mathbf{A}$ and $\varrho\nabla\nu$:
+
+\begin{equation}
+    \mathbf{B}=\nabla\times\mathbf{A}=\nabla\times(\varrho\nabla\nu)=\nabla\varrho\times\nabla\nu+\varrho\nabla\times\nabla\nu=\nabla\varrho\times\nabla\nu
+\end{equation}
+
+where evidently the curl of the gradient is zero. The construction of Clebsch-type flux coordinate systems and their overall usefulness are fully discussed in subsection \ref{clebschinterlude}, and here, we also choose $\ell$ to be the third flux coordinate. Notice that the Jacobian in this coordinate system is precisely:
+
+\begin{equation}
+    J=\frac{1}{\nabla\varrho\cdot(\nabla\nu\times\nabla\ell)}=\frac{1}{\nabla\ell\cdot(\nabla\varrho\times\nabla\nu)}=\frac{1}{\nabla\ell\cdot\mathbf{B}}=\frac{1}{\|\mathbf{B}\|}
+\end{equation}
+
+since, by definition of a magnetic field-line, $\mathbf{B}\cdot\nabla\ell=\|\mathbf{B}\|$. It is now convenient to express the magnetic flux through some surface $S$ as follows:
+
+\begin{equation}
+    \iint_S\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\iint_SJ\mathbf{B}\cdot\nabla\ell\,\mathrm{d}\varrho\,\mathrm{d}\nu=\iint_SJ\|\mathbf{B}\|\,\mathrm{d}\varrho\,\mathrm{d}\nu=\iint_S\mathrm{d}\varrho\,\mathrm{d}\nu
+\end{equation}
+
+Thus, Clebsch-type flux coordinate systems are only elegant when considering magnetic fluxes in particular throughout toroidal systems.
+
+\subsection{Boozer-Grad flux coordinate system}
+
+The idea of Boozer-Grad flux coordinate systems is to find a covariant representation for the magnetic field $\mathbf{B}$ such that it reduces to the gradient of a scalar function in current-free regions. Rather than taking the arc-length of a magnetic field-line as the third flux coordinate, the Boozer-Grad coordinate system introduces a scalar function $\chi$ such that it replaces $\mathbf{\hat{B}}(\mathbf{B}\cdot\nabla)\ell$ in Clebsch coordinate systems:
+
+\begin{equation}
+    \mathbf{B}=B_\varrho\nabla\varrho+B_\nu\nabla\nu+\|\mathbf{B}\|\nabla\ell=B_\varrho'\nabla\varrho+B_\nu'\nabla\nu+\nabla\chi
+\end{equation}
+
+where we have used $B_\varrho'$ and $B_\nu'$ to differentiate the two pairs of seemingly identical covariant components of $\mathbf{B}$, but are, in general, not the same. Thus $\|\mathbf{B}\|\cdot\nabla\ell$ and $\nabla\chi$ are in fact not parallel in general. The Jacobian in these coordinates reads:
+
+\begin{equation}
+    J=\frac{1}{\nabla\varrho\cdot(\nabla\nu\times\nabla\chi)}=\frac{1}{\nabla\chi\cdot(\nabla\varrho\times\nabla\nu)}=\frac{1}{\mathbf{B}^2}
+\end{equation}
+
+The sought-after result of Boozer-Grad coordinates is to obtain an expression of the following type:
+
+\begin{equation}
+    \mathbf{B}=\lambda\nabla\varrho+\nabla\chi
+\end{equation}
+
+In other words, we wish that the term along $\nabla\nu$ vanishes. We find motivation in the condition of the ideal MHD equilibrium:
+
+\begin{equation}
+    \nabla p=\mathbf{J}\times\mathbf{B}\implies\mathbf{J}\cdot\nabla p=0\implies\mathbf{J}\cdot\diff{p}{\varrho}\nabla\varrho=0
+\end{equation}
+
+since $p=p(\varrho)$ is a flux function. Thus, $\mathbf{J}\cdot\nabla\varrho=0$, unless possibly $\diff{p}{\varrho}=0$, which we shall ignore and deem as anomalous flux function behaviour. Maxwell-Ampère equation gives:
+
+\begin{equation}
+    \mu_0\mathbf{J}=\nabla\times\mathbf{B}=\nabla\times\left(\lambda\nabla\varrho+\nabla\chi\right)=\nabla\lambda\times\nabla\varrho
+\end{equation}
+
+Thus, $\mathbf{J}$ is a Clebsch form in these coordinates. We thus ought to find $\lambda$ as follows:
+
+\begin{equation}
+    \nabla\lambda=\frac{\partial\lambda}{\partial\varrho}\nabla\varrho+\frac{\partial\lambda}{\partial\nu}\nabla\nu+\frac{\partial\lambda}{\partial\chi}\nabla\chi\implies\mu_0\mathbf{J}=\frac{\partial\lambda}{\partial\nu}\nabla\nu\times\nabla\varrho+\frac{\partial\lambda}{\partial\chi}\nabla\chi\times\nabla\varrho
+\end{equation}
+
+We recognise the Clebsch form for the magnetic field, thus:
+
+\begin{equation}
+    \label{eq-5-106}
+    \mu_0\mathbf{J}=-\frac{\partial\lambda}{\partial\nu}\mathbf{B}+\frac{\partial\lambda}{\partial\chi}\nabla\chi\times\nabla\varrho
+\end{equation}
+
+Taking the dot product with $\mathbf{B}$ gives:
+
+\begin{equation}
+    \mu_0\mathbf{J}\cdot\mathbf{B}=-\frac{\partial\lambda}{\partial\nu}\mathbf{B}^2-\frac{\partial\lambda}{\partial\chi}\mathbf{B}\cdot\left[\nabla\varrho\times\left(\mathbf{B}-\lambda\nabla\varrho\right)\right]
+\end{equation}
+
+Notice that the last term evaluates to zero. Thus, we find that the parallel current density contributes to $\lambda$ as follows:
+
+\begin{equation}
+    \label{eq-5-108}
+    \frac{\partial\lambda}{\partial\nu}=-\frac{\mu_0\mathbf{J}\cdot\mathbf{B}}{\mathbf{B}^2}
+\end{equation}
+
+Substituting expression (\ref{eq-5-106}) back into the ideal MHD equilibrium condition, we find:
+
+\begin{equation}
+    \nabla p=\diff{p}{\varrho}\nabla\varrho=\frac{1}{\mu_0}\left(\frac{\partial\lambda}{\partial\chi}\nabla\chi\times\nabla\varrho-\frac{\partial\lambda}{\partial\nu}\mathbf{B}\right)\times\mathbf{B}
+\end{equation}
+
+which, expanding, gives:
+
+\begin{equation}
+    \diff{p}{\varrho}\nabla\varrho=\frac{1}{\mu_0}\frac{\partial\lambda}{\partial\chi}\mathbf{B}\times\left(\nabla\varrho\times\nabla\chi\right)=\frac{1}{\mu_0}\frac{\partial\lambda}{\partial\chi}\left[\left(\mathbf{B}\cdot\nabla\chi\right)\nabla\varrho-\left(\mathbf{B}\cdot\nabla\varrho\right)\nabla\chi\right]
+\end{equation}
+
+We identify the contravariant component, which is, by definition, $\mathbf{B}\cdot\nabla\varrho=B^\varrho=0$. Thus:
+
+\begin{equation}
+    \diff{p}{\varrho}\nabla\varrho=\frac{1}{\mu_0}\frac{\partial\lambda}{\partial\chi}\left[\underbrace{\left(\nabla\varrho\times\nabla\nu\right)\cdot\nabla\chi}_{\mathbf{B}^2}\right]\nabla\varrho=\frac{\mathbf{B}^2}{\mu_0}\frac{\partial\lambda}{\partial\chi}\nabla\varrho
+\end{equation}
+
+Having chosen good magnetic surfaces, $\nabla\varrho=\mathbf{0}$ only on the magnetic axis:
+
+\begin{equation}
+    \label{eq-5-112}
+    \frac{\partial\lambda}{\partial\chi}=\frac{\mu_0}{\mathbf{B}^2}\diff{p}{\varrho}
+\end{equation}
+
+The factor $\lambda$ is thus entirely determined in $\nu$ and $\chi$ via the two partial differential equations above, namely (\ref{eq-5-108}) and (\ref{eq-5-112}). Its dependency on $\varrho$ is, however, arbitrary. We shall thus impose a type of gauge invariance by defining:
+
+\begin{equation}
+    \lambda(\varrho,\nu=0,\chi=0)=0
+\end{equation}
+
+Notice that this implies $\mathbf{J}=\mathbf{0}$ when $\lambda=0$, which is indeed the case, since it makes $\mathbf{J}\cdot\mathbf{B}$ and $\nabla p$ vanish. Thus, $\lambda$ is simply a flux-function for free-space, that is, in regions of zero current density. By the arbitrariness of $\lambda$, by imposing that $\lambda=0$ when $\mathbf{J}=\mathbf{0}$, we obtain:
+
+\begin{equation}
+    \mathbf{B}=\nabla\chi\qquad\mathbf{J}=\mathbf{0}
+\end{equation}
+
+which makes $\chi$ precisely the magnetic scalar potential in magnetostatics. The Boozer-Grad coordinates remain susceptible to arbitrariness due to the arbitrariness of $\nu$, since they are determined up to an additive flux function. This forces the following condition of gauge invariance:
+
+\begin{equation}
+    \chi\to\chi+f(\varrho)\implies\lambda\to\lambda-\diff{f}{\varrho}
+\end{equation}
+
+\subsection{Hamada flux coordinate system}
+
+In ideal magnetohydrodynamic equilibrium conditions, the current density satisfies functionally identical equations to those of the magnetic field:
+
+\begin{equation}
+    \mathbf{J}\cdot\nabla\varrho=0\qquad\nabla\cdot\mathbf{J}=0\quad\Longleftrightarrow\quad\mathbf{B}\cdot\nabla\varrho=0\qquad\nabla\cdot\mathbf{B}=0
+\end{equation}
+
+Thus, it seems only possible to find a coordinate system in which the current density is \textit{straight}. Therefore, we shall first endeavour to find a coordinate system in which the current density field-lines are straight, regardless of the shape of the magnetic field-lines. Then, we shall introduce the Hamada flux coordinate system in which both the magnetic field-lines and the current density field-lines are \textit{straight} lines. A first necessary assumption is that the current density field is known. Note that the reader is asked to tolerate our choice of notation, as the current density and the Jacobian of a particular coordinate transformation are denoted almost the same. For this reason, $J$ shall denote the Jacobian. At the same time, $\|\mathbf{J}\|$ and $J$ with any subscript or superscript shall refer to the norm and contravariant and covariant components of the current density, respectively. The zero divergence equation above gives:
+
+\begin{equation}
+    \frac{\partial}{\partial\theta}\left(JJ^\theta\right)+\frac{\partial}{\partial\zeta}\left(JJ^\zeta\right)=0\quad\text{since}\quad J^\varrho=\mathbf{J}\cdot\nabla\varrho=0
+\end{equation}
+
+We are thus motivated to introduce a stream function $\eta(\varrho,\theta,\zeta)$ so that:
+
+\begin{equation}
+    J^\theta=-\frac{1}{J}\frac{\partial\eta}{\partial\zeta}\qquad J^\zeta=\frac{1}{J}\frac{\partial\eta}{\partial\theta}
+\end{equation}
+
+Analogously to the treatment of Boozer flux coordinates in subsection \ref{subsec-5-5-1}, namely equation \ref{eq-5-45}:
+
+\begin{equation}
+    \mathbf{J}=\nabla\varrho\times\nabla\eta
+\end{equation}
+
+such that the current density field-lines on magnetic surfaces of $\varrho=\text{const.}$ are defined by $\nu(\varrho=\text{const.},\theta,\zeta)=\text{const.}$ Analogously to expression \ref{eq-5-51}, the auxiliary stream function is of the form:
+
+\begin{equation}
+    \eta(\varrho,\theta,\zeta)=\frac{1}{2\pi}\left(\diff{I_\text{tor}}{\varrho}\theta-\diff{I_\text{pol}^\text{r}}{\varrho}\zeta\right)+\Tilde{\eta}(\varrho,\theta,\zeta)
+\end{equation}
+
+where $\Tilde{\eta}(\varrho,\theta\zeta)$ is a purely periodic function of $\theta$ and $\zeta$. The flux function $I_\text{pol}^\text{r}(\varrho)$ represents the poloidal ribbon current, that is, the poloidal ribbon current-density flux, flowing within the magnetic surface labelled by $\varrho$, given by:
+
+\begin{equation}
+    I_\text{pol}^\text{r}(\varrho)=\frac{1}{2\pi}\iiint_{V(\varrho)}\mathbf{J}\cdot\nabla\theta\,\mathrm{d}^3\mathbf{r}=\iint_{S_\text{pol}^\text{r}(\varrho)}\mathbf{J}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+The flux function $I_\text{tor}(\varrho)$ analogously represents the toroidal current-density flux flowing within a magnetic surface labelled by $\varrho$, given by:
+
+\begin{equation}
+    I_\text{tor}(\varrho)=\frac{1}{2\pi}\iiint_{V(\varrho)}\mathbf{J}\cdot\nabla\zeta\,\mathrm{d}^3\mathbf{r}=\iint_{S_\text{tor}(\varrho)}\mathbf{J}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+To make the current density field-lines straight, we ought to express the periodic function $\Tilde{\eta}(\varrho,\theta,\zeta)$ as a flux function or eliminate it. The transformations similar to those in equation (\ref{eq-5-53}) suffice:
+
+\begin{equation}
+    \theta_\text{J}=\theta+2\pi\Tilde{\nu}\bigg/\diff{I_\text{tor}}{\varrho}\quad\text{and}\quad\zeta_\text{J}=\zeta\quad\quad\text{or else}\quad\quad\theta_\text{J}=\theta\quad\text{and}\quad\zeta_\text{J}=\zeta-2\pi\Tilde{\nu}\bigg/\diff{I_\text{pol}^\text{r}}{\varrho}
+\end{equation}
+
+where the subscript $J$ precisely highlights that these are coordinates in which the current density field-lines are straight, as it is given by the following equation:
+
+\begin{equation}
+    \frac{1}{2\pi}\diff{I_\text{tor}}{\varrho}\theta_\text{J}-\frac{1}{2\pi}\diff{I_\text{pol}^\text{r}}{\varrho}\zeta_\text{J}=\text{const.}
+\end{equation}
+
+The associated Clebsch form thus reads:
+
+\begin{equation}
+    \mathbf{J}=\nabla\varrho\times\nabla\left(\frac{1}{2\pi}\diff{I_\text{tor}}{\varrho}\theta_\text{J}-\frac{1}{2\pi}\diff{I_\text{pol}^\text{r}}{\varrho}\zeta_\text{J}\right)
+\end{equation}
+
+The non-trivial contravariant components of the current density are thus:
+
+\begin{equation}
+    \label{eq-5-126}
+    J^{\theta_\text{J}}=\frac{1}{2\pi J_\text{J}}\diff{I_\text{pol}^\text{r}}{\varrho}\qquad J^{\zeta_\text{J}}=\frac{1}{2\pi J_\text{J}}\diff{I_\text{tor}}{\varrho}
+\end{equation}
+
+where $J_\text{J}$ denotes the Jacobian of the transformation under consideration. Note that, in these coordinates, $J_\text{J}$ might, however, not have a generally simple expression, since we had no regard to the magnetic field. It is only desirable to find a coordinate system in which both the current density field-lines and the magnetic field-lines are straight lines, and the Jacobian of the transformation is given by an uncomplicated expression. This is precisely achieved by the Hamada flux coordinate system, whose self-explanatory alternative name is \textit{natural} coordinate system.
+
+\quad Let us precisely focus on the main objective that is to be resolved to produce the desired nature of Hamada flux coordinates. It is precisely the requirement that $\Tilde{\eta}(\varrho,\theta,\zeta)$ be a flux function, that is, $\Tilde{\eta}(\varrho)$, or identically zero, both equivalent to $\mathbf{B}\cdot\nabla\Tilde{\eta}=0$. Retaking our results from subsection \ref{mhd-conditions}, namely equation (\ref{eq-5-98}), in cases where ${\mathrm{d}p}/{\mathrm{d}\varrho}\neq0$, the flux-surface average of the Jacobian must be equal to the Jacobian of the transformation. Furthermore, equation (\ref{eq-5-97}) motivates us to label magnetic surfaces via their enclosed volume, that is, $\varrho\equiv V$, since, in that case, the ever-present $\mathrm{d}{V}/\mathrm{d}{\varrho}$ is unity. Note that it is all the more possible to work with an arbitrary first flux coordinate; however, one has to drag this previous term throughout the following procedure. Let us denote the Hamada coordinates by $\varrho_\text{H}\equiv V$, $\theta_\text{H}$, and $\zeta_\text{H}$, and prudently remind ourselves:
+
+\begin{equation}
+    \langle\mathcal{J}_\text{H}\rangle=4\pi^2=\frac{1}{J_\text{H}}
+\end{equation}
+
+One is thus confident that the Hamada coordinate system exists for a particular toroidal system when the two solvability conditions of the magnetic differential equation for $\Tilde{\eta}(\varrho_\text{H},\theta_\text{H},\zeta_\text{H})$, given by equation (\ref{eq-5-98}), are met. Moreover, the solvability conditions reduce to the conditions for proper ideal magnetohydrodynamic equilibrium. In terms of Hamada coordinates, the contravariant components of the magnetic field and the current density are given as follows:
+
+\begin{equation}
+    B^i=2\pi\begin{pmatrix}
+        0\\
+        \diff{\Phi_\text{pol}^\text{r}}{V}\\
+        \diff{\Phi_\text{tor}}{V}
+    \end{pmatrix}\qquad J^i=2\pi\begin{pmatrix}
+        0\\
+        \diff{I_\text{pol}^\text{r}}{V}\\
+        \diff{I_\text{tor}}{V}
+    \end{pmatrix}\qquad\mathbf{J}=\frac{\nabla V}{2\pi}\times\nabla\left(\diff{I_\text{tor}}{V}\theta_\text{H}-\diff{I_\text{pol}^\text{r}}{\zeta_\text{H}}\right)
+\end{equation}
+
+All other quantities can easily be determined using the fact that $J_\text{H}=1/4\pi^2$.
+
+\section{Magnetic field structure in helical systems}
+
+\label{subsec-helical-structure}
+
+Helical confinement systems deserve particular treatment among confinement systems characterised by symmetry. Namely, symmetrical helical systems present the most general type of symmetry - any helically symmetric quantity depends at most on the radial coordinate, $r$, and on the mixed quantity $u=\ell\varphi+kz$, where $\ell$ is the screw lead of the symmetry-generating helix, while $k$ is a number. Note that here, $r$, $\varphi$, and $z$ represent the elementary cylindrical coordinates. Translation symmetry can thus be generated by letting $k\to0$, making $\varphi$ an ignorable coordinate, while axial symmetry is obtained via letting $\ell\to0$, since, in that case, $z$ is the ignorable coordinate. Let us investigate the relation between $r$ and $u$:
+
+\begin{equation}
+    \nabla u=\ell\nabla\varphi+k\nabla z\implies\nabla r\times\nabla u=\ell\nabla r\times\nabla\varphi+k\nabla r\times\nabla z=r\ell\nabla z-kr^2\nabla\varphi
+\end{equation}
+
+\begin{equation}
+    \label{eq-5-144}
+    \mathbf{h}(r,\varphi,z)=\frac{\ell\nabla z-kr^2\nabla\varphi}{\ell^2+k^2r^2}=\frac{r}{\ell^2+k^2r^2}\nabla r\times\nabla u\implies\mathbf{h}^2=\frac{1}{\ell^2+k^2r^2}
+\end{equation}
+
+The vector field $\mathbf{h}$ is notably tangent to the helix defined by the intersection of surfaces $r=\text{const.}$ and $u=\text{const.}$ Thus, for any helically symmetric quantity, $\varrho(r,u)$ characterised by the same helical parameters, it follows from equation (\ref{eq-5-144}) that:
+
+\begin{equation}
+    \mathbf{h}\cdot\nabla\varrho(r,u)=0
+\end{equation}
+
+for a magnetic surface label. Moreover, the vector quantity $\mathbf{h}$ presents the following properties:
+
+\begin{equation}
+    \label{eq-5-146}
+    \nabla\cdot\mathbf{h}=\frac{\ell\nabla^2z-kr^2\nabla^2\varphi}{\ell^2+k^2r^2}-\left(\ell\nabla z-kr^2\nabla\varphi\right)\cdot\frac{2k^2r\nabla r}{(\ell^2+k^2r^2)^2}=0
+\end{equation}
+
+where the non-trivial scalar product part evaluates to zero due to the orthogonality of elementary cylindrical coordinates. Furthermore:
+
+\begin{equation*}
+    \nabla\times\mathbf{h}=\frac{-2kr\nabla r\times\nabla\varphi}{\ell^2+k^2r^2}-\frac{2k^2r^2\nabla r}{(\ell^2+k^2r^2)^2}\times\left(\nabla r\times\nabla u\right)=
+\end{equation*}
+
+\begin{equation*}
+    =-\frac{2kr\nabla r\times\nabla\varphi}{\ell^2+k^2r^2}+\frac{2k^2r^2}{(\ell^2+k^2r^2)^2}\nabla u=-\frac{2k(\ell^2+k^2r^2)\nabla z-2k^2r^2\ell\nabla\varphi-2k^3r^2\nabla z}{(\ell^2+k^2r^2)^2}=
+\end{equation*}
+
+\begin{equation}
+    \label{eq-5-149}
+    =-\frac{2k\ell^2\nabla z-2k^2r^2\ell\nabla\varphi}{(\ell^2+k^2r^2)}=-\frac{2k\ell}{\ell^2+k^2r^2}\mathbf{h}
+\end{equation}
+
+We have thus found a vector quantity satisfying the functionally analogous equations to the magnetic field, namely zero divergence and, in the force-free regime, its own curl parallel to itself. The magnetic field can therefore be written in the following form:
+
+\begin{equation}
+    \label{eq-5-150}
+    \mathbf{B}=\mathbf{h}\times\nabla\varrho(r,u)+\mathbf{h}f(r,u)
+\end{equation}
+
+where $\varrho(r,u)$ is a magnetic surface label, and $f(r,u)$ is a force-free contribution. In stellarator literature, $\mathbf{h}f(r,u)$ is referred to as the \textit{helical} magnetic field, whereas, in tokamak literature, it is the first term in the right-hand side of equation (\ref{eq-5-150}) that is referred to as such. Furthermore, note:
+
+\begin{equation}
+    \mathbf{h}\cdot\nabla f=\nabla\cdot(f\mathbf{h})-f(\nabla\cdot\mathbf{h})=\nabla\cdot(\mathbf{B}-\mathbf{h}\times\nabla\varrho)=\nabla\cdot(\nabla\varrho\times\mathbf{h})=-(\nabla\times\mathbf{h})\cdot\nabla\varrho\propto\mathbf{h}\cdot\nabla\varrho=0
+\end{equation}
+
+Choosing $\varrho\equiv\Phi_\text{hel}^\text{r}/2\pi$, the magnetic flux through a ribbon-like surface of $u=\text{const.}$ obtained by surgically cutting off at a distance $r$ within a cylindrical volume around the magnetic axis, gives:
+
+\begin{equation}
+    \nabla\times\mathbf{A}=\frac{1}{2\pi}\left[\Phi_\text{hel}^\text{r}(\nabla\times\mathbf{h})-\nabla\times(\Phi_\text{hel}^\text{r}\mathbf{h})\right]+\mathbf{h}f=-\frac{1}{2\pi}\nabla\times(\Phi_\text{hel}^\text{r}\mathbf{h})+\frac{\Phi_\text{hel}^\text{r}}{2\pi}\nabla\times\mathbf{h}+f\mathbf{h}
+\end{equation}
+
+Notice that applying the divergence on the preceding gives:
+
+\begin{equation}
+    \nabla\cdot(\nabla\times\mathbf{A})=-\frac{1}{2\pi}\underbrace{\nabla\cdot(\nabla\times(\Phi_\text{hel}^\text{r}\mathbf{h}))}_{0}+\nabla\cdot\left[\frac{\Phi_\text{hel}^\text{r}}{2\pi}\nabla\times\mathbf{h}+f\mathbf{h}\right]=0
+\end{equation}
+
+Hence, the latter part can be written as the curl of some vector potential $\mathbf{S}$, that is:
+
+\begin{equation}
+    \mathbf{A}=-\frac{\Phi_\text{hel}^\text{r}}{2\pi}\mathbf{h}+\mathbf{S}+\nabla g\quad\text{where }g\text{ is a gauge term}
+\end{equation}
+
+Namely, one can always choose such $\mathbf{S}$ that it cancels with the gauge term, so that we find the relation between the magnetic vector potential and the magnetic helical ribbon flux:
+
+\begin{equation}
+    \frac{\Phi_\text{hel}^\text{r}}{2\pi}=-\frac{\mathbf{A}\cdot\mathbf{h}}{\mathbf{h}^2}
+\end{equation}
+
+Furthermore, the current density from the given form (\ref{eq-5-150}) via the Maxwell-Ampère equation reads:
+
+\begin{equation}
+    \mu_0\mathbf{J}=\nabla\times\left(\mathbf{h}\times\nabla\varrho+\mathbf{h} f\right)=\nabla\times(\mathbf{h}\times\nabla\varrho)+f(\nabla\times\mathbf{h})+(\nabla f)\times\mathbf{h}
+\end{equation}
+
+We shall first compute the component of the term $\nabla\times(\mathbf{h}\times\nabla\varrho)$ along $\mathbf{h}$ by taking the dot product:
+
+\begin{equation}
+    \mathbf{h}\cdot[\nabla\times(\mathbf{h}\times\nabla\varrho)]=\nabla\cdot\left[(\mathbf{h}\times\nabla\varrho)\times\mathbf{h}\right]+(\mathbf{h}\times\nabla\varrho)\cdot(\nabla\times\mathbf{h})
+\end{equation}
+
+The second term evaluates analytically to zero since $\nabla\times\mathbf{h}\parallel\mathbf{h}$. Continuing:
+
+\begin{equation}
+    (\mathbf{h}\times\nabla\varrho)\times\mathbf{h}=\mathbf{h}^2\nabla\varrho-(\mathbf{h}\cdot\nabla\varrho)\mathbf{h}=\mathbf{h}^2\nabla\varrho
+\end{equation}
+
+where the mixed term has been eliminated since $\mathbf{h}$ is along the symmetry direction, and $\varrho=\varrho(r,u)$ only. Using equation (\ref{eq-5-144}), we find:
+
+\begin{equation}
+    \mathbf{h}\cdot\left[\nabla\times\left(\mathbf{h}\times\nabla\varrho\right)\right]=\nabla\cdot\left(\frac{1}{\ell^2+k^2r^2}\nabla\varrho\right)
+\end{equation}
+
+Expanding the del operators and using helical symmetry, we find:
+
+\begin{equation}
+    \nabla\varrho=\frac{\partial\varrho}{\partial r}\mathbf{e}^r+\frac{\partial\varrho}{\partial\varphi}\mathbf{e}^\varphi+\frac{\partial\varrho}{\partial z}\mathbf{e}^z=\frac{\partial\varrho}{\partial r}\mathbf{\hat{r}}+\frac{\ell}{r}\frac{\partial\varrho}{\partial u}\boldsymbol{\hat{\varphi}}+k\frac{\partial\varrho}{\partial u}\mathbf{\hat{z}}
+\end{equation}
+
+\begin{equation*}
+    \nabla\cdot\left(\frac{1}{\ell^2+k^2r^2}\nabla\varrho\right)=\frac{1}{r}\frac{\partial}{\partial r}\left(\frac{r}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\frac{1}{r}\frac{\partial}{\partial\varphi}\left(\frac{\ell}{r(\ell^2+k^2r^2)}\frac{\partial\varrho}{\partial\varphi}\right)+\frac{\partial}{\partial z}\left(\frac{k}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial z}\right)=
+\end{equation*}
+
+\begin{equation}
+    =\frac{1}{r}\frac{\partial}{\partial r}\left(\frac{r}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\left[\frac{\ell^2}{r^2(\ell^2+k^2r^2)}+\frac{k^2}{\ell^2+k^2r^2}\right]\frac{\partial^2\varrho}{\partial u^2}
+\end{equation}
+
+Therefore, the component of $\nabla\times(\mathbf{h}\times\nabla\varrho)$ along $\mathbf{h}$ reads:
+
+\begin{equation}
+    \mathbf{h}\cdot\left[\nabla\times(\mathbf{h}\times\nabla\varrho)\right]=\mathbf{h}\cdot\frac{\ell^2+k^2r^2}{r}\mathbf{h}\left[\frac{\partial}{\partial r}\left(\frac{r}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\frac{1}{r}\frac{\partial^2\varrho}{\partial u^2}\right]
+\end{equation}
+
+The component perpendicular to $\mathbf{h}$ turns out to be identically zero. To verify this fact, we perform the dot products of the quantity $\nabla\times(\mathbf{h}\times\nabla\varrho)$ with both $\nabla r$ and $\nabla u$:
+
+\begin{equation*}
+    \nabla r\cdot\left[\nabla\times(\mathbf{h}\times\nabla\varrho)\right]=\nabla\cdot\left[(\mathbf{h}\times\nabla\varrho)\times\nabla r\right]-(\mathbf{h}\times\nabla\varrho)\cdot[\nabla\times(\nabla r)]=\nabla\cdot\left[(\mathbf{h}\times\nabla\varrho)\times\nabla r\right]=
+\end{equation*}
+
+\begin{equation}
+    =\nabla\cdot\left[(\mathbf{h}\cdot\nabla r)\nabla\varrho-(\nabla\varrho\cdot\nabla r)\mathbf{h}\right]=\nabla\cdot\left[(\nabla\varrho\cdot\nabla r)\mathbf{h}\right]=(\mathbf{h}\cdot\nabla)\left(\frac{\partial\varrho}{\partial r}\right)=0
+\end{equation}
+
+where $\mathbf{h}\cdot\nabla r=0$ by definition and $\nabla\cdot\mathbf{h}=0$ as determined above. Since $\varrho=\varrho(r,u)$, its derivative is also helically symmetric, so that its gradient is perpendicular to the symmetry direction defined via $\mathbf{h}$. The treatment for the dot product with $\nabla u$ is analogous, and evaluates to zero by the same argument. Returning to the expression for the current density, we finally find:
+
+\begin{equation}
+    \label{eq-5-162}
+    \mu_0\mathbf{J}=(\nabla f)\times\mathbf{h}+\left(\frac{\ell^2+k^2r^2}{r}\left[\frac{\partial}{\partial r}\left(\frac{r}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\frac{1}{r}\frac{\partial^2\varrho}{\partial u^2}\right]-\frac{2k\ell}{\ell^2+k^2r^2}f\right)\mathbf{h}
+\end{equation}
+
+where we have used the expression for the curl $\nabla\times\mathbf{h}$ determined earlier. Moreover, we shall now determine the nature of the function $f(r,u)$ using a somewhat provident approach. Namely, consider the vector product $\nabla f\times\nabla\varrho$. Let us decompose it into components along $\mathbf{h}$ and perpendicular to it. In particular, the perpendicular component relates to:
+
+\begin{equation}
+    \mathbf{h}\times(\nabla\varrho\times\nabla f)=(\mathbf{h}\cdot\nabla f)\nabla\varrho-(\mathbf{h}\cdot\nabla\varrho)\nabla f=\mathbf{0}
+\end{equation}
+
+since $\mathbf{h}\cdot\nabla f=0$, and by helical symmetry $\mathbf{h}\cdot\nabla\varrho=0$, so that $\nabla\varrho\times\nabla f$ is along $\mathbf{h}$. Consider now the triple scalar product of $\nabla f$ and $\nabla\varrho$ with $\mathbf{h}$ as follows:
+
+\begin{equation}
+    (\mathbf{h}\times\nabla f)\cdot(\mathbf{h}\times\nabla\varrho)=(\mathbf{h}\cdot\mathbf{h})(\nabla f\cdot\nabla\varrho)-(\mathbf{h}\cdot\nabla f)(\mathbf{h}\cdot\nabla\varrho)=\mathbf{h}^2(\nabla f\cdot\nabla\varrho)
+\end{equation}
+
+Therefore, since both $\nabla f$ and $\nabla\varrho$ are perpendicular to $\mathbf{h}$ while their vector product is strictly along $\mathbf{h}$, and their vector products with $\mathbf{h}$ uniquely determine their dot product, $\nabla f$ and $\nabla\varrho$ are hence collinear, that is, $\nabla f\times\nabla\varrho=\mathbf{0}$. Since $\mathbf{B}\cdot\nabla\varrho=0$ by the definition of magnetic surfaces, it follows that $\mathbf{B}\cdot\nabla f=0$, so that $f$ is indeed a flux function. Moreover, these considerations allow us to obtain an exact expression for the rotational transform in the case of pure axisymmetry, that is, when we are allowed to set $k=1$ and $\ell=0$. The toroidal flux can be written as:
+
+\begin{equation}
+    \Phi_\text{tor}=\iint_{\varrho}\mathbf{B}_\text{tor}\cdot\mathrm{d}\mathbf{S}=\iint_{\varrho}f\nabla\varphi\cdot\mathrm{d}\mathbf{S}=\iint_{\varrho}\frac{f}{r}\,\mathrm{d}r\,\mathrm{d}z
+\end{equation}
+
+where the toroidal component of the magnetic field was expressed as $\mathbf{B}_\text{tor}=f\nabla\varphi$ by choosing $k=1$ and $\ell=0$ in equation (\ref{eq-1-150}). Choosing the poloidal ribbon flux as the magnetic surface label gives:
+
+\begin{equation}
+    q(\Phi_\text{pol}^\text{r})=\frac{\mathrm{d}\Phi_\text{tor}}{\mathrm{d}\Phi_\text{pol}^\text{r}}=\oint\frac{\|\mathbf{B}_\text{tor}\|}{\|\nabla\Phi_\text{pol}^\text{r}\|}\mathrm{d}\ell=\oint\frac{\|\mathbf{B}_\text{tor}\|}{\|\mathbf{B}_\text{pol}\|}\frac{\mathrm{d}\ell}{2\pi r}=\frac{1}{\hcancel{\iota}(\Phi_{\text{pol}}^\text{r})}
+\end{equation}
+
+which completes our considerations on the rotational transform in subsection \ref{subsec-rot-transform}.
+
+\section{Magnetic field-line Hamiltonian}
+
+After all the introductory considerations on flux coordinate systems, it is convenient to discuss the concept of canonical coordinates for magnetic fields. The term \textit{canonical} precisely relates to the Hamiltonian character of magnetic fields. Such coordinates are worth exploring since canonical coordinates for magnetic fields exist even when magnetic surfaces do not. By contrast, flux coordinate systems rely on the existence of magnetic surfaces. It ought to be emphasised that canonical coordinates are not synonymous with flux coordinates.
+
+\quad The guaranteed existence of canonical coordinates for magnetic fields is a wonderful result, since it allows us to use multiple methods emerging from Hamiltonian theory, namely canonical transformations, Hamilton-Jacobi theory, canonical perturbation theory, and others.
+
+\subsection{Flux coordinate systems revisited}
+
+Following our discussions on flux coordinate systems, we recall, in particular, equation (\ref{eq-6-64}):
+
+\begin{equation}
+    \mathbf{B}=\frac{\nabla\varrho}{2\pi}\times\nabla\left(\diff{\Phi_\text{tor}}{\varrho}\theta_\text{f}+\diff{\Phi_\text{pol}^\mathrm{d}}{\varrho}\zeta_\text{f}\right)
+\end{equation}
+
+where $\varrho$ is a chosen magnetic surface label, while $\Phi_\text{tor}$ and $\Phi_\text{pol}^\mathrm{d}$ are the toroidal and poloidal disk magnetic fluxes, respectively, which are indeed flux functions. Introducing the substitution $\psi_\text{tor}=\Phi_\text{tor}/2\pi$ and $\psi_\text{pol}^\mathrm{d}=\Phi_\text{pol}^\mathrm{d}/2\pi$, we may express the magnetic field as follows:
+
+\begin{equation}
+    \mathbf{B}=\nabla\psi_\text{tor}\times\nabla\theta_\text{f}+\nabla\psi_\text{pol}^\mathrm{d}\times\nabla\zeta_\text{f}
+\end{equation}
+
+The rotational transform allows us to neatly express:
+
+\begin{equation}
+    \hcancel{\iota}=-\diff{\Phi_\text{pol}^\mathrm{d}}{\varrho}\Big/\diff{\Phi_\text{tor}}{\varrho}=-\diff{\psi_\text{pol}^\mathrm{d}}{\psi_\text{tor}}\implies\mathbf{B}=\nabla\psi_\text{tor}\times\nabla(\theta_\text{f}-\hcancel{\iota}\zeta_\text{f})
+\end{equation}
+
+Reminder that the rotational transform is a flux function. We shall now employ the definitions of covariant and contravariant basis vectors, namely $\mathbf{e}^i=\nabla u^i$, $\mathbf{e}_i=\partial\mathbf{r}/\partial u^i$ along with $\mathbf{e}_i=J\mathbf{e}^j\times\mathbf{e}^k$ with $(i,j,k)$ being an even permutation of $(1,2,3)$:
+
+\begin{equation}
+    \mathbf{B}=\frac{1}{J_\text{f}}\left(\frac{\partial\mathbf{r}}{\partial\zeta_\text{f}}+\hcancel{\iota}(\psi_\text{tor})\frac{\partial\mathbf{r}}{\partial\theta_\text{f}}\right)=\frac{\hcancel{\iota}}{J_\text{f}}\mathbf{e}_{\theta_\text{f}}+\frac{1}{J_\text{f}}\mathbf{e}_{\zeta_\text{f}}\implies J=\frac{1}{\mathbf{B}\cdot\nabla\zeta_\text{f}}
+\end{equation}
+
+Notice the difference from our previous result for the Jacobian derived in subsection \ref{subsec-5-5-1}. This is precisely due to the fact that we have chosen the toroidal flux instead of the poloidal ribbon flux as the first flux coordinate. The magnetic field is thus uniquely determined if $\psi_\text{tor}$, $\hcancel{\iota}(\psi_\text{tor})$, $\theta_\text{f}$ and $\zeta_\text{f}$ are known functions of position $\mathbf{r}$ in the considered toroidal system. Note that this particular case requires the toroidal magnetic field to be non-zero. In the opposite case, we employ our results for the poloidal magnetic field. Since the latter two flux coordinates, $\theta_\text{f}$ and $\zeta_\text{f}$, are both periodic, the Cartesian components, $(x,y,z)$, of the position vector $\mathbf{r}$ can be written as a double Fourier series. Treating the three components simultaneously by way of the position vector, we denote:
+
+\begin{equation}
+    \mathbf{r}(\psi_\text{tor},\theta_\text{f},\zeta_\text{f})=\sum_{m,n}\mathbf{r}_{mn}(\psi_\text{tor})\exp{\left[\mathrm{i}m\theta_\text{f}-\mathrm{i}n\zeta_\text{f}\right]}
+\end{equation}
+
+The Boozer flux coordinate system introduced a function $\chi$, as such to make magnetic field-lines \textit{straight} and to reduce to the magnetic scalar potential for current-less plasma, which is precisely given by:
+
+\begin{equation}
+    \chi=\frac{\mu_0}{2\pi}\left(I_\text{tor}\theta_\text{f}+I_\text{pol}^\mathrm{d}\zeta_\text{f}\right)
+\end{equation}
+
+Since the equation of a magnetic field-line is given by $\theta_\text{f}-\hcancel{\iota}\zeta_\text{f}=\text{const.}=\theta_\text{f}^\square$, we may rewrite the exponents in the Fourier series above as follows:
+
+\begin{equation}
+    \mathbf{r}(\psi_\text{tor},\theta_\text{f},\zeta_\text{f})=\sum_{m,n}\mathbf{r}_{mn}(\psi_\text{tor})\exp{\left[\mathrm{i}\frac{\left(mI_\text{pol}^\mathrm{d}+nI_\text{tor}\right)\theta_\text{f}^\square+\left(m\hcancel{\iota}-n\right)2\pi\chi/\mu_0}{I_\text{tor}\hcancel{\iota}+I_\text{pol}^\mathrm{d}}\right]}
+\end{equation}
+
+To evaluate the Cartesian coordinate coefficients inside $\mathbf{r}_{mn}(\psi_\text{tor})$, one performs integration over a field-line, starting from an arbitrary point, for which, conveniently, $\chi$ and $\theta_\text{f}^\square$ can be chosen as zero, the former of which, $\theta_\text{f}^\square$, is constant along its respective field-line, so it remains zero along the path of integration. It is thus possible to determine $\mathbf{r}(\psi_\text{tor},\theta_\text{f}^\square=0,\chi)$ via the coefficients in the expansion to give:
+
+\begin{equation}
+    \mathbf{r}(\psi_\text{tor},\theta_\text{f},\zeta_\text{f})=\sum_{m,n}\mathbf{r}_{mn}(\psi_\text{tor})\exp{\left[\mathrm{i}\frac{2\pi(m\hcancel{\iota}-n)\chi}{\mu_0(I_\text{tor}\hcancel{\iota}+I_\text{pol}^\mathrm{d})}\right]}
+\end{equation}
+
+Note that such expansions can be acquired using equivalent approaches without the construction of the function $\chi$.
+
+\subsection{Canonical magnetic coordinates}
+
+We shall start our proof of the existence of canonical coordinates for any general magnetic field using the magnetic vector potential, since $\mathbf{B}=\nabla\times\mathbf{A}$ uniquely determines the magnetic field. Expressing the magnetic vector potential in the covariant form:
+
+\begin{equation}
+    \mathbf{A}=A_\varrho\nabla\varrho+A_\theta\nabla\theta+A_\zeta\nabla\zeta
+\end{equation}
+
+where $(\varrho,\theta,\zeta)$ now form a generic coordinate system and $\varrho$ does not necessarily label magnetic surfaces since they do not necessarily exist. Furthermore, the magnetic vector potential is uniquely determined up to a gradient of a scalar function, here, $\nabla G(\varrho,\theta,\zeta)$. Hence, we could choose $G$ such that:
+
+\begin{equation}
+    \frac{\partial G}{\partial\varrho}=A_\varrho\qquad G(\varrho=0)=0\qquad\frac{\partial G}{\partial\theta}=A_\theta-\Psi\qquad\frac{\partial G}{\partial\zeta}=A_\zeta-\Phi
+\end{equation}
+
+where $\Psi$ and $\Phi$ are two single-valued functions that shall be presented later. This choice of $G$ allows us to write:
+
+\begin{equation}
+    \label{eq-5-152}
+    \mathbf{A}=\Psi\nabla\theta+\Phi\nabla\zeta+\nabla G\implies\mathbf{B}=\nabla\Psi\times\nabla\theta+\nabla\Phi\times\nabla\zeta
+\end{equation}
+
+This representation of the magnetic field is commonly referred to as its canonical form, which is reminiscent of the usual definition via the flux-surface label $\varrho$ for existing magnetic surfaces. From the similarity with equation (\ref{eq-6-54}), the toroidal flux through a constant $\Psi$ surface is precisely $2\pi\Psi$, while the poloidal disk flux through a constant $\Phi$ surface measures precisely $2\pi\Phi$. The formal proof of this analogy is derived using the canonical form and evaluating the magnetic flux through a surface of constant $\Psi$ and $\Phi$, respectively, along the directions of $\nabla\theta$ and $\nabla\zeta$. We shall illustrate the proof for the toroidal function:
+
+\begin{equation}
+    \iint_{S(\Psi)}\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\iint_{S(\Psi)}(\mathbf{B}\cdot\nabla\zeta)J\,\mathrm{d}\varrho\,\mathrm{d}\theta=\iint_{S(\Psi)}\nabla\zeta\cdot(\nabla\Psi\times\nabla\theta)J\,\mathrm{d}\varrho\,\mathrm{d}\theta
+\end{equation}
+
+\begin{equation}
+    \iint_{S(\Psi)}\nabla\Psi\cdot(\nabla\theta\times\nabla\zeta)J\,\mathrm{d}\varrho\,\mathrm{d}\theta
+    =\iint_{S(\Psi)}\frac{\nabla\Psi\cdot(\nabla\theta\times\nabla\zeta)}{\nabla\varrho\cdot(\nabla\theta\times\nabla\zeta)}\,\mathrm{d}\varrho\,\mathrm{d}\theta=
+\end{equation}
+
+\begin{equation}
+    \iint_{S(\Psi)}\left[\frac{\partial\Psi}{\partial\varrho}\nabla\varrho+\frac{\partial\Psi}{\partial\theta}\nabla\theta+\frac{\partial\Psi}{\partial\zeta}\nabla\zeta\right]\cdot\frac{\nabla\theta\times\nabla\zeta}{\nabla\varrho\cdot(\nabla\theta\times\nabla\zeta)}=\iint_{S(\Psi)}\frac{\partial\Psi}{\partial\varrho}\,\mathrm{d}\varrho\,\mathrm{d}\theta=2\pi\Psi
+\end{equation}
+
+where, in the last equality, we used the fact that the domain of integration is precisely $\Psi(\varrho,\theta,\zeta)=\text{const}$. The demonstration for $\Phi$ representing the poloidal disk flux follows an analogous procedure. It is important to note that surfaces $\Psi(\varrho,\theta,\zeta)=\text{const.}$ and surfaces $\Phi(\varrho,\theta,\zeta)=\text{const.}$ do not coincide in general. If they were to coincide, they form, in fact, magnetic surfaces and can thus be related via a common flux surface label. In systems characterised by magnetic surfaces, these are represented by $\psi_\text{tor}$ and $\psi_\text{pol}^\mathrm{d}$, respectively. This is entirely equivalent to $\mathbf{B}\cdot\nabla\Psi\neq0\neq\mathbf{B}\cdot\nabla\Phi$ and $\mathbf{B}\cdot\nabla\Psi\neq\mathbf{B}\cdot\nabla\Phi$.
+
+\quad It is precisely these four variables, $\Psi$, $\Phi$, $\theta$, $\zeta$, that can be considered as canonical variables in the Hamiltonian context. To show this, it suffices to show that they obey Hamilton's equations, which implies the existence of an associated Hamiltonian. We shall first eliminate the dependency of the poloidal stream function, $\Phi$ on the first flux-coordinate, $\varrho$, by expressing it in terms of the toroidal stream function, thus $\Phi(\varrho,\theta,\zeta)\equiv\Phi(\Psi,\theta,\zeta)$. In terms of the coordinates $(\Psi,\theta,\zeta)$, the equation of a magnetic field-line reads:
+
+\begin{equation}
+    \frac{\mathrm{d}\Psi}{\mathbf{B}\cdot\nabla\Psi}=\frac{\mathrm{d}\theta}{\mathbf{B}\cdot\nabla\theta}=\frac{\mathrm{d}\zeta}{\mathbf{B}\cdot\nabla\zeta}
+\end{equation}
+
+Taking the dot product of equation (\ref{eq-5-152}) with $\nabla\Psi$, we find:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla\Psi=\nabla\Psi\cdot(\nabla\Phi\times\nabla\zeta)=\nabla\Psi\cdot\left[\left(\frac{\partial\Phi}{\partial\Psi}\nabla\Psi+\frac{\partial\Phi}{\partial\theta}\nabla\theta+\frac{\partial\Phi}{\partial\zeta}\nabla\zeta\right)\times\nabla\zeta\right]=\frac{\partial\Phi}{\partial\theta}\nabla\Psi\cdot(\nabla\theta\times\nabla\zeta)
+\end{equation}
+
+Plugging this result into the magnetic field-line equation, we find:
+
+\begin{equation}
+    \diff{\Psi}{\zeta}=\frac{\mathbf{B}\cdot\nabla\Psi}{\mathbf{B}\cdot\nabla\zeta}=\frac{\partial\Phi}{\partial\theta}\frac{\nabla\Psi\cdot(\nabla\theta\times\nabla\zeta)}{\nabla\zeta\cdot(\nabla\Psi\times\nabla\theta)}=\frac{\partial\Phi}{\partial\theta}
+\end{equation}
+
+Analogously, we find:
+
+\begin{equation}
+    \diff{\theta}{\zeta}=\frac{\mathbf{B}\cdot\nabla\theta}{\mathbf{B}\cdot\nabla\zeta}=\frac{\nabla\theta\cdot(\nabla\Phi\times\nabla\zeta)}{\nabla\zeta\cdot(\nabla\Psi\times\nabla\theta)}=\frac{\partial\Phi}{\partial\Psi}\frac{\nabla\theta\cdot(\nabla\Psi\times\nabla\zeta)}{\nabla\zeta\cdot(\nabla\Psi\times\nabla\theta)}=-\frac{\partial\Phi}{\partial\Psi}
+\end{equation}
+
+We may thus identify the toroidal angle $\zeta$ with time, the poloidal stream function $\Phi$ with the negative Hamiltonian, $-\mathcal{H}$, the poloidal angle $\theta$ with a canonical coordinate, and the toroidal stream function $\Psi$ with a canonical momentum. The function $-\Phi$ is commonly referred to as the magnetic field-line Hamiltonian. Furthermore, the toroidal stream function $\Psi$ and the poloidal angle $\theta$ are conjugate variables.
+
+\quad In the case of a time-dependent magnetic field, the time-dependence can be transformed \textit{away} via a canonical transformation, so to consider a Hamiltonian system with two degrees of freedom, namely the toroidal stream function $\Psi$ and the poloidal angle $\theta$ as a first pair of conjugate variables, and the poloidal stream function $\Phi$ and the toroidal angle $\zeta$ as a second pair of conjugate variables. The new Hamiltonian is, therefore, time-independent and thus conservative. This allows us to use a wide range of mathematical and computational tools developed for conservative systems. In a more advanced context, the complexity of magnetic field-lines as a Hamiltonian system with two degrees of freedom implies the existence of stochastic field-line behaviour.
+
+\quad It is only appropriate to see how the Hamiltonian representation of magnetic field-lines reproduces all of our considerations about flux-coordinates in the case of existing magnetic surfaces. In such systems, the Hamiltonian analogue $-\Phi(\Psi,\theta,\zeta)=-\Phi(\Psi)$ only, so that the Hamiltonian is in its action-angle form. The toroidal stream function is the action of the system, hence a conserved quantity, and the poloidal angle depends linearly on the toroidal angle, whose relation is precisely determined by the rotational transform and an additive constant that uniquely determines a single magnetic field-line belonging to a particular magnetic surface. In this perspective, the rotational transform represents the system's angular frequency. Thus, a system with existing, \textit{perfect} magnetic surfaces is integrable. In practice, realistic systems are usually characterised by \textit{reasonably good} magnetic surfaces, which somewhat corresponds to near-integrable Hamiltonian systems. The common approach to such systems is precisely canonical perturbation theory.
+
+\section{Quasi-symmetry of magnetic fields}
+
+Quasi-symmetry is a remarkable concept in plasma physics and can be summarized in a single sentence: if the magnitude of the magnetic field $B=\|\mathbf{B}\|$ presents a continuous symmetry in specific coordinate systems, such that $B$ is independent of one of the coordinates, any guiding centre follows a trajectory similar to that observed in the presence of a truly symmetric magnetic field. It is important to emphasize that the magnetic field vector $\mathbf{B}$ need not be symmetric. The idea presented here is promising, as it combines the advantageous confinement characteristics of tokamaks with the stability and durability of stellarators. Particle trajectories in the presence of drifts produced by $\nabla\mathbf{B}$ and by the curvature of fields: quasi-symmetry constitutes a method allowing to guarantee particle confinement, including in the presence of these drifts. Quasi-symmetry is closely associated with the Boozer coordinate system, which consists of a coordinate linked to magnetic surfaces, a poloidal angle coordinate $\theta$, and a toroidal angle coordinate $\zeta$ in a toroidal magnetohydrodynamic equilibrium. It is necessary to emphasize that quasi-symmetry only arises in the case of the Boozer coordinate system, because any other choice of toroidal coordinates does not present the same consequences. We distinguish the following three cases:
+
+\begin{enumerate}
+    \item Axial quasi-symmetry: $B=B(\varrho, \theta)$
+    \item Helical quasi-symmetry: $B=B(\varrho, m\theta-n\zeta)$ where $m,n\in\mathbb{N}^*$
+    \item Poloidal quasi-symmetry: $B=B(\varrho, \zeta)$
+\end{enumerate}
+
+Magnetic fields characterized by a type of quasi-symmetry can be roughly described as follows: particle trajectories, as well as neoclassical transport in quasi-symmetric magnetic fields, are analogous to those in truly axisymmetric magnetic fields. The term \textit{neoclassical} refers to the motion of guiding centres and to collisions in the absence of turbulence, and will be the subject of our study later. There exist several precise statements of the preceding fact:
+
+\begin{enumerate}
+    \item The equations of motion of a guiding centre, expressed in Boozer coordinates, depend only on $B$ and $\varrho$.
+    \item The average Lagrangian over a gyration period, expressed in Boozer coordinates, depends only on $B$ and $\varrho$.
+    \item In quasi-symmetric magnetic fields, there exists a conserved momentum quantity, analogous to canonical angular momentum, which guarantees the confinement of charged particles.
+    \item When $B$ is expressed in Boozer coordinates, radial neoclassical fluxes and parallel fluxes depend only on $B$ and functions of $\varrho$.
+\end{enumerate}
+
+We now demonstrate the simultaneous existence of the three types of quasi-symmetry. Recall that the result sought boils down to the following sentence: the existence of a symmetry in $\|\mathbf{B}\|$ implies the presence of the same symmetry in $\beta$ (the covariant component of the magnetic field). We return to the ideal magnetohydrodynamic equilibrium equation $\mathbf{J}\times\mathbf{B}=\nabla p$ where $\mathbf{J}=\nabla\times\mathbf{B}/\mu_0$, then by applying the curl on equation (\ref{eq-6-77}), we find:
+
+\begin{equation}
+    \nabla\times\mathbf{B}=\nabla\beta\times\nabla\Psi+\frac{\mathrm{d}I}{\mathrm{d}\Psi}\nabla\Psi\times\nabla\theta_\text{o}+\frac{\mathrm{d}G}{\mathrm{d}\Psi}\nabla\Psi\times\nabla\zeta_\text{o}
+\end{equation}
+
+It should be noted that $\nabla\beta=\partial_\Psi\beta\nabla\Psi+\partial_{\theta_\text{o}}\beta\nabla\theta_\text{o}+\partial_{\zeta_\text{o}}\beta\nabla\zeta_\text{o}$, which gives us:
+
+\begin{equation}
+    \left(\frac{\partial\beta}{\partial\zeta_\text{o}}+\hcancel{\iota}\frac{\partial\beta}{\partial\theta_\text{o}}-\frac{\mathrm{d}G}{\mathrm{d}\Psi}-\hcancel{\iota}\frac{\mathrm{d}I}{\mathrm{d}\Psi}\right)(\nabla\Psi\cdot(\nabla\theta_\text{o}\times\nabla\zeta_\text{o}))\nabla\Psi=\mu_0\frac{\mathrm{d}p}{\mathrm{d}\Psi}\nabla\Psi
+\end{equation}
+
+Using a previous result, notably (\ref{eq-6-79}), we find:
+
+\begin{equation}
+    \frac{\partial\beta}{\partial\zeta_\text{o}}+\hcancel{\iota}\frac{\partial\beta}{\partial\theta_\text{o}}-\frac{\mathrm{d}G}{\mathrm{d}\Psi}-\hcancel{\iota}\frac{\mathrm{d}I}{\mathrm{d}\Psi}=\mu_0\frac{G+\hcancel{\iota}I}{\mathbf{B}^2}\frac{\mathrm{d}p}{\mathrm{d}\Psi}
+\end{equation}
+
+Writing the Fourier transforms of the magnetic field and of the function $\beta$, one finds:
+
+\begin{equation}
+    \frac{1}{\mathbf{B}^2}=\sum_{m,n}\mathcal{B}_{m,n}\exp(\mathrm{i}m\theta_\text{o}-\mathrm{i}n\zeta_\text{o})\quad\text{and}\quad\beta=\sum_{m,n}\beta_{m,n}\exp(\mathrm{i}m\theta_\text{o}-\mathrm{i}n\zeta_\text{o})
+\end{equation}
+
+\begin{equation}
+    \beta_{m,n}=\frac{\mu_0\mathcal{B}_{m,n}(G+\hcancel{\iota}I)}{\mathrm{i}(\hcancel{\iota}m-n)}\frac{\mathrm{d}p}{\mathrm{d}\Psi}
+\end{equation}
+
+Assuming that the magnetic field depends on angles $\theta_\text{o}$ and $\zeta_\text{o}$ via a function $\chi = M\theta_\text{o} - N\zeta_\text{o}$, where $M$ and $N$ are integers, the same applies to $1/\mathbf{B}^2$. Then, $\mathcal{B}_{m,n}$ vanishes unless $m=kM$ and $n=kN$ for some $k\in\mathbb{Z}$. The same applies to $\beta_{m,n}$, so $\beta$ depends on angles $\theta_\text{o}$ and $\zeta_\text{o}$ via the same function $\chi$, as is the case for the magnetic field $\|\mathbf{B}\|$.
+
+\subsection{Axisymmetric confinement}
+
+In the case of axial symmetry, particle motions are strongly restricted by a conservation law generated by the symmetry. Here, axial symmetry is indeed a continuous rotational symmetry. The conservation law and its result are commonly referred to as \textit{Tamm's theorem}.
+
+\subsubsection{Canonical angular momentum}
+
+The Lagrangian of a non-relativistic charged particle in a magnetic field is given as follows:
+
+\begin{equation}
+    \mathcal{L}(\mathbf{r},\dot{\mathbf{r}}, t)=q\mathbf{A}(\mathbf{r},t)\cdot\dot{\mathbf{r}}+\frac{1}{2}m\dot{\mathbf{r}}^2\quad\text{where}\quad\mathbf{B}=\nabla\times\mathbf{A}
+\end{equation}
+
+The preceding equation expressed in a cylindrical coordinate system $(\rho,\varphi,z)$ is found as follows:
+
+\begin{equation}
+    \mathcal{L}(\rho,\varphi,z,\dot{\rho},\dot{\varphi},\dot{z},t)=q\left(\dot{\rho}A_\rho+\rho\dot{\varphi}A_\varphi+\dot{z}A_\text{z}\right)+\frac{1}{2}m\left(\dot{\rho}^2+\rho^2\dot{\varphi}^2+\dot{z}^2\right)
+\end{equation}
+
+We assume the existence of a gauge such that:
+
+\begin{equation}
+    \frac{\partial A_\rho}{\partial\varphi}=\frac{\partial A_\varphi}{\partial\varphi}=\frac{\partial A_\text{z}}{\partial \varphi}=0\quad\text{i.e. axisymmetry}
+\end{equation}
+
+Then, $\partial\mathcal{L}/\partial\varphi=0$. Noether's theorem guarantees the existence of a conserved quantity that we henceforth call canonical angular momentum:
+
+\begin{equation}
+    \mathcal{P}_\varphi=\frac{\partial\mathcal{L}}{\partial\dot{\varphi}}=q\rho A_\rho+m\rho^2\dot{\varphi}=q\rho A_\rho+m\rho v_\varphi=\text{const.}
+\end{equation}
+
+Since the Lorentz force does no work on particles in the absence of electric fields, the azimuthal component of particle velocity is bounded by energy conservation. Furthermore, the constituent term of the vector potential can be made sufficiently larger than the one with $v_\varphi$ by applying a strong magnetic field:
+
+\begin{equation}
+    \frac{m\rho v_\varphi}{q\rho A_\varphi}\sim\frac{mv_\varphi}{qBL}\sim\frac{r_\text{L}}{L}\quad\text{where }L\text{ represents the characteristic length of the system}
+\end{equation}
+
+In a strong magnetic field, $r_\text{L}\ll L$, so the ratio is of the same order as $r_\text{L}/L\ll1$. In this case, particles approximately conserve the product $\rho A_\varphi$, which means they are confined to surfaces where $\rho A_\varphi=\text{const.}$ Even if one considers the kinetic term, the escape rate of particles from these surfaces is bounded from above by energy conservation. It should be emphasized that the surfaces for which $\rho A_\varphi=\text{const.}$ are precisely the magnetic surfaces. We begin by expanding the curl of an axisymmetric magnetic field:
+
+\begin{equation}
+    \mathbf{B}=\nabla\times\mathbf{A}=-\frac{\partial A_\varphi}{\partial z}\,\boldsymbol{\hat{\rho}}+\left(\frac{\partial A_\rho}{\partial z}-\frac{\partial A_\text{z}}{\partial\rho}\right)\boldsymbol{\hat{\varphi}}+\frac{1}{\rho}\frac{\partial}{\partial\rho}(\rho A_\varphi)\,\mathbf{\hat{z}}
+\end{equation}
+
+The result is immediate. The surfaces of $\rho A_\varphi=\text{const.}$ are indeed the magnetic surfaces:
+
+\begin{equation}
+    \mathbf{B}\cdot\nabla(\rho A_\varphi)=B_\rho\frac{\partial}{\partial\rho}\left(\rho A_\varphi\right)+B_\text{z}\frac{\partial}{\partial z}(\rho A_\varphi)=B_\rho\rho B_\text{z}-B_\text{z}\rho B_\rho=0 
+\end{equation}
+
+\subsubsection{Difficulties with axisymmetric confinements}
+
+The magnetic field in a toroidal system must be maintained by a current distribution inside the magnetic surfaces, as shown in subsection (\ref{sec2-10-3-2}). This distribution is concretized by equation (\ref{eq2-108}). The current inside the system entails several problems. First, the production and maintenance of a stable current consume an enormous amount of energy. Similarly, the current tends to be unstable and can lead to other instabilities, which can result in the rupture of the magnetic surfaces defined by $\rho A_\varphi=\text{const}$.

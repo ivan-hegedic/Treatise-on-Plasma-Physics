@@ -1,0 +1,1479 @@
+\chapter{Oscillations and waves in plasmas}
+
+\label{plasma-waves}
+
+We begin our consideration of plasma oscillations and waves with an overview of the general procedure for studying oscillations, and proceed from the perspective of magnetohydrodynamics, first focusing on isotropic behaviour and small-amplitude waves. Later, we shall explore how the two-fluid and, respectively, the Vlasov models better describe anisotropic behaviour with respect to the magnetic field, and how they shed light on phenomena that are ignored by the magnetohydrodynamic description. We shall also explore the regimes where the descriptions obtained by different models are expected to agree.
+
+\section{General procedure in studying plasma oscillations}
+
+In this section, we shall lay the relevant groundwork and outline the blueprint to be followed throughout the chapter. All plasma phenomena, including plasma waves and oscillations, can be fully described by combining Maxwell's equations relating electromagnetic fields to charge and current distributions within the plasma, with the Lorentz force equation, represented by Vlasov, two-fluid, or magnetohydrodynamic equations of motion, depending on the perspective of study, that capture the response of charges and currents to imposed electromagnetic fields. In the ensuing chapter, dedicated to plasma oscillations and waves of small amplitude, the complexity of the aforementioned equations will be addressed by, in most cases, linearising them at the appropriate time. We employ the following notation: barred quantities shall denote perturbations from the equilibrium quantities with a superdexed square or indexed zero. We shall, in all cases, endeavour to determine the dispersion relation of the particular oscillation or wave in question and discuss the physical implications of specific boundary conditions. We shall proceed by applying the announced method to the case of a simple electrostatic wave in a collisionless isotropic plasma from the two-fluid perspective. The governing equations are thus the two-fluid continuity and momentum equations, along with the Poisson equation:
+
+\begin{equation}
+    \frac{\partial n_\sigma}{\partial t}+\nabla\cdot(n_\sigma\mathbf{u}_\sigma)=0\qquad n_\sigma\frac{\mathrm{d}\mathbf{u}_\sigma}{\mathrm{d}t}=n_\sigma q_\sigma\mathbf{E}-\nabla P_\sigma\qquad\nabla\cdot\mathbf{E}=\frac{1}{\varepsilon_0}\sum_{\sigma}n_\sigma q_\sigma
+\end{equation}
+
+Isotropy allows us to express the pressure term as the gradient of the scalar pressure, $P_\sigma=\gamma n_\sigma k_\mathrm{B}T_\sigma$. We shall next linearise these equations about the equilibrium state of a quasi-neutral stationary plasma, thus $\mathbf{u}_\sigma^\square=\mathbf{0}$ and $\sum_\sigma n_\sigma^\square q_\sigma=0$. The pressure term contains variations in both number density and temperature, and we now impose the reasonable condition that the temperature perturbations are negligible compared to those of other quantities. The governing equations become:
+
+\begin{equation}
+    \frac{\partial\bar{n}_\sigma}{\partial t}+n_\sigma^\square\nabla\cdot\bar{\mathbf{u}}_\sigma=0\qquad n_\sigma^\square m_\sigma\frac{\partial\bar{\mathbf{u}}_\sigma}{\partial t}=n_\sigma^\square q_\sigma\bar{\mathbf{E}}-\gamma k_\mathrm{B}T_\sigma^\square\nabla\bar{n}_\sigma\qquad\nabla\cdot\bar{\mathbf{E}}=\frac{1}{\varepsilon_0}\sum_{\sigma}\bar{n}_\sigma q_\sigma
+\end{equation}
+
+One's attention may have been drawn to the seemingly self-contradictory term of 'electrostatic waves'. Indeed, all waves exhibit mutually inducted electric and magnetic fields. In the case of the so-called electrostatic waves, we ignore the inductive behaviour of electromagnetic fields, because mechanical number-density perturbations dominate over induced fields. In that case, the electric field is given by the gradient $\bar{\mathbf{E}}=-\nabla\bar{\phi}$, so that, when taking the divergence of the momentum equation and employing the commutativity of partial differential operators to exploit the continuity equation, one obtains:
+
+\begin{equation}
+    m_\sigma\frac{\partial^2\bar{n}_\sigma}{\partial t^2}=n_\sigma^\square q_\sigma\nabla^2\bar{\phi}+\gamma k_\mathrm{B}T_\sigma^\square\nabla^2\bar{n}_\sigma
+\end{equation}
+
+The obtained equation can be formally solved by Fourier transforming the equation, or simply by assuming a single Fourier mode $\exp{(\mathrm{i}\mathbf{k}\cdot\mathbf{r}-\mathrm{i}\omega t)}$, so that expressing $\bar{n}_\sigma$ gives:
+
+\begin{equation}
+    m_\sigma\omega^2\bar{n}_\sigma=n_\sigma^\square q_\sigma\mathbf{k}^2\bar{\phi}+\gamma k_\mathrm{B}T_\sigma^\square\mathbf{k}^2\bar{n}_\sigma\implies\bar{n}_\sigma=\frac{n_\sigma^\square q_\sigma}{m_\sigma}\frac{\mathbf{k}^2\bar{\phi}}{\omega^2-\frac{\gamma k_\mathrm{B}T_\sigma}{m_\sigma}\mathbf{k}^2}
+\end{equation}
+
+We finally obtain the dispersion relation of an electrostatic wave via Poisson's equation:
+
+\begin{equation}
+    \left[1-\sum_{\sigma}\frac{n_\sigma^\square q_\sigma^2}{\varepsilon_0m_\sigma}\frac{1}{\omega^2-\mathbf{k}^2\gamma k_\mathrm{B}T_\sigma^\square/m_\sigma}\right]\bar{\phi}=0
+\end{equation}
+
+We introduce the plasma frequency of species $\sigma$, $\omega_{\mathrm{p}\sigma}^2=n_\sigma^\square q_\sigma^2/\varepsilon_0m_\sigma$, so that the dispersion relation reads:
+
+\begin{equation}
+    \mathcal{D}(\omega,\mathbf{k})=1-\sum_{\sigma}\frac{\omega_{\mathrm{p}\sigma}^2}{\omega^2-\mathbf{k}^2\gamma k_\mathrm{B}T_\sigma^\square/m_\sigma}=0
+\end{equation}
+
+First, notice that the summed quantities in reality represent the electric susceptibilities of each species. We will use this interpretation later. In the case of a simple ion-electron plasma, one observes that the dispersion relation follows three strictly distinct regimes depending on the relation between the phase velocity $\omega^2/\mathbf{k}^2$ to the thermal velocities of ions and electrons, $k_\mathrm{B}T_\text{e}^\square/m_\text{e}$ and $k_\mathrm{B}T_\mathrm{i}^\square/m_\mathrm{i}$.
+
+\begin{enumerate}
+    \item The fully adiabatic regime, where $\omega^2/\mathbf{k}^2\gg k_\mathrm{B}T_\mathrm{i}^\square/m_\mathrm{i}, k_\mathrm{B}T_\text{e}^\square/m_\text{e}$ and $\gamma=3$ since the plasma is perturbed in a single direction parallel to $\mathbf{k}$, describes electrostatic phenomena whose phase velocity is much greater than thermal velocities of both species, so that ions and electrons negligibly exchange heat to modify their respective internal energies. We expand the denominators in the obtained dispersion relation to obtain:
+
+    \begin{equation}
+        \mathcal{D}(\omega,\mathbf{k})\simeq1-\frac{\omega_{\text{pe}}^2}{\omega^2}\left(1+\frac{3k_\mathrm{B}T_\text{e}^\square}{m_\text{e}}\frac{\mathbf{k}^2}{\omega^2}\right)-\frac{\omega_\text{pi}^2}{\omega^2}\left(1+\frac{3k_\mathrm{B}T_\mathrm{i}^\square}{m_\mathrm{i}}\frac{\mathbf{k}^2}{\omega^2}\right)=0
+    \end{equation}
+
+    Notice that due to negligible electron mass in comparison to that of ions, we allow ourselves to drop the ion contribution to obtain:
+
+    \begin{equation}
+        \mathcal{D}(\omega,\mathbf{k})\simeq1-\frac{\omega_\text{pe}^2}{\omega^2}\left(1+\frac{3k_\mathrm{B}T_\text{e}^\square}{m_\text{e}}\frac{\mathbf{k}^2}{\omega^2}\right)=0
+    \end{equation}
+
+    One can solve the biquadratic equation for $\omega^2$, neglecting the negative branch solution, and develop using the starting hypothesis:
+    
+    \begin{equation}
+        \omega^2\simeq\frac{\omega_\text{pe}^2}{2}\left(1+\sqrt{1+\frac{12k_\mathrm{B}T_\text{e}^\square}{m_\text{e}}\frac{\mathbf{k}^2}{\omega_\text{pe}^2}}\right)\simeq\omega_\text{pe}^2+\frac{3k_\mathrm{B}T_\text{e}^\square}{m_\text{e}}\mathbf{k}^2
+    \end{equation}
+
+    This type of electrostatic wave is commonly referred to as the electron plasma wave, the Langmuir wave, or the Bohm-Gross wave.
+
+    \item The fully isothermal regime, where $\omega^2/\mathbf{k}^2\ll k_\mathrm{B}T_\mathrm{i}^\square/m_\mathrm{i}, k_\mathrm{B}T_\text{e}^\square/m_\text{e}$ and $\gamma=1$, describes electrostatic phenomena propagating at a much lower speed than thermal velocities of both species, thus allowing the plasma to thermalise as the wave propagates. Expanding the denominator, we obtain:
+
+    \begin{equation}
+        \mathcal{D}(\omega,\mathbf{k})\simeq1+\frac{1}{\mathbf{k}^2\lambda_\text{Di}^2}+\frac{1}{\mathbf{k}^2\lambda_\text{De}^2}=1+\frac{1}{\mathbf{k}^2\lambda_\mathrm{d}^2}=0
+    \end{equation}
+
+    The obtained dispersion relation is independent of the phenomenon frequency, and solving for $\mathbf{k}$ gives imaginary solutions. This corresponds to Debye shielding of the phenomenon and is merely expected, since such phenomena allow the plasma to thermalise fully.
+
+    \item Electrons follow an isothermal regime and can therefore fully thermalise amongst each other, while ions follow an adiabatic regime, thus $k_\mathrm{B}T_\mathrm{i}^\square/m_\mathrm{i}\ll\omega^2/\mathbf{k}^2\ll k_\mathrm{B}T_\text{e}^\square/m_\text{e}$. Expanding each denominator in the dispersion relation according to the respective regime, as in the above, we find:
+
+    \begin{equation}
+        \mathcal{D}(\omega,\mathbf{k})\simeq1-\frac{\omega_\text{pi}^2}{\omega^2}\left(1+\frac{3k_\mathrm{B}T_\mathrm{i}^\square}{m_\mathrm{i}}\frac{\mathbf{k}^2}{\omega^2}\right)+\frac{1}{\mathbf{k}^2\lambda_\text{De}^2}=0
+    \end{equation}
+
+    One may recast the obtained dispersion relation into the following form:
+
+    \begin{equation}
+        \omega^2=\frac{\omega_\text{pi}^2}{1+1/\mathbf{k}^2\lambda_\text{De}^2}\left(1+\frac{3k_\mathrm{B}T_\mathrm{i}^\square}{m_\mathrm{i}}\frac{\mathbf{k}^2}{\omega^2}\right)=\frac{\mathbf{k^2\omega_\text{pi}^2}\lambda_\text{De}^2}{1+\mathbf{k}^2\lambda_{\text{De}}^2}\left(1+\frac{3k_\mathrm{B}T_\mathrm{i}^\square}{m_\mathrm{i}}\frac{\mathbf{k}^2}{\omega^2}\right)
+    \end{equation}
+
+    It is worthwhile to interpret the numerator of the multiplying factor, notably physically:
+
+    \begin{equation}
+        \omega_\text{pi}^2\lambda_\text{De}^2=\frac{n_\mathrm{i}^\square q_\mathrm{i}^2}{\varepsilon_0 m_\mathrm{i}}\frac{\varepsilon_0k_\mathrm{B}T_\text{e}^\square}{n_\text{e}^\square e^2}=\frac{Zk_\mathrm{B}T_\text{e}^\square}{m_\mathrm{i}}=c_\mathrm{i}^2
+    \end{equation}
+
+    The relevant parameter is commonly known as the ion-acoustic velocity; such electrostatic waves are called ion-acoustic waves. We shall explore its relevance in later considerations, in particular from the Vlasov perspective. The dispersion relation thus becomes:
+
+    \begin{equation}
+        \omega^2\simeq\frac{c_\mathrm{i}^2\mathbf{k}^2}{1+\mathbf{k}^2\lambda_\text{De}^2}+\frac{3k_\mathrm{B}T_\mathrm{i}^\square}{m_\mathrm{i}}\mathbf{k}^2
+    \end{equation}
+
+    Note that, for self-consistency, it is necessary to have $c_\mathrm{i}^2\gg k_\mathrm{B}T_\mathrm{i}^\square/m_\mathrm{i}$, otherwise, the dispersion relation would become $\omega^2\simeq 3\mathbf{k^2}k_\mathrm{B}T_\mathrm{i}^\square/m_\mathrm{i}$, which violates the starting hypothesis. Note that this condition is equivalent to $T_\text{e}^\square\gg T_\mathrm{i}^\square$, so that ion acoustic waves can only propagate in regimes where electrons are much hotter than ions.
+\end{enumerate}
+
+Now that we have laid out the blueprint of finding the dispersion relation for a particular case and discussed the relevant regimes, we shall employ the same approach in our subsequent considerations.
+
+\section{Elementary plasma waves in ideal MHD description}
+
+It is first worthwhile to remind ourselves of the relevant regimes where the ideal magnetohydrodynamic description excels:
+
+\begin{enumerate}
+    \item Macroscopic phenomena taking place on spatial scales much greater than typical Larmor radii of each plasma species, as well as the Debye length of the plasma under consideration. Thus, MHD cannot describe electrostatic waves and primarily focuses on electromagnetic induction waves.
+    \item Relatively slow phenomena whose typical duration is much greater than gyro-periods of each plasma species.
+    \item Fully isotropic and collisionless plasma phenomena, thus failing to describe phenomena characterised by a distinct preferred direction of propagation.
+    \item Plasma phenomena whose propagation velocity throughout space is greater than thermal velocities of all species present in the plasma, therefore all plasma species are in their respective adiabatic regimes.
+\end{enumerate}
+
+Let us also remind ourselves of the relevant ideal MHD equations:
+
+\begin{equation}
+    \frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\mathbf{u})=0\qquad\frac{\partial\mathbf{B}}{\partial t}=\nabla\times(\mathbf{u}\times\mathbf{B})\qquad\rho\frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t}=-\nabla P+\frac{(\nabla\times\mathbf{B})\times\mathbf{B}}{\mu_0}\qquad\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{P}{\rho^\gamma}\right)=0
+\end{equation}
+
+\subsection{Alfvén waves: fast and slow modes}
+
+We endeavour to describe small-amplitude waves and begin by linearising these equations about a stationary equilibrium state. Let us first focus on a regime with null macroscopic velocity, thus $\mathbf{u}_0=\mathbf{0}$, so that the convective time derivative simplifies into a partial time derivative for the macroscopic velocity perturbation:
+
+\begin{equation}
+    \frac{\partial\bar{\rho}}{\partial t}+\rho_0\nabla\cdot\bar{\mathbf{u}}=0\qquad\frac{\partial\bar{\mathbf{B}}}{\partial t}=\nabla\times(\bar{\mathbf{u}}\times\mathbf{B}_0)\qquad\rho_0\frac{\partial\bar{\mathbf{u}}}{\partial t}=-\nabla\bar{p}+\frac{(\nabla\times\bar{\mathbf{B}})\times\mathbf{B}_0}{\mu_0}\qquad\bar{p}=\frac{\gamma p_0}{\rho_0}\bar{\rho}
+\end{equation}
+
+We eliminate $\bar{p}$, and then apply the spatial and temporal Fourier transform by assuming that perturbed quantities follow a single Fourier mode, thus:
+
+\begin{equation}
+    -\omega\bar{\rho}+\rho_0\mathbf{k}\cdot\bar{\mathbf{u}}=0\qquad-\omega\bar{\mathbf{B}}=\mathbf{k}\times(\bar{\mathbf{u}}\times\mathbf{B}_0)\qquad-\omega\rho_0\bar{\mathbf{u}}=-\bar{\rho}c_s^2\mathbf{k}+\frac{(\mathbf{k}\times\bar{\mathbf{B}})\times\mathbf{B}_0}{\mu_0}
+\end{equation}
+
+where we have introduced the sound speed $c_s^2=\gamma p_0/\rho_0$. We proceed by eliminating $\bar{\rho}$ and $\bar{\mathbf{B}}$:
+
+\begin{equation}
+    -\omega\rho_0\bar{\mathbf{u}}=-\rho_0 c_s^2\frac{\mathbf{k}\cdot\bar{\mathbf{u}}}{\omega}\mathbf{k}+\frac{[\mathbf{k}\times(\mathbf{k}\times(\mathbf{B}_0\times\bar{\mathbf{u}}))]\times\mathbf{B}_0}{\mu_0\omega}
+\end{equation}
+
+We shall first develop the multiple vector product, and then impose $\bar{\mathbf{u}}=\bar{\mathbf{u}}^\perp+\bar{\mathbf{u}}^\parallel$, $\mathbf{k}=\mathbf{k}_\perp+\mathbf{k}_\parallel$, where perpendicular and parallel components are to be taken with respect to the equilibrium magnetic field $\mathbf{B}_0$. We shall also express our results in a simpler form by multiplying by $\omega/\rho_0$, so that:
+
+\begin{equation}
+    \label{eq-4-19}
+    -\omega\rho_0\bar{\mathbf{u}}=-\rho_0c_s^2\frac{\mathbf{k}\cdot\bar{\mathbf{u}}}{\omega}\mathbf{k}+\frac{(\mathbf{k}\cdot\bar{\mathbf{u}})(\mathbf{k}\cdot\mathbf{B}_0)\mathbf{B}_0-(\mathbf{k}\cdot\bar{\mathbf{u}})\mathbf{B}_0^2\mathbf{k}-(\mathbf{k}\cdot\mathbf{B}_0)^2\bar{\mathbf{u}}+(\mathbf{k}\cdot\mathbf{B}_0)(\mathbf{B}_0\cdot\bar{\mathbf{u}})\mathbf{k}}{\mu_0\omega}
+\end{equation}
+
+\begin{equation}
+    \begin{pmatrix}
+        \omega^2-c_\text{A}^2\mathbf{k}^2-c_s^2k_\perp^2&-c_s^2k_\perp k_\parallel\\
+        -c_s^2k_\perp k_\parallel & \omega^2-c_s^2k_\parallel^2
+    \end{pmatrix}\begin{pmatrix}
+        \bar{u}^\perp\\
+        \bar{u}^\parallel
+    \end{pmatrix}=\begin{pmatrix}
+        0\\0
+    \end{pmatrix}\implies \omega^4-(c_\text{A}^2+c_s^2)\mathbf{k}^2\omega^2+c_\text{A}^2c_s^2\mathbf{k}^2k_\parallel^2=0
+\end{equation}
+
+where we have introduced the Alfvén speed as $c_\text{A}^2=\mathbf{B}_0^2/\mu_0\rho_0$. Let us introduce $\theta=\angle(\mathbf{B}_0,\mathbf{k})$. One may solve this biquadratic equation to obtain:
+
+\begin{equation}
+    \frac{\omega^2}{\mathbf{k}^2}=\frac{c_\text{A}^2+c_s^2}{2}\pm\sqrt{\frac{(c_\text{A}^2+c_s^2)^2}{4}-c_\text{A}^2c_s^2\cos^2{\theta}}
+\end{equation}
+
+It is now useful to introduce the pressure parameter $\beta$ as follows:
+
+\begin{equation}
+    \frac{c_s^2}{c_\text{A}^2}=\frac{\gamma p_0}{\rho_0}\frac{\mu_0\rho_0}{\mathbf{B}_0^2}=\frac{\gamma}{2}\frac{p_0}{\mathbf{B}_0^2/2\mu_0}=\frac{\gamma}{2}\beta
+\end{equation}
+
+The solution to the dispersion relation thus becomes:
+
+\begin{equation}
+    \frac{\omega^2}{c_\text{A}^2\mathbf{k}^2}=\left(\frac{1}{2}+\frac{\gamma}{4}\beta\right)\left[1\pm\sqrt{1-\frac{2\gamma\beta\cos^2{\theta}}{\left(1+\frac{\gamma}{2}\beta\right)^2}}\right]
+\end{equation}
+
+Let us now investigate the two limiting regimes, that is, the regime of dominant magnetic pressure, where $\beta\ll1$, and the regime of dominant hydrostatic pressure, where $\beta\gg1$. In the regime of dominant magnetic pressure, and taking the positive branch of the square root term, we obtain:
+
+\begin{equation}
+    \lim_{\beta\ll1}\frac{\omega_+^2}{\mathbf{k}^2}\simeq c_\text{A}^2+c_s^2\sin^2{\theta}+\frac{c_s^4}{c_\text{A}^2}\sin^2{\theta}\cos^2{\theta}+\mathcal{O}(\beta^3)
+\end{equation}
+
+while for the negative branch of the square root term:
+
+\begin{equation}
+    \lim_{\beta\ll1}\frac{\omega_-^2}{\mathbf{k}^2}\simeq c_s^2\cos^2{\theta}-\frac{c_s^4}{c_\text{A}^2}\sin^2{\theta}\cos^2{\theta}+\mathcal{O}(\beta^3)
+\end{equation}
+
+Thus, in the dominant magnetic pressure regime, the positive-branch solution yields a plasma wave travelling at the Alfvén speed. Since in this regime $\beta\ll1$, that is, $c_s^2\ll c_\text{A}^2$, the positive branch solution is often called the fast mode, while the negative branch solution is commonly known as the magnetosonic mode or the slow mode. In the dominant hydrostatic pressure regime, one can proceed by expanding the positive branch solution around $1/\beta=0$ to obtain:
+
+\begin{equation}
+    \lim_{\beta\gg1}\frac{\omega^2}{\mathbf{k}^2}\simeq c_s^2+c_\text{A}^2\sin^2{\theta}+\frac{c_\text{A}^4}{c_s^2}\sin^2{\theta}\cos^2{\theta}+\mathcal{O}(\beta^{-2})
+\end{equation}
+
+while for the negative branch solution, one may arrive at:
+
+\begin{equation}
+    \lim_{\beta\gg1}\frac{\omega^2}{\mathbf{k}^2}\simeq c_\text{A}^2\cos^2{\theta}+\frac{c_\text{A}^4}{c_s^2}\sin^2{\theta}\cos^2{\theta}+\mathcal{O}(\beta^{-2})
+\end{equation}
+
+Therefore, in the dominant hydrostatic pressure regime, the only relevant solution is the positive branch one corresponding to regular sound waves in plasmas.
+
+\subsection{Alfvén waves: shear and compressional modes}
+
+It is worthwhile to discuss the behaviour of plasma waves under certain initial conditions. Let us focus on the following linearised MHD equation:
+
+\begin{equation}
+    -\omega\bar{\mathbf{B}}=\mathbf{k}\times(\bar{\mathbf{u}}\times\mathbf{B}_0)=(\mathbf{k}\cdot\mathbf{B}_0)\bar{\mathbf{u}}+(\mathbf{k}\cdot\bar{\mathbf{u}})\mathbf{B}_0
+\end{equation}
+
+Let the initial perturbation of the magnetic field, $\bar{\mathbf{B}}$, be perpendicular to $\mathbf{B}_0$. Inputting this into the previous equation, one finds $\mathbf{k}\cdot\bar{\mathbf{u}}=0$, which gives $-\omega\bar{\rho}=0$ for the continuity equation. Performing the inverse Fourier transform on the latter yields a constant perturbation to the density, which is therefore zero. The physical meaning of this result is that shear Alfvén waves are incompressible. Moreover, we substitute this expression into the equation. (\ref{eq-4-19}):
+
+\begin{equation}
+    \omega^2\bar{\mathbf{u}}=\frac{(\mathbf{k}\cdot\mathbf{B}_0)^2}{\mu_0\rho_0}\bar{\mathbf{u}}\implies\omega^2=c_\text{A}^2\mathbf{k}^2\cos^2{\theta}
+\end{equation}
+
+Notice that the dispersion relation of the shear Alfvén mode corresponds to the negative branch solution of the $\beta\gg1$ regime, where the hydrostatic pressure dominates over magnetic pressure. Since, in this regime, $c_\text{A}^2\ll c_s^2$, the shear Alfvén mode is necessarily slow. If initial conditions are such that $\bar{\mathbf{B}}\cdot\mathbf{B}_0\neq0$, then Alfvén waves necessarily show compressional behaviour, and can be categorised as both fast and slow modes, depending on the pressure parameter. We shall later compare the MHD analysis with those of the two-fluid and Vlasov models and observe that the MHD model fails to capture many intricacies of plasma oscillations.
+
+\section{Elementary cold plasma waves in the two-fluid description}
+
+Let us reflect on the title of this section. To distinguish waves that depend on temperature from waves that do not, we shall employ the terminology of \textit{cold} and \textit{warm} plasma waves. Cold waves thus have a temperature-independent dispersion relation, such that the temperature of each plasma species can be set to zero without altering its kinetics. Meanwhile, warm plasma waves suggest that the dispersion relation depends on the temperature of certain species. Evidently, the terminology does not refer to the \textit{temperature} of a wave, but simply the dependence or lack thereof on plasma species temperature. Nevertheless, regarding cold plasma waves as simply zero-temperature waves is misleading. Such waves are simply a consequence of a large number of plasma particles following identical Hamilton-Lagrangian dynamics, whereas warm plasma waves involve various groups of particles having different dynamics due to their specific initial velocity governed by their respective distribution function, and, therefore, require thermodynamic and statistical mechanical considerations.
+
+\quad Having thoroughly discussed the meaning behind the employed terminology, we shall start our considerations on cold plasma waves by eliminating the magnetic field in Maxwell's equations and performing a Fourier transform to obtain:
+
+\begin{equation}
+    \label{eq-4-30}
+    \nabla\times(\nabla\times\mathbf{E})=-\mu_0\frac{\partial\mathbf{J}}{\partial t}-\frac{1}{c^2}\frac{\partial^2\mathbf{E}}{\partial t^2}\implies\mathbf{k}\times(\mathbf{k}\times\mathbf{E})=-\mathrm{i}\mu_0\omega\mathbf{J}+\frac{\omega^2}{c^2}\mathbf{E}
+\end{equation}
+
+We shall moreover relate the current density to the electric field by means of the conductivity tensor, that is, $\mathbf{J}=\boldsymbol{\sigma}\cdot\mathbf{E}$, giving:
+
+\begin{equation}
+    -\frac{c^2}{\omega^2}\mathbf{k}\times(\mathbf{k}\times\mathbf{E})=\mathrm{i}\frac{c^2\mu_0}{\omega}\boldsymbol{\sigma}\cdot\mathbf{E}+\mathbf{E}=\left(\frac{\mathrm{i}\boldsymbol{\sigma}}{\varepsilon_0\omega}+\mathbf{1}\right)\cdot\mathbf{E}
+\end{equation}
+
+The double vector product can be recast into tensor form via the following dyadic product:
+
+\begin{equation}
+    \mathbf{k}\times(\mathbf{k}\times\mathbf{E})=\mathbf{kk}\cdot\mathbf{E}-\mathbf{k}^2\mathbf{E}=\mathbf{k}^2\left(\frac{\mathbf{kk}}{\mathbf{k}^2}-\mathbf{1}\right)\cdot\mathbf{E}
+\end{equation}
+
+Eq. (\ref{eq-4-30}) thus becomes:
+
+\begin{equation}
+    \left[\frac{c^2\mathbf{k}^2}{\omega^2}\left(\frac{\mathbf{kk}}{\mathbf{k}^2}-\mathbf{1}\right)+\frac{\mathrm{i}\boldsymbol{\sigma}}{\varepsilon_0\omega}+\mathbf{1}\right]\cdot\mathbf{E}=\mathbf{0}\implies\det{\left[\frac{c^2\mathbf{k}^2}{\omega^2}\left(\frac{\mathbf{kk}}{\mathbf{k}^2}-\mathbf{1}\right)+\frac{\mathrm{i}\boldsymbol{\sigma}}{\varepsilon_0\omega}+\mathbf{1}\right]}=0
+\end{equation}
+
+which provides the dispersion relation for any plasma wave once $\boldsymbol{\sigma}$ has been determined.
+
+\subsection{Obtaining dispersion relations via the dielectric tensor}
+
+In most cases, this form of the dispersion relation is used in the two-fluid perspective, since the conductivity tensor can be related to the mobilities of each species, which, for a stationary cold plasma subject to a uniform magnetic field, is given by the two-fluid momentum equations:
+
+\begin{equation}
+    n_\sigma m_\sigma\frac{\mathrm{d}\mathbf{u}_\sigma}{\mathrm{d}t}=n_\sigma q_\sigma(\mathbf{E}+\mathbf{u}_\sigma\times\mathbf{B}_0)\implies m_\sigma\frac{\partial\bar{\mathbf{u}}_\sigma}{\partial t}=q_\sigma(\bar{\mathbf{E}}+\bar{\mathbf{u}}_\sigma\times\mathbf{B}_0)
+\end{equation}
+
+We perform a Fourier transform on the previous linearised equation to obtain:
+
+\begin{equation}
+    -\mathrm{i}m_\sigma\omega\bar{\mathbf{u}}_\sigma=q_\sigma\bar{\mathbf{E}}+q_\sigma\bar{\mathbf{u}}_\sigma\times\mathbf{B}_0
+\end{equation}
+
+Let us choose $\mathbf{B}_0=B_0\,\mathbf{\hat{z}}$, so that the previous equation becomes:
+
+\begin{equation}
+    -\mathrm{i}\omega m_\sigma\begin{pmatrix}
+        \bar{u}_\sigma^\mathrm{x}\\
+        \bar{u}_\sigma^\mathrm{y}\\
+        \bar{u}_\sigma^\text{z}
+    \end{pmatrix}=q_\sigma\bar{\mathbf{E}}+q_\sigma B_0\begin{pmatrix}
+        \bar{u}_\sigma^\mathrm{y}\\
+        -\bar{u}_\sigma^\mathrm{x}\\
+        0
+    \end{pmatrix}\implies\begin{pmatrix}
+        -\mathrm{i}\omega & -q_\sigma B_0/m_\sigma & 0\\
+        q_\sigma  B_0/m_\sigma & -\mathrm{i}\omega & 0\\
+        0&0&-\mathrm{i}\omega
+    \end{pmatrix}\cdot\bar{\mathbf{u}}_\sigma=\frac{q_\sigma}{m_\sigma}\bar{\mathbf{E}}
+\end{equation}
+
+Introducing the mobility tensor of species $\sigma$ as $\bar{\mathbf{u}}_\sigma=\boldsymbol{\mu}_\sigma\cdot\bar{\mathbf{E}}$, we obtain:
+
+\begin{equation}
+    \boldsymbol{\mu}_\sigma=\frac{q_\sigma}{m_\sigma}\begin{pmatrix}
+        -\mathrm{i}\omega & -q_\sigma B_0/m_\sigma & 0\\
+        q_\sigma  B_0/m_\sigma & -\mathrm{i}\omega & 0\\
+        0&0&-\mathrm{i}\omega
+    \end{pmatrix}^{-1}=\frac{q_\sigma}{m_\sigma}\begin{pmatrix}
+        \frac{\mathrm{i}\omega}{\Omega_\sigma^2-\omega^2} & \frac{\Omega_\sigma}{\Omega_\sigma^2-\omega^2} & 0\\
+        -\frac{\Omega_\sigma}{\Omega_\sigma^2-\omega^2} & \frac{\mathrm{i}\omega}{\Omega_\sigma^2-\omega^2} & 0\\
+        0&0&\frac{\mathrm{i}}{\omega}
+    \end{pmatrix}
+\end{equation}
+
+The conductivity tensor thus reads:
+
+\begin{equation}
+    \boldsymbol{\sigma}=\sum_\sigma n_\sigma^\square q_\sigma\boldsymbol{\mu}_\sigma=\sum_\sigma\frac{n_\sigma^\square q_\sigma^2}{m_\sigma}\begin{pmatrix}
+        \frac{\mathrm{i}\omega}{\omega^2-\Omega_\sigma^2} & -\frac{\Omega_\sigma}{\Omega_\sigma^2-\omega^2} & 0\\
+        \frac{\Omega_\sigma}{\omega^2-\omega^2} & \frac{\mathrm{i}\omega}{\omega^2-\Omega_\sigma^2} & 0\\
+        0&0&\frac{\mathrm{i}}{\omega}
+    \end{pmatrix}
+\end{equation}
+
+It is now useful to introduce the electric permittivity tensor as follows:
+
+\begin{equation}
+    \boldsymbol{\varepsilon}=\frac{\mathrm{i}\boldsymbol{\sigma}}{\varepsilon_0\omega}+\mathbf{1}=\begin{pmatrix}
+        \varepsilon_1 & -\mathrm{i}\varepsilon_2 & 0\\
+        \mathrm{i}\varepsilon_2 & \varepsilon_1 & 0\\
+        0&0&\varepsilon_3
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    \varepsilon_1=S=1-\sum_\sigma\frac{\omega_{\mathrm{p}\sigma}^2}{\omega^2-\Omega_\sigma^2}\qquad\varepsilon_2=D=\sum_\sigma\frac{\Omega_\sigma}{\omega}\frac{\omega_{\mathrm{p}\sigma}^2}{\omega^2-\Omega_\sigma^2}\qquad\varepsilon_3=P=1-\sum_\sigma\frac{\omega_{\mathrm{p}\sigma}^2}{\omega^2}
+\end{equation}
+
+where we have used the $S$, $D$, $P$ notation as a mnemonic for sum, difference, and parallel, respectively, the reason for which shall become clear in what follows, recognise that the product $c^2\mathbf{k}^2/\omega^2=n^2$, that is, the optical index of refraction. Let us choose a coordinate system in which $\mathbf{k}=k_\perp\,\mathbf{\hat{x}}+k_\parallel\,\mathbf{\hat{z}}$. This allows us to simplify the expressions and ignore certain components along $\mathbf{\hat{y}}$. Note that such simplifications are not possible in plasmas that are non-uniform in the $x-y$ plane. The dispersion relation can be cast into matrix form as follows:
+
+\begin{equation}
+    \label{eq-4-41}
+    \det{\begin{pmatrix}
+        \varepsilon_1-n_\parallel^2 & -\mathrm{i}\varepsilon_2 & n_\parallel n_\perp\\
+        \mathrm{i}\varepsilon_2 & \varepsilon_1-n^2 & 0\\
+        n_\parallel n_\perp & 0 & \varepsilon_3 - n_\perp^2
+    \end{pmatrix}}\equiv\det{\begin{pmatrix}
+        \varepsilon_1-n^2\cos^2{\theta} & -\mathrm{i}\varepsilon_2 & n\sin{\theta}\cos{\theta}\\
+        \mathrm{i}\varepsilon_2 & \varepsilon_1-n^2 & 0\\
+        n^2\sin{\theta}\cos{\theta} & 0 & \varepsilon_3 - n^2\sin^2{\theta}
+    \end{pmatrix}}=0
+\end{equation}
+
+Let us divert our attention to the case $\theta=0$, where the dispersion relation becomes:
+
+\begin{equation}
+    \det{\begin{pmatrix}
+        \varepsilon_1-n^2 & -\mathrm{i}\varepsilon_2 & 0\\
+        \mathrm{i}\varepsilon_2 & \varepsilon_1-n^2 & 0\\
+        0 & 0 & \varepsilon_3
+    \end{pmatrix}}=0\implies\left[(\varepsilon_1-n^2)^2-\varepsilon_2^2\right]\varepsilon_3=0\Longleftrightarrow\left[(S-n^2)^2-D^2\right]P=0
+\end{equation}
+
+Thus, either $P=0$ or $n^2=\varepsilon_1\pm\varepsilon_2\equiv S\pm D$. Let us expand these solutions:
+
+\begin{equation}
+    R:=S+D=1-\sum_\sigma\frac{\omega_{\mathrm{p}\sigma}^2}{\omega(\omega+\Omega_\sigma)}\qquad L:=S-D=1-\sum_\sigma\frac{\omega_{\mathrm{p}\sigma}^2}{\omega(\omega-\Omega_\sigma)}
+\end{equation}
+
+where we have introduced the $R$ and $L$ notation as mnemonics for right-hand polarised and left-hand polarised. The $S,D,P$ mnemonic now becomes apparent since:
+
+\begin{equation}
+    S=\frac{R+L}{2}\qquad D=\frac{R-L}{2}
+\end{equation}
+
+We observe that $R$ diverges at $\omega=-\Omega_\sigma$ and $L$ diverges at $\omega=\Omega_\sigma$. These are, in fact, so-called resonance points, which we shall discuss later in further detail. Notice that here, we have defined the cyclotron frequencies as signed, so that $R$ diverges at cyclotron frequencies of negatively charged plasma species, and $L$ reciprocally diverges at cyclotron frequencies of positively charged plasma species. It is useful to dwell on the limiting conditions for $\omega$, such as $\omega\to\infty$ and $\omega\to0$. The former is easily determined, $\lim_{\omega\to\infty}R,L=1$, while the latter requires some attention:
+
+\begin{equation}
+    \lim_{\omega\to0}R,L=\lim_{\omega\to0}\left[1-\frac{1}{\omega}\left(\frac{\omega_\text{pi}^2}{\omega\pm\Omega_\mathrm{i}}+\frac{\omega_\text{pe}^2}{\omega\pm\Omega_\text{e}}\right)\right]=\lim_{\omega\to0}\left[1-\frac{1}{\omega}\frac{(\omega_\text{pi}^2+\omega_\text{pe}^2)\omega\pm(\Omega_\text{e}\omega_\text{pi}^2+\Omega_\mathrm{i}\omega_\text{pe}^2)}{(\omega\pm\Omega_\mathrm{i})(\omega\pm\Omega_\text{e})}\right]
+\end{equation}
+
+\begin{equation}
+    \frac{\omega_{\mathrm{p}\sigma}^2}{\Omega_\sigma}=\frac{n_\sigma^\square q_\sigma^2}{\varepsilon_0 m_\sigma}\frac{m_\sigma}{q_\sigma B_0}=\frac{n_\sigma^\square q_\sigma}{\varepsilon_0B_0}\implies \frac{\omega_\text{pi}^2}{\Omega_\mathrm{i}}=-\frac{\omega_\text{pe}^2}{\Omega_\text{e}}
+\end{equation}
+
+\begin{equation}
+    \lim_{\omega\to0}R,L=1-\frac{\omega_\text{pe}^2+\omega_\text{pi}^2}{\Omega_\mathrm{i}\Omega_\text{e}}\simeq1-\frac{\omega_\text{pe}^2}{\Omega_\text{e}\Omega_\mathrm{i}}\simeq1+\frac{n_\text{e}^\square e}{\varepsilon_0 B_0}\frac{m_\mathrm{i}}{Ze B_0}=1+\frac{c^2}{B_0^2/\mu_0 n_\mathrm{i}^\square m_\mathrm{i}}\simeq1+\frac{c^2}{c_\text{A}^2}
+\end{equation}
+
+Thus, at low frequencies, both $R$ and $L$ are related to Alfvén modes. The $n^2=L$ is the slow mode since it gives larger $\mathbf{k}$, while $n^2=R$ is the fast mode since it gives smaller $\mathbf{k}$. Let us now find the electric field eigenvector for the case $n^2=R$:
+
+\begin{equation}
+    \begin{pmatrix}
+        -D & -\mathrm{i}D & 0\\
+        \mathrm{i}D & -D & 0\\
+        0&0&P
+    \end{pmatrix}\cdot\bar{\mathbf{E}}=\lambda\bar{\mathbf{E}}\implies\frac{\bar{E}_\mathrm{x}}{\bar{E}_\mathrm{y}}=-\mathrm{i}\implies\text{Right-circulating wave, hence }R
+\end{equation}
+
+Analogously, choosing $n^2=L$ gives a left-circulating wave. Let us summarize the main principles of what we have developed so far. When the wave vector is strictly parallel to the magnetic field, two distinct modes exist: a right-circularly polarised wave with dispersion relation $n^2=R$ such that its resonance point $n\to\infty$ is reached as $\omega\to\Omega_\text{e}$, and a left-circularly polarised wave with dispersion relation $n^2=L$ such that $n\to\infty$ as $\omega\to\Omega_\mathrm{i}$. It is worth noting that, because the ion cyclotron motion is left-handed, it seems reasonable that a left-circulating wave resonates with ions, and vice versa for electrons. At low frequencies, both left- and right-circulating modes degenerate into Alfvén modes with the dispersion relation $n^2=1+c^2/c_\text{A}^2$. Compared with the magnetohydrodynamic model, we observe an additive factor of $1$. This is because the MHD model ignored displacement current. The displacement-current term shows that, for plasmas with sufficiently low number densities and/or a strong magnetic field, the Alfvén velocity may exceed the speed of light. For a plasma to exhibit significant Alfvénic behaviour, as described by magnetohydrodynamics, it must satisfy $c_\text{A}^2\ll c^2$, or equivalently, $\Omega_\mathrm{i}\ll\omega_\text{pi}$.
+
+\subsection{Resonances and cut-offs}
+
+In our preceding considerations, we have encountered conditions on $\omega$ such that the index of refraction and certain terms of dispersion relations diverge, and have called them resonances. Such and similar conditions present great importance when exploring possible wave modes for a given incident angle $\theta=\angle(\mathbf{B},\mathbf{k})$ within a given regime. Thus, we shall formally introduce the concept of resonances and cut-offs, as well as give physical meaning to the nomenclature of certain quantities, in particular, the index of refraction. Any general situation leading to $n^2\to\infty$ is called a resonance and physically corresponds to the wavelength of the wave going to zero. Thus, any dissipative effect in such a situation will be strongly damped by internal plasma mechanisms. Reciprocally, any general situation described by $n^2=0$ is called a cut-off, and corresponds to complete wave reflection, since, in the complex plane, $n$ changes from being purely imaginary to being purely real or vice versa depending on a given situation. In a general non-uniform plasma, there may exist multiple layers or regions of plasma where $n^2\to\infty$ and/or $n^2=0$. At such layers, waves will be either completely reflected or fully absorbed. An example of resonance regimes was explored in the previous subsection; let us illustrate one cut-off regime by re-taking Eq. (\ref{eq-4-41}) and imposing $\theta=\pi/2$:
+
+\begin{equation}
+    \det{\begin{pmatrix}
+        S&-\mathrm{i}D&0\\
+        \mathrm{i}D&S-n^2&0\\
+        0&0&P-n^2
+    \end{pmatrix}}=0\implies\left[S(S-n^2)-D^2\right](P-n^2)=0
+\end{equation}
+
+We observe two distinct modes: one related to parallel motion along the stationary magnetic field, the other to motion perpendicular to it. The first mode gives the simple dispersion relation for any unmagnetised plasma, as expected, since the magnetic field has no effect on the parallel motion of charges and is thus called the ordinary mode with dispersion relation:
+
+\begin{equation}
+    n^2=\frac{S^2-D^2}{S}=\frac{(S-D)(S+D)}{S}=\frac{RL}{S}
+\end{equation}
+
+Cut-offs occur when $R=0$ or $L=0$ while resonances occur when $S=0$. Since this mode depends on the applied magnetic field, it is called the extraordinary mode. It is worthwhile to investigate the resonance further. Since $S$ depends on both the cyclotron and the plasma frequencies of all species, it is called a hybrid resonance. In a typical ion-electron plasma, $S=0$ corresponds to:
+
+\begin{equation}
+    S=1-\frac{\omega_\text{pi}^2}{\omega^2-\Omega_\mathrm{i}^2}-\frac{\omega_\text{pe}^2}{\omega^2-\Omega_\text{e}^2}
+\end{equation}
+
+We expect two distinct solutions for $\omega^2$, one of the order of or greater than $\Omega_\text{e}$, and another much smaller than $\Omega_\text{e}$. These are respectively called the upper and lower hybrid resonant frequencies, $\omega_\text{UH}$ and $\omega_\text{LH}$, whose expressions are:
+
+\begin{equation}
+    \omega_\text{UH}^2\simeq\omega_\text{pe}^2+\Omega_\text{e}^2\quad\text{and}\quad\omega_\text{LH}^2\simeq\Omega_\mathrm{i}^2+\frac{\omega_\text{pi}^2}{1+\frac{\omega_\text{pe}^2}{\Omega_\text{e}}^2}=\Omega_\mathrm{i}^2+\Omega_\text{e}^2\frac{\omega_\text{pi}^2}{\omega_\text{pe}^2+\Omega_\text{e}^2}
+\end{equation}
+
+We now return to our considerations of Alfvén modes in a cold plasma, in a more general setting. Our starting dispersion relation is the following:
+
+\begin{equation}
+    \begin{pmatrix}S-n^2\cos^2{\theta}&-iD&n^2\sin{\theta}\cos{\theta}\\iD&S-n^2&0\\n^2\sin{\theta}\cos{\theta}&0&P-n^2\sin^2{\theta}\end{pmatrix}\begin{pmatrix}E_\mathrm{x}\\E_\mathrm{y}\\E_\text{z}\end{pmatrix}=0
+\end{equation}
+
+where $S$, $D$, $P$, $n$, and $\theta$ retain their usual meanings, such that the dispersion relation becomes a biquadratic equation in $n$:
+
+\begin{equation}
+    An^4-Bn^2+C=0\qquad\text{where}
+\end{equation}
+
+\begin{equation}
+    A=S\sin^2{\theta}+P\cos^2{\theta}\qquad B=(S^2-D^2)\sin^2{\theta}+PS(1+\cos^2{\theta})\qquad C=PRL
+\end{equation}
+
+We may evaluate the determinant of the matrix and set it equal to zero, whose solutions for $n^2$ are:
+
+\begin{equation}
+    n^2=\frac{B\pm\sqrt{B^2-4AC}}{2A}
+\end{equation}
+
+Let us draw our attention to the discriminant:
+
+\begin{equation}
+    B^2-4AC=(S^2-D^2-SP)^2\sin^4{\theta}+4P^2D^2\cos^2{\theta}
+\end{equation}
+
+which is semipositive-definite for all $\theta$. Therefore, $n$ is either purely real, corresponding to a propagating wave, or purely imaginary, corresponding to an evanescent wave. Cut-offs correspond to $C=0$, while resonances correspond to $A\to0$, that is, $S\sin^2{\theta}+P\cos^2{\theta}\simeq0$. The obtained biquadratic equation gives the general dispersion relation of a cold plasma for arbitrary $\theta$.
+
+\quad The physical mechanism behind cutoffs is, however, a genuinely good question. Let us consider the case $\mathbf{k}\cdot\mathbf{B}=0$, so that $\theta=\pi/2$, and let us, moreover, consider a simple Langmuir wave; hence, we neglect ion contributions to the dispersion relation. The cutoffs are determined by $PRL=0$, that is:
+
+\begin{equation}
+    P=0\implies\omega^2=\omega_\text{pe}^2\qquad R=0\implies\omega(\omega+\Omega_\text{e})=\omega_\text{pe}^2\qquad L=0\implies\omega(\omega-\Omega_\text{e})=\omega_\text{pe}^2
+\end{equation}
+
+Notice that $P=0$ indicates a resonance, and thus shall not be considered. Let us concretely focus on the $R=0$ case, since the $L=0$ case will be shown later to be completely analogous. Multiplying the linearised Fourier transformed electron momentum equation by $\mathrm{i}\omega$ gives:
+
+\begin{equation}
+    m_\text{e}\omega^2\bar{\mathbf{u}}_\text{e}=\mathrm{i}q_\text{e}\omega\bar{\mathbf{E}}+\mathrm{i}q_\text{e}\omega\bar{\mathbf{u}}_\text{e}\times\mathbf{B}_0
+\end{equation}
+
+Inputting the solution for $\omega$ given by $R=0$:
+
+\begin{equation}
+    \label{eq-4-60}
+    m_\text{e}\omega_\text{pe}^2\bar{\mathbf{u}}_\text{e}-\mathrm{i}q_\text{e}\omega\bar{\mathbf{E}}=m_\text{e}\Omega_\text{e}\omega\bar{\mathbf{u}}_\text{e}+\mathrm{i}q_\text{e}\omega\bar{\mathbf{u}}_\text{e}\times\mathbf{B}_0
+\end{equation}
+
+Expanding $\omega_\text{pe}^2$ and $\Omega_\text{e}$ using their definitions gives:
+
+\begin{equation}
+    m_\text{e}\frac{n_\text{e}^\square q_\text{e}^2}{\varepsilon_0m_\text{e}}\bar{\mathbf{u}}_\text{e}-\mathrm{i}q_\text{e}\omega\bar{\mathbf{E}}=m_\text{e}\frac{q_\text{e}B_0}{m_\text{e}}\omega\bar{\mathbf{u}}_\text{e}+\mathrm{i}q_\text{e}\omega\bar{\mathbf{u}}_\text{e}\times\mathbf{B}_0
+\end{equation}
+
+Next, we take the divergence of the equation, or equivalently, take the dot product with $\mathrm{i}\mathbf{k}$:
+
+\begin{equation}
+    \frac{q_\text{e}^2}{\varepsilon_0}\nabla\cdot(n_\text{e}^\square\bar{\mathbf{u}}_\text{e})-\mathrm{i}q_\text{e}\omega\nabla\cdot\bar{\mathbf{E}}=\nabla\cdot\left[q_\text{e}B_0\omega\bar{\mathbf{u}}_\text{e}+\mathrm{i}q_\text{e}\omega\bar{\mathbf{u}}_\text{e}\times\mathbf{B}_0\right]
+\end{equation}
+
+The linearised two-fluid continuity equation, along with the inverse Fourier transform, gives:
+
+\begin{equation}
+    q_\text{e}\left(-\frac{q_\text{e}}{\varepsilon_0}\frac{\partial\bar{n}_\text{e}}{\partial t}-\mathrm{i}\omega\nabla\cdot\bar{\mathbf{E}}\right)=q_\text{e}\frac{\partial}{\partial t}\left(\nabla\cdot\bar{\mathbf{E}}-\frac{\bar{n}_\text{e}q_\text{e}}{\varepsilon_0}\right)=\nabla\cdot\left[q_\text{e}B_0\omega\bar{\mathbf{u}}_\text{e}+\mathrm{i}q_\text{e}\omega\bar{\mathbf{u}}_\text{e}\times\mathbf{B}_0\right]
+\end{equation}
+
+The left-hand side of the equation is thus zero due to Gauss's law. The right-hand side of the equation thus ought to be zero as well:
+
+\begin{equation}
+    \mathrm{i}\omega B_0\nabla\cdot\bar{\mathbf{u}}_\text{e}+\omega\mathbf{B}_0\cdot(\nabla\times\bar{\mathbf{u}}_\text{e})=\omega\bar{\mathbf{u}}_\text{e}\cdot(\underbrace{\nabla\times\mathbf{B}_0}_{\mathbf{0}})=\mathbf{0}
+\end{equation}
+
+The $\omega$ is dropped, since when inverse Fourier-transforming, it only contributes to the equation by an additive constant, which evaluates to zero when invoking equilibrium conditions. Since the stationary magnetic field $\mathbf{B}_0$ (whose curl is zero, being an externally applied field, so that the third term drops), and the macroscopic oscillatory electron velocity have only real components (it is precisely $\omega$ which determines the complex properties of the refractive index), either side of the equation is either purely imaginary or purely real, and when invoking equilibrium conditions, it must be $\bar{\mathbf{u}}_\text{e}=\mathbf{0}$. Thus, at cutoffs of Langmuir waves, macroscopic electron motion comes to a halt, and the wave does not propagate since there is no net oscillatory charge motion to support electrostatic waves. The $L=0$ case shall not receive further treatment other than recognising that the only difference is that it contributes a negative sign to the first term of the right-hand side of equation (\ref{eq-4-60}), which does not fundamentally change the result.
+
+\subsection{Clemmow-Mullaly-Allis diagram and taxonomy of modes}
+
+The CMA (Clemmow-Mullaly-Allis) diagram provides an elegant method for revealing and classifying the large number of modes embedded in the dispersion relation. If the ion species is known, the cyclotron and plasma frequencies are effectively linearly dependent; the only two truly free parameters are the number density and the magnetic field. The CMA diagram is thus constructed in a chart having $\ln{(\omega_\text{pe}^2+\omega_\text{pi}^2)/\omega^2}$ as its horizontal axis and $\ln{\Omega_\text{e}^2/\omega^2}$ as its vertical axis, then plotting the wave normal surfaces as $1/n\sim\theta$ for a considerable number of points on the diagram to obtain a detailed description. It is, however, worth noting that the topology of the wave normal surfaces changes only at specific boundaries in the parameter space; otherwise, it merely deforms, but retains its topology. The parameter space is divided into a finite number of regions, called bounded volumes, separated by curves called bounding surfaces, across which modes change fundamentally, i.e., their topology changes. For example, if an Alfvén mode exists at a particular point inside a bounded volume, it exists everywhere within the bounded volume.
+
+The appropriate choice of bounding surfaces is the following:
+
+\begin{enumerate}
+    \item The principal resonances, which are curves in parameter space where $n^2$ has a resonance at either $\theta=0$ or $\theta=\pi/2$. These are precisely $R=\infty$ (electron cyclotron resonance), $L=\infty$ (ion cyclotron resonance), and $S=0$ (upper and lower hybrid resonances).
+    \item The cutoffs $R=0$, $L=0$, and $P=0$.
+\end{enumerate}
+
+The behaviour of wave normal surfaces inside a bounded volume and when crossing a bounding surface can be deduced using the five following theorems as consequences of the considerations above:
+
+\begin{enumerate}
+    \item Inside a bounded volume, $n$ cannot vanish.
+	
+    Proof. $n=0\implies PRL=0$, which are precisely the bounding surfaces.
+    
+    \item If $n^2$ has a resonance and thus goes to infinity at any point in the bounded volume, then at every other point within the bounded volume there exists a resonance at a unique angle $\theta_\text{res}$ and its associated mirror angles, namely $-\theta_\text{res}$, $\pi-\theta_\text{res}$ and $-(\pi-\theta_\text{res})$, but at no other angles.
+	
+    Proof. $n^2\to\infty\implies A\to0\implies\tan^2{\theta_\text{res}}=-P/S$. Neither $P$ nor $S$ can change signs within the bounded volume and are single-valued functions of their location in parameter space. Thus, $-P/S$ changes sign only at bounding surfaces. This also corresponds to the vanishing of the radius of a wave normal surface.
+    
+    \item For any point in parameter space and for a given interval in $\theta$ in which $n$ is finite, $n$ is either pure real or pure imaginary throughout that interval.
+	
+    Proof. $n^2$ is a continuous function of $\theta$, so that changing sign means crossing a bounding surface.
+
+    \item $n$ is symmetric about $\theta=0$ and $\theta=\pi/2$.
+	
+    Proof. $n^2$ is a rational composition of $\sin^2{\theta}$ and $\cos^2{\theta}$.
+
+    \item Two modes may coincide only at $\theta=0$, $\theta=\pi/2$ or in special cases where $PD=0$ and $RL=PS$.
+	
+    Proof. For $0<\theta<\pi/2$, the solution for $n^2$ involves the square root of the discriminant:$$\sqrt{B^2-4AC}=\sqrt{(RL-PS)^2\sin^4{\theta}+4P^2D^2\cos^2{\theta}}$$which can only vanish for $RL=PS$ and $PD=0$ simultaneously.
+\end{enumerate}
+
+These theorems provide sufficient information to characterise the topology of a wave normal surface throughout all of parameter space. These theorems show that only three types of wave normal surfaces exist: ellipsoid, dumbbell, and wheel, all rotationally symmetric about the $z$-axis. We consider the three following types of wave normal surfaces:
+
+\begin{enumerate}
+    \item Bounded volume with no resonance and $n^2>0$ at some point within the volume. Hence, $n^2$ is positive and finite throughout the entire bounded volume at every $\theta$. The wave normal surface is ellipsoidal with symmetry about $\theta=0$ and $\theta=\pi/2$.
+    \item Bounded volume having a resonance at $0<\theta_\text{res}<\pi/2$ and $n^2(\theta)>0$ for $\theta<\theta_\text{res}$. At $\theta_\text{res}$, $n\to\infty$, so the radius of the wave normal surfaces goes to zero.
+    \item Bounded volume having a resonance at $0<\theta_\text{res}<\pi/2$ and $n^2(\theta)<0$ for $\theta<\theta_\text{res}$. As in the previous case, now only the wave normal surface exists for angles greater than the resonant angle.
+\end{enumerate}
+
+Consider now the relationship between two modes, corresponding to the two solutions for $n^2$. Since two modes cannot intersect other than at $\theta=0$ and $\theta=\pi/2$ and at mirror angles, if one mode is an ellipsoid and the other contains a resonance, then the ellipsoid will always be outside of the other mode. Also, at most one mode can be resonant, so at most one mode is either dumbbell- or wheel-type. Observe why. Resonances occur when $A\to0$, so that:
+
+\begin{equation}
+    n^2\simeq\frac{B\pm(B-2AC/B)}{2A}\implies n^2_+=\frac{B}{A}\quad\text{and}\quad n_-^2=\frac{C}{A}
+\end{equation}
+
+where $|n^2_+|\gg|n^2_-|$ since $B^2\gg|4AC|$. The root $n_+^2$ has resonance while $n_-^2$ does not, so the latter corresponds to an ellipsoid. The ellipsoidal surfaces always have a greater value of $\omega/kc$ than a dumbbell or a wheel at all angles, so it will always be the fast mode. Thus, dumbbells and wheels are slow modes.
+
+\begin{center}
+    \textbf{CONTINUE}
+\end{center}
+
+
+
+\section{Elementary warm plasma waves in the two-fluid description}
+
+In this section, we explore Alfvén waves from a two-fluid perspective and find that they exhibit three distinct forms depending on whether the Alfvén velocity exceeds or is less than the ion or electron thermal velocities. We first consider phenomena propagating perpendicular to the stationary magnetic field and use these results to study propagation parallel to the field. 
+
+\subsection{Perpendicular propagation in warm magnetised plasmas}
+
+Applying the general procedure of studying plasma waves, we begin by linearising the two-fluid momentum equation about a stationary equilibrium state:
+
+\begin{equation}
+    n_\sigma^\square m_\sigma\frac{\partial\bar{\mathbf{u}}_\sigma}{\partial t}=n_\sigma^\square q_\sigma(\bar{\mathbf{E}}+\bar{\mathbf{u}}_\sigma\times\mathbf{B}_0)-\nabla\cdot\bar{\mathbf{P}}_\sigma
+\end{equation}
+
+where we have ignored the friction term, the pressure term shall be developed with respect to parallel and perpendicular directions to the stationary magnetic field, that is $\nabla\cdot\bar{\mathbf{P}}_\sigma=\nabla_\perp\bar{P}_\sigma^\perp+\nabla_\parallel\bar{P}_\sigma^\parallel$. Since quasi-neutrality is assumed, the perpendicular current given by the two-fluid theory is effectively identical to the one provided by the MHD description, consisting of a polarisation drift and a diamagnetic drift. Thus, in the first approximation, one can neglect the temporal change in $\bar{\mathbf{u}}_\sigma$ to obtain:
+
+\begin{equation}
+    \bar{\mathbf{u}}_\sigma\times\mathbf{B}_0\simeq-\bar{\mathbf{E}}^\perp+\frac{1}{n_\sigma^\square q_\sigma}\nabla_\perp\bar{P}_\sigma^\perp
+\end{equation}
+
+Taking the cross product with $\mathbf{B}_0$ and adding drift corrections to account for the time-dependancy of $\bar{\mathbf{u}}_\sigma$, one obtains:
+
+\begin{equation}
+    \bar{\mathbf{u}}_\sigma^\perp\simeq\frac{\bar{\mathbf{E}}\times\mathbf{B}_0}{\mathbf{B}_0^2}+\frac{\mathbf{B}_0\times\nabla_\perp\bar{P}_\sigma^\perp}{n_\sigma^\square q_\sigma\mathbf{B}_0^2}+\frac{m_\sigma}{q_\sigma\mathbf{B}_0^2}\frac{\mathrm{d}\bar{\mathbf{E}}^\perp}{\mathrm{d}t}-\frac{m_\sigma}{n_\sigma^\square q_\sigma^2\mathbf{B}_0^2}\frac{\mathrm{d}(\nabla_\perp\bar{P}_\sigma^\perp)}{\mathrm{d}t}
+\end{equation}
+
+However, since $\omega$ is assumed to be much smaller than cyclotron frequencies, these are effectively second-order terms. However, we shall observe that the first-order contributions of the $\mathbf{E}\times\mathbf{B}$ drift cancel due to quasi-neutrality. It is therefore necessary to retain these terms. The perpendicular current density is:
+
+\begin{equation}
+    \bar{\mathbf{J}}^\perp=\sum_\sigma n_\sigma^\square q_\sigma\bar{\mathbf{u}}_\sigma=\sum_{\sigma}n_\sigma q_\sigma\left(\frac{\bar{\mathbf{E}}\times\mathbf{B}}{\mathbf{B}^2}+\frac{\mathbf{B}_0\times\nabla_\perp\bar{P}_\sigma^\perp}{n_\sigma q_\sigma\mathbf{B}_0^2}+\frac{m_\sigma}{q_\sigma\mathbf{B}_0^2}\frac{\mathrm{d}\bar{\mathbf{E}}^\perp}{\mathrm{d}t}-\frac{m_\sigma}{n_\sigma q_\sigma^2\mathbf{B}_0^2}\nabla_\perp\frac{\mathrm{d}P_\sigma^\perp}{\mathrm{d}t}\right)
+\end{equation}
+
+\begin{equation}
+    \label{eq-4-61}
+    \bar{\mathbf{J}}^\perp=\sum_{\sigma}\left(\frac{\mathbf{B}_0\times\nabla_\perp\bar{P}_\sigma^\perp}{\mathbf{B}_0^2}+\frac{n_\sigma m_\sigma}{\mathbf{B}_0^2}\frac{\mathrm{d}\bar{\mathbf{E}}^\perp}{\mathrm{d}t}-\frac{m_\sigma}{q_\sigma\mathbf{B}_0^2}\nabla_\perp\frac{\mathrm{d}P_\sigma^\perp}{\mathrm{d}t}\right)\simeq\frac{n_\mathrm{i}m_\mathrm{i}\dot{\bar{\mathbf{E}}}^\perp}{\mathbf{B}_0^2}-\frac{\mathbf{B}_0\times\nabla_\perp\bar{P}^\perp}{\mathbf{B}_0^2}
+\end{equation}
+
+where we have summed the pressure contributions from each species and used $m_\text{e}\ll m_\mathrm{i}$ to ignore electron polarisation drift. Notice also that we have dropped the second-order pressure correction, since the first-order term survived the sum. The strong inequality equally suggests:
+
+\begin{equation}
+    \rho_0=\sum_\sigma n_\sigma^\square m_\sigma\simeq n_\mathrm{i}^\square m_\mathrm{i}\implies c_\text{A}^2=\frac{\mathbf{B}_0^2}{\mu_0\rho_0}\simeq\frac{\mathbf{B}_0^2}{\mu_0n_\mathrm{i}^\square m_\mathrm{i}}
+\end{equation}
+
+We now consider the linearised Maxwell-Faraday equation:
+
+\begin{equation}
+    \nabla\times\bar{\mathbf{E}}=(\nabla_\perp+\nabla_\parallel)\times(\bar{\mathbf{E}}^\perp+\bar{\mathbf{E}}^\parallel)=\nabla_\perp\times\bar{\mathbf{E}}^\perp+\nabla_\perp\times\bar{\mathbf{E}}^\parallel+\nabla_\parallel\times\bar{\mathbf{E}}^\perp=-\frac{\partial\bar{\mathbf{B}}}{\partial t}
+\end{equation}
+
+whose parallel and perpendicular components to the stationary magnetic field are:
+
+\begin{equation}
+    \mathbf{\hat{B}}_0\cdot(\nabla_\perp\times\bar{\mathbf{E}}^\perp)=\mathrm{i}\omega\bar{B}^\parallel\quad\text{and}\quad\mathbf{\hat{B}}_0\times(\nabla_\perp\bar{E}^\parallel-\mathrm{i}k_\parallel\bar{E}^\perp)=-\mathrm{i}\omega\bar{B}^\perp
+\end{equation}
+
+Maxwell-Ampère equation, on the other hand, gives:
+
+\begin{equation}
+    \mathbf{\hat{B}}_0\cdot(\nabla_\perp\times\bar{\mathbf{B}}^\perp)=\mu_0\bar{J}^\parallel\quad\text{and}\quad\mathbf{\hat{B}}_0\times(\nabla_\perp\bar{B}^\parallel-\mathrm{i}k_\parallel\bar{B}^\perp)=-\mu_0\bar{\mathbf{J}}^\perp
+\end{equation}
+
+We may now substitute eq. (\ref{eq-4-61}) into the previous equations to obtain:
+
+\begin{equation}
+    \mathbf{\hat{B}}_0\times(\nabla_\perp\bar{B}^\parallel-\mathrm{i}k_\parallel\bar{B}^\perp)=\frac{\mu_0 n_\mathrm{i}m_\mathrm{i}}{\mathbf{B}_0^2}\mathrm{i}\omega\bar{E}^\perp+\frac{\mu_0\nabla\bar{P}\times\mathbf{\hat{B}}_0}{B_0}
+\end{equation}
+
+which, upon rearranging, gives:
+
+\begin{equation}
+    \nabla_\perp\left(\bar{B}^\parallel+\frac{\mu_0\bar{P}^\perp}{B}\right)\times\mathbf{\hat{B}}_0-\mathrm{i}k_\parallel\bar{\mathbf{B}}^\perp\times\mathbf{\hat{B}}_0=-\frac{\mathrm{i}\omega}{c_A^2}\bar{\mathbf{E}}^\perp
+\end{equation}
+
+We have thus obtained a coupled system of equations relating $\bar{\mathbf{B}}^\perp$ and $\bar{\mathbf{E}}^\perp$, namely:
+
+\begin{equation}
+    \mathrm{i}\omega\bar{\mathbf{B}}^\perp\times\mathbf{\hat{B}}_0-\mathrm{i}k_\parallel\bar{\mathbf{E}}^\perp=-\nabla_\perp\bar{E}^\parallel\quad\text{and}\quad-\mathrm{i}k_\parallel\bar{\mathbf{B}}^\perp\times\mathbf{\hat{B}}_0+\frac{\mathrm{i}\omega}{c_A^2}\mathbf{E}^\perp=-\nabla_\perp\left(\bar{B}^\parallel+\frac{\mu_0\bar{P}^\perp}{B}\right)\times\mathbf{\hat{B}}_0
+\end{equation}
+
+We then solve the system algebraically to find:
+
+\begin{equation}
+    \bar{\mathbf{E}}^\perp=\frac{\mathrm{i}k_\parallel\nabla_\perp\bar{E}^\parallel+\mathrm{i}\omega\nabla_\perp(\bar{B}^\parallel+\mu_0\bar{P}^\perp/B)\times\mathbf{\hat{B}}_0}{\omega^2/c_A^2-k_\parallel^2}
+\end{equation}
+
+\begin{equation}
+    \bar{\mathbf{B}}^\perp\times\mathbf{\hat{B}}_0=\frac{\mathrm{i}(\omega/c_A^2)\nabla_\perp\bar{E}^\parallel+\mathrm{i}k_\parallel\nabla_\perp(\bar{B}^\parallel+\mu_0\bar{P}^\perp/B_0)\times\mathbf{\hat{B}}_0}{\omega^2/c_A^2-k_\parallel^2}
+\end{equation}
+
+Although the expressions seem frightening, they allow us to find the parallel components $\bar{\mathbf{B}}^\parallel$ and $\bar{\mathbf{E}}^\parallel$:
+
+\begin{equation}
+    \nabla\cdot(\bar{\mathbf{E}}^\perp\times\mathbf{\hat{B}}_0)=\mathrm{i}\omega\bar{B}^\parallel\quad\text{and}\quad\nabla\cdot(\bar{\mathbf{B}}^\perp\times\mathbf{\hat{B}}_0)=\mu_0\bar{J}^\parallel
+\end{equation}
+
+It is now convenient to note that $\nabla\cdot(\nabla_\perp\psi\times\mathbf{\hat{x}})=\nabla\cdot(\nabla\psi\times\mathbf{\hat{x}})=\mathbf{\hat{x}}\cdot(\nabla\times\nabla\psi)=0$, such that $\nabla\cdot(\nabla_\perp\bar{E}^\parallel\times\mathbf{\hat{B}}_0)=0$ and $\nabla\cdot(\nabla_\perp(\bar{B}^\parallel+\mu_0\bar{P}^\perp/B_0)\times\mathbf{\hat{B}}_0)=0$ which results in:
+
+\begin{equation}
+    \nabla\cdot\left(\frac{\nabla_\perp(\bar{B}^\parallel+\mu_0\bar{P}^\perp/B_0)}{\omega^2/c_A^2-k_\parallel^2}\right)=-\bar{B}^\parallel\quad\text{and}\quad\nabla\cdot\left(\frac{\mathrm{i}\omega\nabla_\perp\bar{E}^\parallel}{\omega^2/c_A^2-k_\parallel^2}\right)=c_A^2\mu_0\bar{J}^\parallel
+\end{equation}
+
+These two equations precisely distinguish the compressional and shear modes of a particular wave. This is verified by means of the linearised continuity equation:
+
+\begin{equation}
+    \nabla\cdot\mathbf{u}_\sigma^\perp=\nabla\cdot\left(\frac{\bar{\mathbf{E}}\times\mathbf{B}_0}{\mathbf{B}_0^2}\right)=\frac{1}{\mathbf{B}_0^2}\nabla\cdot(\bar{\mathbf{E}}\times\mathbf{B}_0)=\frac{1}{\mathbf{B}_0^2}\mathbf{B}_0\cdot(\nabla\times\bar{\mathbf{E}})=-\frac{1}{\mathbf{B}_0^2}\mathbf{B}_0\cdot\frac{\partial\bar{\mathbf{B}}}{\partial t}=\frac{\mathrm{i}\omega}{B_0}\bar{B}^\parallel
+\end{equation}
+
+This demonstrates that modes with $\omega\bar{B}^\parallel=0\Longleftrightarrow\bar{B}^\parallel=0$ are incompressible. Now, we turn our attention to compressional modes, thus $\bar{B}^\parallel\neq0$ and $\bar{E}^\parallel=0$. Having $\bar{E}^\parallel=0$ means $\bar{J}^\parallel=0$ which effectively means that there is no parallel motion $\bar{\mathbf{u}}_\sigma=\bar{\mathbf{u}}_\sigma^\perp$, thus:
+
+\begin{equation}
+    \frac{\partial\bar{n}_\sigma}{\partial t}+n_\sigma^\square\nabla\cdot\bar{\mathbf{u}}_\sigma^\perp=0\implies\frac{\partial\bar{n}_\sigma}{\partial t}+\frac{n_\sigma^\square}{B_0}\frac{\partial\bar{B}^\parallel}{\partial t}=0\implies\frac{\bar{n}_\sigma}{n_\sigma^\square}=\frac{\bar{B}^\parallel}{B_0}
+\end{equation}
+
+In the adiabatic/isothermal regime, we can relate the magnetic field variation to the pressure variation:
+
+\begin{equation}
+    \frac{\bar{P}^\perp}{P}=\frac{\sum_\sigma\bar{P}_\sigma^\perp}{P}=\frac{\sum_\sigma\gamma\bar{n}_\sigma P_\sigma^\perp/n_\sigma}{P}=\frac{\sum_{\sigma}\gamma\bar{B}^\parallel P_\sigma^\perp/B_0}{P}=\frac{\gamma\bar{B}^\parallel}{B_0P}\sum_\sigma P_\sigma^\perp=\frac{\gamma\bar{B}^\perp}{B_0}\frac{P^\perp}{P}\simeq\frac{\gamma\bar{B}^\parallel}{B_0}
+\end{equation}
+
+Thus, $\mu_0\bar{P}^\perp/B_0=\frac{\gamma\mu_0P\bar{B}^\parallel}{B_0^2}=\frac{\gamma(n_\mathrm{i}k_\mathrm{B}T_\mathrm{i}+n_\text{e}k_\mathrm{B}T_\text{e})}{B_0^2/\mu_0}\bar{B}^\parallel=\frac{\gamma k_\mathrm{B}(T_\mathrm{i}+ZT_\text{e})}{m_\mathrm{i}c_A^2}\bar{B}^\parallel\simeq c_s^2/c_A^2\bar{B}^\parallel$ and we obtain:
+
+\begin{equation}
+    \nabla\cdot\left(\frac{c_s^2+c_A^2}{\omega^2-c_A^2k_\parallel^2}\nabla_\perp\bar{B}^\parallel\right)+\bar{B}^\parallel=0
+\end{equation}
+
+Upon exchanging $\nabla\leftrightarrow\nabla_\perp\leftrightarrow i\mathbf{k}_\perp$, we at last obtain the dispersion relation of the compressional mode:
+
+\begin{equation}
+    1-\frac{k_\perp^2(c_A^2+c_s^2)}{\omega^2-k_\parallel^2 c_A^2}=0\Longleftrightarrow\omega^2=(c_A^2+c_s^2)k_\perp^2+k_\parallel^2c_A^2=k^2c_A^2+k_\perp^2c_s^2=k^2(c_A^2+c_s^2\sin^2{\theta})
+\end{equation}
+
+\subsection{Parallel propagation in warm magnetised plasmas}
+
+We now investigate the two-fluid shear modes of Alfvén waves. In this case, we use $\bar{B}^\parallel=0$ so that $\nabla\cdot\bar{\mathbf{u}}_\sigma^\perp=0$. The parallel component of the linearised equation of motion reads:
+
+\begin{equation}
+    n_\sigma  m_\sigma\frac{\partial\bar{u}_\sigma^\parallel}{\partial t}=n_\sigma q_\sigma\bar{E}^\parallel-\gamma k_\mathrm{B}T_\sigma\partial_\parallel\bar{n}_\sigma
+\end{equation}
+
+The linearised continuity equation gives:
+
+\begin{equation}
+    \frac{\partial\bar{n}_\sigma}{\partial t}+\nabla_\parallel\cdot(n_\sigma\bar{\mathbf{u}}_\sigma^\parallel)=0
+\end{equation}
+
+We may take the time derivative of the equation of motion and invoke the previous:
+
+\begin{equation}
+    n_\sigma m_\sigma\frac{\partial^2\bar{u}^\parallel}{\partial t^2}=n_\sigma q_\sigma\frac{\partial\bar{E}^\parallel}{\partial t}-\gamma k_\mathrm{B}T_\sigma\partial_\parallel\frac{\partial\bar{n}_\sigma}{\partial t}=n_\sigma q_\sigma\frac{\partial\bar{E}^\parallel}{\partial t}-\gamma n_\sigma k_\mathrm{B}T_\sigma\nabla_\parallel^2\bar{u}_\sigma^\parallel
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2\bar{u}^\parallel}{\partial t^2}+\frac{\gamma k_\mathrm{B}T_\sigma}{m_\sigma}\nabla_\parallel^2\bar{u}^\parallel=\frac{q_\sigma}{m_\sigma}\frac{\partial\bar{E}^\parallel}{\partial t}
+\end{equation}
+
+Performing Fourier transform and isolating $\bar{u}^\parallel$, we obtain:
+
+\begin{equation}
+    \bar{u}_\sigma^\parallel=\frac{i\omega q_\sigma}{m_\sigma}\frac{\bar{E}^\parallel}{\omega^2-(\gamma k_\mathrm{B}T_\sigma/m_\sigma)k_\parallel^2}
+\end{equation}
+
+We may now express the parallel component of the current density:
+
+\begin{equation}
+    \bar{J}^\parallel=\sum_{\sigma}n_\sigma q_\sigma\bar{u}_\sigma^\parallel=\mathrm{i}\varepsilon_0\omega\bar{E}^\parallel\sum_\sigma\frac{n_\sigma q_\sigma^2/\varepsilon_0m_\sigma}{\omega^2-(\gamma k_\mathrm{B}T_\sigma/m_\sigma)k_\parallel^2}
+\end{equation}
+
+We can now insert this expression into one of the above, namely:
+
+\begin{equation}
+    \nabla\cdot\left(\frac{\mathrm{i}\omega\nabla_\perp\bar{E}^\parallel}{\omega^2/c_A^2-k_\parallel^2}\right)=c_A^2\mu_0\bar{J}^\parallel\implies\nabla\cdot\left(\frac{\nabla_\perp\bar{E}^\parallel}{\omega^2/c_A^2-k_\parallel^2}\right)-\frac{c_A^2}{c^2}\bar{E}^\parallel\sum_\sigma\frac{n_\sigma q_\sigma^2/\varepsilon_0m_\sigma}{\omega^2-(\gamma k_\mathrm{B}T_\sigma/m_\sigma)k_\parallel^2}=0
+\end{equation}
+
+Upon again using Fourier to convert $\nabla\to\nabla_\perp\to i\mathbf{k}_\perp$, we obtain:
+
+\begin{equation}
+    \frac{k_\perp^2}{\omega^2-c_A^2k_\parallel^2}+\sum_{\sigma}\frac{\omega_{\mathrm{p}\sigma}^2/c^2}{\omega^2-(\gamma k_\mathrm{B}T_\sigma/m_\sigma)k_\parallel^2}=0
+\end{equation}
+
+\begin{enumerate}
+    \item Now, we investigate the limiting case $\omega^2/k_\parallel^2\gg k_\mathrm{B}T_\text{e}/m_\text{e}, k_\mathrm{B}T_\mathrm{i}/m_\mathrm{i}$. Since $\omega_\text{pe}\gg\omega_\text{pi}$, the electron term dominates over the ion term, so that:
+    
+    \begin{equation}
+        \frac{k_\perp^2}{\omega^2-c_A^2k_\parallel^2}+\frac{\omega_\text{pe}^2/c^2}{\omega^2-(\gamma k_\mathrm{B}T_\text{e}/m_\text{e})k_\parallel^2}\implies\omega^2=\frac{k_\parallel^2c_A^2}{1+k_\perp^2c^2/\omega_\text{pe}^2}
+    \end{equation}
+    
+    This limiting case is called the inertial Alfvén wave, and the quantity $c/\omega_\text{pe}$ is called the electron collisionless skin depth. If $k_\perp^2c^2/\omega_\text{pe}^2$ is not too large, then $\omega/k_\parallel$ is of the order of the Alfvén velocity and the condition $\omega^2\gg k_\parallel^2k_\mathrm{B}T_\text{e}/m_\text{e}$ corresponds to $c_A^2\gg v_\text{Te}^2$ or $\beta_\text{e}=\frac{n_\text{e}k_\mathrm{B}T_\text{e}}{B^2/\mu_0}\ll\frac{m_\text{e}}{m_\mathrm{i}}$. Inertial Alfvén modes exist only in the ultra-low-pressure parameter regime, since their dispersion relation does not depend on temperature and is thus called a cold plasma wave.
+
+    \item In the situation where $k_\mathrm{B}T_\mathrm{i}/m_\mathrm{i}\ll \omega^2/k_\parallel^2\ll k_\mathrm{B}T_\text{e}/m_\text{e}$, the equation above becomes:
+    
+    \begin{equation}
+        \frac{k_\perp^2}{\omega^2-c_A^2k_\parallel^2}+\frac{\omega_\text{pe}^2/c^2}{(\gamma k_\mathrm{B}T_\text{e}/m_\text{e})k_\parallel^2}+\frac{\omega_\text{pi}^2/c^2}{\omega^2}=0
+    \end{equation}
+    
+    Note that this equation is quadratic in $\omega^2$, so that there are two distinct modes. We shall distinguish between the two by comparing them with the ion acoustic velocity. First, let $\omega^2/k_\parallel^2\gg k_\mathrm{B}T_\text{e}/m_\mathrm{i}$. In this case, the last term can be dropped, and we obtain:
+    
+    \begin{equation}
+        \omega^2=c_A^2k_\parallel^2\left(1+\frac{k_\perp^2}{c_A^2}\frac{k_\mathrm{B}T_\text{e}}{m_\text{e}}\frac{c^2}{\omega_\text{pe}^2}\right)
+    \end{equation}
+    
+    which is the dispersion relation of the so-called kinetic Alfvén wave. It is convenient to introduce the fictitious ion Larmor radius via the ion acoustic velocity:
+    
+    \begin{equation}
+        \rho_\mathrm{i}^2=\frac{1}{c_A^2}\frac{k_\mathrm{B}T_\text{e}}{m_\text{e}}\frac{c^2}{\omega_\text{pe}^2}=\frac{\mu_0n_\mathrm{i}m_\mathrm{i}}{B^2}\frac{k_\mathrm{B}T_\text{e}}{m_\text{e}}\frac{\varepsilon_0c^2m_\text{e}}{n_\text{e}q_\text{e}^2}=\frac{n_\mathrm{i} m_\mathrm{i}k_\mathrm{B}T_\text{e}}{B^2n_\text{e}q_\text{e}^2}=\frac{Zm_\mathrm{i}^2}{B^2q_\mathrm{i}^2}\frac{k_\mathrm{B}T_\text{e}}{m_\mathrm{i}}
+    \end{equation}
+    
+    If $k_\perp^2\rho_\mathrm{i}^2$ isn't too large, then $\omega/k_\parallel$ is of the order of the Alfvén velocity, and the condition $\omega^2\ll k_\parallel^2k_\mathrm{B}T_\text{e}/m_\text{e}$ corresponds to having $\beta_\text{e}\gg m_\text{e}/m_\mathrm{i}$. The assumed condition $\omega^2/k_\parallel^2\gg k_\mathrm{B}T_\text{e}/m_\mathrm{i}$ corresponds to $\beta_\text{e}\ll1$. The kinetic Alfvén wave is thus faithfully described by the previous dispersion relation in the regime $m_\text{e}/m_\mathrm{i}\ll\beta_\text{e}\ll1$.
+
+    \item We now assume $\omega^2/k_\parallel^2\ll k_\mathrm{B}T_\text{e}/m_\text{e}, k_\mathrm{B}T_\mathrm{i}/m_\mathrm{i}$, that is, a plasma wave with phase velocity much smaller than both the ion and electron thermal velocities. The general dispersion relation reduces to:
+    
+    \begin{equation}
+        \omega^2=c_A^2k_\parallel^2\left(1+k_\perp^2\frac{\omega_\text{pi}^2}{\Omega_\mathrm{i}^2}\lambda_D^2\right)=c_A^2k_\parallel^2\left(1+\frac{k_\perp^2k_\mathrm{B}T_\text{e}}{(1+T_\text{e}/T_\mathrm{i})m_\mathrm{i}\Omega_\mathrm{i}^2}\right)
+    \end{equation}
+    
+    This situation corresponds to high-$\beta_\text{e}$ shear modes.
+
+\end{enumerate}
+
+To summarise: the shear mode has $\bar{B}^\parallel=0$, $\bar{E}^\parallel\neq0$ and $\bar{J}^\parallel\neq0$. In the ultra-low pressure parameter regime, where $\beta_\text{e}\ll\frac{m_\text{e}}{m_\mathrm{i}}$, the shear Alfvén wave exists as a cold plasma wave, and as one of two types of warm plasma waves in the regime $\beta_\text{e}\gg\frac{m_\text{e}}{m_\mathrm{i}}$. The shear Alfvén mode isincompressiblee, that is $\frac{\mathrm{d}\bar{n}_\sigma}{\mathrm{d}t}=0\Longleftrightarrow\nabla\cdot\bar{\mathbf{u}}_\sigma^\perp=0$, which is essentially  $\mathbf{k}_\perp\cdot\bar{\mathbf{u}}_\sigma^\perp=0$, thus $\mathbf{k}_\perp$ is orthogonal to $\bar{\mathbf{u}}_\sigma^\perp$. The Alfvén wave in the ultra-low pressure parameter, that is, the inertial Alfvén wave, is independent of temperature and thus describes cold plasma waves. The shear-mode parallel dynamics is related to parallel-propagating ion-acoustic modes, since both Alfvén shear waves and parallel-propagating ion-acoustic modes involve parallel motion driven by a finite parallel oscillatory component of the electric field. This parallel dynamics is absent from the MHD description due to its fundamental isotropic approximation.
+
+\subsection{Non-linear cold unmagnetised waves in the two-fluid description}
+
+In this subsection, we shall discuss the non-linear corrections of the two-fluid description of cold plasma waves on a specific example, which shall illustrate the general procedure for studying non-linear wave dynamics in plasmas. The example considered is an ion-acoustic wave in a cold plasma comprising ions and electrons. Contrary to our previous considerations, where we have pragmatically neglected all terms of order higher than linear, we shall keep the non-linear advective term in the two-fluid momentum equations. It is worth noting that the non-linear behaviour considered here has a significant influence on the dynamics of plasmas in which particular species follow spatially non-uniform macroscopic velocities. Moreover, systems with particular initial conditions, governed by non-linear dynamics, are susceptible to developing singularities, suggesting that our theoretical models lack an adequate physical description of the dynamics. We will address these issues later.
+
+\quad We begin with two-fluid momentum and continuity equations for both ion and electron species:
+
+\begin{equation}
+    n_\mathrm{i}m_\text{e}\left[\frac{\partial\mathbf{u}_\mathrm{i}}{\partial t}+(\mathbf{u}_\mathrm{i}\cdot\nabla)\mathbf{u}_\mathrm{i}\right]=n_\mathrm{i}q_\mathrm{i}\mathbf{E}-k_\mathrm{B}\nabla(n_\mathrm{i}T_\mathrm{i})-n_\mathrm{i}m_\mathrm{i}\nu_{\mathrm{i}\to\text{e}}\mathbf{u}_\mathrm{i}\quad\text{and}\quad\frac{\partial n_\mathrm{i}}{\partial t}+\nabla\cdot(n_\mathrm{i}\mathbf{u}_\mathrm{i})=0
+\end{equation}
+
+\begin{equation}
+    n_\text{e}m_\text{e}\left[\frac{\partial\mathbf{u}_\text{e}}{\partial t}+(\mathbf{u}_\text{e}\cdot\nabla)\mathbf{u}_\text{e}\right]=-n_\text{e}e\mathbf{E}-k_\mathrm{B}\nabla(n_\text{e}T_\text{e})-n_\text{e}m_\text{e}\nu_{\text{e}\to\mathrm{i}}\mathbf{u}_\text{e}\quad\text{and}\quad\frac{\partial n_\text{e}}{\partial t}+\nabla\cdot(n_\text{e}\mathbf{u}_\text{e})=0
+\end{equation}
+
+Poisson equation also applies:
+
+\begin{equation}
+    \nabla\cdot\mathbf{E}=\frac{n_\mathrm{i}q_\mathrm{i}-n_\text{e}e}{\varepsilon_0}=\frac{e}{\varepsilon_0}\left(Zn_\mathrm{i}-n_\text{e}\right)
+\end{equation}
+
+We consider a cold isothermal regime for both electrons and ions with $T_\mathrm{i}\ll T_\text{e}$. Since $m_\text{e}\ll m_\mathrm{i}$, we can ignore the inertial term of the electron momentum equation. Let us also assume a collisionless regime, in which the drag force terms vanish. We now linearise the equations around a stationary regime where $\mathbf{u}_\text{e}^\square=\mathbf{u}_\mathrm{i}^\square=\mathbf{0}$, $Zn_\mathrm{i}^\square=n_\text{e}^\square$ and $\mathbf{E}^\square=\mathbf{0}$, so that the governing equations become:
+
+\begin{equation}
+    n_\mathrm{i}^\square m_\mathrm{i}\left(\frac{\partial\bar{\mathbf{u}}_\mathrm{i}}{\partial t}+(\bar{\mathbf{u}}_\mathrm{i}\cdot\nabla)\bar{\mathbf{u}}_\mathrm{i}\right)=n_\mathrm{i}^\square q_\mathrm{i}\bar{\mathbf{E}}\quad\text{and}\quad\frac{\partial\bar{n}_\mathrm{i}}{\partial t}+\nabla\cdot(n_\mathrm{i}^\square\bar{\mathbf{u}}_\mathrm{i})=0
+\end{equation}
+
+\begin{equation}
+    \mathbf{0}=-n_\text{e}^\square e\bar{\mathbf{E}}-k_\mathrm{B}T_\text{e}\nabla\bar{n}_\text{e}\quad\text{and}\quad\frac{\partial\bar{n}_\text{e}}{\partial t}+\nabla\cdot(n_\text{e}^\square\bar{\mathbf{u}}_\text{e})=0
+\end{equation}
+
+while the Poisson equation simply stays as is. We now assume that the oscillatory perturbation is fully described by a single Fourier mode, so that $\partial_t\equiv-\mathrm{i}\omega$ and $\nabla\equiv\mathrm{i}\mathbf{k}$, giving:
+
+\begin{equation}
+    -\mathrm{i}n_\mathrm{i}^\square m_\mathrm{i}\omega\bar{\mathbf{u}}_\mathrm{i}+\mathrm{i}n_\mathrm{i}^\square m_\mathrm{i}(\bar{\mathbf{u}}_\mathrm{i}\cdot\mathbf{k})\bar{\mathbf{u}}_\mathrm{i}=n_\mathrm{i}^\square q_\mathrm{i}\bar{\mathbf{E}}\quad\text{and}\quad-\mathrm{i}\omega\bar{n}_\mathrm{i}+\mathrm{i}n_\mathrm{i}^\square\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i}=0
+\end{equation}
+
+\begin{equation}
+    \mathbf{0}=-n_\text{e}^\square e\bar{\mathbf{E}}-\mathrm{i}k_\mathrm{B}T_\text{e}\mathbf{k}\bar{n}_\text{e}\quad\text{and}\quad-\mathrm{i}\omega\bar{n}_\text{e}+\mathrm{i}n_\text{e}^\square\mathbf{k}\cdot\bar{\mathbf{u}}_\text{e}=0
+\end{equation}
+
+\begin{equation}
+    \mathrm{i}\mathbf{k}\cdot\bar{\mathbf{E}}=\frac{e}{\varepsilon_0}(Z\bar{n}_\mathrm{i}-\bar{n}_\text{e})
+\end{equation}
+
+Solving the system of equations by expressing everything in terms of $\bar{\mathbf{u}}_\mathrm{i}$ gives:
+
+\begin{equation}
+    \mathbf{k}\bar{n}_\text{e}=\frac{\mathrm{i}n_\text{e}^\square e}{k_\mathrm{B}T_\text{e}}\bar{\mathbf{E}}\quad\text{and}\quad\bar{n}_\mathrm{i}=\frac{\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i}}{\omega}n_\mathrm{i}^\square
+\end{equation}
+
+\begin{equation}
+    \mathrm{i}(\mathbf{k}\cdot\bar{\mathbf{E}})\mathbf{k}=\frac{n_\mathrm{i}^\square Ze}{\varepsilon_0}\frac{\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i}}{\omega}\mathbf{k}-\frac{\mathrm{i}n_\text{e}^\square e^2}{\varepsilon_0 k_\mathrm{B}T_\text{e}}\bar{\mathbf{E}}\implies\bar{\mathbf{E}}=\frac{n_\mathrm{i}^\square Ze\lambda_{D\text{e}}^2}{\mathrm{i}\varepsilon_0\omega}\frac{\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i}}{\mathbf{k}^2\lambda_{D\text{e}}^2+1}\mathbf{k}
+\end{equation}
+
+\begin{equation}
+    -\mathrm{i}\omega\bar{\mathbf{u}}_\mathrm{i}+\mathrm{i}(\bar{\mathbf{u}}_\mathrm{i}\cdot\mathbf{k})\bar{\mathbf{u}}_\mathrm{i}=\frac{Ze}{m_\mathrm{i}}\bar{\mathbf{E}}=-\mathrm{i}\frac{n_\mathrm{i}^\square (Ze)^2\lambda_{D\text{e}}^2}{\varepsilon_0m_\mathrm{i}\omega}\frac{\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i}}{\mathbf{k}^2\lambda_{D\text{e}}^2+1}\mathbf{k}
+\end{equation}
+
+In the limit $k\lambda_{D\text{e}}\ll1$, we may expand the denominator of the right-hand side:
+
+\begin{equation}
+    -\mathrm{i}\omega\bar{\mathbf{u}}_\mathrm{i}+\mathrm{i}(\bar{\mathbf{u}}_\mathrm{i}\cdot\mathbf{k})\bar{\mathbf{u}}_\mathrm{i}+\mathrm{i}\frac{\omega_\text{pi}^2\lambda_{D\text{e}}^2}{\omega}(\mathbf{k}\cdot\bar{\mathbf{u}_\mathrm{i}})\mathbf{k}-\mathrm{i}\frac{\omega_\text{pi}^2\lambda_{D\text{e}}^4}{\omega}\mathbf{k}^2(\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i})\mathbf{k}=\mathbf{0}
+\end{equation}
+
+Notice that $\omega_\text{pi}\lambda_{D\text{e}}=c_\mathrm{i}$ and in the given limit, $\omega\simeq c_\mathrm{i}k(1-k^2\lambda_{D\text{e}}^2/2)$, so that:
+
+\begin{equation}
+    -\mathrm{i}\omega\bar{\mathbf{u}}_\mathrm{i}+\mathrm{i}(\bar{\mathbf{u}}_\mathrm{i}\cdot\mathbf{k})\bar{\mathbf{u}}_\mathrm{i}+\mathrm{i}\mathbf{c}_\mathrm{i}(\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i})+(i)^3\frac{\lambda_{D\text{e}}^2c_\mathrm{i}}{2}\mathbf{k}^2(\mathbf{k}\cdot\bar{\mathbf{u}}_\mathrm{i})=\mathbf{0}
+\end{equation}
+
+Inverse Fourier-transforming gives the non-linear ion acoustic equation:
+
+\begin{equation}
+    \frac{\partial\bar{\mathbf{u}}_\mathrm{i}}{\partial t}+\left[(\mathbf{u}_\mathrm{i}+\mathbf{c}_\mathrm{i})\cdot\nabla\right]\bar{\mathbf{u}}_\mathrm{i}+\frac{\lambda_{D\text{e}}^2\mathbf{c}_\mathrm{i}}{2}\nabla^2(\nabla\cdot\bar{\mathbf{u}}_\mathrm{i})=\mathbf{0}
+\end{equation}
+
+\subsubsection{Soliton solution of a non-linear ion acoustic wave}
+
+We retake the last equation from the previous question and impose unidimensionality:
+
+\begin{equation}
+    \frac{\partial\bar{u}_\mathrm{i}}{\partial t}+(\bar{u}_\mathrm{i}+c_\mathrm{i})\frac{\partial\bar{u}_\mathrm{i}}{\partial x}+\frac{\lambda_{D\text{e}}^2c_\mathrm{i}}{2}\frac{\partial^3\bar{u}_\mathrm{i}}{\partial x^3}=0
+\end{equation}
+
+We may discuss the roles of each term in the differential equation. The modified advective term is prone to introducing singularities near characteristic breaking points dependant on the initial velocity profile, while the diffusive term tends to relax the singularities and imposes global smoothness of the solution. It is interesting to consider the so-called soliton solutions, that is, convectively invariant solutions. By imposing the substitution $z=x-vt$, we find:
+
+\begin{equation}
+    \frac{\partial\bar{u}_\mathrm{i}}{\partial t}+(\bar{u}_\mathrm{i}+c_\mathrm{i}-v)\frac{\partial\bar{u}_\mathrm{i}}{\partial z}+\frac{c_\mathrm{i}\lambda_{D\text{e}}^2}{2}\frac{\partial^3\bar{u}_\mathrm{i}}{\partial z^3}=0
+\end{equation}
+
+We search for stationary localised solutions, so that $\partial\bar{u}_\mathrm{i}/\partial t=0$, so that:
+
+\begin{equation}
+    (\bar{u}_\mathrm{i}+c_\mathrm{i}-v)\frac{\mathrm{d}\bar{u}_\mathrm{i}}{\mathrm{d}z}+\frac{c_\mathrm{i}\lambda_{D\text{e}}^2}{2}\frac{\mathrm{d}^3\bar{u}_\mathrm{i}}{\mathrm{d}z^3}=0
+\end{equation}
+
+Integrating once with respect to $z$ gives:
+
+\begin{equation}
+    (c_\mathrm{i}-v)\bar{u}_\mathrm{i}+\frac{\bar{u}_\mathrm{i}^2}{2}+\frac{c_\mathrm{i}\lambda_{D\text{e}}^2}{2}\frac{\mathrm{d}^2\bar{u}_\mathrm{i}}{\mathrm{d}z^2}=C
+\end{equation}
+
+where $C=0$ because we are seeking a localised solution. Multiplying the equation by $\bar{u}_\mathrm{i}'$, we obtain:
+
+\begin{equation}
+    (c_\mathrm{i}-v)\bar{u}_\mathrm{i}\frac{\mathrm{d}\bar{u}_\mathrm{i}}{\mathrm{d}z}+\frac{1}{2}\bar{u}_\mathrm{i}^2\frac{\mathrm{d}\bar{u}_\mathrm{i}}{\mathrm{d}z}+\frac{c_\mathrm{i}\lambda_{D\text{e}}^2}{2}\frac{\mathrm{d}\bar{u}_\mathrm{i}}{\mathrm{d}z}\frac{\mathrm{d}^2\bar{u}_\mathrm{i}}{\mathrm{d}z^2}=0
+\end{equation}
+
+Integrating gives:
+
+\begin{equation}
+    (c_\mathrm{i}-v)\frac{\bar{u}_\mathrm{i}^2}{2}+\frac{\bar{u}_\mathrm{i}^3}{6}+\frac{c_\mathrm{i}\lambda_{D\text{e}}^2}{4}\left(\frac{\mathrm{d}\bar{u}_\mathrm{i}}{\mathrm{d}z}\right)^2=C
+\end{equation}
+
+where, again, $C=0$ since we are searching for a localised solution. Isolating the derivative:
+
+\begin{equation}
+    \frac{\mathrm{d}\bar{u}_\mathrm{i}}{\mathrm{d}z}=\sqrt{\frac{2(v-c_\mathrm{i})}{c_\mathrm{i}\lambda_{D\text{e}}^2}\bar{u}_\mathrm{i}^2-\frac{2\bar{u}_\mathrm{i}^3}{3c_\mathrm{i}\lambda_{D\text{e}}^2}}
+\end{equation}
+
+Separating the equation and integrating:
+
+\begin{equation}
+    \int\left(\frac{\mathrm{d}\bar{u}_\mathrm{i}}{\bar{u}_\mathrm{i}\sqrt{\frac{2(v-c_\mathrm{i})}{c_\mathrm{i}\lambda_{D\text{e}}^2}-\frac{2\bar{u}_\mathrm{i}}{3c_\mathrm{i}\lambda_{D\text{e}}^2}}}=\mathrm{d}z\right)\quad\text{with}\quad\bar{u}_\mathrm{i}=3(v-c_\mathrm{i})\xi\implies\mathrm{d}\bar{u}_\mathrm{i}=3(v-c_\mathrm{i})\,\mathrm{d}\xi
+\end{equation}
+
+\begin{equation}
+    \int\frac{\mathrm{d}\xi}{\xi\sqrt{\frac{2(v-c_\mathrm{i})}{c_\mathrm{i}\lambda_{D\text{e}}^2}-\frac{2(v-c_\mathrm{i})}{c_\mathrm{i}\lambda_{D\text{e}}^2}\xi}}=\sqrt{\frac{c_\mathrm{i}\lambda_{D\text{e}}^2}{2(v-c_\mathrm{i})}}\int\frac{\mathrm{d}\xi}{\xi\sqrt{1-\xi}}=z+C
+\end{equation}
+
+We now evaluate the integral using the substitution $1-\xi=u^2$:
+
+\begin{equation}
+    \int\frac{\mathrm{d}\xi}{\xi\sqrt{1-\xi}}=-2\int\frac{\mathrm{d}u}{1-u^2}=-2\,\text{artanh}\left(u\right)
+\end{equation}
+
+\begin{equation}
+    -2\,\text{artanh}(u)=z\sqrt{\frac{2(v-c_\mathrm{i})}{c_\mathrm{i}\lambda_{D\text{e}}^2}}+C\implies u=\tanh{\left[C-z\sqrt{\frac{v-c_\mathrm{i}}{2c_\mathrm{i}\lambda_{D\text{e}}^2}}\right]}
+\end{equation}
+
+\begin{equation}
+    \xi=1-u^2=1-\tanh^2{\left[C-z\sqrt{\frac{v-c_\mathrm{i}}{2c_\mathrm{i}\lambda_{D\text{e}}^2}}\right]}=\mathrm{sech}^2\left[C-z\sqrt{\frac{v-c_\mathrm{i}}{2c_\mathrm{i}\lambda_{D\text{e}}^2}}\right]
+\end{equation}
+
+\begin{equation}
+    \bar{u}_\mathrm{i}(z)=3(v-c_\mathrm{i})\,\mathrm{sech}^2\left[C-z\sqrt{\frac{v-c_\mathrm{i}}{2c_\mathrm{i}\lambda_{D\text{e}}^2}}\right]
+\end{equation}
+
+It's easy to see that $C$ is simply a translation, so we might as well drop it. The hyperbolic secant function is symmetric about $z=0$, so that:
+
+\begin{equation}
+    \bar{u}_\mathrm{i}(z)=3(v-c_\mathrm{i})\,\mathrm{sech}^2\left[z\sqrt{\frac{v-c_\mathrm{i}}{2c_\mathrm{i}\lambda_{D\text{e}}^2}}\right]\implies
+    \bar{u}_\mathrm{i}(x,t)=3(v-c_\mathrm{i})\,\mathrm{sech}^2\left[(x-vt)\sqrt{\frac{v-c_\mathrm{i}}{2c_\mathrm{i}\lambda_{D\text{e}}^2}}\right]
+\end{equation}
+
+which is the soliton solution to the ion acoustic equation. It is clear that $v$ must satisfy $v>c_\mathrm{i}$ in order to have a localised and convergent solution for all $z=x-vt$.
+
+\section{Vlasov-Poisson model of warm electrostatic waves}
+
+The Vlasov-Maxwell model discussed in section \ref{vlasov-maxwell} of chapter \ref{plasma-models} in the case of an unmagnetised plasma reduces to the Vlasov-Poisson model studied below. This model simply involves applying the Vlasov and Poisson equations to specific initial conditions and represents the most general model of electrostatic oscillations discussed here:
+
+\begin{equation}
+    \frac{\partial f_\sigma}{\partial t}+\mathbf{v}\cdot\frac{\partial f_\sigma}{\partial\mathbf{x}}+\frac{q_\sigma}{m_\sigma}\mathbf{E}\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}}=0\quad\text{and}\quad\nabla\cdot\mathbf{E}=\frac{\rho}{\varepsilon_0}=\frac{1}{\varepsilon_0}\sum_{\sigma}n_\sigma q_\sigma
+\end{equation}
+
+We may linearise these equations to obtain:
+
+\begin{equation}
+    \frac{\partial\bar{f}_\sigma}{\partial t}+\mathbf{v}\cdot\frac{\partial\bar{f}_\sigma}{\partial\mathbf{x}}+\frac{q_\sigma}{m_\sigma}\bar{\mathbf{E}}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}=0\quad\text{and}\quad\nabla\cdot\bar{\mathbf{E}}=\frac{1}{\varepsilon_0}\sum_{\sigma}\iiint_{\mathbb{R}^3}q_\sigma\bar{f}_\sigma\,\mathrm{d}^3\mathbf{v}+\frac{\rho_\text{ext}}{\varepsilon_0}
+\end{equation}
+
+where $\rho_\text{ext}$ is some extraneous charge density causing the electrostatic wave. Fourier-transforming:
+
+\begin{equation}
+    -\mathrm{i}\omega\bar{f}_\sigma+\mathrm{i}\mathbf{k}\cdot\mathbf{v}\bar{f}_\sigma+\frac{q_\sigma}{m_\sigma}\bar{\mathbf{E}}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}=0\quad\text{and}\quad \mathrm{i}\mathbf{k}\cdot\bar{\mathbf{E}}=\frac{1}{\varepsilon_0}\sum_\sigma\iiint_{\mathbb{R}^3}q_\sigma\bar{f}_\sigma\,\mathrm{d}^3\mathbf{v}+\frac{\rho_\text{ext}}{\varepsilon_0}
+\end{equation}
+
+Notice that $\bar{\mathbf{E}}=-i\mathbf{k}\bar{\phi}$ so that we may express $\bar{f}_\sigma$ from the first equation as follows:
+
+\begin{equation}
+    \bar{f}_\sigma=-\frac{q_\sigma}{m_\sigma}\phi\frac{\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}}{\omega-\mathbf{k}\cdot\mathbf{v}}\implies\mathbf{k}^2\phi=-\frac{1}{\varepsilon_0}\sum_\sigma\frac{q_\sigma^2}{m_\sigma}\phi\iiint_{\mathbb{R}^3}\frac{\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}}{\omega-\mathbf{k}\cdot\mathbf{v}}\,\mathrm{d}^3\mathbf{v}+\frac{\rho_\text{ext}}{\varepsilon_0}
+\end{equation}
+
+A resonant mode is clearly produced when $\omega=\mathbf{k}\cdot\mathbf{v}$. It is convenient to rewrite the previous equation as follows to determine the dispersion relation effectively:
+
+\begin{equation}
+    \underbrace{1+\sum_\sigma\frac{q_\sigma^2}{\varepsilon_0m_\sigma}\frac{1}{\mathbf{k}^2}\iiint_{\mathbb{R}^3}\frac{\mathbf{k}}{\omega-\mathbf{k}\cdot\mathbf{v}}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}\,\mathrm{d}^3\mathbf{v}}_{\mathcal{D}(\omega,\mathbf{k})}=\frac{\rho_\text{ext}}{\varepsilon_0\mathbf{k}^2\phi}
+\end{equation}
+
+Hence, for no extraneous charge density, $\mathcal{D}(\omega,\mathbf{k})=0$ precisely gives the dispersion relation equivalent to the one obtained by setting the dielectric tensor determinant to zero. If the extraneous charge density is not zero, such systems are reduced to solving:
+
+\begin{equation}
+    \phi(\omega,\mathbf{k})=\frac{\rho_\text{ext}}{\varepsilon_0\mathbf{k}^2\mathcal{D}(\omega,\mathbf{k})}
+\end{equation}
+
+Denoting $\mathbf{v}^\parallel$ as the parallel velocity component to the wave vector, we obtain for the zero extraneous charge density case:
+
+\begin{equation}
+    F_\sigma^\square:=\iint_{\mathbb{R}^2}f_\sigma^\square\,\mathrm{d}^2\mathbf{v}^\perp\implies1+\sum_\sigma\frac{q_\sigma^2}{\varepsilon_0 m_\sigma}\frac{1}{k}\int_{\mathbb{R}}\frac{1}{\omega-kv^\parallel}\frac{\mathrm{d}F_\sigma^\square}{\mathrm{d}v^\parallel}\,\mathrm{d}v^\parallel=0
+\end{equation}
+
+As the dispersion relation, the integral in the previous equation is commonly known as Landau's integral, which Landau observed cannot be approximated by a single Fourier mode, since it requires initial conditions regarding the distribution function under consideration.
+
+\subsection{Two-stream instability}
+
+\label{instability}
+
+Before further developing the Vlasov-Poisson model, we shall first reflect, by way of a simple illustrative example, on the physical relevance of the term representing the initial conditions of the distribution function. Consider a cold plasma consisting of two species, electrons and ions, having different macroscopic streaming velocities $\mathbf{u}_\sigma$. The linearised equation of motion, the continuity equation, and Poisson's equation are all given as follows:
+
+\begin{equation}
+    \frac{\partial\bar{\mathbf{u}}_\sigma}{\partial t}+(\mathbf{u}_\sigma^\square\cdot\nabla)\bar{\mathbf{u}}_\sigma=-\frac{q_\sigma}{m_\sigma}\nabla\bar{\phi}\quad\text{and}\quad\frac{\partial\bar{n}_\sigma}{\partial t}+\mathbf{u}_\sigma^\square\cdot\nabla\bar{n}_\sigma=-n_\sigma^\square\nabla\cdot\bar{\mathbf{u}}_\sigma\quad\text{and}\quad\nabla^2\bar{\phi}=-\frac{1}{\varepsilon_0}\sum_{\sigma}q_\sigma\bar{n}_\sigma
+\end{equation}
+
+Without loss of generality in respect to our illustrative endeavours, we assume that the wave is fully described by a single Fourier mode:
+
+\begin{equation}
+    \bar{n}_\sigma=n_\sigma^\square\frac{\mathbf{k}^2}{(\omega-\mathbf{k}\cdot\mathbf{u}_\sigma^\square)}\frac{q_\sigma}{m_\sigma}\bar{\phi}
+\end{equation}
+
+from which we obtain the dispersion relation:
+
+\begin{equation}
+    1-\sum_\sigma\frac{\omega_{\mathrm{p}\sigma}^2}{(\omega-\mathbf{k}\cdot\mathbf{u}_\sigma)^2}=0
+\end{equation}
+
+This is a quartic equation in $\omega$. It is hence possible, for some $\mathbf{k}$, that two or four solutions for $\omega$ are complex, each pair of complex solutions being complex conjugates, so that the wave may exhibit exponential growth in time. We will now consider with much more detail the ion-electron streaming instability, specifically in the case where electrons drift at velocity $\mathbf{u}_{\text{e}}^\square$ through a background of stationary ions. The dispersion relation in the cold plasma limit is thus:
+
+\begin{equation}
+    1-\frac{\omega_\text{pi}^2}{\omega^2}-\frac{\omega_\text{pe}^2}{\left(\omega-\mathbf{k}\cdot\mathbf{u}_\text{e}^\square\right)^2}=0
+\end{equation}
+
+We cast this equation into a dimensionless one by imposing $\varepsilon=Zm_\text{e}/m_\mathrm{i}$, $z=\omega/\omega_\text{pe}$, and $\lambda=\mathbf{k}\cdot\mathbf{u}_\text{e}^\square/\omega_\text{pe}$:
+
+\begin{equation}
+    1-\frac{\varepsilon}{z^2}-\frac{1}{(z-\lambda)^2}=0
+\end{equation}
+
+The two terms diverge at $z=0$ and $z=\lambda$, respectively. This equation, consisting of continuous functions, therefore has a minimum between the aforementioned. If the minimum value of the two non-constant terms evaluates to below unity, then there will be two complex solutions of the dispersion relation. Since both terms decay to zero in the limits $z\to\infty$ and $z\to-\infty$, there are always two solutions for $z<0$ and $z>\lambda$. Notice that, since all terms defining the dispersion relation are real, in the case of two complex solutions between the two singularities, those are necessarily a pair of complex conjugates, one containing a positive imaginary component, while the other is negative. The existence of a solution with a positive imaginary component implies a growing exponential term within the full solution, so that instability occurs. We shall find this condition in the considered case by defining the function:
+
+\begin{equation}
+    f(z)=\frac{\varepsilon}{z^2}+\frac{1}{(z-\lambda)^2}\implies\frac{\partial f}{\partial z}=-\frac{2\varepsilon}{z^3}-\frac{2}{(z-\lambda)^3}
+\end{equation}
+
+The derivative is equal to zero at the local minimum, so that:
+
+\begin{equation}
+    (z-\lambda)\sqrt[3]{\varepsilon}=-z\implies z_\text{min}=\frac{\lambda\sqrt[3]{\varepsilon}}{\sqrt[3]{\varepsilon}+1}
+\end{equation}
+
+\begin{equation}
+    f(z_\text{min})=\frac{\sqrt[3]{\varepsilon}(\sqrt[3]{\varepsilon}+1)^2}{\lambda^2}+\frac{(\sqrt[3]{\varepsilon}+1)^2}{\lambda^2}=\frac{(\sqrt[3]{\varepsilon}+1)^3}{\lambda^2}\stackrel{!}{>}1
+\end{equation}
+
+Thus, we obtain:
+
+\begin{equation}
+    \lambda^2<\left(1+\sqrt[3]{\varepsilon}\right)^3\Longleftrightarrow\left(\frac{\mathbf{k}\cdot\mathbf{u}_\text{e}^\square}{\omega_\text{pe}}\right)^2<\left(1+\sqrt[3]{\frac{Zm_\text{e}}{m_\mathrm{i}}}\right)^3
+\end{equation}
+
+Streaming instabilities are a reason why many simple proposed methods for attaining thermonuclear fusion do not work. These include, e.g., directing a highly energetic deuterium beam toward a tritium beam, with the expectation that thermonuclear reactions will occur. The two-stream system exhibits an instability whose growth rate can become sufficiently large that the two mono-energetic beams dissipate before any significant nuclear reactions occur.
+
+\subsection{Treatment of electrostatic waves using Landau approach}
+
+Consider a stationary, spatially uniform, quasi-neutral, and unmagnetised plasma consisting of two species, electrons and ions. The possibly shifted Maxwellian distribution gives the equilibrium velocity distributions of both species. The equilibrium electrostatic field within the plasma is assumed to be zero, so that we may as well set the constant initial electrostatic potential to zero. We now believe that, at the initial time $t=0$, the distribution function of each species exhibits a small perturbation from the equilibrium distribution, so that:
+
+\begin{equation}
+    f_\sigma(t,\mathbf{x},\mathbf{v})=f_\sigma^\square(\mathbf{v})+\bar{f}_\sigma(t,\mathbf{x},\mathbf{v})
+\end{equation}
+
+The linearised Vlasov equation is thus:
+
+\begin{equation}
+    \frac{\partial\bar{f}_\sigma}{\partial t}+\mathbf{v}\cdot\frac{\partial\bar{f}_\sigma}{\partial\mathbf{x}}-\frac{q_\sigma}{m_\sigma}\frac{\partial\bar{\phi}}{\partial\mathbf{x}}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}=0
+\end{equation}
+
+All perturbed quantities are assumed to have spatial dependence as $\exp{[\mathrm{i}\mathbf{k}\cdot\mathbf{x}]}$, that is, a single Fourier mode, so that, when Fourier-transforming, we obtain:
+
+\begin{equation}
+    \frac{\partial\bar{f}_\sigma}{\partial t}+\mathrm{i}\mathbf{k}\cdot\mathbf{v}\bar{f}_\sigma-\frac{q_\sigma\bar{\phi}}{m_\sigma}\mathrm{i}\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}=0
+\end{equation}
+
+Laplace-transforming in time gives:
+
+\begin{equation}
+    (s+\mathrm{i}\mathbf{k}\cdot\mathbf{v})\bar{f}_\sigma(s,\mathbf{v})-\bar{f}_\sigma(0,\mathbf{v})-\frac{q_\sigma\bar{\phi}(s)}{m_\sigma}\mathrm{i}\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}=0
+\end{equation}
+
+Solving for the perturbation in the distribution function, we obtain:
+
+\begin{equation}
+    \bar{f}_\sigma(s,\mathbf{v})=\frac{1}{s+\mathrm{i}\mathbf{k}\cdot\mathbf{v}}\left(\bar{f}_\sigma(0,\mathbf{v})+\frac{q_\sigma\bar{\phi}(s)}{m_\sigma}\mathrm{i}\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}\right)
+\end{equation}
+
+Poisson's equation gives:
+
+\begin{equation}
+    \nabla^2\bar{\phi}=-\frac{1}{\varepsilon_0}\sum_{\sigma}\bar{n}_\sigma q_\sigma=-\frac{1}{\varepsilon_0}\sum_{\sigma}q_\sigma\iiint_{\mathbb{R}^3}\bar{f}_\sigma(t,\mathbf{x},\mathbf{v})\,\mathrm{d}^3\mathbf{v}
+\end{equation}
+
+Fourier-transforming, then Laplace-transforming the previous equation gives:
+
+\begin{equation}
+    \mathbf{k}^2\bar{\phi}(s)=\frac{1}{\varepsilon_0}\sum_{\sigma}q_\sigma\iiint_{\mathbb{R}^3}\bar{f}_\sigma(s,\mathbf{v})\,\mathrm{d}^3\mathbf{v}=\frac{1}{\varepsilon_0}\sum_\sigma q_\sigma\iiint_{\mathbb{R}^3}\frac{1}{s+\mathrm{i}\mathbf{k}\cdot\mathbf{v}}\left(\bar{f}_\sigma(0,\mathbf{v})+\frac{q_\sigma\bar{\phi}(s)}{m_\sigma}\mathrm{i}\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}\right)\mathrm{d}^3\mathbf{v}
+\end{equation}
+
+Isolating $\bar{\phi}$ gives:
+
+\begin{equation}
+    \bar{\phi}(s)=\frac{N(s)}{D(s)}\quad\text{where}\quad N(s)=\frac{1}{\varepsilon_0\mathbf{k}^2}\sum_\sigma q_\sigma\iiint_{\mathbb{R}^3}\frac{\bar{f}_\sigma(0,\mathbf{v})}{s+\mathrm{i}\mathbf{k}\cdot\mathbf{v}}\,\mathrm{d}^3\mathbf{v}\quad\text{and}
+\end{equation}
+
+\begin{equation}
+    D(s)=1-\frac{1}{\mathbf{k}^2}\sum_\sigma\frac{q_\sigma^2}{\varepsilon_0m_\sigma}\iiint_{\mathbb{R}^3}\mathrm{i}\mathbf{k}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}\frac{\mathrm{d}^3\mathbf{v}}{s+\mathrm{i}\mathbf{k}\cdot\mathbf{v}}
+\end{equation}
+
+To obtain the solution, we apply the inverse Laplace transform:
+
+\begin{equation}
+    \bar{\phi}(t)=\frac{1}{2\pi\mathrm{i}}\int_{\beta-\mathrm{i}\infty}^{\beta+\mathrm{i}\infty}\frac{N(s)}{D(s)}\exp{(st)}\,\mathrm{d}s
+\end{equation}
+
+where $\beta$ is chosen to be larger than the fastest growing exponential term in $\bar{\phi}(s)$, notice that, due to the complexity of $N(s)$ and $D(s)$, direct integration leading to an analytical solution is unfeasible. The real parameter $\beta$ in question mathematically needs to fulfil $\beta>\Re\,\gamma$ where $\gamma$ is the fastest growing exponential term. In the complex plane, this corresponds to the line $\beta-\mathrm{i}\infty\to\beta+\mathrm{i}\infty$ being to the right of $\gamma$, so that the physically damped waves aren't considered when Laplace-transforming $\bar{\phi}(s)$ back into the time domain. In effect, when performing the Laplace transform, we use the so-called Jordan curve, which is here a semicircle whose base is parallel to the real axis. When choosing the axis of integration to be left of some exponentially growing terms, effectively one needs to cut out $\beta+[\Im\,\gamma_i-\delta, \Im\,\gamma_i+\delta]$ and create a keyhole contour around each of the poles $\gamma_i$. Effectively, all poles of the Laplace-transformed potential perturbation are precisely either poles of the numerator $N(s)$ or zeroes of the denominator $D(s)$.
+
+\quad The problem of singularities associated with the wave-particle resonance was specifically the fact that Laplace-transforming the equations involved the restriction that, in the complex plane, we integrate over an axis that is to the right of all poles of the transformed perturbed potential, thus ignoring all damped waves. Let us now consider the analytic continuations of $N$ and $D$ so that:
+
+\begin{equation}
+    N(s)=\frac{1}{\varepsilon_0\mathbf{k}^2}\sum_\sigma q_\sigma\int_{\mathbb{R}}\frac{\bar{F}_\sigma(0,v^\parallel)}{s+\mathrm{i}kv^\parallel}\,\mathrm{d}v^\parallel\quad\text{and}\quad D(s)=1-\frac{1}{\mathbf{k}^2}\sum_\sigma\frac{q_\sigma^2}{\varepsilon_0m_\sigma}\int_{\mathbb{R}}\frac{\mathrm{i}k}{s+\mathrm{i}kv^\parallel}\frac{\partial F_\sigma^\square}{\partial v^\parallel}\,\mathrm{d}v^\parallel
+\end{equation}
+
+where $F_\sigma$ is simply the distribution function integrated over the two dimensions perpendicular to $\mathbf{k}$; however, since the perturbed distribution function has to be integrable, it doesn't contribute a pole to $N(s)$. Effectively, all poles of the perturbed potential come from zeroes of the denominator function. Hence, for some zero $\gamma_i$ of the denominator function, we can perform the integration with either a straight axis with $\beta>\Re\,\gamma$, a straight axis with a semicircle about the zero, so $\beta=\Re\,\gamma$, and a straight axis with a keyhole construction $\beta<\Re\,\gamma$. This is commonly known as Landau's rule:
+
+\begin{equation}
+    \int_\mathbb{R}\frac{g(v^\parallel)}{s+\mathrm{i}kv^\parallel}\,\mathrm{d}v^\parallel=\begin{cases}\int_{-\infty}^\infty\frac{g(v^\parallel)}{s+\mathrm{i}kv^\parallel}\,\mathrm{d}v^\parallel,& \Re\,s>0,\\\text{P.V.}\int_{-\infty}^\infty\frac{g(v^\parallel)}{s+\mathrm{i}kv^\parallel}\,\mathrm{d}v^\parallel+\pi\mathrm{i}g\left(\frac{\mathrm{i}s}{k}\right),& \Re\,s=0,\\\int_{-\infty}^\infty\frac{g(v^\parallel)}{s+\mathrm{i}kv^\parallel}\,\mathrm{d}v^\parallel+2\pi\mathrm{i}g\left(\frac{is}{k}\right),& \Re\,s<0.\end{cases}
+\end{equation}
+
+where $g(v^\parallel)$ is either $\bar{F}_\sigma(0,v^\parallel)$ or $\mathrm{i}k\partial_{v^\parallel}F_\sigma^\square$, and where the principal value is formally defined by the following limit about the pole of the function in question, so the sum of limits to the left and right. The final perturbed potential thus depends on the positions of the poles in the complex plane. If the pole $\gamma_i$ is on the right of the imaginary axis, so $\Re\,\gamma_i>0$, the wave is unstable and exponentially grows. On the contrary, poles for which $\Re\,\gamma_i<0$ are stable and exponentially decay.
+
+\quad We shall now proceed to find the dispersion relation:
+
+\begin{equation}
+    \label{eq-4-147}
+    D(s)=1-\frac{1}{\mathbf{k}^2}\sum_{\sigma}\frac{q_\sigma^2}{\varepsilon_0m_\sigma}\int_{\mathbb{R}}\frac{\mathrm{i}k}{s+\mathrm{i}kv^\parallel}\frac{\partial F_\sigma^\square}{\partial v^\parallel}\,\mathrm{d}v^\parallel
+\end{equation}
+
+For a Maxwellian distribution, we have:
+
+\begin{equation}
+    F_\sigma^\square(v^\parallel)=n_\sigma\sqrt{\frac{m_\sigma}{2\pi k_\mathrm{B}T_\sigma}}\exp{\left[-\frac{m_\sigma(v^\parallel)^2}{2k_\mathrm{B}T_\sigma}\right]}\implies\frac{\partial F_\sigma^\square}{\partial v^\parallel}=-\frac{n_\sigma v^\parallel}{\sqrt{2\pi}}\left(\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\right)^{3/2}\exp{\left[-\frac{m_\sigma(v^\parallel)^2}{2k_\mathrm{B}T_\sigma}\right]}
+\end{equation}
+
+We may introduce $\xi=v^\parallel\sqrt{\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}}$ to obtain rather legible equations. Notice that each term in the sum corresponds to the electric susceptibility of species $\sigma$:
+
+\begin{equation}
+    D(s)=1-\frac{n_\sigma^\square q_\sigma^2}{\varepsilon_0\mathbf{k}^2\sqrt{\pi}k_\mathrm{B}T_\sigma}\int_{-\infty}^\infty\frac{\xi\exp{\left[-\xi^2\right]}}{\sqrt{2k_\mathrm{B}T_\sigma/m_\sigma}s/\mathrm{i}k+\xi}\,\mathrm{d}\xi
+\end{equation}
+
+\begin{equation}
+    \chi_\sigma=\frac{1}{\mathbf{k}^2\lambda_{D\sigma}^2\sqrt{\pi}}\int_{-\infty}^\infty\frac{\xi-\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}}\frac{\mathrm{i}s}{k}+\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}}\frac{\mathrm{i}s}{k}}{\xi-\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}}\frac{\mathrm{i}s}{k}}\exp{\left[-\xi^2\right]}\,\mathrm{d}\xi=
+\end{equation}
+
+\begin{equation}
+    =\frac{1}{\mathbf{k}^2\lambda_{D\sigma}^2}\left[1+\frac{\alpha_\sigma}{\sqrt{\pi}}\int_{-\infty}^\infty\frac{\exp{\left[-\xi^2\right]}}{\xi-\alpha_\sigma}\,\mathrm{d}\xi\right]=\frac{1}{\mathbf{k}^2\lambda_D^2}\left[1+\frac{\alpha_\sigma}{\sqrt{\pi}}Z(\alpha_\sigma)\right]\quad\text{where}\quad\alpha_\sigma=\frac{\mathrm{i}s}{k}\sqrt{\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}}
+\end{equation}
+
+The function $Z(\alpha_\sigma)$ is commonly called the plasma dispersion function. We expect a clear correspondence with the two-fluid model in the adiabatic limit, where $|\alpha_\sigma|\gg1$, as well as in the isothermal limit, where $|\alpha_\sigma|\ll1$. In both limits, the two-fluid model experienced no damping, so that we may use the limit where $\Re\,s\to0$, which corresponds to Landau's rule where $\Re\,s=0$:
+
+\begin{equation}
+    Z(\alpha_\sigma)=\frac{1}{\sqrt{\pi}}\text{P.V.}\int_{-\infty}^\infty\frac{\exp{[-\xi^2]}}{\xi-\alpha_\sigma}\,\mathrm{d}\xi+\mathrm{i}\sqrt{\pi}\exp{[-\alpha_\sigma^2]}
+\end{equation}
+
+We may execute the Taylor series of $1/(\xi-\alpha_\sigma)$ in the limit $|\alpha_\sigma|\gg1$ to obtain:
+
+\begin{equation}
+    \frac{1}{\sqrt{\pi}}\int_{-\infty}^\infty\frac{\exp{[-\xi^2]}}{\xi-\alpha_\sigma}\,\mathrm{d}\xi=\frac{1}{\sqrt{\pi}}\int_{-\infty}^\infty\left[\sum_{n=0}^\infty\left(\frac{\xi}{\alpha_\sigma}\right)^n\right]\exp{[-\xi^2]}\,\mathrm{d}\xi\simeq-\frac{1}{\alpha_\sigma}\left(1+\frac{1}{2\alpha_\sigma^2}+\frac{3}{4\alpha_\sigma^4}+\cdots\right)
+\end{equation}
+
+In the other limit, $|\alpha_\sigma|\ll1$, we introduce a new variable $\eta=\xi-\alpha_\sigma$:
+
+\begin{equation}
+    \frac{1}{\sqrt{\pi}}\int_{-\infty}^\infty\frac{\exp{[-\xi^2]}}{\xi-\alpha_\sigma}\,\mathrm{d}\xi=\frac{1}{\sqrt{\pi}}\int_{-\infty}^\infty\frac{\exp{\left[-\eta^2-2\alpha_\sigma\eta-\alpha_\sigma^2\right]}}{\eta}\,\mathrm{d}\eta=
+\end{equation}
+
+\begin{equation}
+    =\frac{\exp{[-\alpha_\sigma^2]}}{\sqrt{\pi}}\int_{-\infty}^\infty\frac{\exp{\left[-\eta^2\right]}}{\eta}\left[\sum_{n=0}^\infty\frac{(-2\alpha_\sigma\eta)^n}{n!}\right]\,\mathrm{d}\eta\simeq-2\alpha_\sigma\left(1-\frac{2\alpha_\sigma^2}{3}+\cdots\right)
+\end{equation}
+
+We may now proceed by evaluating the plasma susceptibilities. For $|\alpha_\sigma|\gg1$, we introduce the \textit{frequency} $\omega=\mathrm{i}s$ so that $\alpha_\sigma=\sqrt{\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}}\omega/k$:
+
+\begin{equation}
+    \chi_\sigma=\frac{1}{\mathbf{k}^2\lambda_D^2}\left[1+\alpha_\sigma\left(-\frac{1}{\alpha_\sigma}\left[1+\frac{1}{2\alpha_\sigma^2}+\frac{3}{4\alpha_\sigma^4}+\cdots\right]+\mathrm{i}\sqrt{\pi}\exp{[-\alpha_\sigma^2]}\right)\right]=
+\end{equation}
+
+\begin{equation}
+    =\frac{1}{\mathbf{k}^2\lambda_D^2}\left[-\left(\frac{1}{2\alpha_\sigma^2}+\frac{3}{4\alpha_\sigma^4}+\cdots\right)+\mathrm{i}\alpha_\sigma\sqrt{\pi}\exp{[-\alpha_\sigma^2]}\right]=
+\end{equation}
+
+\begin{equation}
+    =-\frac{\omega_{\mathrm{p}\sigma}^2}{\omega^2}\left(1+\frac{3\mathbf{k}^2}{\omega^2}\frac{k_\mathrm{B}T_\sigma}{m_\sigma}+\cdots\right)+\frac{\mathrm{i}\omega}{\|\mathbf{k}\|^3\lambda_{\mathrm{d}\sigma}^2}\sqrt{\frac{\pi m_\sigma}{2k_\mathrm{B}T_\sigma}}\exp{\left[-\frac{m_\sigma\omega^2}{2k_\mathrm{B}T_\sigma\mathbf{k}^2}\right]}
+\end{equation}
+
+
+Notice that due to $\omega_{\text{pe}}^2\gg\omega_{\text{pi}}^2$, we may drop the ion contributions. If there exists a solution such that $|\alpha_\sigma|\gg1$, we may only keep the first non-constant term in the infinite sum:
+
+\begin{equation}
+    \mathcal{D}(\omega,\mathbf{k})=1-\frac{\omega_\text{pe}^2}{\omega^2}\left(1+\frac{3\mathbf{k}^2}{\omega^2}\frac{k_\mathrm{B}T_\text{e}}{m_\text{e}}+\cdots\right)+\frac{\mathrm{i}\omega}{\|\mathbf{k}\|^3\lambda_{\text{De}}^2}\sqrt{\frac{\pi m_\text{e}}{2k_\mathrm{B}T_\text{e}}}\exp{\left[-\frac{m_\text{e}\omega^2}{2k_\mathrm{B}T_\text{e}\mathbf{k}^2}\right]}=0
+\end{equation}
+
+Although we can solve the equation by plugging $\omega=\Re\,\omega+\mathrm{i}\Im\,\omega$, it is better to divide the dispersion relation into its real and imaginary parts as follows:
+
+\begin{equation}
+    \mathcal{D}(\omega,\mathbf{k})=\Re\,\mathcal{D}(\omega_\Re+i\omega_\Im)+\mathrm{i}\Im\,\mathcal{D}(\omega_\Re+\mathrm{i}\omega_\Im)=0
+\end{equation}
+
+\begin{equation}
+    \mathcal{D}_\Re(\omega,\mathbf{k})=1-\frac{\omega_\text{pe}^2}{\omega^2}\left(1+\frac{3\mathbf{k}^2}{\omega^2}\frac{k_\mathrm{B}T_\text{e}}{m_\text{e}}+\cdots\right)\quad\text{and}\quad \mathcal{D}_\Im(\omega,\mathbf{k})=\frac{\omega}{\|\mathbf{k}\|^3\lambda_{\text{De}}^2}\sqrt{\frac{\pi m_\text{e}}{2k_\mathrm{B}T_\text{e}}}\exp{\left[-\frac{m_\text{e}\omega^2}{2k_\mathrm{B}T_\text{e}\mathbf{k}^2}\right]}=0
+\end{equation}
+
+Assuming a weakly damped oscillation where $\omega_\Im\ll\omega_\Re$, we may Taylor-expand the equation:
+
+\begin{equation}
+    \mathcal{D}_\Re(\omega_\Re,\mathbf{k})+\mathrm{i}\omega\left(\frac{\partial \mathcal{D}_\Re}{\partial\omega}\right)\Biggr|_{\omega_\Re}+\mathrm{i}\left[\mathcal{D}_\Im(\omega_\Re,\mathbf{k})+\mathrm{i}\omega_\Im\left(\frac{\partial \mathcal{D}_\Re}{\partial\omega}\right)\Biggr|_{\omega_\Re}\right]=0
+\end{equation}
+
+Since $\omega_\Re\gg\omega_\Im$, the real part is $\mathcal{D}_\Re(\omega_\Re,\mathbf{k})\simeq0$ The two imaginary terms in the expanded equation give:
+
+\begin{equation}
+    \omega_\Im=-\mathcal{D}_\Im(\omega_\Re)\biggr/\left(\frac{\partial \mathcal{D}_\Re}{\partial\omega}\right)\Biggr|_{\omega_\Re}
+\end{equation}
+
+The equation $\mathcal{D}_\Re(\omega_\Re,\mathbf{k})=0$ gives:
+
+\begin{equation}
+    \omega_\Re^2=\omega_\text{pe}^2\left(1+\frac{3\mathbf{k}^2}{\omega_\Re^2}\frac{k_\mathrm{B}T_\text{e}}{m_\text{e}}\right)\simeq\omega_\text{pe}^2\left(1+3\mathbf{k}^2\lambda_{D\text{e}}^2\right)
+\end{equation}
+
+so that the imaginary component of the oscillation frequency becomes:
+
+\begin{equation}
+    \omega_\Im=-\sqrt{\frac{\pi}{8}}\frac{\omega_\text{pe}^2}{\mathbf{k}^3\lambda_{D\text{e}}^3}\exp{\left[-\frac{1+3\mathbf{k}^2\lambda_{D\text{e}}^2}{2\mathbf{k}^2\lambda_{D\text{e}}^2}\right]}
+\end{equation}
+
+The negative value ensures that the oscillation is damped. Even though we had assumed $\omega_\Im\ll\omega_\Re$, the damping caused by $\omega_\Im$ is significant even after a single period.
+
+\subsection{Stability of distribution functions with a single global maximum}
+
+As it has been demonstrated in subsection \ref{instability}, a system whose distribution function exhibits two local maxima is susceptible to presenting an instability. It is thus only reasonable to expect systems whose distribution function presents a single global maximum to always exhibit stable oscillations. This is indeed the case. The first stability criterion provides a necessary condition for instability via the so-called Norton-Gardner Theorem. We start with the dispersion relation:
+
+\begin{equation}
+    \mathcal{D}(is,\mathbf{k})=1-\frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_\mathcal{L}\frac{\mathrm{d}}{\mathrm{d}v^\parallel}\left[F_\text{e}^\square+\sum_{\sigma\neq\text{e}}\frac{Z_\sigma^2m_\text{e}}{m_\sigma}F_\sigma^\square\right]\frac{\mathrm{d}v^\parallel}{v^\parallel-\mathrm{i}s/k}
+\end{equation}
+
+We may introduce the total distribution function as the weighted sum of distribution functions given in the square brackets, motivated by quasi-neutrality, so that:
+
+\begin{equation}
+    \mathcal{D}(is,\mathbf{k})=1-\frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}\frac{\mathrm{d}F^\square}{\mathrm{d}v^\parallel}\frac{\mathrm{d}v^\parallel}{v^\parallel-\mathrm{i}s/k}
+\end{equation}
+
+where $\mathcal{L}$ denotes integration with respect to the according Landau's rule, and we assume that the total distribution function has a single global maximum. We proceed by introducing $\mathrm{i}s=\mathrm{i}(-\mathrm{i}\omega)=\omega_\Re-\mathrm{i}\gamma$ where $\omega_\Re$ is the oscillatory frequency and $\gamma$ the damping coefficient. We proceed by contradicting that the dispersion relation is satisfied in this case, thus effectively evaluating on the real axis:
+
+\begin{equation}
+    \mathcal{D}(\omega_\Re,\gamma,\mathbf{k})=1-\frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}\frac{\mathrm{d}F^\square}{\mathrm{d}v^\parallel}\frac{v^\parallel-\frac{\omega_\Re}{k}+\mathrm{i}\frac{\gamma}{k}}{\left(v^\parallel-\frac{\omega_\Re}{k}\right)^2+\left(\frac{\gamma}{k}\right)^2}\,\mathrm{d}v^\parallel
+\end{equation}
+
+We may expand the integral into its real and imaginary components and impose that they satisfy the dispersion relation:
+
+\begin{equation}
+    1-\frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}\frac{\mathrm{d}F^\square}{\mathrm{d}v^\parallel}\frac{v^\parallel-\omega_\Re/k}{\left(v^\parallel-\omega_\Re/k\right)^2+\left(\gamma/k\right)^2}\,\mathrm{d}v^\parallel=0
+\end{equation}
+
+\begin{equation}
+    \frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}\frac{\mathrm{d}F^\square}{\mathrm{d}v^\parallel}\frac{\gamma/k}{\left(v^\parallel-\omega_\Re/k\right)^2+\left(\gamma/k\right)^2}\,\mathrm{d}v^\parallel=0
+\end{equation}
+
+The total distribution function having a single maximum at some value $v^\parallel_\text{max}$, we impose $\bar{v}^\parallel=v^\parallel-v^\parallel_\text{max}$:
+
+\begin{equation}
+    1-\frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}{\frac{\mathrm{d}F^\square}{\mathrm{d}\bar{v}^\parallel}}\left[\frac{v^\parallel_\text{max}-\omega_\Re/k}{\left(v^\parallel_\text{max}-\omega_\Re/k+\bar{v}^\parallel\right)^2+\left(\gamma/k\right)^2}+\frac{\bar{v}^\parallel}{\left(v^\parallel_\text{max}-\omega_\Re/k+\bar{v}^\parallel\right)^2+\left(\gamma/k\right)^2}\right]\mathrm{d}v^\parallel=0
+\end{equation}
+
+\begin{equation}
+    \frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}\frac{\mathrm{d}F^\square}{\mathrm{d}\bar{v}^\parallel}\frac{\gamma/k}{\left(v^\parallel-\omega_\Re/k\right)^2+\left(\gamma/k\right)^2}\,\mathrm{d}v^\parallel=0
+\end{equation}
+
+The first term in the brackets of the first equation, being equivalent to the second equation, evaluates to zero. We hence obtain:
+
+\begin{equation}
+    1-\frac{\omega_\text{pe}^2}{n_\text{e}^\square\mathbf{k}^2}\int_{\mathcal{L}}\frac{\mathrm{d}F^\square}{\mathrm{d}\bar{v}^\parallel}\frac{\bar{v}^\parallel}{\left(v^\parallel-\omega_\Re/k\right)^2+\left(\gamma/k\right)^2}\,\mathrm{d}v^\parallel=0
+\end{equation}
+
+Notice that the total distribution function in question, having a single global maximum, satisfies:
+
+\begin{equation}
+    \forall\bar{v}^\parallel\in\mathbb{R},\quad\bar{v}^\parallel\frac{\mathrm{d}F^\square}{\mathrm{d}\bar{v}^\parallel}\leq0
+\end{equation}
+
+Thus, the integral necessarily evaluates to a strictly negative term for any non-pathological distribution function. The dispersion relation is therefore not satisfied, which precisely concludes the contradiction. Therefore, any total distribution function attaining a single maximum exhibits stable oscillations.
+
+\subsection{Landau damping of an ion-acoustic wave}
+
+In this subsection, we shall illustrate the procedure for studying Landau damping of an ion-acoustic wave. We first begin by setting up the integrals in the dispersion relation given by equation (\ref{eq-4-147}), and noting that the derivative of the unperturbed distribution functions is:
+
+\begin{equation}
+    \frac{\mathrm{d}F_\alpha^\square}{\mathrm{d}v^\parallel}=n_\alpha^\square\sqrt{\frac{m_\alpha}{2\pi k_\mathrm{B}T_\alpha}}\frac{\mathrm{d}}{\mathrm{d}v^\parallel}\left(\exp{\left[-\frac{m_\alpha (v^\parallel)^2}{2k_\mathrm{B}T_\alpha}\right]}\right)=-\frac{n_\alpha^\square m_\alpha v^\parallel}{k_\mathrm{B}T_\alpha}\sqrt{\frac{m_\alpha}{2\pi k_\mathrm{B}T_\alpha}}\exp{\left[-\frac{m_\alpha(v^\parallel)^2}{2k_\mathrm{B}T_\alpha}\right]}
+\end{equation}
+
+For ions, we introduce the substitution $\zeta_\mathrm{i}=v^\parallel/v_\text{thi}$ and $\beta_\mathrm{i}=\omega/kv_\text{thi}\gg1$. We decompose $\omega=\omega_\Re+\mathrm{i}\omega_\Im$. We know that in the given limits, the two-fluid model predicts no damping, so that we may assume $\omega_\Im\ll\omega_\Re$, that is $\beta_\mathrm{i}=\beta_\mathrm{i}^\Re+\beta_\mathrm{i}^\Im$ with $\beta_\mathrm{i}^\Re\gg\beta_\mathrm{i}^\Im$:
+
+\begin{equation}
+    \omega_\Im(\omega_\Re,k)\simeq-\mathcal{D}_\Im(\omega_\Re,k)\bigg/\frac{\partial \mathcal{D}_\Re}{\partial \omega_\Re}
+\end{equation}
+
+The real part of the ion integral in the dispersion relation evaluates to:
+
+\begin{equation}
+    -\frac{n_\mathrm{i}^\square m_\mathrm{i}}{k_\mathrm{B}T_\mathrm{i}k\sqrt{\pi}}\int_{-\infty}^\infty\frac{\zeta_\mathrm{i}\exp{(-\zeta_\mathrm{i}^2)}}{\beta_\mathrm{i}-\zeta_\mathrm{i}}\,\mathrm{d}\zeta_\mathrm{i}\simeq-\frac{n_\mathrm{i}^\square m_\mathrm{i}}{k_\mathrm{B}T_\mathrm{i}k\sqrt{\pi}}\int_{-\infty}^\infty\left(\frac{\zeta_\mathrm{i}}{\beta_\mathrm{i}}+\frac{\zeta_\mathrm{i}^2}{\beta_\mathrm{i}^2}+\cdots\right)\exp{(-\zeta_\mathrm{i}^2)}\,\mathrm{d}\zeta_\mathrm{i}\simeq
+\end{equation}
+
+\begin{equation}
+    \simeq-\frac{n_\mathrm{i}^\square m_\mathrm{i}}{k_\mathrm{B}T_\mathrm{i}\sqrt{\pi}}\,\text{P.V.}\int_{-\infty}^\infty\frac{\zeta_\mathrm{i}(\zeta_\mathrm{i}-\beta_\mathrm{i}^\Re)}{(\zeta_\mathrm{i}-\beta_\mathrm{i}^\Re)^2+(\beta_\mathrm{i}^\Im)^2}\,\mathrm{d}\zeta_\mathrm{i}\simeq\frac{n_\mathrm{i}^\square k^2}{\omega_\Re^2}
+\end{equation}
+
+For electrons, we introduce $\zeta_\text{e}=u/v_\text{the}$ and $\beta_\text{e}=\omega/kv_\text{the}\ll1$, so that:
+
+\begin{equation}
+    -\frac{n_\text{e}^\square m_\text{e}}{k_\mathrm{B}T_\text{e}\sqrt{\pi}}\text{P.V.}\int_{-\infty}^\infty\frac{\zeta_\text{e}(\zeta_\text{e}-\beta_\text{e}^\Re)}{(\zeta_\text{e}-\beta_\text{e}^\Re)^2+(\beta_\text{e}^\Im)^2}\,\mathrm{d}\zeta_\text{e}\simeq-\frac{n_\text{e}^\square m_\text{e}}{k_\mathrm{B}T_\text{e}}
+\end{equation}
+
+The real part of the dispersion relation is thus:
+
+\begin{equation}
+    \mathcal{D}_\Re(\omega_\Re,k)=1-\frac{\omega_\text{pi}^2}{\omega_\Re^2}+\frac{1}{k^2\lambda_{D\text{e}}^2}\implies\frac{\partial \mathcal{D}_\Re}{\partial\omega_\Re}=\frac{2\omega_\text{pi}^2}{\omega_\Re^3}
+\end{equation}
+
+The imaginary part of the dispersion relation is, however:
+
+\begin{equation}
+    \mathcal{D}_\Im(\omega_\Re,k)=\frac{n_\mathrm{i}^\square q_\mathrm{i}^2\omega_\Re}{\varepsilon_0k_\mathrm{B}T_\mathrm{i}k^3}\sqrt{\frac{\pi m_\mathrm{i}}{2k_\mathrm{B}T_\mathrm{i}}}\exp{\left[-\frac{m_\mathrm{i}\omega_\Re^2}{2k_\mathrm{B}T_\mathrm{i}k^2}\right]}+\frac{n_\text{e}^\square e^2\omega_\Re}{\varepsilon_0k_\mathrm{B}T_\text{e}k^3}\sqrt{\frac{\pi m_\text{e}}{2k_\mathrm{B}T_\text{e}}}\exp{\left[-\frac{m_\text{e}\omega_\Re^2}{2k_\mathrm{B}T_\text{e}k^2}\right]}
+\end{equation}
+
+We can now evaluate the damping coefficient:
+
+\begin{equation}
+    \omega_\Im(\omega_\Re,k)\simeq-\frac{\omega_\Re^4}{\omega_\text{pi}^2k^3\lambda_{D\mathrm{i}}^2}\sqrt{\frac{\pi m_\mathrm{i}}{8k_\mathrm{B}T_\mathrm{i}}}\exp{\left[-\frac{m_\mathrm{i}\omega_\Re^2}{2k_\mathrm{B}T_\mathrm{i}k^2}\right]}+\frac{\omega_\Re^4}{\omega_\text{pi}^2k^3\lambda_{D\text{e}}^2}\sqrt{\frac{\pi m_\text{e}}{8k_\mathrm{B}T_\text{e}}}\exp{\left[-\frac{m_\text{e}\omega_\Re^2}{2k_\mathrm{B}T_\text{e}k^2}\right]}
+\end{equation}
+
+We know that $\omega_\Re^2=k^2c_\mathrm{i}^2$ where $c_\mathrm{i}^2=k_\mathrm{B}T_\text{e}/m_\mathrm{i}$, $n_\mathrm{i}^\square q_\mathrm{i}\simeq n_\text{e}^\square e$, $q_\mathrm{i}=Ze$, and $\lambda_{D\text{e}}^2\omega_\text{pi}^2=c_\mathrm{i}^2$:
+
+\begin{equation}
+    \omega_\Im\simeq-\sqrt{\frac{\pi}{8}}\|\mathbf{k}\|c_\mathrm{i}\left(\frac{T_\text{e}}{T_\mathrm{i}}\right)^{3/2}\exp{\left[-\frac{T_\text{e}}{2T_\mathrm{i}}\right]}-\sqrt{\frac{\pi}{8}}\frac{\|\mathbf{k}\|c_\mathrm{i}}{Z}\sqrt{\frac{m_\text{e}}{m_\mathrm{i}}}\exp{\left[-\frac{m_\text{e}}{2m_\mathrm{i}}\right]}
+\end{equation}
+
+where we can drop the exponential factor $\exp{[-m_\text{e}/2m_\mathrm{i}]}\simeq1$.
+
+\section{Kinetic description of waves in magnetised plasmas}
+
+Behind all considerations above, it has been tacitly assumed that the wave phase experienced by a particle is the phase the particle would have experienced if it had not deviated from its original position. This approximation is valid when $|\mathbf{k}\cdot(\mathbf{x}(t)-\mathbf{x}_0)|\ll\pi/2$. Two situations in which this condition is satisfied are large-amplitude waves that cause particle displacement comparable to the wavelength, and small-amplitude waves propagating over particles with sufficiently high initial velocities, thereby moving substantially during a wave period. We will now discuss the latter, that is, waves in warm magnetised plasmas. We consider an electrostatic potential wave $\bar{\phi}(\mathbf{x},t)=\bar{\phi}\exp{[\mathrm{i}\mathbf{k}\cdot\mathbf{x}-\mathrm{i}\omega t]}$:
+
+\begin{equation}
+    \mathbf{k}^2\bar{\phi}=\frac{1}{\varepsilon_0}\sum_{\sigma}\bar{n}_\sigma q_\sigma\quad\text{where}\quad\bar{n}_\sigma=\iiint_{\mathbb{R}^3}\bar{f}_\sigma(\mathbf{v})\,\mathrm{d}^3\mathbf{v}
+\end{equation}
+
+In the presence of a uniform magnetic field, the linearised Vlasov equation reads:
+
+\begin{equation}
+    \frac{\partial\bar{f}_\sigma}{\partial t}+\mathbf{v}\cdot\frac{\partial\bar{f}_\sigma}{\partial\mathbf{x}}+\frac{q_\sigma}{m_\sigma}\left(\mathbf{v}\times\mathbf{B}\right)\cdot\frac{\partial\bar{f}_\sigma}{\partial\mathbf{v}}=\frac{q_\sigma}{m_\sigma}\nabla\bar{\phi}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}
+\end{equation}
+
+Along an unperturbed trajectory, by Liouville's theorem, we find:
+
+\begin{equation}
+    \bar{f}_\sigma(\mathbf{x},\mathbf{v},t)=\frac{q_\sigma}{m_\sigma}\int_{-\infty}^t\left[\nabla\bar{\phi}\cdot\frac{\partial f_\sigma^\square}{\partial\mathbf{v}}\right]_{\mathbf{x}(t'),\mathbf{v}(t')}\,\mathrm{d}t'
+\end{equation}
+
+Let us now consider the typical Maxwellian distribution, so that:
+
+\begin{equation}
+    \bar{f}_\sigma(\mathbf{x},\mathbf{v},t)=-\frac{2n_\sigma^\square q_\sigma\bar{\phi}}{m_\sigma}\left(\frac{m_\sigma}{2\pi k_\mathrm{B}T_\sigma}\right)^{3/2}\exp{\left[-\frac{m_\sigma\mathbf{v}^2}{2k_\mathrm{B}T_\sigma}\right]}\int_{-\infty}^t\left[\frac{\mathrm{i}\mathbf{k}\cdot m_\sigma\mathbf{v}}{2k_\mathrm{B}T_\sigma}\exp{\left[\mathrm{i}\mathbf{k}\cdot\mathbf{x}(t')-\mathrm{i}\omega t'\right]}\right]\,\mathrm{d}t'
+\end{equation}
+
+The exponential velocity term has been factored out since, along an unperturbed orbit, the kinetic energy is a constant of motion. Note that $(\mathrm{i}\mathbf{k}\cdot\mathbf{x})'=(\mathrm{i}\mathbf{k}\cdot\mathbf{v})$:
+
+\begin{equation}
+    \bar{f}_\sigma(\mathbf{x},\mathbf{v},t)=-\frac{q_\sigma\bar{\phi}}{k_\mathrm{B}T_\sigma}f_\sigma^\square\int_{-\infty}^t\left(\exp{[-\mathrm{i}\omega t']}\frac{\mathrm{d}}{\mathrm{d}t'}\left[\exp{[\mathrm{i}\mathbf{k}\cdot\mathbf{x}(t')]}\right]\right)\,\mathrm{d}t'=
+\end{equation}
+
+\begin{equation}
+    =-\frac{q_\sigma\bar{\phi}}{k_\mathrm{B}T_\sigma}f_\sigma^\square\bigg(\exp{\left[\mathrm{i}\mathbf{k}\cdot\mathbf{x}(t')-\mathrm{i}\omega t'\right]}\Bigr|_{-\infty}^t+\mathrm{i}\omega I_\text{phase}(\mathbf{x},t)\bigg)
+\end{equation}
+
+where we have defined the so-called phase history integral as follows:
+
+\begin{equation}
+    I_\text{phase}(\mathbf{x},t)=\int_{-\infty}^t\exp{\left[\mathrm{i}\mathbf{k}\cdot\mathbf{x}(t')-\mathrm{i}\omega t'\right]}\,\mathrm{d}t'
+\end{equation}
+
+The evaluation of this integral requires knowledge of the unperturbed trajectory $\mathbf{x}$. In this case, we may first decompose the particle's velocity as follows:
+
+\begin{equation}
+    \mathbf{v}(t')=v^\parallel\,\mathbf{\hat{B}}+\mathbf{v}^\perp\cos{[\Omega_\sigma(t'-t)]}-\mathbf{\hat{B}}\times\mathbf{v}^\perp\sin{[\Omega_\sigma(t'-t)]}
+\end{equation}
+
+which satisfies a particular particle's dynamics and the boundary condition $\mathbf{v}(t)=\mathbf{v}$. Integrating gives:
+
+\begin{equation}
+    \mathbf{x}(t')=\mathbf{x}+v^\parallel(t'-t)\,\mathbf{\hat{B}}+\frac{1}{\Omega_\sigma}\left[\mathbf{v}^\perp\sin{[\Omega_\sigma(t'-t)]}+\mathbf{\hat{B}}\times\mathbf{v}^\perp\left(\cos{[\Omega_\sigma(t'-t)]}-1\right)\right]
+\end{equation}
+
+which satisfies $\mathbf{x}(t)=\mathbf{x}$. Let us introduce the angle variable $\varphi=\angle(\mathbf{k}_\perp, \mathbf{v}^\perp)$, so that:
+
+\begin{equation}
+    \mathbf{k}\cdot\mathbf{x}(t')=\mathbf{k}\cdot\mathbf{x}+k_\parallel v^\parallel(t'-t)+\frac{k_\perp v^\perp}{\Omega_\sigma}\left(\sin{\left[\Omega_\sigma(t'-t)+\varphi\right]}-\sin{\varphi}\right)
+\end{equation}
+
+We perform the translation $t=t'-\tau$, so that:
+
+\begin{equation}
+    I_\text{phase}(\mathbf{x},t)=\exp{[\mathrm{i}\mathbf{k}\cdot\mathbf{x}-\mathrm{i}\omega t]}\int_{-\infty}^0\exp{\left[\mathrm{i}(k_\parallel v^\parallel-\omega)\tau+\frac{\mathrm{i}k_\perp v^\perp}{\Omega_\sigma}\left[\sin{[\Omega_\sigma\tau+\varphi]}-\sin{\varphi}\right]\right]}\,\mathrm{d}\tau
+\end{equation}
+
+Now, we employ the Jacobi-Anger expansion:
+
+\begin{equation}
+    \exp{\left[\mathrm{i}z\sin{\theta}\right]}=\sum_{n=-\infty}^\infty J_n(z)\exp{(\mathrm{i}n\theta)}
+\end{equation}
+
+The phase history integral thus becomes:
+
+\begin{equation}
+    I_\text{phase}(\mathbf{x},t)=e^{\left[\mathrm{i}\mathbf{k}\cdot\mathbf{x}-\mathrm{i}\omega t -\frac{\mathrm{i}k_\perp v^\perp\sin{\varphi}}{\Omega_\sigma}\right]}\sum_{n=-\infty}^\infty J_n\left(\frac{k_\perp v^\perp}{\Omega_\sigma}\right)\frac{\exp{\left[\mathrm{i}(k_\parallel v^\parallel-\omega)\tau+\mathrm{i}n(\Omega_\sigma\tau+\varphi))\right]\Bigr|_{-\infty}^0}}{-\mathrm{i}(\omega-k_\parallel v^\parallel-n\Omega_\sigma)}
+\end{equation}
+
+The lower limit corresponds to initial values in the distant past, and will hereby be dropped:
+
+\begin{equation}
+    \bar{f}_\sigma(\mathbf{x},\mathbf{v},t)=-\frac{q_\sigma\bar{\phi}}{k_\mathrm{B}T_\sigma}f_\sigma^\square\exp{\left[\mathrm{i}\mathbf{k}\cdot\mathbf{x}-\mathrm{i}\omega t\right]}\left(1-\exp{\left[-\frac{k_\perp v^\perp}{\Omega_\sigma}\right]}\sum_{n=-\infty}^\infty\frac{J_n\left(k_\perp v^\perp/\Omega_\sigma\right)\omega\exp{[\mathrm{i}n\varphi]}}{\omega-k_\parallel v^\parallel-n\Omega_\sigma}\right)
+\end{equation}
+
+It is now useful to exploit the following integral identity:
+
+\begin{equation}
+    \int_{0}^\infty zJ_n^2(\beta z)\exp{\left[-\alpha^2z^2\right]}\,\mathrm{d}z=\frac{\exp{\left[-\beta^2/2\alpha^2\right]}}{2\alpha^2}I_n\left(\frac{\beta^2}{2\alpha^2}\right)
+\end{equation}
+
+\begin{equation}
+    \bar{n}_\sigma=-\frac{n_\sigma^\square q_\sigma\bar{\phi}}{k_\mathrm{B}T_\sigma}\left[1+\alpha_{\sigma}^{(0)}\exp{(-k_\perp^2 r_\sigma^2)}\sum_{n=-\infty}^\infty I_n\left(k_\perp^2r_\sigma^2\right)\int_{-\infty}^\infty\frac{\exp{\left[-\xi^2\right]}}{\xi-\alpha_{\sigma}^{(n)}}\,\mathrm{d}\xi\right]
+\end{equation}
+
+where $r_\sigma=\sqrt{k_\mathrm{B}T_\sigma/m_\sigma\Omega_\sigma^2}$ and $\alpha_{\sigma}^{(n)}=(\omega-n\Omega_\sigma)\sqrt{\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}}/k_\parallel$. The notation used for $\alpha_\sigma^{(n)}$ should not be confused with higher derivative notation. Substituting this into Poisson's equation yields the dispersion relation for the electrostatic wave. It is notable to remark that the found dispersion relation can be manipulated to show that Landau damping appears both at the wave frequency $\omega$ and at cyclotron harmonics. It is appropriate to verify whether our considerations regarding magnetic fields reduce to pure electrostatic waves, as described by the Vlasov-Poisson model. In the limit $\|\mathbf{B}\|\to0$, we find $\forall n\in\mathbb{Z},\alpha_\sigma^{(n)}\to0$. The integral above can thus be taken out of the sum. Furthermore, $\sum_{n\in\mathbb{Z}}I_n(\lambda)=\exp{[\lambda]}$. Our considerations thus reduce to the description of the Vlasov-Poisson model in the unmagnetised case. We find that the dispersion relation is of the following form:
+
+\begin{equation}
+    \mathcal{D}(\omega,\mathbf{k})=1+\sum_{\sigma}\frac{1}{\mathbf{k}^2\lambda_{\mathrm{d}\sigma}^2}\left(1+\alpha_\sigma^{(0)}\exp{\left[-k_\perp^2r_\sigma^2\right]\sum_{n=-\infty}^\infty}I_n(k_\perp^2r_\sigma^2)Z\left(\alpha_\sigma^{(n)}\right)\right)
+\end{equation}
+
+Because the modified Bessel functions of the first kind are even with respect to the parameter $n$, we may recast as follows:
+
+\begin{equation}
+    \mathcal{D}(\omega,\mathbf{k})=1+\sum_{\sigma}\frac{\exp{\left[-k_\perp^2r_\sigma^2\right]}}{\mathbf{k}^2\lambda_{\mathrm{d}\sigma}^2}\Bigg[I_0(k_\perp^2r_\sigma^2)\left[1+\alpha_\sigma^{(0)}Z\left(\alpha_\sigma^{(0)}\right)\right]\,+
+\end{equation}
+
+\begin{equation}
+    +\,\sum_{n=1}^\infty I_n(k_\perp^2 r_\sigma^2)\left(2+\alpha_\sigma^{(n)}\left[Z\left(\alpha_\sigma^{(n)}\right)+Z\left(\alpha_\sigma^{(-n)}\right)\right]\right)\Bigg]
+\end{equation}
+
+This dispersion relation ought to reduce to our considerations of cold waves in magnetised plasma in the two-fluid description. This corresponds to the case $\alpha_\sigma^{(0)}=\sqrt{\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}}\omega/k_\parallel\gg1$. Notice that, due to the harmonic nature of $\alpha_\sigma^{(n)}$ with respect to cyclotron frequencies, we shall furthermore assume that $\omega$ indeed does not coincide with any cyclotron harmonic, so that we may perform expansions of the plasma dispersion functions as follows:
+
+\begin{equation}
+    1+\alpha_\sigma^{(0)}Z\left(\alpha_\sigma^{(0)}\right)=1+\alpha_\sigma^{(0)}\left[-\frac{1}{\alpha_\sigma^{(0)}}\left(1+\frac{1}{2\left[\alpha_\sigma^{(0)}\right]^2}+\cdots\right)+\mathrm{i}\sqrt{\pi}\exp{\left[-\left(\alpha_\sigma^{(0)}\right)^2\right]}\right]
+\end{equation}
+
+\begin{equation}
+    1+\alpha_\sigma^{(0)}Z\left(\alpha_\sigma^{(0)}\right)\simeq-\frac{1}{2\left(\alpha_\sigma^{(0)}\right)^2}+\mathrm{i}\alpha_\sigma^{(n)}\sqrt{\pi}\exp{\left[-\left(\alpha_\sigma^{(0)}\right)^2\right]}
+\end{equation}
+
+\begin{equation}
+    2+\alpha_\sigma^{(0)}\left[Z\left(\alpha_\sigma^{(n)}\right)+Z\left(\alpha_\sigma^{(-n)}\right)\right]=-\frac{2n^2\Omega_\sigma^2}{\omega^2-n^2\Omega_\sigma^2}+\mathrm{i}\alpha_\sigma^{(0)}\sqrt{\pi}\left(e^{-\left(\alpha_\sigma^{(n)}\right)^2}+e^{-\left(\alpha_\sigma^{(-n)}\right)^2}\right)
+\end{equation}
+
+Upon inputting these expansions into the dispersion relation, it is now clear that electrostatic waves exhibit resonances at cyclotron frequencies. Moreover, the imaginary terms indicate that Landau damping takes place at both the wave frequency $\omega$, but also at cyclotron harmonics. Notice that, due to the transcendental nature of the dispersion relation, its solution $(\omega,\mathbf{k})$ has infinitely many values for $\omega$ for any given $k_\perp$.
+
+\subsection{Bernstein waves}
+
+We consider the situation where the wave phase is uniform in the direction of the magnetic field, so that $\mathbf{k}\cdot\mathbf{B}=0$. Such a situation is thus equivalent to the limit $k_\parallel\to0$, in which case the Landau damping terms and the inverse square terms, $1/(\alpha_\sigma^{(n)})^2$ vanish. The full dispersion relation is thus reduced to:
+
+\begin{equation}
+    \mathcal{D}(\omega,\mathbf{k})=1-\sum_{\sigma}\frac{\exp{\left[-k_\perp^2r_\sigma^2\right]}}{k_\perp^2r_\sigma^2}\sum_{n=1}^\infty\frac{2n^2\omega_{\mathrm{p}\sigma}^2}{\omega^2-n^2\Omega_\sigma^2}I_n(k_\perp^2r_\sigma^2)
+\end{equation}
+
+Waves described by this dispersion relation are commonly referred to as Bernstein waves or hot plasma waves since their existence depends on the plasma having a finite temperature. For given $k_\perp$, there are infinitely many solutions for $\omega$, that is, each solution is associated with a particular cyclotron harmonic. This is precisely because, as $\omega$ is increased, it will inevitably cross a cyclotron harmonic, where the non-trivial piecewise-continuous term of the dispersion relation oscillates between negative and positive infinity. We shall now consider the case of electron Bernstein waves and drop the ion contribution to the dispersion relation:
+
+\begin{equation}
+    1=2\frac{\exp{\left[-k_\perp^2r_\sigma^2\right]}}{k_\perp^2r_\text{e}^2}\sum_{n=1}^\infty\frac{n^2\omega_\text{pe}^2}{\omega^2-n^2\Omega_\text{e}^2}I_n(k_\perp^2r_\text{e}^2)
+\end{equation}
+
+which exhibits distinct behaviour in the two following limits:
+
+\begin{enumerate}
+    \item The magnetic field is sufficiently strong to satisfy $\omega_\text{pe}^2\ll\Omega_\text{e}^2$. Each factor in the resonant term is negligible compared to unity except when $\omega^2\sim\mathcal{O}(n^2\Omega_\text{e}^2)$. Thus, only a single term in the sum is near resonance, and the dispersion relation is satisfied under the following condition:
+
+    \begin{equation}
+        \omega^2=n^2\Omega_\text{e}^2+2\frac{\exp{\left[k_\perp^2r_\text{e}^2\right]}}{k_\perp^2r_\text{e}^2}n^2\omega_\text{pe}^2I_n(k_\perp^2r_\text{e}^2)\qquad n\in\mathbb{N}_+
+    \end{equation}
+
+    The small and large limits of $k_\perp^2r_\text{e}^2$ are determined using the asymptotic of the modified Bessel functions of the first kind, namely:
+
+    \begin{equation}
+        \lim_{\xi\ll1}I_n(\xi)=\frac{1}{n!}\left(\frac{\xi}{2}\right)^n\quad\text{and}\quad\lim_{\xi\gg1}I_n(\xi)=\frac{\exp{[\xi]}}{\sqrt{2\pi\xi}}
+    \end{equation}
+
+    These results indeed form a generalisation of the upper hybrid resonances for warm magnetised plasmas.
+
+    \item The magnetic field is sufficiently weak to satisfy $\omega_\text{pe}^2\gg\Omega_\text{e}^2$. For large $k_\perp^2r_\text{e}^2$, the product of the exponential and the modified Bessel function is unity, thus leaving $k_\perp^3r_\text{e}^3$ in the denominator, so that the dispersion relation again reduces to cyclotron harmonics. The other limit for $k_\perp^2r_\text{e}^2$ is, however, more convoluted, as the $n=1$ term is independent of $k_\perp^2r_\text{e}^2$ in the lowest order. One may show that, in this limit, the $n$-th mode starts at $\omega\simeq(n+1)\Omega_\text{e}$ for small $k_\perp^2r_\text{e}^2$.
+\end{enumerate}
+
+It is important to note the rather restrictive condition $k_\parallel=0$. In cylindrical or planar geometries, such a situation is only possible if the considered oscillations were produced via infinitely long antennas parallel to the magnetic field. This is, in reality, simply not the case. In any regions where $\mathbf{k}\cdot\mathbf{B}\neq0$, evaluating to even infinitesimal values, Bernstein waves as described above would experience vastly different mode behaviour, as well as Landau damping.
+

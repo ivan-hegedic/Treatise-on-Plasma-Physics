@@ -1,0 +1,891 @@
+\chapter{Charge motion in force fields}
+
+In the study of plasmas, which consist of charged particles, it is essential to know their motion in various force field configurations, whether electric or magnetic, static or oscillatory. It should be noted that charged particles, for their part, create currents that modify these electromagnetic fields. In our considerations, we will ignore the second part of the problem. In other words, we will consider force fields imposed on an arbitrary plasma. The motion of said particles in electromagnetic fields is described by the Lorentz equation:
+
+\begin{equation}
+    \diff{\mathbf{p}}{t}=q\left[\mathbf{E}(\mathbf{x}, t)+\mathbf{v}\times\mathbf{B}(\mathbf{x}, t)\right]=q\left[\mathbf{E}(\mathbf{x},t)+\frac{\mathbf{p}}{\gamma m}\times\mathbf{B}(\mathbf{x},t)\right]
+\end{equation}
+
+where $m$ is the rest mass of the particle. In certain cases, we will ignore relativistic effects imposed by special or general relativity.
+
+\section{Constant uniform electric field}
+
+The equation of motion is, in this case, trivial to solve:
+
+\begin{equation}
+    \diff{\mathbf{p}}{t}=q\mathbf{E}_0\implies\mathbf{p}(t)=\mathbf{p}_0+q\mathbf{E}_0t
+\end{equation}
+
+\begin{equation}
+    \mathbf{v}(t)=\frac{\mathbf{p}(t)}{\gamma(t)m}=\frac{\mathbf{p}_0+q\mathbf{E}_0t}{\sqrt{1+\frac{(\mathbf{p}_0+q\mathbf{E}_0t)^2}{m^2c^2}}}\quad\quad\lim_{t\to\infty}\|\mathbf{v}(t)\|=c
+\end{equation}
+
+\section{Constant uniform magnetic field}
+
+\label{sec2-2}
+
+The equation of motion is also trivial to solve, as in the previous case:
+
+\begin{equation}
+    \diff{\mathbf{p}}{t}=q\mathbf{v}\times\mathbf{B}_0\implies\diff{\mathbf{v}}{t}=\mathbf{v}\times\frac{q\mathbf{B_0}}{\gamma m}\equiv\mathbf{v}\times\mathbf{\Omega_c}\quad\quad\mathbf{\Omega}_c=\frac{q\mathbf{B}_0}{\gamma m}
+\end{equation}
+
+where $\Omega_c$ designates the relativistic angular velocity of the particle considered. The norm of the charge's velocity $\|\mathbf{v}\|$ is conserved:
+
+\begin{equation}
+    \mathbf{v}\cdot\diff{\mathbf{v}}{t}=\frac{1}{2}\diff{}{t}\left(\mathbf{v}^2\right)=\diff{}{t}\left(\|\mathbf{v}\|\right)=\mathbf{v}\cdot\left(\mathbf{v}\times\Omega_c\right)=0\implies\diff{\gamma}{t}=0
+\end{equation}
+
+The motion along the magnetic field is uniform. Let us choose $\mathbf{B}_0$ along the $\mathbf{\hat{z}}$ axis, then:
+
+\begin{equation}
+    \diff{}{t}\left(\mathbf{v}\cdot\mathbf{\hat{z}}\right)=0\quad\quad\mathbf{v}-(\mathbf{v}\cdot\mathbf{\hat{z}})\,\mathbf{\hat{z}}=v_\mathrm{x}\,\mathbf{\hat{x}}+v_\mathrm{y}\,\mathbf{\hat{y}}\implies v_\perp=\sqrt{v_\mathrm{x}^2+v_\mathrm{y}^2}
+\end{equation}
+
+\begin{equation}
+    \diff{v_\mathrm{x}}{t}=\frac{qB_0}{\gamma m}v_\mathrm{y}\qquad\diff{v_\mathrm{y}}{t}=-\frac{qB_0}{\gamma m}v_\mathrm{x}
+\end{equation}
+
+\begin{equation}
+    \frac{\mathrm{d}^2v_\mathrm{x}}{\mathrm{d}t^2}=\frac{qB_0}{\gamma m}\diff{v_\mathrm{y}}{t}=-\left(\frac{qB_0}{\gamma m}\right)^2v_\mathrm{x}\qquad\frac{\mathrm{d}^2v_\mathrm{y}}{\mathrm{d}t^2}=-\frac{qB_0}{\gamma m}\diff{v_\mathrm{x}}{t}=-\left(\frac{qB_0}{\gamma m}\right)^2v_\mathrm{y}
+\end{equation}
+
+\begin{equation}
+    v_\mathrm{x}(t)=v_\perp\cos(\Omega_ct+\varphi)\qquad v_\mathrm{y}(t)=v_\perp\sin(\Omega_ct+\varphi)
+\end{equation}
+
+\begin{equation}
+    x(t)=\int v_\mathrm{x}(t)\,\mathrm{d}t=x_0+\frac{v_\perp}{\Omega_c}\sin(\varphi)+\frac{v_\perp}{\Omega_c}\sin(\Omega_ct+\varphi)
+\end{equation}
+
+\begin{equation}
+    y(t)=\int v_\mathrm{y}(t)\,\mathrm{d}t=y_0-\frac{v_\perp}{\Omega_c}\cos(\varphi)-\frac{v_\perp}{\Omega_c}\cos(\Omega_ct+\varphi)
+\end{equation}
+
+We will take further advantage of this by defining the angle $\alpha=\varphi-\frac{\pi}{2}$:
+
+\begin{equation}
+    x(t)=x_\text{g}+r_\text{L}\cos(\Omega_ct+\alpha)\quad\quad\quad y(t)=y_\text{g}+r_\text{L}\sin(\Omega_ct+\alpha)
+\end{equation}
+
+\begin{equation}
+    x_\text{g}=x_0-r_\text{L}\cos(\alpha)\qquad y_\text{g}=y_0-r_\text{L}\sin(\alpha)\qquad r_\text{L}=\frac{\gamma mv_\perp}{\|q\mathbf{B_0}\|}=\frac{\|\mathbf{p}_\perp\|}{\|q\mathbf{B}_0\|}
+\end{equation}
+
+The centre of the particle rotation orbits is termed the \textit{guiding centre} or \textit{gyro-centre}. It is defined by the vector $\mathbf{r}_\text{g}(t)=x_\text{g}\,\mathbf{\hat{x}}+y_\text{g}\,\mathbf{\hat{y}}+z(t)\,\mathbf{\hat{z}}$. The quantity $r_\text{L}$ is known as the \textit{Larmor radius} or \textit{gyro radius}. It should be noted that the direction of rotation for positively charged particles is clockwise (left-handed), whereas the direction of rotation for negatively charged particles is counterclockwise (right-handed). This results in the magnetic dipole created by the motion of the concerned particle being oriented in the opposite direction to the external magnetic field. In other words, the particles tend to reduce the magnetic field imposed on them. This is precisely the property of magnetic materials termed \textit{diamagnetism}. Plasma is therefore a diamagnetic medium.
+
+\section{Constant uniform magnetic and electric fields}
+
+The non-relativistic Lorentz equation appears in the following form:
+
+\begin{equation}
+    m\diff{\mathbf{v}}{t}=q\left(\mathbf{E}+\mathbf{v}\times\mathbf{B}\right)
+\end{equation}
+
+We will decompose the velocity $\mathbf{v}$ into three components: the velocity $\mathbf{v}_\parallel$ parallel to the magnetic field $\mathbf{B}$, the gyration velocity $\mathbf{v}_\text{L}$, and another velocity, introduced under the term \textit{drift velocity}, $\mathbf{v}_\mathrm{d}$:
+
+\begin{equation}
+    m\,\diff{}{t}\left(\mathbf{v}_\parallel+\mathbf{v}_\mathrm{d}+\mathbf{v}_\text{L}\right)=q\left[\mathbf{E}+\left(\mathbf{v}_\parallel+\mathbf{v}_\mathrm{d}+\mathbf{v}_\text{L}\right)\times\mathbf{B}\right]
+\end{equation}
+
+It is easy to see that one must define the drift velocity such that:
+
+\begin{equation}
+    \label{eq2-17}
+    \mathbf{E}+\mathbf{v}_\mathrm{d}\times\mathbf{B}=\mathbf{0}
+\end{equation}
+
+so that we have a simple cyclotron motion satisfied by $\mathbf{v}_\text{L}$ as in section (\ref{sec2-2}). By taking the cross product of equation (\ref{eq2-17}) with $\mathbf{B}$, it follows:
+
+\begin{equation}
+    \mathbf{E}\times\mathbf{B}+\left(\mathbf{v}_\mathrm{d}\times\mathbf{B}\right)\times\mathbf{B}=\mathbf{E}\times\mathbf{B}+(\underbrace{\mathbf{v}_\mathrm{d}\cdot\mathbf{B}}_\mathbf{0})\mathbf{B}-\mathbf{B}^2\mathbf{v}_\mathrm{d}=\mathbf{0}
+\end{equation}
+
+The expression for the drift velocity is thus easily determined:
+
+\begin{equation}
+    \mathbf{v}_\mathrm{d}=\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{B}^2}
+\end{equation}
+
+It should be noted that the drift velocity $\mathbf{v}_\mathrm{d}$ is independent of the particle's properties; thus, it points in the same direction for positive and negative charges. The physical intuition behind the drift velocity is that, in the frame moving at this velocity, the electric field is transformed so that it is zero. When introducing relativistic effects, one must distinguish between the following two cases: $\|\mathbf{E}\|<c\|\mathbf{B}\|$ and $\|\mathbf{E}\|>c\|\mathbf{B}\|$. Otherwise, we would encounter contradictions. Without loss of generality, let $\mathbf{E}\perp\mathbf{B}$, then:
+
+\begin{equation}
+    \|\mathbf{E}\|>c\|\mathbf{B}\|\implies\|\mathbf{v}_\mathrm{d}\|=\Bigg\|\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{B}^2}\Bigg\|>c\quad\perp
+\end{equation}
+
+Let us consider the frame moving, relative to the laboratory frame where electric and magnetic fields are defined such that $\|\mathbf{E}\|<c\|\mathbf{B}\|$, at the following velocity:
+
+\begin{equation}
+    \mathbf{v}_\mathrm{d}=\frac{\mathbf{E}\times\mathbf{B}}{\|\mathbf{B}\|^2}\implies\|\mathbf{v}_\mathrm{d}\|<c
+\end{equation}
+
+Using Lorentz transformations, we recover the following fields in the new frame:
+
+\begin{equation}
+    \mathbf{E}'=\gamma_\mathrm{d}\left(\mathbf{E}+\mathbf{v}_\mathrm{d}\times\mathbf{B}\right)-(\gamma_\mathrm{d}-1)\big(\underbrace{\mathbf{E}\cdot\mathbf{\hat{v}}_\mathrm{d}}_{0}\big)\,\mathbf{\hat{v}}_\mathrm{d}=\gamma_\mathrm{d}\left[\mathbf{E}+\frac{(\mathbf{E}\times\mathbf{B})}{\|\mathbf{B}\|^2}\times\mathbf{B}\right]=\gamma_\mathrm{d}\frac{\mathbf{E}\cdot\mathbf{B}}{\|\mathbf{B}\|^2}\mathbf{B}
+\end{equation}
+
+\begin{equation}
+    \mathbf{B}'=\gamma_\mathrm{d}\left(\mathbf{B}-\frac{\mathbf{v}_\mathrm{d}\times\mathbf{E}}{c^2}\right)-(\gamma_\mathrm{d}-1)(\underbrace{\mathbf{B}\cdot\mathbf{\hat{v}_d}}_0)\,\mathbf{\hat{v}}_d=\gamma_\mathrm{d}\left[\mathbf{B}+\frac{(\mathbf{E}\cdot\mathbf{B})\mathbf{E}-\|\mathbf{E}\|^2\mathbf{B}}{c^2\|\mathbf{B}\|^2}\right]
+\end{equation}
+
+In the specific case where $\mathbf{E}\perp\mathbf{B}$, we observe a significant simplification of the preceding expressions:
+
+\begin{equation}
+    \mathbf{E}'=0\quad\text{et}\quad\mathbf{B}'=\gamma_\mathrm{d}\left(1-\frac{\mathbf{E}^2}{c^2\mathbf{B}^2}\right)\mathbf{B}=\frac{\mathbf{B}}{\gamma_\mathrm{d}}
+\end{equation}
+
+Similarly, in the case where $\|\mathbf{E}\|>c\|\mathbf{B}\|$, and furthermore $\mathbf{E}\perp\mathbf{B}$, we simply admit that the expression for the drift velocity is of the following form:
+
+\begin{equation}
+    \mathbf{v}_\mathrm{d}=c^2\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{E}^2}\implies\mathbf{E}'=\frac{\mathbf{E}}{\gamma_\mathrm{d}}\quad\text{et}\quad\mathbf{B}'=\mathbf{0}
+\end{equation}
+
+\section{Constant uniform magnetic field and force field}
+
+The equation of motion in the case where the considered particle undergoes a force $\mathbf{F}$ reads:
+
+\begin{equation}
+    m\diff{\mathbf{v}}{t}=\mathbf{F}+q\mathbf{v}\times\mathbf{B}=q\left(\frac{\mathbf{F}}{q}+\mathbf{v}\times\mathbf{B}\right)
+\end{equation}
+
+Identically to the previous section, we can prove that the drift velocity appears in the following form, the derivation of which is omitted due to redundancy:
+
+\begin{equation}
+    \label{eq2-27}
+    \mathbf{v}_\mathrm{d}=\frac{1}{q}\frac{\mathbf{F}\times\mathbf{B}}{\mathbf{B}^2}
+\end{equation}
+
+\section{Constant non-uniform magnetic field}
+
+\label{sec2-5}
+
+\subsection{Direction of variation perpendicular to the field}
+
+\label{sec2-5-1}
+
+We examine the motion of a particle of charge $q$ and mass $m$ subjected to a magnetic field $\mathbf{B}$ characterized by a non-zero dyadic tensor $\nabla\mathbf{B}$. For the sake of simplicity and physical intuition, we will adopt the following assumptions:
+
+\begin{enumerate}
+    \item\label{hyp2-5-1-1} Any velocity considered is much smaller than the speed of light. This allows us to neglect relativistic effects, which are indeed, for the most part, negligible.
+    \item\label{hyp2-5-1-2} The magnetic field undergoes minuscule variations on the scale of the Larmor radius of the particle considered, i.e. $r_\text{L}\|\nabla\mathbf{B}\|\ll\|\mathbf{B}\|$, the approximation $\mathbf{B}\simeq\mathbf{B}_0+(\mathbf{r}\cdot\nabla)\mathbf{B}$ holds very well.
+    \item\label{hyp2-5-1-3} The dyadic tensor is a tensor with a single non-zero component, $\mathbf{\hat{x}}\mathbf{\hat{B}}$, where $\mathbf{\hat{x}}\perp\mathbf{B}$.
+    \item\label{hyp2-5-1-4} The drift velocity is much smaller than the Larmor velocity of the particle considered, i.e. $\|\mathbf{v}_\mathrm{d}\|\ll\|\mathbf{v}_\text{L}\|$ holds very well. The validity of this assumption will be examined shortly.
+    \item\label{hyp2-5-1-5} The drift velocity indeed undergoes variations, but these variations are perfectly negligible. The validity of this assumption will be established at the close of the subsection.
+\end{enumerate}
+
+By virtue of the preceding analyses, we impose the velocity decomposition $\mathbf{v}=\mathbf{v}_\mathrm{d}+\mathbf{v}_\text{L}$ such that the Lorentz equation applied to the particle considered reads:
+
+\begin{equation}
+    m\diff{\mathbf{v}}{t}\equiv m\diff{\mathbf{v}_\text{L}}{t}=q\left(\mathbf{v}_\mathrm{d}+\mathbf{v}_\text{L}\right)\times\mathbf{B}
+\end{equation}
+
+Using assumption (\ref{hyp2-5-1-2}), we expand the cross product as follows:
+
+\begin{equation}
+    m\diff{\mathbf{v}_\text{L}}{t}=q\bigg[\mathbf{v}_\text{L}\times\mathbf{B}_0+\underbrace{\mathbf{v}_\mathrm{d}\times\mathbf{B}_0+(\mathbf{v}_\mathrm{d}+\mathbf{v}_\text{L})\times(\mathbf{r}\cdot\nabla)\mathbf{B}}_\mathbf{0}\bigg]
+\end{equation}
+
+We impose the drift-velocity condition, such that the underlined sum results in zero:
+
+\begin{equation}
+    \label{eq2-30}
+    \mathbf{v}_\mathrm{d}\times\mathbf{B}_0+\mathbf{v}_\mathrm{d}\times(\mathbf{r}\cdot\nabla)\mathbf{B}+\underbrace{\mathbf{v}_\text{L}\times(\mathbf{r}\cdot\nabla)\mathbf{B}}_{\langle\cdots\rangle=\mathbf{0}}=\mathbf{0}
+\end{equation}
+
+We identify the second term as the most negligible thanks to assumptions (\ref{hyp2-5-1-2}) and (\ref{hyp2-5-1-4}). Before beginning the resolution of the condition given by equation (\ref{eq2-30}), we impose the decomposition of the position vector $\mathbf{r}=\mathbf{r}_\text{g}+\mathbf{r}_\text{L}$, in other words, into guiding centre and Larmor radius:
+
+\begin{equation}
+    \label{eq2-31}
+    \mathbf{v}_\mathrm{d}\times\mathbf{B}+\mathbf{v}_\text{L}\times(\mathbf{r}_\text{L}\cdot\nabla)\mathbf{B}+\mathbf{v}_\text{L}\times(\mathbf{r}_\text{g}\cdot\nabla)\mathbf{B}=\mathbf{0}
+\end{equation}
+
+We will proceed by taking the average of equation (\ref{eq2-31}) over a rotation period. It is easy to see that the last term of the previous equation vanishes when its average is taken. Assumption (\ref{hyp2-5-1-3}) gives:
+
+\begin{equation}
+    \mathbf{r}_\text{L}=\frac{v_{\perp\mathbf{B}}}{\Omega_\text{c}}\begin{pmatrix}
+        \cos(\Omega_\text{c}t+\varphi_0)\\
+        \sin(\Omega_\text{c}t+\varphi_0)
+    \end{pmatrix}\implies\mathbf{v}_\text{L}=v_{\perp\mathbf{B}}\begin{pmatrix}
+        -\sin(\Omega_\text{c}t+\varphi_0)\\
+        \cos(\Omega_\text{c}t+\varphi_0)
+    \end{pmatrix}\quad\text{et}\quad(\mathbf{r}\cdot\nabla)\mathbf{B}=x\frac{\mathrm{d}\mathbf{B}}{\mathrm{d}x}
+\end{equation}
+
+We examine the second term of equation (\ref{eq2-31}) more closely by decomposing it along $\mathbf{\hat{x}}$ and $\mathbf{\hat{y}}\perp\mathbf{B}$:
+
+\begin{equation}
+    \left[\mathbf{v}_\text{L}\times\left(x\frac{\mathrm{d}\mathbf{B}}{\mathrm{d}x}\right)\right]\cdot\mathbf{\hat{x}}=v_\text{Ly}x\frac{\mathrm{d}B}{\mathrm{d}x}\quad\text{et}\quad\left[\mathbf{v}_\text{L}\times\left(x\frac{\mathrm{d}\mathbf{B}}{\mathrm{d}x}\right)\right]\cdot\mathbf{\hat{y}}=-v_\text{Lx}x\frac{\mathrm{d}B}{\mathrm{d}x}
+\end{equation}
+
+\begin{equation}
+    \langle v_\text{Ly}x\rangle=\frac{v_{\perp\mathbf{B}}^2}{\Omega_c}\left\langle\cos(\Omega_ct+\varphi_0)\cos(\Omega_ct+\varphi_0)\right\rangle=\frac{v_{\perp\mathbf{B}}^2}{2\Omega_c}
+\end{equation}
+
+\begin{equation}
+    \langle v_\text{Lx}x\rangle=\frac{v_{\perp\mathbf{B}}}{\Omega_c}\left\langle-\sin(\Omega_ct+\varphi_0)\cos(\Omega_ct+\varphi_0)\right\rangle=0
+\end{equation}
+
+Returning to equation (\ref{eq2-31}), we obtain the expression for the drift velocity in an analogous manner as in the previous sections, hence:
+
+\begin{equation}
+    \label{eq2-36}
+    \mathbf{v}_{\nabla\mathbf{B}}=\frac{1}{q}\frac{mv_{\perp}^2}{2}\frac{\mathbf{B}\times(\mathbf{B}\cdot\nabla)\mathbf{B}}{\mathbf{B}^4}
+\end{equation}
+
+This drift velocity is commonly referred to as \textit{grad B-drift}. It is worth confirming the consistency between the assumptions established at the beginning of the discussion and the result obtained. We first test assumption (\ref{hyp2-5-1-4}) and find that it is well verified. Let us note assumption (\ref{hyp2-5-1-3}):
+
+\begin{equation}
+    \|\mathbf{v}_{\nabla\mathbf{B}}\|=\Bigg\|\frac{1}{q}\frac{mv_\perp^2}{2}\frac{\mathbf{B}\times(\mathbf{B}\cdot\nabla)\mathbf{B}}{\mathbf{B}^4}\Bigg\|=\frac{mv_\perp^2}{2|q|r_\text{L}}\frac{r_\text{L}\|\nabla\mathbf{B}\|}{\mathbf{B}^2}=\frac{mv_\perp^2}{2|q|}\frac{\|q\mathbf{B}\|}{mv_\perp}\frac{r_\text{L}\|\nabla\mathbf{B}\|}{\mathbf{B}^2}\ll\frac{v_\perp}{2}=\frac{\|\mathbf{v}_\text{L}\|}{2}
+\end{equation}
+
+The variation of the drift velocity is given by the following:
+
+\begin{equation}
+    \delta\|\mathbf{v}_{\nabla\mathbf{B}}\|=\frac{mv_\perp^2}{2|q|}\delta\left(\frac{\|\nabla\mathbf{B}\|}{\mathbf{B}^2}\right)
+\end{equation}
+
+The order of the variation of the perpendicular velocity is the same as that of the magnetic field. Thus, assumption (\ref{hyp2-5-1-2}) ensures the minimality of the variation of $\mathbf{v}_{\nabla\mathbf{B}}$.
+
+\subsection{Direction of variation parallel to the field}
+
+\label{sec2-5-2}
+
+When a magnetic field experiences intensification due to the dyadic tensor $\nabla\mathbf{B}$, whose component $\mathbf{\hat{z}}\mathbf{\hat{B}}$ is non-zero, this has the effect of compiling the field lines alongside each other. In other words, the magnetic field lines locally form a section cut by a cone, and the radial component is no longer zero, i.e. $\mathbf{B}\cdot\mathbf{\hat{r}}\neq0$, however, such that the inequality $\mathbf{B}\cdot\mathbf{\hat{r}}\ll\|\mathbf{B}\|$ is satisfied. This strong inequality is analogous to assumption (\ref{hyp2-5-1-2}) of subsection (\ref{sec2-5-1}). This entails that the magnetic field varies very little along the $\mathbf{\hat{z}}$ axis.
+By taking the average of the Lorentz force over a rotation period, there exists a non-zero component of this force parallel to the direction of magnetic field increase $\mathbf{\hat{z}}$:
+
+\begin{equation}
+    \langle\mathbf{F}\cdot\mathbf{\hat{z}}\rangle=\langle q(\mathbf{v}\times\mathbf{B})\cdot\mathbf{z}\rangle=q\langle\mathbf{v}\cdot(\mathbf{B}\times\mathbf{\hat{z}})\rangle=qv_\perp\mathbf{B}\cdot\mathbf{\hat{r}}=-qv_\perp\|\mathbf{B}\|\sin(\theta)
+\end{equation}
+
+where $\theta$ is the angle between the magnetic field $\mathbf{B}$ and the $\mathbf{\hat{z}}$ axis in the trigonometric sense. Using a Maxwell equation, we can relate the components of the magnetic field along the axes $\mathbf{\hat{r}}$ and $\mathbf{\hat{z}}$:
+
+\begin{equation}
+    \nabla\cdot\mathbf{B}=0\stackrel{B_\varphi=0}{\implies}\frac{1}{r}\frac{\partial}{\partial r}(rB_\text{r})+\frac{\partial B_\text{z}}{\partial z}=0\implies rB_\text{r}=-\int r\frac{\partial B_\text{z}}{\partial z}\,\mathrm{d}r
+\end{equation}
+
+Under the assumption that the Larmor radius is sufficiently small for the variation $\partial_zB_\text{z}$ to be approximately constant, we obtain:
+
+\begin{equation}
+    rB_r\,\bigg|_0^{r_\text{L}}\simeq-\frac{\partial B_\text{z}}{\partial z}\int_0^{r_\text{L}}r\,\mathrm{d}r=-\frac{1}{2}r_\text{L}^2\frac{\partial B_\text{z}}{\partial z}\implies B_\text{r}\simeq-\frac{r_\text{L}}{2}\frac{\partial B_\text{z}}{\partial z}\implies\sin(\theta)=\frac{r_\text{L}}{2}\frac{1}{\|\mathbf{B}\|}\frac{\partial B_\text{z}}{\partial z}
+\end{equation}
+
+Consequently, the particle undergoes a recoil force given by the following expression:
+
+\begin{equation}
+    \label{eq2-42}
+    \langle\mathbf{F}\cdot\mathbf{\hat{z}}\rangle=-\frac{qv_\perp r_\text{L}}{2}\frac{\partial B_\text{z}}{\partial z}=-\frac{mv_\perp^2}{2\|\mathbf{B}\|}\frac{\partial B_\text{z}}{\partial z}
+\end{equation}
+
+\section{Magnetic field presenting a radius of curvature}
+
+\label{sec2-6}
+
+We will next analyse the motion of a particle of charge $q$ and mass $m$ in a uniform and constant magnetic field of magnitude $\|\mathbf{B}\|$ and radius of curvature $\mathbf{R}$. By entering the rotating frame in which the particle follows a simple cyclotron motion, it undergoes inertial forces, in particular the centrifugal force and the Coriolis force. For simplicity, we admit straight away that the Coriolis effect does not influence the particle's motion significantly at all. The proof of this assertion relies on the fact that the Coriolis effect vanishes when taking its average over a rotation period. Let $\mathbf{v}_\parallel=(\mathbf{v}\cdot\mathbf{\hat{B}})\,\mathbf{\hat{B}}$ be the component of the particle's velocity parallel to the magnetic field, assumed constant.
+Then, the centrifugal force reads:
+
+\begin{equation}
+    \mathbf{F}_\text{cf}=mv_\parallel^2\frac{\mathbf{R}}{\mathbf{R}^2}
+\end{equation}
+
+Using equation (\ref{eq2-27}), the drift velocity induced by the curvature of the magnetic field is:
+
+\begin{equation}
+    \mathbf{v}_\mathbf{R}=\frac{mv_\parallel^2}{q}\frac{\mathbf{R}\times\mathbf{B}}{\mathbf{R}^2\mathbf{B}^2}
+\end{equation}
+
+The fact that the magnitude of the magnetic field is constant does not prevent its gradient from being non-zero. It is therefore appropriate to relate the dyadic tensor $\nabla\mathbf{B}$ to the radius of curvature. By introducing a cylindrical coordinate system such that $\mathbf{B}\cdot\mathbf{\hat{r}}=0=\mathbf{B}\cdot\mathbf{\hat{z}}$, and by taking advantage of a Maxwell equation, we will achieve this elegantly:
+
+\begin{equation}
+    \nabla\times\mathbf{B}=\mathbf{0}\implies(\nabla\times\mathbf{B})\cdot\mathbf{\hat{z}}=\frac{1}{r}\frac{\partial}{\partial r}(rB_\varphi)-\frac{1}{r}\underbrace{\frac{\partial B_r}{\partial\varphi}}_0=0
+\end{equation}
+
+\begin{equation}
+    \frac{\partial B_\varphi}{\partial r}=-\frac{B_\varphi}{r}\implies\nabla\mathbf{B}=-\frac{\mathbf{R}\mathbf{B}}{\mathbf{R}^2}\implies\left(\mathbf{B}\cdot\nabla\right)\mathbf{B}\perp\mathbf{B}
+\end{equation}
+
+Using the result (\ref{eq2-36}), the drift velocity induced by the magnetic field gradient, in this specific case, reads:
+
+\begin{equation}
+    \mathbf{v}_{\nabla\mathbf{B}}=\frac{1}{q}\frac{mv_\perp^2}{2}\frac{\mathbf{B}}{\|\mathbf{B}\|^3}\times\left(-\frac{\mathbf{R}}{\mathbf{R}^2}\right)\|\mathbf{B}\|=\frac{1}{q}\frac{mv_\perp^2}{2}\frac{\mathbf{R}\times\mathbf{B}}{\mathbf{R}^2\mathbf{B}^2}
+\end{equation}
+
+The total drift is the simple sum of the two drift velocities obtained:
+
+\begin{equation}
+    \label{eq2-48}
+    \mathbf{v}_\mathrm{d}=\mathbf{v}_{\nabla\mathbf{B}}+\mathbf{v}_\mathbf{R}=\frac{1}{q}\left(mv_\parallel^2+\frac{1}{2}mv_\perp^2\right)\frac{\mathbf{R}\times\mathbf{B}}{\mathbf{R}^2\mathbf{B}^2}
+\end{equation}
+
+It should be noted that the average of the preceding drift velocity can be evaluated quickly thanks to the
+equipartition theorem:
+
+\begin{equation}
+    \left\langle\frac{1}{2}mv_\parallel^2\right\rangle=\frac{1}{2}k_\text{B}T\quad\text{et}\quad\left\langle\frac{1}{2}mv_\perp^2\right\rangle=2\times\frac{1}{2}k_\text{B}T\implies\langle\mathbf{v}_\mathrm{d}\rangle=\frac{2k_\text{B}T}{q}\frac{\mathbf{R}\times\mathbf{B}}{\mathbf{R}^2\mathbf{B}^2}
+\end{equation}
+
+\section{Variable electric and constant magnetic field}
+
+The drift velocity undergoes a temporal variation because the electric field, for its part, depends on time:
+
+\begin{equation}
+    \mathbf{v}_\mathrm{d}(t)=\frac{\mathbf{E}(t)\times\mathbf{B}}{\mathbf{B}^2}\implies\mathbf{a}_\mathrm{d}=\diff{\mathbf{v}_\mathrm{d}}{t}=\diff{}{t}\left(\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{B}^2}\right)
+\end{equation}
+
+The guiding centre undergoes acceleration, as is also the case for the particle considered. We will examine the specific case of an oscillatory electric field perpendicular to the magnetic field:
+
+\begin{equation}
+    m\diff{\mathbf{v}}{t}=q\left(\mathbf{E}e^{i\omega t}+\mathbf{v}\times\mathbf{B}\right)
+\end{equation}
+
+Complex notation implies only the real component of the number $e^{\mathrm{i}\omega t}$. Multiplication by $i\omega$ is thus equivalent to the derivative $\mathrm{d}/\mathrm{d}t$. We impose the following decomposition:
+
+\begin{equation}
+    \label{eq2-52}
+    \mathbf{v}=\mathbf{v}_\mathrm{d}e^{i\omega t}+\mathbf{v}_\text{L}\quad\text{où}\quad m\diff{\mathbf{v}_\text{L}}{t}=q\mathbf{v}_\text{L}\times\mathbf{B}
+\end{equation}
+
+\begin{equation}
+    \label{eq2-53}
+    im\omega\,\mathbf{v}_\mathrm{d}=q\left(\mathbf{E}+\mathbf{v}_\mathrm{d}\times\mathbf{B}\right)e^{i\omega t}\implies im\omega\,\mathbf{v}_\mathrm{d}\times\mathbf{B}=q\left[\mathbf{E}\times\mathbf{B}+(\mathbf{B\cdot\mathbf{v}_\mathrm{d}})\mathbf{B}-\mathbf{B}^2\mathbf{v}_\mathrm{d}\right]e^{i\omega t}
+\end{equation}
+
+To eliminate $\mathbf{v}_\mathrm{d}\times\mathbf{B}$, we multiply the first equation of (\ref{eq2-53}) by $-im\omega$ and the second by $q$:
+
+\begin{equation}
+    m^2\omega^2\mathbf{v}_\mathrm{d}=-\mathrm{i}mq\omega\left(\mathbf{E}+\mathbf{v}_\mathrm{d}\times\mathbf{B}\right)e^{\mathrm{i}\omega t}\quad\text{et}\quad\mathrm{i}mq\omega\,\mathbf{v}_\mathrm{d}\times\mathbf{B}=q^2\left[\mathbf{E}\times\mathbf{B}+(\mathbf{B}\cdot\mathbf{v}_\mathrm{d})\mathbf{B}-\mathbf{B}^2\mathbf{v}_\mathrm{d}\right]e^{\mathrm{i}\omega t}
+\end{equation}
+
+\begin{equation}
+    m^2\omega^2\mathbf{v}_\mathrm{d}+q^2\left(\mathbf{E}\times\mathbf{B}-\mathbf{B}^2\mathbf{v}_\mathrm{d}\right)=\mathrm{i}mq\omega\,\mathbf{E}\equiv mq\diff{\mathbf{E}}{t}
+\end{equation}
+
+This drift velocity is also known as \textit{polarization drift}:
+
+\begin{equation}
+    \mathbf{v}_\mathrm{d}=\left(\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{B}^2}+\frac{m}{q\mathbf{B}^2}\diff{\mathbf{E}}{t}\right)\Bigg/\left(1-\frac{m^2\omega^2}{q^2\mathbf{B}^2}\right)
+\end{equation}
+
+We are obliged to follow a different procedure when these temporal variations of the electric field do not present oscillations.
+
+\section{Non-uniform electric and uniform magnetic field}
+
+The electric field is assumed to be slightly non-uniform, analogously to the magnetic field, in section (\ref{sec2-5}). In other words, we adopt the following assumption:
+
+\begin{equation}
+    \mathbf{E}\simeq\mathbf{E}_0+(\mathbf{r}\cdot\nabla)\mathbf{E}\quad\text{where }\|\mathbf{r}\|\text{ is of the same order as the Larmor radius}
+\end{equation}
+
+\begin{equation}
+    m\diff{\mathbf{v}}{t}=q\left[\mathbf{E}(r)+\mathbf{v}\times\mathbf{B}\right]
+\end{equation}
+
+We seek a solution for $\mathbf{v}_\mathrm{d}$ such that the following equation is satisfied:
+
+\begin{equation}
+    m\left\langle\diff{\mathbf{v}_\mathrm{d}}{t}\right\rangle=q\left\langle\mathbf{E}(r)+\mathbf{v}_\mathrm{d}\times\mathbf{B}\right\rangle=q\left[\langle\mathbf{E}\rangle+\mathbf{v}_\mathrm{d}\times\mathbf{B}\right]=\mathbf{0}
+\end{equation}
+
+We know the solution very well, so we only need to determine the average magnetic field over a rotation period. The averages of the mixed terms are all zero thanks to orthogonality, so we are left with:
+
+\begin{equation}
+    \langle\mathbf{E}\rangle=\mathbf{E}_0+(\langle\mathbf{r}_\text{L}\rangle\cdot\nabla)\mathbf{E}+\frac{1}{2}\langle(\mathbf{r}_\text{L}\cdot\mathbf{\hat{x}})^2\rangle\frac{\partial^2\mathbf{E}}{\partial x^2}+\frac{1}{2}\langle(\mathbf{r}_\text{L}\cdot\mathbf{\hat{y}})^2\rangle\frac{\partial^2\mathbf{E}}{\partial y^2}
+\end{equation}
+
+We easily see $\langle\mathbf{r}_\text{L}\rangle=\mathbf{0}$, $\langle(\mathbf{r}_\text{L}\cdot\mathbf{\hat{x}})^2\rangle=r_\text{L}^2/2$ and likewise for the component along $\mathbf{\hat{y}}$:
+
+\begin{equation}
+    \mathbf{v}_\mathrm{d}=\mathbf{v}_\mathbf{E}+\mathbf{v}_{\nabla\mathbf{E}}=\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{B}^2}+\frac{r_\text{L}^2}{4}\nabla^2\mathbf{E}=\left(1+\frac{1}{4}\frac{m^2v_\perp^2}{q^2\mathbf{B}^2}\nabla^2\right)\frac{\mathbf{E}\times\mathbf{B}}{\mathbf{B}^2}
+\end{equation}
+
+\section{Adiabatic invariants}
+
+Most periodic physical systems are characterized by a physical quantity which, despite possible \textit{slow} deformations of certain parameters, remains constant. This quantity is commonly designated by the term \textit{adiabatic invariant}. More precisely, adiabatic invariants are first-order approximations of \textit{Poincaré invariants}. We will adopt an analytical mechanics approach in order to study and theoretically develop the basic notions. Subsequently, we will draw on the preceding sections to illustrate several examples of adiabatic invariants. A Poincaré invariant takes the following form:
+
+\begin{equation}
+    \mathcal{I}=\oint_{\mathcal{C}(t)}\mathbf{p}\cdot\mathrm{d}\mathbf{q}
+\end{equation}
+
+where all points belonging to the closed curve $\mathcal{C}(t)$ in phase space move according to the system's equations of motion. We introduce a periodic variable $s\in\mathcal{S}$, which parametrizes the points of the curve $\mathcal{C}(t)$. The general coordinates of a point on this curve are then written in the form $q_i = q_i(s,t)$ and $p_i = p_i(s,t)$. The time derivative then reads:
+
+\begin{equation}
+    \diff{\mathcal{I}}{t}=\oint_{\mathcal{S}}\left(p_i\frac{\partial^2q_i}{\partial t\partial s}+\frac{\partial p_i}{\partial t}\frac{\partial q_i}{\partial s}\right)\mathrm{d}s
+\end{equation}
+
+We integrate the first term by parts and then substitute Hamilton's equations:
+
+\begin{equation}
+    \diff{\mathcal{I}}{t}=\oint_\mathcal{S}\left(-\frac{\partial q_i}{\partial t}\frac{\partial p_i}{\partial s}+\frac{\partial p_i}{\partial t}\frac{\partial q_i}{\partial s}\right)\mathrm{d}s=-\oint_\mathcal{S}\left(\frac{\partial\mathcal{H}}{\partial p_i}\frac{\partial p_i}{\partial s}+\frac{\partial\mathcal{H}}{\partial q_i}\frac{\partial q_i}{\partial s}\right)\mathrm{d}s
+\end{equation}
+
+where $\mathcal{H}(\mathbf{q},\mathbf{p},t)$ represents the Hamiltonian of the system. If the system is conservative, i.e., if the Hamiltonian doesn't explicitly depend on time, the integrand is the total derivative of the Hamiltonian with respect to the variable $s$ along the curve $\mathcal{C}$. The time-independent Hamiltonian being a function of state, the integral evaluates to zero, thus demonstrating that $\mathcal{I}$ is indeed invariant:
+
+\begin{equation}
+    \diff{\mathcal{I}}{t}=-\oint_\mathcal{S}\diff{\mathcal{H}}{s}\,\mathrm{d}s=0
+\end{equation}
+
+\subsection{First adiabatic invariant}
+
+\label{sec2-9-1}
+
+Poincaré invariants are generally of little interest in practice unless the curve $\mathcal{C}$ corresponds closely to the actual trajectories of particles. As in previous studies, we consider the case where the curve $\mathcal{C}$ represents a gyration period in phase space. The Poincaré invariant is thus approximated by the associated adiabatic invariant:
+
+\begin{equation}
+    \mathcal{I}\simeq\mathcal{J}=\oint_\mathcal{C}\boldsymbol{\mathcal{P}}\cdot\frac{\partial\mathbf{q}}{\partial\varphi}\,\mathrm{d}\varphi
+\end{equation}
+
+where $\varphi$ corresponds indeed to the angular parameter of the position $\mathbf{r}_\text{L}(t)$, i.e. $\varphi=\Omega_ct+\varphi_0$. The canonical momentum of a particle of mass $m$ of charge $q$ appears in the following form:
+
+\begin{equation}
+    \boldsymbol{\mathcal{P}}=m\mathbf{v}+q\mathbf{A}
+\end{equation}
+
+where $\mathbf{A}$ designates the vector potential which satisfies $\nabla\times\mathbf{A}=\mathbf{B}$. The expression of $\mathbf{A}$ in the vicinity of the guiding centre can be written by a Taylor expansion:
+
+\begin{equation}
+    \mathbf{A}(\mathbf{r})=\mathbf{A}_0+(\mathbf{r}\cdot\nabla)\mathbf{A}+\mathcal{O}(\mathbf{r}^2)
+\end{equation}
+
+It is clear that the next step is to account for a slightly variable magnetic field. In other words, during a gyration period, the magnitude $\|\mathbf{B}\|$ remains approximately constant. The angular parameter $\varphi$ satisfies the following relation:
+
+\begin{equation}
+    \mathbf{v}_\text{L}=\Omega_c\diff{\mathbf{r}_\text{L}}{\varphi}\implies\mathrm{d}\boldsymbol{\ell}=\frac{\mathbf{v}_\text{L}}{\Omega_c}\,\mathrm{d}\varphi
+\end{equation}
+
+where $\mathrm{d}\boldsymbol{\ell}$ represents a length element belonging to the curve $\mathcal{C}\equiv[0,2\pi)$:
+
+\begin{equation}
+    \mathcal{J}=\oint_\mathcal{C}\bigg[m(\mathbf{v}_\mathrm{d}+\mathbf{v}_\text{L})+q(\mathbf{A}_0+(\mathbf{r}_\text{L}\cdot\nabla)\mathbf{A})\bigg]\cdot\frac{m\mathbf{v}_\text{L}}{q\|\mathbf{B}\|}\,\mathrm{d}\varphi
+\end{equation}
+
+It is easy to see that the last expression is equivalent to evaluating the mean quantities:
+
+\begin{equation}
+    \mathcal{J}=\oint_\mathcal{C}\left[\frac{m^2\mathbf{v}_\mathrm{d}\cdot\mathbf{v}_\text{L}}{q\|\mathbf{B}\|}+\frac{m^2\mathbf{v}_\text{L}^2}{q\|\mathbf{B}\|}+\frac{m\mathbf{A_0}\cdot\mathbf{v}_\text{L}}{\|\mathbf{B}\|}+\frac{m\mathbf{v}_\text{L}}{\|\mathbf{B}\|}\cdot(\mathbf{r_\text{L}}\cdot\nabla)\mathbf{A}\right]\mathrm{d}\varphi
+\end{equation}
+
+The first and third terms are zero by orthogonality. The second term is assumed constant, so it comes out of the integral without fail. It remains for us to evaluate the last term:
+
+\begin{equation}
+    \mathcal{J}=\frac{2\pi m\mathbf{v}_\text{L}^2}{q\|\mathbf{B}\|}+\frac{2\pi m}{\|\mathbf{B}\|}\left\langle\mathbf{v}_\text{L}\cdot(\mathbf{r}_\text{L}\cdot\nabla)\mathbf{A}\right\rangle
+\end{equation}
+
+\begin{equation}
+    \langle\mathbf{v}_\text{L}\cdot(\mathbf{r}_\text{L}\cdot\nabla)\mathbf{A}\rangle\equiv\langle v^jx^i\partial_iA_j\rangle\simeq\langle v^ix^j\rangle\partial_iA_j=-\frac{m\mathbf{v}_\text{L}^2}{2q\|\mathbf{B}\|}\left(\nabla\times\mathbf{A}\right)\cdot\mathbf{\hat{B}}=-\frac{m\mathbf{v}_\text{L}^2}{2q}
+\end{equation}
+
+\begin{equation}
+    \mathcal{J}=\frac{2\pi m^2\mathbf{v}_\text{L}^2}{q\|\mathbf{B}\|}-\frac{2\pi m}{\|\mathbf{B}\|}\frac{m\mathbf{v}_\text{L}^2}{2q}=\frac{\pi m^2\mathbf{v}_\text{L}^2}{q\|\mathbf{B}\|}=2\pi\times\frac{m}{q}\times\frac{m\mathbf{v}_\text{L}^2}{2\|\mathbf{B}\|}
+\end{equation}
+
+The reason why we separated the term $m\mathbf{v}_\text{L}^2/2\|\mathbf{B}\|$ is that it represents precisely the magnetic moment of the particle considered. The magnetic moment of any current localization on $\Omega\subset\mathbb{R}^3$ is defined by the following integral. We apply it directly to the particle:
+
+\begin{equation}
+    \boldsymbol{\mu}=\frac{1}{2}\iiint_\Omega\mathbf{r}\times\mathbf{J}\,\mathrm{d}V=\frac{1}{2}\mathbf{r}_\text{L}\times q\mathbf{v}_\text{L}=-\frac{q}{2}\frac{m\mathbf{v}_\text{L}^2}{q\|\mathbf{B}\|}\,\mathbf{\hat{B}}=-\frac{m\mathbf{v}_\text{L}^2}{2\mathbf{B}^2}\mathbf{B}
+\end{equation}
+
+It then follows that, to the lowest order, the adiabatic invariant is proportional to the magnetic moment $\|\boldsymbol{\mu}\|$. The magnetic moment of a charged particle in a magnetic field is commonly designated by the term \textit{first adiabatic invariant}.
+
+\subsection{Second adiabatic invariant}
+
+\label{sec2-9-2}
+
+The second adiabatic invariant concerns the motion of particles in a magnetic field, as examined in subsection (\ref{sec2-5-2}), subject to the imposed assumptions. We consider a particle of mass $m$ and charge $q$ whose velocity component parallel to the field is $\mathbf{v}_\parallel=(\mathbf{v}\cdot\mathbf{\hat{B}})\,\mathbf{\hat{B}}$. In addition, we will consider the case in which the magnetic field lines are tightly compressed at a point, for example, by a Helmholtz coil. Certain particles, and we will determine which ones, will bounce back in the opposite direction, resulting in a round trip. The bouncing is precisely due to result (\ref{eq2-42}) of subsection (\ref{sec2-5-2}):
+
+\begin{equation}
+    \langle\mathbf{F}\cdot\mathbf{\hat{z}}\rangle=-\frac{m\mathbf{v}_\text{L}^2}{2\|\mathbf{B}\|}\frac{\partial B_\text{z}}{\partial z}=-\|\boldsymbol{\mu}\|\frac{\partial B_\text{z}}{\partial z}=\left(\boldsymbol{\mu}\cdot\nabla\right)\mathbf{B}\cdot\mathbf{\hat{z}}
+\end{equation}
+
+Conservation of energy and the first adiabatic invariant allow us to write:
+
+\begin{equation}
+    \diff{}{t}\left[K=\frac{1}{2}m\left(\mathbf{v}_{\perp}^2+\mathbf{v}_\parallel^2\right)\right]=0\quad\text{et}\quad\diff{\boldsymbol{\mu}}{t}=\diff{}{t}\left(\frac{m\mathbf{v}_\perp^2}{2\mathbf{B}^2}\mathbf{B}\right)=\mathbf{0}
+\end{equation}
+
+Consider a confined particle. The component of its velocity parallel to the magnetic field vanishes at the squeezing location. Let $v_\perp$ and $v_\parallel$ be the velocity components when the particle is in the middle between the two boundaries, and let $u_\perp$ be the component perpendicular to the magnetic field $\mathbf{B}_\text{m}$ when it reaches the turnaround point of its trajectory:
+
+\begin{equation}
+    \frac{1}{2}m(v_{\parallel}^2+v_\perp^2)\leq\frac{1}{2}mu_\perp^2\quad\text{et}\quad\frac{mv_\perp^2}{2\|\mathbf{B}_0\|}=\frac{mu_\perp^2}{2\|\mathbf{B}_\text{m}\|}\implies\frac{\|\mathbf{B}_0\|}{\|\mathbf{B}_\text{m}\|}\geq\frac{v_\perp^2}{v_\perp^2+v_\parallel^2}
+\end{equation}
+
+It is appropriate to introduce the angle $\theta$ between the initial velocity $\mathbf{v}_0$ and the magnetic field $\mathbf{B}_0$, then:
+
+\begin{equation}
+    \label{eq2-79}
+    \cos(\theta)=\mathbf{\hat{v}}_0\cdot\mathbf{\hat{B}_0}\implies\tan(\theta)=\frac{v_\perp}{v_\parallel}\implies\frac{\|\mathbf{B}_0\|}{\|\mathbf{B}_\text{m}\|}\geq\sin^2(\theta)\implies\theta_c=\sqrt{\arcsin\left(\frac{\|\mathbf{B}_0\|}{\|\mathbf{B}_\text{m}\|}\right)}
+\end{equation}
+
+It is easy to see that the condition under which a particle is reflected by the magnetic field depends solely on the angle $\theta$, that is to say, on the ratio between the components perpendicular and parallel to the magnetic field. The critical value is then given by the equality in the last inequality (\ref{eq2-79}). It is appropriate to represent these components using a \textit{loss cone}. It is so named because, if we place the velocity vector of a particle and it is contained within the cone, the particle will not be reflected:
+
+\begin{figure}[H]
+    \centering
+    \scalebox{1}{\input{Figures/figure2-1.tikz}}
+    \caption{\centering Loss cone}
+    \label{fig2-1}
+\end{figure}
+
+We will next consider a magnetic field \textit{squeezed} at two locations, by two currents, such that the field lines form a solid of revolution. Then, there exists an axial symmetry of the field lines. Particles satisfying (\ref{eq2-79}) will be trapped between the two boundaries. Let $\mathcal{C}$ be the curve tracing the trajectory of the guiding centre. We will tolerate plausible deformations of the curve $\mathcal{C}$. Let $\mathbf{u}$ be the velocity of any point on the curve $\mathcal{C}$. We will impose the following assumption:
+
+\begin{enumerate}
+    \item The curve $\mathcal{C}$ undergoes \textit{slow} and \textit{weak} deformations, or none at all, such that the field $\mathbf{u}$ satisfies $\|\mathbf{u}\|\ll r_\text{L}/\tau$, where $r_\text{L}$ is the Larmor radius of a trapped particle and $\tau$ represents the time necessary for the particle to make a complete round trip. This allows us to impose a following bound, regarding the divergence of the field $\mathbf{u}$, which we will need at the end:
+    
+    \begin{equation}
+        \nabla\cdot\mathbf{u}\simeq\|\mathbf{u}\|/\mathbf{r}_L\ll1/\tau
+    \end{equation}
+\end{enumerate}
+
+The second invariant will be represented by an integral whose derivative with respect to time we will prove to be \textit{approximately} zero. Let $\mathcal{S}$ be a surface where $\mathcal{C}=\partial\mathcal{S}$. Let us immediately apply Stokes' theorem:
+
+\begin{equation}
+    \label{eq2-80}
+    \mathcal{J}=\oint_\mathcal{C}\mathbf{p}\cdot\mathrm{d}\boldsymbol{\ell}=\iint_\mathcal{S}\left(\nabla\times\mathbf{p}\right)\cdot\mathrm{d}\mathbf{S}\quad\text{où}\quad\mathrm{d}\boldsymbol{\ell}\parallel\mathbf{B}
+\end{equation}
+
+We evaluate the time derivative of expression (\ref{eq2-80}). Note that $\mathbf{F}=\partial_t\mathbf{p}$:
+
+\begin{equation}
+    \diff{\mathcal{J}}{t}=\diff{}{t}\iint_\mathcal{S}\left(\nabla\times\mathbf{p}\right)\cdot\mathrm{d}\mathbf{S}=\iint_\mathcal{S}\left[\nabla\times\mathbf{F}+\mathbf{u}\left(\nabla\cdot(\nabla\times\mathbf{p})\right)+\nabla\times\left((\nabla\times\mathbf{p})\times\mathbf{u}\right)\right]\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+Note that the divergence of a curl is always zero, that is, $\nabla\cdot(\nabla\times\mathbf{p})=0$. Since the field lines form a solid of revolution, the surface $\mathcal{S}$ is perpendicular to the magnetic field, so the integration of the first term leads to its vanishing:
+
+\begin{equation}
+    \nabla\times(q\mathbf{v}\times\mathbf{B})= q(\underbrace{\nabla\cdot\mathbf{B}}_0)\mathbf{v}+q\mathbf{B}(\nabla\cdot\mathbf{v})=q(\nabla\cdot\mathbf{v})\mathbf{B}\perp\mathrm{d}\mathbf{S}
+\end{equation}
+
+\begin{equation}
+    \nabla\times\left[(\nabla\times\mathbf{p})\times\mathbf{u}\right] =\nabla\times\left[(\nabla\cdot\mathbf{u})\mathbf{p}-\nabla(\mathbf{p}\cdot\mathbf{u})\right]=\nabla\times(\nabla\cdot\mathbf{u})\mathbf{p}
+\end{equation}
+
+\begin{equation}
+    \diff{\mathcal{J}}{t}=\iint_\mathcal{S}q(\nabla\cdot\mathbf{v})\underbrace{\mathbf{B}\cdot\mathrm{d}\mathbf{S}}_0+\oint_\mathcal{C}(\nabla\cdot\mathbf{u})\mathbf{p}\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+We apply the previously stated hypothesis. The adiabatic invariant is thus quasi-invariant unless the curve $\mathcal{C}$ undergoes uniform deformations, in which case $\nabla\cdot\mathbf{u}=0$, thus maintaining the constancy of the invariant. The second adiabatic invariant is given by the following:
+
+\begin{equation}
+    \diff{\mathcal{J}}{t}=\diff{}{t}\oint_\mathcal{C}\mathbf{p}\cdot\mathrm{d}\boldsymbol{\ell}=\oint_\mathcal{C}(\nabla\cdot\mathbf{u})\mathbf{p}\cdot\mathrm{d}\mathbf{S}\simeq0
+\end{equation}
+
+\subsection{Third adiabatic invariant}
+
+The third adiabatic invariant concerns the temporal variation of the magnetic field, which was omitted in the previous discussions, i.e., in the analyses of the first and second adiabatic invariants. In this subsection, we will explicitly examine a magnetic field subjected to a temporal variation under certain limiting conditions.
+
+\quad Consider a configuration of a trapping magnetic field. It is appropriate to examine the static effects separately, when the field does not vary, and those that the temporal variation of the field exerts on the dynamics of particles. When we assume that the field does not vary temporally, we refer to this configuration as \textit{static conditions}. A precise description of static conditions is given by the set of following assumptions:
+
+\begin{enumerate}
+    \item\label{hyp2-9-3-1} Let $\tau$ be the time necessary for a particle to traverse the curve $\mathcal{C}$ in the preceding considerations. It is more precisely given by the following expression:
+
+    \begin{equation}
+        \tau=\oint_\mathcal{C}\frac{\mathrm{d}\ell}{\|\mathbf{v}_\mathrm{d}\|}
+    \end{equation}
+
+    Once temporal variation is introduced, the magnetic field subjected to an \textit{adiabatic} variation satisfies the following condition:
+
+    \begin{equation}
+        \tau\ll\inf\|\mathbf{B}\|\bigg/\sup\bigg\|\frac{\partial\mathbf{B}}{\partial t}\bigg\|
+    \end{equation}
+
+    where the infimum and supremum are taken over the surface $\mathcal{S}$ bounded by the particle's trajectory, in other words by the curve $\mathcal{C}=\partial\mathcal{S}$.
+    \item\label{hyp2-9-3-2} The uniformity of the magnetic field in space is very stable. This indeed presents assumption ($\ref{hyp2-5-1-2}$) in subsection (\ref{sec2-5-1}).
+\end{enumerate}
+
+Consider the magnetic flux through the surface $\mathcal{S}$ whose boundary is the curve $\mathcal{C}$:
+
+\begin{equation}
+    \Phi_\mathbf{B}=\iint_\mathcal{S}\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\oint_\mathcal{C}\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+\begin{equation}
+    \diff{\Phi_\mathbf{B}}{t}=\diff{}{t}\oint_\mathcal{C}\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}=\oint_\mathcal{C}\left[\frac{\partial\mathbf{A}}{\partial t}+(\nabla\cdot\mathbf{u})\mathbf{A}\right]\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+where $\mathbf{u}$ represents the same velocity field regarding possible deformations of the curve $\mathcal{C}$ as in the previous subsection. This velocity is precisely determined by the variation of the magnetic field over time. Note the Coulomb gauge $\nabla\cdot\mathbf{A}=0$:
+
+\begin{equation}
+    \nabla\cdot\mathbf{u}=\nabla\cdot\left(\frac{\mathbf{E}_\text{ind}\times\mathbf{B}}{\mathbf{B}^2}\right)=\nabla\cdot\left(-\frac{\partial\mathbf{A}}{\partial t}\times\frac{\mathbf{B}}{\mathbf{B}^2}\right)=\frac{\partial}{\partial t}\left[\nabla\cdot\left(-\frac{\nabla\mathbf{A}^2}{\mathbf{B}^2}\right)\right]
+\end{equation}
+
+Assumption (\ref{hyp2-5-1-2}) of section (\ref{sec2-5-1}) allows us to conclude that this effect of modification of the curve $\mathcal{C}$ is largely negligible compared to the purely temporal variation of the field:
+
+\begin{equation}
+    \diff{\Phi_\mathbf{B}}{t}\simeq\oint_\mathcal{C}\frac{\partial\mathbf{A}}{\partial t}\cdot\mathrm{d}\boldsymbol{\ell}=\iint_\mathcal{S}\frac{\partial\mathbf{B}}{\partial t}\cdot\mathrm{d}\mathbf{S}\leq\sup_{\mathbf{B}|_\mathcal{S}}\frac{\partial\|\mathbf{B}\|}{\partial t}S\ll\frac{\inf\|\mathbf{B}\|}{\tau}S\leq\frac{\Phi_\mathbf{B}}{\tau}
+\end{equation}
+
+This precisely defines the third adiabatic invariant as the magnetic flux enclosed by the particle's trajectory. It should be noted that, in the purely static case, the magnetic flux is effectively constant.
+
+\section{Violation of adiabatic invariants}
+
+Adiabatic invariants are not entirely conserved quantities, as they are approximations of Poincaré invariants. However, their stability is carefully verified under the aforementioned assumptions when considering a single particle. It is essential to note that the stability of adiabatic invariants in a plasma is considerably lower than that observed for a single particle. Indeed, collisional effects lead to violations of adiabatic invariants. It should be emphasized that the low collisionality of plasmas constitutes a significant advantage, ensuring that our analyses are not invalidated by uncertainty related to collisional effects. Indeed, an interparticle collision significantly modifies the velocities of the two particles involved. Consequently, during a collision, no adiabatic invariant is approximately conserved and undergoes a modification of order of magnitude that is entirely dependent on the collisional conditions. Estimates of these violations, with respect to the first and third adiabatic invariants, cannot be obtained without loss of generality. However, we will provide illustrative examples of various violations of adiabatic invariants.
+
+\subsection{Violation of the second adiabatic invariant}
+
+Consider a collection of charged particles trapped in a magnetic field configuration like that examined in subsection (\ref{sec2-9-2}). Particles belonging to the loss cone illustrated in Figure (\ref{fig2-1}) will escape confinement. This particle escape will cause non-uniformity in particle density in phase space. It will be shown later that this configuration in phase space is unstable, as residual particles will collide. Indeed, collisions serve as carriers of particle diffusion in phase space, thereby leveling and balancing density in this space. This dynamics leads to the entry of particles initially located outside the loss cone, allowing their escape from confinement.
+
+\subsection{Non-adiabatic motion in symmetric geometry}
+
+As we have demonstrated in previous sections, motion characterized by an adiabatic invariant occurs when variations, whether temporal or spatial, in electromagnetic fields during gyration orbits are sufficiently gradual to be treated as analytic. As mentioned previously, when non-adiabatic motion occurs, we do not have the necessary knowledge to develop dynamic models that effectively describe violations of adiabatic invariants. This lack of adequate tools is due to the non-analytic nature of electromagnetic fields in these conditions. Nevertheless, certain situations can be the subject of intuition-rich analysis in non-adiabatic motion. By way of illustration, we will consider a situation where the electromagnetic field is perfectly symmetric with respect to the coordinate $q_i$. It is precisely symmetry that will allow us to develop analytical descriptions of non-adiabatic motion. Symmetry along coordinate $q_i$ ensures that the generalized momentum, denoted $\mathcal{P}_i$, is an exact constant of motion, by virtue of Noether's theorem. In other words, symmetry determines analyticity. The constancy of a motion variable allows the production of a partial, or even complete, solution to the considered non-adiabatic motion problem. Solutions to symmetric problems will help develop intuition that proves valuable when transitioning to non-analytical asymmetric problems.
+
+\subsection{Digression: Stream functions}
+
+When a two-dimensional flow satisfies the continuity equation, $\nabla\cdot\mathbf{u}=0$, it is appropriate to introduce a scalar field, called the \textit{stream function}. A zero-divergence field can always be represented by the curl of a vector potential $\mathbf{A}$ whose stream function is part of the coordinates. Depending on the geometry of the problem, it is possible to distinguish two types of stream functions: Lagrange functions and Stokes functions. First, we study Lagrange stream functions.
+
+\subsubsection{Lagrange Stream Function}
+
+We consider here an irrotational, purely two-dimensional flow in the $xy$ plane. Let $\mathcal{R}^\mathbf{\hat{x}}_{\pi/2}$ be the matrix corresponding to a rotation of $90^\circ$ around the $\mathbf{\hat{x}}$ axis. It is undoubted that a two-dimensional flow $\mathbf{u}$, whether compressible or not, satisfies the following equation:
+
+\begin{equation}
+   (\nabla\cdot\mathbf{u})\,\mathbf{\hat{z}}=-\nabla\times(\mathcal{R}^\mathbf{\hat{x}}_{\pi/2}\mathbf{u})
+\end{equation}
+
+In case of incompressibility, it follows that the curl of the field $\mathcal{R}^\mathbf{\hat{x}}_{\pi/2}\mathbf{u}$ is exactly zero. By virtue of Stokes' theorem, the integral of the field $\mathcal{R}^\mathbf{\hat{x}}_{\pi/2}\mathbf{u}$ vanishes on any closed curve:
+
+\begin{equation}
+    \nabla\times\left(\mathcal{R}^\mathbf{\hat{x}}_{\pi/2}\mathbf{u}\right)=\mathbf{0}\implies\oint_{\partial\mathcal{C}}(\mathcal{R}^\mathbf{\hat{x}}_{\pi/2}\mathbf{u})\cdot\mathrm{d}\boldsymbol{\ell}=0
+\end{equation}
+
+The integral being path-independent, it follows, by virtue of the converse of the gradient theorem, that there exists a scalar field satisfying:
+
+\begin{equation}
+    \label{eq2-95}
+    \mathcal{R}^\mathbf{\hat{x}}_{\pi/2}\mathbf{u}=\nabla\psi
+\end{equation}
+
+Having demonstrated the existence of a stream function for an incompressible flow, we will write equation (\ref{eq2-95}) in the following form:
+
+\begin{equation}
+    \label{eq2-96}
+    \mathbf{u}=\nabla\times\mathbf{A}=\nabla\times\left(\psi\,\mathbf{\hat{z}}\right)=\nabla\times\left(\psi\,\nabla z\right)=\psi \,\underbrace{\nabla\times\mathbf{\hat{z}}}_\mathbf{0}+\nabla\psi\times\mathbf{\hat{z}}=\nabla\psi\times\nabla z
+\end{equation}
+
+It follows that the flux through any curve is given by the following:
+
+\begin{equation}
+    \label{eq2-98}
+    \Phi_\Gamma=\int_\Gamma\mathbf{u}\cdot\mathrm{d}\boldsymbol{\ell}=\int_\Gamma\left(\nabla\psi\times\nabla z\right)\cdot\mathrm{d}\boldsymbol{\ell}=\Delta\psi
+\end{equation}
+
+Furthermore, the velocity field and the gradient of the stream function are orthogonal. This observation allows defining a streamline implicitly:
+
+\begin{equation}
+    \label{eq2-99}
+    \mathbf{u}\cdot\nabla\psi=0\implies\psi(x,y,t)=\text{const. along a streamline}
+\end{equation}
+
+\subsubsection{Stokes Stream Function}
+
+\label{sec2-10-3-2}
+
+An axially symmetric flow in cylindrical geometry is certainly not two-dimensional. However, the following symmetry allows us to define another form of stream function:
+
+\begin{equation}
+    \label{eq2-100}
+    \frac{\partial\mathbf{u}}{\partial\varphi}=\mathbf{0}\implies\mathbf{u}\cdot\boldsymbol{\hat{\varphi}}=\text{const.}=0\,\,\text{according to our needs}
+\end{equation}
+
+Like definition (\ref{eq2-99}), the implicit equation of a streamline is given by:
+
+\begin{equation}
+    \psi(r,z,t)=\text{const. along a streamline}
+\end{equation}
+
+Since the flow is symmetric under rotation by an angle $\varphi$, we determine that the Stokes stream function satisfies the following expression. Nota bene: $\nabla\varphi=\boldsymbol{\hat{\varphi}}/r$:
+
+\begin{equation}
+    \label{eq2-101}
+    \mathbf{u}=\frac{1}{2\pi}\nabla\psi\times\nabla\varphi
+\end{equation}
+
+A flow described by expressions (\ref{eq2-100}) and (\ref{eq2-101}) is called \textit{poloidal}. Like equation (\ref{eq2-98}), the flow flux through a circle of radius $r$ centred at $z$ in the radial plane is given by the following:
+
+\begin{equation}
+    \Phi_{\mathcal{C}(r,z)}(t)=\iint_{\mathcal{C}(r,z)}\mathbf{u}\cdot\mathrm{d}\mathbf{S}=\frac{1}{2\pi}\iint_{\mathcal{C}(r,z)}\left(\nabla\psi\times\nabla\varphi\right)\cdot\mathrm{d}\mathbf{S}=\psi\,\biggr|_{(0,z,t)}^{(r,z,t)}
+\end{equation}
+
+We isolate the radial component of the field $\mathbf{u}$. Since this field is divergence-free, the radial component at $r=0$ must vanish, so:
+
+\begin{equation}
+    u_\text{r}=-\frac{1}{2\pi r}\frac{\partial\psi}{\partial z}=0\implies\frac{\partial\psi}{\partial z}\biggr|_{r=0}=0\implies\psi(0,z,t)=\text{const.}=0\,\,\text{for convenience}
+\end{equation}
+
+Thus, the flux through a circle of radius $r$ centred at $z$ in the radial plane is equal to the stream function evaluated on the edge of the circle, in other words, at $(r,z)$:
+
+\begin{equation}
+    \Phi_{\mathcal{C}(r,z)}(t)=\psi(r,z,t)
+\end{equation}
+
+We will examine two illustrative examples of non-adiabatic motion. These examples concern (i) a sudden temporal reversal and (ii) a sudden spatial reversal of the polarity of an axially symmetric magnetic field with zero azimuthal component. Indeed, the magnetic field being a divergence-free field, it can be described using a Stokes stream function:
+
+\begin{equation}
+    \mathbf{B}(r,z,t)=\frac{1}{2\pi}\nabla\psi(r,z,t)\times\nabla\varphi\implies\Phi_{\mathcal{C}(r,z)}=\iint_{\mathcal{C}(r,z)}\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\psi(r,z,t)
+\end{equation}
+
+\begin{figure}
+    \centering
+    \scalebox{1}{\input{Figures/figure2-2.tikz}}
+    \caption{Poloidal $\mathbf{B}$. The flux through $\mathcal{C}(r,z)$ is $\psi(r,z,t)$.}
+    \label{fig2-2}
+\end{figure}
+
+Like equation (\ref{eq2-96}), the vector potential is given by the following:
+
+\begin{equation}
+    \mathbf{A}=\frac{1}{2\pi r}\psi(r,z,t)\,\boldsymbol{\hat{\varphi}}
+\end{equation}
+
+Using a Maxwell equation, in the static case, $\nabla\times\mathbf{B}=\mu_0\mathbf{J}$, we determine the electric current giving rise to the considered magnetic field. The current is purely azimuthal, quickly verified:
+
+\begin{equation}
+    \mu_0\mathbf{J}\cdot\boldsymbol{\hat{\varphi}}=r\nabla\varphi\cdot(\nabla\times\mathbf{B})=r\nabla\cdot(\mathbf{B}\times\nabla\varphi)=-\frac{r}{2\pi}\nabla\cdot\left(\frac{1}{r^2}\nabla\psi\right)
+\end{equation}
+
+\begin{equation}
+    \label{eq2-108}
+    J_\varphi=-\frac{r}{2\pi\mu_0}\left[\frac{\partial}{\partial r}\left(\frac{1}{r^2}\frac{\partial\psi}{\partial r}\right)+\frac{1}{r^2}\frac{\partial\psi}{\partial z^2}\right]
+\end{equation}
+
+The current distribution giving rise to the magnetic field consists, in the most general case, of loops of finite radii $r$ and vertical positions $z$. The axial component of the magnetic field is written:
+
+\begin{equation}
+    B_\text{z}=\frac{1}{2\pi r}\frac{\partial\psi}{\partial r}
+\end{equation}
+
+The stream function can be expanded in a Taylor series in the vicinity of $r=0$:
+
+\begin{equation}
+    \psi(r,z,t)=0+r\frac{\partial\psi}{\partial r}\biggr|_{(0,z,t)}+\frac{1}{2}r^2\frac{\partial^2\psi}{\partial r ^2}\biggr|_{(0,z,t)}+\mathcal{O}(r^3)
+\end{equation}
+
+Suppose the term $\partial_r\psi\,(0,z,t)$ is non-zero. Then, in the vicinity of $r=0$, $\psi\sim r$. However, in this case, the right-hand side of equation (\ref{eq2-108}) becomes infinite. This result is obviously unphysical, so we require that the first non-zero term of the Taylor expansion of $\psi$ be the quadratic term. Furthermore, it is evident that the stream function $\psi(r,z,t)$ is positive semi-definite according to our conventions and reaches a maximum. Let $r_\text{max}(z)\equiv r_\text{max}$ such that:
+
+\begin{equation}
+    \psi_\text{max}=\sup_{r\in\mathbb{R}_+}\psi(r,z)=\psi(r_\text{max}, z)
+\end{equation}
+
+The supremum exists and is reached because the stream function is analytic. The Lagrangian of a particle of mass $m$ and charge $q$ in this cylindrical coordinate system appears in the form:
+
+\begin{equation}
+    \mathcal{L}=\frac{1}{2}m\left(\dot{r}^2+r^2\dot{\varphi}^2+\dot{z}^2\right)+qr\dot{\varphi}A_\varphi-q\phi(r,z,t)
+\end{equation}
+
+The generalized momentum is then an invariant of motion:
+
+\begin{equation}
+    \label{eq2-113}
+    \mathcal{P}_\varphi=\frac{\partial\mathcal{L}}{\partial\dot{\varphi}}=mr^2\dot{\varphi}+qrA_\varphi=mr^2\dot{\varphi}+\frac{q}{2\pi}\psi(r,z,t)=\text{const.}
+\end{equation}
+
+The Hamiltonian is then given by the following, where we define $\chi(r,z,t)$ as the effective potential:
+
+\begin{equation}
+    \mathcal{H}=\frac{1}{2}m\left(\dot{r}^2+r^2\dot{\varphi}^2+\dot{z}^2\right)+\phi(r,z,t)=\frac{1}{2}m(\dot{r}^2+\dot{z}^2)+\frac{(\mathcal{P}_\varphi-q\psi(r,z,t)/2\pi)^2}{2mr^2}+\phi(r,z,t)
+\end{equation}
+
+\begin{equation}
+    \chi(r,z,t)=\frac{1}{2m}\left[\frac{\mathcal{P}_\varphi-q\psi(r,z,t)/2\pi}{r}\right]^2
+\end{equation}
+
+For simplicity, it is appropriate to normalize the effective potential to an arbitrary value. Furthermore, the electrostatic potential will be fixed at zero, due to intuition already developed regarding particle motion in electrostatic fields:
+
+\begin{equation}
+    \chi_0=\frac{q\psi_0^2}{8\pi^2mL^2}\implies\frac{\chi(r,z,t)}{\chi_0}=\left[\frac{(2\pi\mathcal{P}_\varphi/q)-\psi(r,z,t)}{(r/L)\psi_0}\right]^2
+\end{equation}
+
+The current distribution is assumed static when $t<0$. Since the Lagrangian is time-independent, the energy $\mathcal{H}$ is a constant of motion, associated with $\mathcal{P}_\varphi$ by symmetry.
+We consider a particle initially located in the plane $z=z_0$ and radius $r_0<r_\text{max}$. Its motion depends on the sign of $q\psi/\mathcal{P}_\varphi$. We thus distinguish the following two cases:
+
+\begin{enumerate}
+    \item $q\psi/\mathcal{P}_\varphi$ is positive. If $2\pi|\mathcal{P}_\varphi|<|q\psi_\text{max}|$, there exist two loci at $r_0<r_\text{max}$ and $r_0'>r_\text{max}$ respectively, where the effective potential $\chi$ is zero:
+
+    \begin{equation}
+        \label{eq2-117}
+        \mathcal{P}_\varphi=\frac{q}{2\pi}\psi(r_0,z_0)
+    \end{equation}
+
+    The effective potential $\chi$ being positive semi-definite, these two loci are also its two global minima, and there exists a local maximum $\chi_\text{max}$ between them. If the energy $\mathcal{H}<\chi_\text{max}$, the particle will be confined in an effective potential well centred around the edge of a surface through which the flux is conditioned by equation (\ref{eq2-117}). The angular velocity $\dot{\varphi}$ changes sign periodically by virtue of equation (\ref{eq2-113}):
+
+    \begin{equation}
+        \diff{\varphi}{t}(r,z_0)=\frac{1}{mr^2}\left(\mathcal{P}_\varphi-\frac{q\psi(r,z_0)}{2\pi}\right)
+    \end{equation}
+
+    This corresponds precisely to a localized gyration. We will refer to this type of motion by the term \textit{non-encircling} of the $\mathbf{\hat{z}}$ axis.
+    
+    \item $q\psi/\mathcal{P}_\varphi$ is negative. In this case, $\chi$ reaches zero nowhere, but it reaches a local minimum:
+
+    \begin{equation}
+        \left[\left(\mathcal{P}_\varphi-\frac{q}{2\pi}\psi(r,z)\right)\frac{\partial}{\partial r}\left(\frac{\mathcal{P}_\varphi-q\psi(r,z)/2\pi}{r}\right)\right]\Biggr|_{(r_\text{min},z_0)}=0
+    \end{equation}
+
+    This equation is satisfied only if the partial derivative is zero:
+
+    \begin{equation}
+        \label{eq2-120}
+        \frac{\partial}{\partial r}\left(\frac{\mathcal{P}_\varphi-q\psi(r,z)/2\pi}{r}\right)\Biggr|_{(r_\text{min},z_0)}=0\implies\mathcal{P}_\varphi=-\left[\frac{qr^2}{2\pi}\frac{\partial}{\partial r}\left(\frac{\psi(r,z)}{r}\right)\right]\Biggr|_{(r_\text{min},z_0))}
+    \end{equation}
+
+    Since the stream function $\psi$ is positive semi-definite, $\psi\sim r^2$ as $r\to0$ and $\psi\to0$ as $r\to\infty$, we determine that $\psi/r\sim r\to0$ as $r\to0$ and $\psi/r\to0$ as $r\to\infty$. Since the function $\psi/r$ is also positive semi-definite, it reaches a maximum in a locus satisfying $r<r_\text{max}$. Let $\sup_{r\leq r_\text{max}}(\psi/r)=\psi(\rho)/\rho$. It should be noted that equation (\ref{eq2-120}) is satisfied only on the condition that $|\mathcal{P}_\varphi|$ is not too large, because the right-hand side of equation (\ref{eq2-120}) reaches a finite maximum. Furthermore, this equation is only valid for points surrounding the maximum of $\psi/r$. Since the function $\psi/r$ increases on the interval $[0,\rho)$, then $\dot{\varphi}$ does not change sign, meaning the particle exerts a purely rotational motion around the $\mathbf{\hat{z}}$ axis. When $r$ is very close to zero, we could approximate equation (\ref{eq2-120}) by the following, clearly similar to equation (\ref{eq2-117}):
+
+    \begin{equation}
+        \label{eq2-121}
+        \mathcal{P}_\varphi=-\frac{q}{2\pi}\psi(r_\text{min},z_0)
+    \end{equation}
+    
+    Nota bene! This motion is susceptible to undergoing subtle radial variations. Nevertheless, $\dot{\varphi}$ always retains the same sign. We will refer to motions during which $\dot{\varphi}$ retains its sign by the term \textit{encircling} the $\mathbf{\hat{z}}$ axis.
+\end{enumerate}
+
+\subsection{Sudden temporal reversal of the magnetic field}
+
+We will now examine a highly non-adiabatic situation in which the current distribution, as considered thus far, undergoes a rapid sign change. In this configuration, the set of fields and fluxes reverses its sign. The energy of the particle cannot be considered a constant of motion, because the Lagrangian explicitly depends on time. However, the symmetry of the problem guarantees the constancy of the azimuthal component of the generalized momentum, $\mathcal{P}_\varphi$. The sign reversal of $\psi$, if performed, can lead to the presence of a minimum of the effective potential $\chi$. A particle not encircling the $\mathbf{\hat{z}}$ axis at a position determined by equation (\ref{eq2-117}) will become encircling. Under the assumption of a particle located near the $\mathbf{\hat{z}}$ axis, by comparison of equations (\ref{eq2-117}) and (\ref{eq2-121}), the radial position of the particle will be conserved. The particle, now encircling the $\mathbf{\hat{z}}$ axis compared to the contrary case before the sign reversal, allows us to observe an increase in its kinetic energy equivalent to the minimum value of $\chi$ of the encircling case.
+
+\quad It would also be appropriate to illustrate the process in question from the perspective of particle drifts. Initially, the particle was frozen by the magnetic field lines, so as to follow the surface characterized by $\psi(r,z)=\text{const.}$ Once the current distribution begins to decrease in intensity, the maximum flux $\psi_\text{max}$ decreases accordingly. The contours of constant $\psi$ inside the circle of radius $r_\text{max}$ move towards this radius where $\psi=\psi_\text{max}$. It is the same for contours of constant $\psi$ outside the aforementioned circle. The annihilation of contours reaching radius $r_\text{max}$ follows. The effect of the $\mathbf{E}\times\mathbf{B}$ drift maintains the motion of particles fixed to a surface of constant flux. Considering a fixed circle of radius $r_0$ at $z=z_0$, the Maxwell-Faraday equation is written as follows:
+
+\begin{equation}
+    \oint_{\partial\mathcal{C}(r_0,z_0)}\mathbf{E}\cdot\mathrm{d}\boldsymbol{\ell}=2\pi r_0E_\varphi=-\diff{\Phi_\mathbf{B}}{t}\biggr|_{\mathcal{C}(r_0,z_0)}=-\diff{}{t}\left[\psi(r_0,z_0,t)\right]=-\frac{\partial\psi}{\partial t}\biggr|_{(r_0,z_0)}
+\end{equation}
+
+The radial and axial components of the drift velocity give us:
+
+\begin{equation}
+    E_\varphi+v_\text{z}B_\text{r}-v_\text{r}B_\text{z}=0\quad\text{with}\quad B_\text{r}=-\frac{1}{2\pi r}\frac{\partial\psi}{\partial z}\quad\text{and}\quad B_\text{z}=\frac{1}{2\pi r}\frac{\partial\psi}{\partial r}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial\psi}{\partial t}+v_\text{r}\frac{\partial\psi}{\partial r}+v_\text{z}\frac{\partial\psi}{\partial z}\equiv\frac{\partial\psi}{\partial t}+(\mathbf{v}\cdot\nabla)\psi=\frac{\mathrm{d}\psi}{\mathrm{d}t}=0
+\end{equation}
+
+The convective derivative being zero, the particle's motion contours a surface of constant $\psi$. It should be noted that the concept of $\mathbf{E}\times\mathbf{B}$ drift collapses completely at the precise moment when $\mathbf{B}=\mathbf{0}$. This presents a failure of the adiabatic approximation. It should be noted that the particle will encircle the $\mathbf{\hat{z}}$ axis following the magnetic field reversal, provided that the stream function undergoes a sign reversal before the particle reaches the surface corresponding to the maximum of the stream function $\psi_\text{max}$. The kinetic energy of the particle increases at the instant when the azimuthal electric field exerts work, when $\mathbf{B}=\mathbf{0}$. Once the sign reversal of $\psi$ is established, the adiabatic approximation is valid again. The polarity of $\psi$ being reversed, the increase in the magnitude of $\psi$ is analogous to an increasing potential well. The particle thus moves away from the surface corresponding to $\psi_\text{min}=-\psi_\text{max}$. Once the reversal is completed, the particles will encircle the $\mathbf{\hat{z}}$ axis and acquire additional kinetic energy, acquired during the instant of sign reversal.
+
+\subsection{Sudden spatial reversal of the magnetic field}
+
+\label{sec2-10-2-2}
+
+We consider an arrangement of two solenoids carrying constant currents, with their magnetic fields opposing each other. Since the currents are constant, the Lagrangian of a particle located inside one of the solenoids does not depend explicitly on time. The energy of the particle is thus a constant of its motion. The given geometry allows us to conclude that the stream function is antisymmetric in $z$, where $z=0$ corresponds to the plane of symmetry between the two solenoids, as illustrated by Figure \ref{fig2-3}.
+
+\quad Consider a particle launched at initial velocity $\mathbf{v}=v_0\,\mathbf{\hat{z}}$ at $z=-L$ and radius $r=a$. Since the velocity component is perpendicular to the $\mathbf{\hat{z}}$ axis, the particle will simply follow a magnetic field line. Once the particle reaches the cusp region, the magnetic field lines begin to curve, as illustrated in Figure (\ref{fig2-3}). Consequently, the particle develops curvature and drifts along the magnetic field gradient. When the particle approaches the plane $z=0$, the magnetic field tends towards zero, which is followed by the collapse of the concept of drift. Despite the complexity of the particle's trajectory in the cusp region, it is possible to determine the condition for a particle to pass through this cusp. The constants of motion are precisely the energy $\mathcal{H}$ and the azimuthal component of the generalized momentum.
+
+\begin{figure}[H]
+    \centering
+    \scalebox{1}{\input{Figures/figure2-3.tikz}}
+    \vspace*{-2cm}
+    \caption{Lines of $\mathbf{B}$ and trajectory of a particle crossing the cusp in blue.}
+    \label{fig2-3}
+\end{figure}
+
+\begin{equation}
+    \label{eq2-125}
+    \mathcal{P}_\varphi=mr^2\dot{\varphi}+\frac{q}{2\pi}\psi(r,z,t)=\frac{q}{2\pi}\psi(a,-L)=\text{const.}
+\end{equation}
+
+\begin{equation}
+    \label{eq2-126}
+    \mathcal{H}=\frac{\mathbf{p}^2}{2m}=\frac{1}{2}mv_0^2=\text{const.}
+\end{equation}
+
+The minimum energy to overcome the cusp corresponds to motion encircling the $\mathbf{\hat{z}}$ axis and zero radial and axial components. Equations (\ref{eq2-125}) and (\ref{eq2-126}) give us the sought condition:
+
+\begin{equation}
+    \label{eq2-127}
+    v_0^2\geq r^2\dot{\varphi}^2=\left(\frac{q}{2\pi mr}\right)^2\left[\psi(a,-L)-\psi(r,z)\right]^2
+\end{equation}
+
+Depending on the value of $v_0$, equation (\ref{eq2-127}) will give us several solutions for $r$. Imaginary and negative solutions are unphysical. This corresponds to the particle's inability to penetrate the cusp. It will return towards the interior of the first solenoid. However, positive real solutions correspond to a genuine passage through the cusp, illustrated in figure (\ref{fig2-3}).

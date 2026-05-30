@@ -1,0 +1,276 @@
+\ProvidesPackage{custom}
+
+\usepackage{tikz}
+\usetikzlibrary{3d,3dtools,calc,shapes.geometric}
+
+\usepackage[english]{babel}
+
+\usepackage{tensor}
+\usepackage[]{units}
+\usepackage[shortlabels]{enumitem}
+\usepackage{slashed}
+\usepackage{bbm}
+\usepackage{anyfontsize}
+
+\newlist{subpart}{enumerate}{1}
+\setlist[subpart,1]{label=(\alph*)}
+\setlist[itemize]{leftmargin=20pt}
+
+\usepackage{sectsty}
+\allsectionsfont{\LARGE\sffamily\bfseries}
+
+\usepackage{xcolor}
+\definecolor{notered}{rgb}{1.0,0.1,0.1}
+\definecolor{thoughtblue}{rgb}{0.1,0.1,1.0}
+\newcommand{\note}[1]{\color{notered} \textbf{(#1)} \color{black}}
+\newcommand{\thought}[1]{\color{thoughtblue} \textbf{(#1)} \color{black}}
+\newcommand{\highlight}[1]{\color{notered} #1 \color{black}}
+
+\usepackage[normalem]{ulem}
+\usepackage{xpatch}
+\usepackage{sectsty}
+\usepackage[explicit]{titlesec}
+\usepackage[bookmarks, debug, linktocpage=true, hidelinks]{hyperref}
+\hypersetup{
+    pdfborderstyle={/S/U/W 1},
+    colorlinks,
+    linkbordercolor=white,
+    urlbordercolor=white,
+    urlcolor=black,
+    linkcolor=black,
+    filecolor=black,
+    citecolor=black
+    linktoc=all
+}
+\usepackage{cleveref}
+
+\usepackage{xparse}
+\usepackage{bm}
+
+\newsavebox{\foobox}
+\newcommand{\slantbox}[2][0]{\mbox{
+        \sbox{\foobox}{#2}%
+        \hskip\wd\foobox
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore}}
+\newcommand{\unslant}[2][-.15]{\slantbox[#1]{$#2$}}
+
+\ExplSyntaxOn
+\NewDocumentCommand\vectorInt{m}
+ {
+  \unslant_vector:n { #1 }
+ }
+
+\cs_new_protected:Npn \unslant_vector:n #1
+ {
+  \tl_map_inline:nn { #1 }
+   {
+    \unslant_vector_inner:n { ##1 }
+   }
+ }
+
+\cs_new_protected:Npn \unslant_vector_inner:n #1
+{
+  \tl_if_in:VnTF \g_unslant_latin_tl { #1 }
+   {
+    \mathbf { #1 }
+   }
+   {
+    \tl_if_in:VnTF \g_unslant_greek_tl { #1 }
+     {
+	  \mkern-6mu \unslant{\bm{ #1 }} \mkern-1mu
+     }
+     {
+      \tl_if_in:VnTF \g_unslant_greekspecial_tl { #1 }
+       {
+	      \bm{ #1 }
+       }
+       {
+        \bm{ #1 }
+       }
+     }
+   }
+}
+
+\tl_new:N \g_unslant_latin_tl
+\tl_new:N \g_unslant_greek_tl
+\tl_new:N \g_unslant_greekspecial_tl
+
+\tl_gset:Nn \g_unslant_latin_tl
+ {
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  abcdefghijklmnopqrstuvwxyz
+ }
+\tl_gset:Nn \g_unslant_greek_tl
+ {
+  \alpha\beta\gamma\delta\epsilon\zeta\eta\theta\iota\kappa
+  \lambda\mu\nu\xi\pi\rho\sigma\tau\upsilon\phi\chi\psi\omega
+  \varepsilon\vartheta\varpi\varphi\varsigma\varrho
+ }
+\tl_gset:Nn \g_unslant_greekspecial_tl
+ {
+  \Gamma\Delta\Theta\Lambda\Pi\Sigma\Upsilon\Phi\Chi\Psi\Omega
+ }
+
+\ExplSyntaxOff
+
+\renewcommand{\v}[1]{\vectorInt{#1}}
+
+\g@addto@macro\bfseries{\boldmath}
+
+\newcommand{\incgr}[2]{{\par \centering \includegraphics[scale=#1]{#2} \par}}
+\newcommand{\wincgr}[2]{{\par \centering \includegraphics[width=#1\textwidth]{#2} \par}}
+\newcommand{\hincgr}[2]{{\par \centering \includegraphics[height=#1\textheight]{#2} \par}}
+
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\mytilde}{{\,\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}\,}}
+\newcommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\newcommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\newcommand{\rth}{\mathbb{R}^3}
+\newcommand{\lie}[1]{\mathfrak{#1}}
+\newcommand{\del}{\partial}
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+\newcommand{\dual}{\ast}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Disc}{\operatorname{Disc}}
+\newcommand{\one}{\mathbf{I}}
+\newcommand{\two}{\mathbf{II}}
+\newcommand{\three}{\mathbf{III}}
+\newcommand{\from}{\leftarrow}
+\newcommand{\dbar}{{d\mkern-7mu\mathchar'26\mkern-2mu}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\zee}{\mathbb{Z}}
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\unitv}[1]{\hat{\v{#1}}}
+\newcommand{\twovec}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\grad}{\nabla}
+\newcommand{\curl}{\nabla \times}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\let\det\relax
+\DeclareMathOperator{\det}{det} 
+\newcommand{\division}{\div}
+\let\div\relax
+\newcommand{\div}{\nabla \cdot}
+
+\usepackage{etoolbox}
+\DeclareMathSymbol{\newordinarycolon}{\mathord}{operators}{"3A}
+\patchcmd{\colon}{:}{\newordinarycolon}{}{}
+\begingroup\lccode`~=`: \lowercase{\endgroup\let~}\colon
+\AtBeginDocument{\mathcode`:="8000 }
+
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\subgr}{\subseteq}
+\newcommand{\subr}{\subseteq}
+\newcommand{\nsubgr}{\trianglelefteq}
+\newcommand{\dunion}{\sqcup}
+\newcommand{\incl}{\iota}
+\renewcommand{\mod}{\, \mathrm{mod}\, }
+\newcommand{\sdprod}{\rtimes}
+
+\DeclareMathOperator{\gcf}{gcf}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ai}{Ai}
+\DeclareMathOperator{\Bi}{Bi}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Pfaff}{Pfaff}
+\DeclareMathOperator{\Res}{Res}
+
+\DeclarePairedDelimiter\ket{|}{\rangle}
+\DeclarePairedDelimiter\bra{\langle}{|}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\bigbraket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+
+\newcommand{\normord}[1]{\,\newordinarycolon\!\mathrel{#1}\!\newordinarycolon\,}
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\msbar}{\overline{\text{MS}}}
+\newcommand{\de}{\mathcal{D}}
+\newcommand{\op}{\mathcal{O}}
+
+\newcommand{\parity}{\widehat{P}}
+\newcommand{\Time}{\widehat{T}}
+\newcommand{\charge}{\widehat{C}}
+
+\newcommand{\enn}{\mathcal{N}}
+
+\usepackage{xspace}
+\newcommand{\eV}{\text{e\kern-0.15ex V}\xspace}
+\newcommand{\keV}{\text{k\eV}\xspace}
+\newcommand{\MeV}{\text{M\eV}\xspace}
+\newcommand{\GeV}{\text{G\eV}\xspace}
+\newcommand{\TeV}{\text{T\kern-0.1ex \eV}\xspace}
+
+\newcommand{\meV}{\text{m\eV}\xspace}
+\newcommand{\mueV}{\mu\text{\eV}\xspace}
+\newcommand{\neV}{\text{n\eV}\xspace}
+\newcommand{\peV}{\text{p\eV}\xspace}
+
+\newcommand{\cd}{\nabla}
+\newcommand{\scri}{\mathcal{I}}
+\newcommand{\ccd}[1]{\frac{\del x^{#1}}{\del x^{#1'}}}
+\newcommand{\ccu}[1]{\frac{\del x^{#1'}}{\del x^{#1}}}
+
+\newcommand{\Sun}{\odot}
+\newcommand{\Earth}{\oplus}
+
+\DeclareMathOperator{\expec}{\mathbb{E}}
+\DeclareMathOperator{\prob}{\mathbb{P}}
+\DeclareMathOperator{\indic}{\mathbbm{1}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\std}{std}
+\DeclareMathOperator{\lik}{lik}
+\DeclareMathOperator{\Pois}{Pois}
+\DeclareMathOperator{\betad}{beta}
+\DeclareMathOperator{\gammad}{gamma}
+\DeclareMathOperator{\erf}{erf}
+\newcommand*{\seteq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}=}
+\DeclareMathOperator{\Bias}{Bias}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\theoremstyle{definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Note}
+\newtheorem*{prop}{Prop}
+\newtheorem*{proofsketch}{Proof Sketch}
+\newcommand*{\Ker}{\text{\normalfont Ker\,}}
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{corollary}{Corollaire}[theorem]
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{example}{Exemple}[theorem]
+\def\proofname{Preuve}
+\renewenvironment{proof}{\noindent {\bfseries Preuve.}\,}{\medskip}
