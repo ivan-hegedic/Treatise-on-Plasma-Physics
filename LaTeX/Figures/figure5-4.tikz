@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+    \begin{axis}[width=0.95\linewidth, colormap={black}{gray(0cm)=(0); gray(1cm)=(0)}, domain=0.001:2.5, y domain=-0.25:4,  view={0}{90}, axis background/.style={fill=white}, xlabel={$R/R_0$}, ylabel={$Z/Z_0$}, xlabel near ticks, ylabel near ticks, ylabel style={rotate=-90, anchor=east}]
+        \addplot3[contour gnuplot={levels={-0.24, -0.2, -0.15, -0.1, -0.05, 0.02, 0.1}, labels=false}, samples=60, ultra thick] { 0.5 * (ln(x))^2 - 0.5 * y^2 * (1 - 0.5 * y^2) };
+        \addplot3[ultra thick, contour gnuplot={levels={0}, labels=false, draw color=red}, samples=100] { 0.5 * (ln(x))^2 - 0.5 * y^2 * (1 - 0.5 * y^2) };
+        \fill[red] (axis cs:1,0) circle (1.5pt);
+    \end{axis}
+\end{tikzpicture}

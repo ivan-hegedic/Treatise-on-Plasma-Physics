@@ -1,0 +1,34 @@
+\begin{tikzpicture}[scale=1, every text node part/.style={align=center}, auto, line/.style ={draw, thick, -latex',shorten >=2pt}]
+    \draw[thick] plot[variable=\t, samples=1000, domain=-5.5:4.75] ({\t-0.4}, {1.5+0.40124073018*\t+sqrt(0.142612664+0.16269649092*\t*\t)});
+    \coordinate (O) at (0, 0);
+    \coordinate (init) at (-5, 1.55);
+    \coordinate (fin) at (3.3, 4.53);
+    \coordinate (t) at (-0.4, 1.87);
+    \node[anchor=north west] (q2) at (O) {$q_2$};
+    \draw[black, fill] (O) circle [radius=2pt];
+    \node[anchor=south west] (q1init) at (init) {$\mu, q_1$};
+    \draw[black, fill] (init) circle [radius=2pt];
+    \node[anchor=south east] (q1t) at (t) {$\mu, q_1$};
+    \draw[black, fill] (t) circle [radius=2pt];
+    \node[anchor=south east] (q1fin) at (fin) {$\mu, q_1$};
+    \draw[black, fill] (fin) circle [radius=2pt];
+    \coordinate (-z) at (-6.5, 0);
+    \coordinate (+z) at (4.25, 0);
+    \draw[-stealth, thick] (-z) -- (+z);
+    \node[anchor=south east] (z) at (+z) {$\mathbf{\hat{z}}$};
+    \coordinate (-x) at (0, -0.5);
+    \coordinate (+x) at (0, 6);
+    \draw[-stealth, thick] (-x) -- (+x);
+    \node[anchor=north east] (x) at (+x) {$\mathbf{\hat{x}}$};
+    \draw[thick, -Stealth] (O) -- (t) node[pos=0.45, anchor=east] {$\mathbf{r}$};
+    \draw[thick, dashed] (-6.15, 1.5) -- (4.20, 1.5);
+    \draw[stealth-stealth, thick] (-4, 0) -- (-4, 1.5) node[midway, anchor=west] {$b$};
+    \draw[-Stealth, thick, line width=1.25pt] (init) -- (-3.5, 1.56) node[pos=0.75, anchor=south west] {$\mathbf{v}\simeq\mathbf{v}_1$};
+    \draw[-Stealth, thick, line width=1.25pt] (t) -- (1, 2.5) node[pos=0.93, anchor=north west] {$\mathbf{v}$};
+    \draw[-Stealth, thick, line width=1.25pt] (fin) -- (4.45, 5.45) node[pos=0.6, anchor=north west] {$\mathbf{v}\simeq\mathbf{v}_\infty$};
+    \draw[thick, dashed] plot[variable=\t, samples=1000, domain=-0.75:4.5] ({\t}, {0.78*\t});
+    \draw[thick, dashed] plot[variable=\t, samples=1000, domain=-1.75:4.5] ({\t}, {0.78*\t+1.85});
+    \draw[thick, stealth-stealth] (2.8, {0.78*2.8+1.85}) -- (3.697164884, {0.78*3.697164884}) node[midway, anchor=south west] {$b$};
+    \draw[thick, -stealth] ({1.923076913+1.5}, 1.5) arc (0:37.954:1.5);
+    \node[thick] at (3, 1.84) {$\theta_c$};
+\end{tikzpicture}

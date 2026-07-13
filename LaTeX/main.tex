@@ -1,0 +1,32 @@
+\documentclass[openany]{book}
+
+\input{preamble.tex}
+
+\title{Treatise on Plasma Physics}
+\author{Ivan Hegedić}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\include{Chapters/front-page}
+\include{Chapters/preface}
+
+\pagestyle{plain}
+\tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+
+\mainmatter
+\include{Chapters/fundamental-concepts}
+\include{Chapters/charged-particle-motion}
+\include{Chapters/plasma-models}
+\include{Chapters/plasma-oscillations}
+\include{Chapters/magnetic-field-structre}
+\include{Chapters/mhd-equilibria}
+\include{Chapters/mhd-instabilities}
+\include{Chapters/tokamaks}
+\include{Chapters/neoclassical}
+
+%\printbibliography
+
+\end{document}

@@ -1,0 +1,370 @@
+\chapter{Models of plasma dynamics}
+
+\label{plasma-models}
+
+We will devote the present chapter to the in-depth examination of the three main models underlying plasma dynamics. These models, which will be detailed in the sections to come, include the Vlasov theory, the two-fluid theory, and magnetohydrodynamics. Although the three aforementioned models differ in perspective, they share a common concept: the conservation of particles in phase space. The choice of a model when examining a given situation is, above all, a question of selecting the tool best suited to the specific problem. It is often judicious to alternate among these models when confronting a particular problem.
+
+\section{Distribution function and the Vlasov Equation}
+
+Consider a volume $\mathrm{d}^3\mathbf{p}\,\mathrm{d}^3\mathbf{x}$ occupied by plasma particles of species $\sigma$ in phase space. When following the particles within the aforementioned volume, it is evident that their total number is conserved. This translates to the cancellation of the \textit{convective} drift of the distribution function in phase space. Let us note the nuance concerning the convective derivative in phase space:
+
+\begin{equation}
+    \label{eq4-1}
+    \frac{\mathrm{d}f_\sigma(\mathbf{x}_\sigma,\mathbf{p}_\sigma,t)}{\mathrm{d}t}=0
+\end{equation}
+
+\begin{equation}
+    \label{eq4-2}
+    \frac{\mathrm{d}f_\sigma}{\mathrm{d}t}=\frac{\partial f_\sigma}{\partial t}+\frac{\partial}{\partial\mathbf{x}_\sigma}\cdot\left(f_\sigma\mathbf{v}_\sigma\right)+\frac{\partial}{\partial\mathbf{p}_\sigma}\cdot\left(f_\sigma\mathbf{F}_\sigma\right)
+\end{equation}
+
+In the non-relativistic case, we observe the cancellation of the mass of the considered particles. Note that we may interchange the space gradient with the velocity coordinate, since both are coordinates and thus commute. However, the same cannot, in general, be applied to the force on a particle and the momentum gradient. The equation (\ref{eq4-2}) simplifies as follows, whose form shall be referred to as the \textit{Vlasov equation}:
+
+\begin{equation}
+    \label{eq4-3}
+    \frac{\partial f_\sigma(\mathbf{x}_\sigma,\mathbf{v}_\sigma,t)}{\partial t}+\mathbf{v}_\sigma\cdot\frac{\partial f(\mathbf{x}_\sigma,\mathbf{v}_\sigma,t)}{\partial\mathbf{x}_\sigma}+\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f(\mathbf{x}_\sigma,\mathbf{v}_\sigma,t)\mathbf{a}_\sigma\right)=0
+\end{equation}
+
+The solutions of the Vlasov equation can take various forms depending on the problem at hand. Furthermore, it is possible to characterize the different types of distribution functions by one or more constants of motion. For example, the latter may be the conservation of energy or momentum. However, it is important to emphasize that, in certain circumstances, neither energy nor momentum is conserved. Nevertheless, it should be noted that for any distribution function, there certainly exists at least one constant of motion. It is trivial to notice that the initial conditions of the motion are invariant along the particle trajectories. Although this observation may seem superfluous, its implications can lead to resolutions of great sophistication. Furthermore, the equation (\ref{eq4-1}) allows us to express the distribution function in terms of any quantity conserved in this reference frame.
+
+\quad It is important to note that the force and momentum terms in the equation (\ref{eq4-2}) also underlie the possible interparticle collisions occurring during the considered motion. However, these latter lead to a very irregular functional behaviour. When two arbitrary particles collide, the interaction force can take large values, even $\|\mathbf{F}\|\to\infty$. Furthermore, during such collisions, the distribution function is not necessarily differentiable in $\mathbf{p}$. It is then appropriate to introduce the concept of annihilation and creation of particles, in such a way that it is entirely equivalent to interparticle collisions. When a particle in the considered volume undergoes a collision, it moves almost instantaneously in phase space only along the coordinate $\mathbf{p}$. Within the considered volume, it is annihilated, whereas in the new volume it appears as if it were created. We will accordingly modify the equation (\ref{eq4-3}) to isolate the possible collisional terms:
+
+\begin{equation}
+    \label{eq4-4}
+    \frac{\partial f_\sigma}{\partial t}+\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{x}_\sigma}+\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\mathbf{a}_\sigma\right)=\sum_{\rho}C_{\sigma\rho}(f_\sigma)
+\end{equation}
+
+The collision operator $C_{\sigma\rho}$, which represents the rate of variation of the distribution function $f_\sigma$ due to collisions between particles of species $\sigma$ and $\rho$, necessarily satisfies the following conditions:
+
+\begin{enumerate}
+    \item Conservation of particles\,\textbf{\textendash}\,collisions do not modify the total number of particles at a particular position:
+
+    \begin{equation}
+        \iiint_{\mathbb{R}^3}C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma=0
+    \end{equation}
+
+    \item Conservation of momentum\,\textbf{\textendash}\,collisions between particles of the same species do not modify the total momentum of the species:
+
+    \begin{equation}
+        \iiint_{\mathbb{R}^3}m_\sigma\mathbf{v}_\sigma C_{\sigma\sigma}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma=\mathbf{0}
+    \end{equation}
+
+    Interspecific collisions must, however, guarantee the conservation of momentum:
+
+    \begin{equation}
+        \iiint_{\mathbb{R}^3}m_\sigma\mathbf{v}_\sigma C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma+\iiint_{\mathbb{R}^3}m_\rho\mathbf{v}_\rho C_{\rho\sigma}(f_\rho)\,\mathrm{d}^3\mathbf{v}_\rho=\mathbf{0}
+    \end{equation}
+
+    \item Conservation of energy\,\textbf{\textendash}\,collisions between particles of the same species do not modify the total energy of the species:
+
+    \begin{equation}
+        \iiint_{\mathbb{R}^3}m_\sigma\mathbf{v}_\sigma^2C_{\sigma\sigma}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma=0
+    \end{equation}
+
+    However, interspecific collisions must guarantee the conservation of energy:
+
+    \begin{equation}
+        \iiint_{\mathbb{R}^3}m_\sigma\mathbf{v}_\sigma^2C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma+\iiint_{\mathbb{R}^3}m_\rho\mathbf{v}_\rho^2C_{\rho\sigma}(f_\rho)\,\mathrm{d}^3\mathbf{v}_\rho=0
+    \end{equation}
+\end{enumerate}
+
+\section{The two-fluid equations}
+
+We will integrate the Vlasov equation, in particular the form given by equation (\ref{eq4-4}), to obtain a set of partial differential equations. This latter precisely presents the two-fluid equations for ions and electrons. We integrate the equation (\ref{eq4-4}) over velocity space:
+
+\begin{equation}
+    \label{eq4-10}
+    \iiint_{\mathbb{R}^3}\left[\frac{\partial f_\sigma}{\partial t}+\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{x}_\sigma}+\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\mathbf{a}_\sigma\right)\right]\mathrm{d}^3\mathbf{v}_\sigma=\sum_{\rho}\underbrace{\iiint_{\mathbb{R}^3}C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma}_0
+\end{equation}
+
+\vspace*{-0.5cm}
+
+\begin{equation}
+    \label{eq4-11}
+    \iiint_{\mathbb{R}^3}\left[\frac{\partial f_\sigma}{\partial t}+\frac{\partial}{\partial\mathbf{x}_\sigma}\cdot(f_\sigma\mathbf{v}_\sigma)\cdot\right]\mathrm{d}^3\mathbf{v}_\sigma=\frac{\partial}{\partial t}\iiint_{\mathbb{R}^3}f_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma+\nabla\cdot\iiint_{\mathbb{R}^3}f_\sigma\mathbf{v}_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma=\frac{\partial n_\sigma}{\partial t}+\nabla\cdot(n_\sigma\mathbf{u}_\sigma)
+\end{equation}
+
+\begin{equation}
+    \label{eq4-12}
+    \iiint_{\mathbb{R}^3}\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot(f_\sigma\mathbf{a}_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma=\oiint_{\partial\mathbb{R}^3} f_\sigma\mathbf{a}_\sigma\cdot\mathrm{d}^2\boldsymbol{\Sigma}_{\mathbf{v}_\sigma}=0\quad\text{because}\quad\forall\sigma\lim_{\|\mathbf{v}_\sigma\|\to\infty}f_\sigma=0
+\end{equation}
+
+By substituting the results (\ref{eq4-11}) and (\ref{eq4-12}) into the equation (\ref{eq4-10}), we obtain the continuity equation:
+
+\begin{equation}
+    \label{eq4-13}
+    \frac{\partial n_\sigma}{\partial t}+\nabla\cdot(n_\sigma\mathbf{u}_\sigma)=0
+\end{equation}
+
+where $\mathbf{u}_\sigma$ represents the average velocity of particles of species $\sigma$ at the position $\mathbf{x}_\sigma$. By multiplying equation (\ref{eq4-4}) by the velocity $\mathbf{v}_\sigma$ and integrating over velocity space, we obtain the following:
+
+\begin{equation}
+    \label{eq4-14}
+    \iiint_{\mathbb{R}^3}\left[\frac{\partial}{\partial t}(f_\sigma\mathbf{v}_\sigma)+\frac{\partial}{\partial\mathbf{x}_\sigma}\cdot(f_\sigma\mathbf{v}_\sigma\mathbf{v}_\sigma)+\mathbf{v}_\sigma\frac{\partial}{\partial \mathbf{v}_\sigma}\cdot\left(f_\sigma\mathbf{a}_\sigma\right)\right]\mathrm{d}^3\mathbf{v}_\sigma=\sum_\rho\iiint_{\mathbb{R}^3}\mathbf{v}_\sigma C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+The first term simply becomes the partial time derivative of $n_\sigma\mathbf{u}_\sigma$. The second term deserves a more careful analysis. We will make use of the following substitution:
+
+\begin{equation}
+    \label{eq4-15}
+    \mathbf{v}_\sigma=\mathbf{u}_\sigma+\overline{\mathbf{v}}_\sigma\implies\mathrm{d}^3\mathbf{v}_\sigma=\mathrm{d}^3\overline{\mathbf{v}}_\sigma\quad\text{because}\quad\mathbf{u}_\sigma=\mathbf{u}_\sigma(\mathbf{x},t)\quad\text{then}\quad\iiint_{\mathbb{R}^3}f_\sigma\overline{\mathbf{v}}_\sigma\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma=\mathbf{0}
+\end{equation}
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}f_\sigma\mathbf{v}_\sigma\mathbf{v}_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma=\iiint_{\mathbb{R}^3}f_\sigma\left(\mathbf{u}_\sigma\mathbf{u}_\sigma+\mathbf{u}_\sigma\overline{\mathbf{v}}_\sigma+\overline{\mathbf{v}}_\sigma\mathbf{u}_\sigma+\overline{\mathbf{v}}_\sigma\overline{\mathbf{v}}_\sigma\right)\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma
+\end{equation}
+
+The average velocity $\mathbf{u}_\sigma$ being independent of $\overline{\mathbf{v}}_\sigma$, the integration of the mixed terms leads to their cancellation. We will define the pressure tensor in the following way:
+
+\begin{equation}
+    \mathbf{P}_\sigma=m_\sigma\iiint_{\mathbb{R}^3}f_\sigma\overline{\mathbf{v}}_\sigma\overline{\mathbf{v}}_\sigma\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma
+\end{equation}
+
+\begin{equation}
+    \frac{\partial}{\partial\mathbf{x}_\sigma}\cdot\iiint_{\mathbb{R}^3}f_\sigma\mathbf{v}_\sigma\mathbf{v}_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma=\frac{\partial}{\partial\mathbf{x}_\sigma}\cdot\left(n_\sigma\mathbf{u}_\sigma\mathbf{u}_\sigma+\frac{1}{m_\sigma}\mathbf{P}_\sigma\right)
+\end{equation}
+
+The right-hand side of the equation (\ref{eq4-14}) represents the friction force of species $\sigma$ against species $\rho$:
+
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\mathbf{v}_\sigma C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma=-n_\sigma\nu_{\sigma\rho}\left(\mathbf{u}_\rho-\mathbf{u}_\sigma\right)\Longleftrightarrow\mathbf{R}_{\sigma\rho}=n_\sigma m_\sigma\nu_{\sigma\rho}\left(\mathbf{u}_\sigma-\mathbf{u}_\rho\right)
+\end{equation}
+
+When it is only the electromagnetic fields that drive the non-relativistic acceleration of any particle:
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\mathbf{a}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma=\frac{q_\sigma}{m_\sigma}\iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\left(\mathbf{E}+\mathbf{v}_\sigma\times\mathbf{B}\right)\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+We will proceed to integrate by parts the last integral. The equation (\ref{eq4-15}) allows to determine:
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial \mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma=\underbrace{f_\sigma\mathbf{\hat{n}}\cdot\mathbf{v}_\sigma\bigr|_{\partial\mathbb{R}^3}}_0-\iiint_{\mathbb{R}^3}f_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma=-n_\sigma
+\end{equation}
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma=\underbrace{f_\sigma\mathbf{\hat{n}}\cdot\mathbf{v}_\sigma\mathbf{v}_\sigma\bigr|_{\partial\mathbb{R}^3}}_0-\iiint_{\mathbb{R}^3}f_\sigma\mathbf{v}_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma=-n_\sigma\mathbf{u}_\sigma
+\end{equation}
+
+By gathering the previous equations, we recover the following form of the equation (\ref{eq4-14}):
+
+\begin{equation}
+    \label{eq4-23}
+    m_\sigma\left[\frac{\partial}{\partial t}\left(n_\sigma\mathbf{u}_\sigma\right)+\frac{\partial}{\partial\mathbf{x}_\sigma}\cdot\left(n_\sigma\mathbf{u}_\sigma\mathbf{u}_\sigma\right)\right]=n_\sigma q_\sigma\left(\mathbf{E}+\mathbf{u}_\sigma\times\mathbf{B}\right)-\frac{\partial}{\partial\mathbf{x}_\sigma}\cdot\mathbf{P}_\sigma+\sum_{\rho}\mathbf{R}_{\sigma\rho}
+\end{equation}
+
+We extend the left-hand side of the previous equation to arrive at the following:
+
+\begin{equation}
+    \mathbf{u}_\sigma\frac{\partial n_\sigma}{\partial t}+n_\sigma\frac{\partial\mathbf{u}_\sigma}{\partial t}+\mathbf{u}_\sigma\left[\nabla\cdot(n_\sigma\mathbf{u}_\sigma)\right]+n_\sigma(\mathbf{u}_\sigma\cdot\nabla)\mathbf{u}_\sigma=n_\sigma\frac{\mathrm{d}\mathbf{u}_\sigma}{\mathrm{d}t}
+\end{equation}
+
+Since the equation (\ref{eq4-23}) is no longer dependent on velocity space, we write it in a more familiar form. Using the continuity equation (\ref{eq4-13}), we obtain the equation of motion:
+
+\begin{equation}
+    \label{eq4-25}
+    n_\sigma m_\sigma\frac{\mathrm{d}\mathbf{u}_\sigma}{\mathrm{d}t}=n_\sigma q_\sigma\left(\mathbf{E}+\mathbf{u}_\sigma\times\mathbf{B}\right)-\nabla\cdot\mathbf{P}_\sigma+\sum_{\rho}\mathbf{R}_{\sigma\rho}
+\end{equation}
+
+We will then multiply the equation (\ref{eq4-4}) by $m_\sigma\mathbf{v}_\sigma^2/2$ which will give us the energy evolution:
+
+\begin{equation*}
+    \iiint_{\mathbb{R}^3}\Bigg[\frac{\partial}{\partial t}\left(\frac{m_\sigma\mathbf{v}_\sigma^2}{2}f_\sigma\right)+\frac{\partial}{\partial\mathbf{x}}\cdot\left(\frac{m_\sigma\mathbf{v}_\sigma^2}{2}f_\sigma\mathbf{v}_\sigma\right)+
+\end{equation*}
+
+\begin{equation}
+    \label{eq4-26}
+    +\frac{m_\sigma\mathbf{v}_\sigma^2}{2}\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\mathbf{a}_\sigma\right)\Bigg]\mathrm{d}^3\mathbf{v}_\sigma=\sum_{\rho}\iiint_{\mathbb{R}^3}\frac{m_\sigma\mathbf{v}_\sigma^2}{2}C_{\sigma\rho}(f_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+We decompose the velocity $\mathbf{v}_\sigma$ into two terms: $\mathbf{v}_\sigma=\mathbf{u}_\sigma+\overline{\mathbf{v}}_\sigma$. The mixed term disappears, then:
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}f_\sigma\mathbf{v}_\sigma^2\,\mathrm{d}^3\mathbf{v}_\sigma=\iiint_{\mathbb{R}^3}f_\sigma\left(\mathbf{u}_\sigma+\overline{\mathbf{v}}_\sigma\right)^2\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma=n_\sigma\mathbf{u}_\sigma^2+\frac{1}{m_\sigma}\mathrm{Tr}\,\mathbf{P}_\sigma
+\end{equation}
+
+Using this decomposition again, we solve the second term:
+
+\begin{equation*}
+    \iiint_{\mathbb{R}^3}f_\sigma\mathbf{v}_\sigma^2\mathbf{v}_\sigma\,\mathrm{d}\mathbf{v}_\sigma=\iiint_{\mathbb{R}^3}f_\sigma\left(\mathbf{u}_\sigma^2+2\mathbf{u}_\sigma\cdot\overline{\mathbf{v}}_\sigma+\overline{\mathbf{v}}_\sigma^2\right)\left(\mathbf{u}_\sigma+\overline{\mathbf{v}}_\sigma\right)\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma=
+\end{equation*}
+
+\begin{equation}
+    =n_\sigma\mathbf{u}_\sigma^2\mathbf{u}_\sigma+\frac{2}{m_\sigma}\mathbf{u}_\sigma\cdot\mathbf{P}_\sigma+\frac{1}{m_\sigma}\mathbf{u}_\sigma\mathrm{Tr}\,\mathbf{P}_\sigma+\frac{2}{m_\sigma}\mathbf{Q}_\sigma
+\end{equation}
+
+where we have defined the heat flux:
+
+\begin{equation}
+    \mathbf{Q}_\sigma=\iiint_{\mathbb{R}^3}\frac{1}{2}m_\sigma f_\sigma\overline{\mathbf{v}}_\sigma^2\overline{\mathbf{v}}_\sigma\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma
+\end{equation}
+
+When the acceleration is induced only by electromagnetic fields, we solve the third term of the left-hand side of the equation (\ref{eq4-25}):
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\frac{q_\sigma}{m_\sigma}\mathbf{v}_\sigma^2\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left[f_\sigma\mathbf{E}\right]\,\mathrm{d}^3\mathbf{v}_\sigma=-\frac{q_\sigma}{m_\sigma}\mathbf{E}\cdot\iiint_{\mathbb{R}^3}2f_\sigma\mathbf{v}_\sigma\,\mathrm{d}^3\mathbf{v}_\sigma=-\frac{2q_\sigma}{m_\sigma}n_\sigma\mathbf{u}_\sigma\cdot\mathbf{E}
+\end{equation}
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\frac{q_\sigma}{m_\sigma}\mathbf{v}_\sigma^2\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot(\underbrace{\mathbf{v}_\sigma\times\mathbf{B}}_{\perp\mathbf{v}_\sigma})\,\mathrm{d}^3\mathbf{v}_\sigma=0
+\end{equation}
+
+The right-hand side of the equation (\ref{eq4-26}) is only the rate of energy transfer by collisions between species $\sigma$ and $\rho$. By gathering the previous equations, we recover equation (\ref{eq4-26}) in the following form:
+
+\begin{equation*}
+    \frac{\partial}{\partial t}\left(\frac{n_\sigma m_\sigma\mathbf{u}_\sigma^2}{2}+\frac{1}{2}\mathrm{Tr}\,\mathbf{P}_\sigma\right)+\nabla\cdot\left(\frac{n_\sigma m_\sigma\mathbf{u}_\sigma^2}{2}\mathbf{u}_\sigma\right)+
+\end{equation*}
+
+\begin{equation}
+    \label{eq4-32}
+    +\,\nabla\cdot\left(\mathbf{u}_\sigma\cdot\mathbf{P}_\sigma
+    +\frac{1}{2}\mathbf{u}_\sigma\mathrm{Tr}\,\mathbf{P}_\sigma+\mathbf{Q}_\sigma\right)=n_\sigma q_\sigma\mathbf{u}_\sigma\cdot\mathbf{E}+\sum_{\rho}\left(\frac{\partial W}{\partial t}\right)_{\sigma\rho}
+\end{equation}
+
+Following quite a few simplifications, we recover the continuity equation multiplied by $\mathbf{u}_\sigma^2$:
+
+\begin{equation}
+    \frac{\partial}{\partial t}\left(n_\sigma\mathbf{u}_\sigma\cdot\mathbf{u}_\sigma\right)+\nabla\cdot\left(n_\sigma\mathbf{u}_\sigma^2\mathbf{u}_\sigma\right)=n_\sigma\frac{\partial}{\partial t}\left(\mathbf{u}_\sigma^2\right)+\mathbf{u}_\sigma^2\left[\frac{\partial n_\sigma}{\partial t}+\nabla\cdot\left(n_\sigma\mathbf{u}_\sigma\right)\right]+n_\sigma(\mathbf{u}_\sigma\cdot\nabla)\left(\mathbf{u}_\sigma^2\right)
+\end{equation}
+
+The left-hand side of the equation (\ref{eq4-32}) then becomes:
+
+\vspace*{-4pt}
+
+\begin{equation}
+    n_\sigma m_\sigma\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\mathbf{u}_\sigma^2}{2}\right)+\frac{\partial}{\partial t}\left(\frac{\mathrm{Tr}\,\mathbf{P}_\sigma}{2}\right)+\nabla\cdot(\mathbf{u}_\sigma\cdot\mathbf{P}_\sigma)+\nabla\cdot\left(\frac{\mathbf{u}_\sigma\mathrm{Tr}\,\mathbf{P}_\sigma}{2}\right)+\nabla\cdot\mathbf{Q}_\sigma
+\end{equation}
+
+We recover the advective derivative of the trace of the pressure tensor by the following: 
+
+\vspace*{-3.25pt}
+
+\begin{equation}
+    \nabla\cdot\left(\mathbf{u}_\sigma\mathrm{Tr}\,\mathbf{P}_\sigma\right)=\mathbf{u}_\sigma\cdot\nabla\left(\mathrm{Tr}\,\mathbf{P}_\sigma\right)+\mathrm{Tr}\,\mathbf{P}_\sigma(\nabla\cdot\mathbf{u}_\sigma)
+\end{equation}
+
+Consequently, the left-hand side of the equation (\ref{eq4-32}) becomes:
+
+\vspace*{-4pt}
+
+\begin{equation}
+    n_\sigma m_\sigma\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\mathbf{u}_\sigma^2}{2}\right)+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\mathrm{Tr}\,\mathbf{P}_\sigma}{2}\right)+\frac{\mathrm{Tr}\,\mathbf{P}_\sigma}{2}(\nabla\cdot\mathbf{u}_\sigma)+\nabla\cdot\left(\mathbf{u}_\sigma\cdot\mathbf{P}_\sigma\right)+\nabla\cdot\mathbf{Q}_\sigma
+\end{equation}
+
+By subtracting the product of the equation (\ref{eq4-25}) with $\mathbf{u}_\sigma$ from the equation (\ref{eq4-32}), we obtain:
+
+\vspace*{-10pt}
+
+\begin{equation}
+    \label{eq4-38}
+    \frac{1}{2}\left(\frac{\mathrm{d}}{\mathrm{d}t}\left(\mathrm{Tr}\,\mathbf{P}_\sigma\right)+(\nabla\cdot\mathbf{u}_\sigma)\mathrm{Tr}\,\mathbf{P}_\sigma\right)+{\mathrm{Tr}\left(\mathbf{P}_\sigma\cdot\nabla\mathbf{u}_\sigma\right)}=-\nabla\cdot\mathbf{Q}_\sigma+\sum_{\rho}\left[\mathbf{u}_\sigma\cdot\mathbf{R}_{\sigma\rho}+\left(\frac{\partial W}{\partial t}\right)_{\sigma\rho}\right]
+\end{equation}
+
+The first term of the right-hand side of the previous equation (\ref{eq4-38}) presents the rate of heat production within species $\sigma$, the second term presents the heat by friction between species $\sigma$ and $\rho$, while the last term represents the rate of energy transfer between species $\sigma$ and $\rho$.
+
+\subsection{Adiabatic and isothermal limits}
+
+When a specific phenomenon is the subject of our examination, it is appropriate to consider the propagation speed proper to this phenomenon. Let $v_\text{ph}$ be the aforementioned speed:
+
+\begin{enumerate}
+    \item The thermal speed of the species $\sigma$ satisfies the strong inequality $\sqrt{2k_\mathrm{B}T_\sigma/m_\sigma}\gg v_\text{ph}$. The plasma temperature is also very high. Then, the heat flux $\mathbf{Q}_\sigma$ dominates the other terms of the right-hand side of the equation (\ref{eq4-38}), and the interparticle collisions are very rare. Consequently, the temperature of the species $\sigma$ can be considered as uniform.
+    \item The thermal speed of the species $\sigma$ satisfies the strong inequality $\sqrt{2k_\mathrm{B}T/m_\sigma}\ll v_\text{ph}$, and the temperature of the plasma is very high. In this case, the heat flux is almost zero, and the interparticle collisions are also very rare. This applied to the equation (\ref{eq4-38}) gives us:
+
+    \begin{equation}
+        \label{eq4-42}
+        \frac{1}{2}\left(\frac{\mathrm{d}}{\mathrm{d}t}\left(\mathrm{Tr}\,\mathbf{P}_\sigma\right)+(\nabla\cdot\mathbf{u}_\sigma)\mathrm{Tr}\,\mathbf{P}_\sigma\right)+{\mathrm{Tr}\left(\mathbf{P}_\sigma\cdot\nabla\mathbf{u}_\sigma\right)}=0
+    \end{equation}
+
+    The continuity equation allows us to find the divergence of $\mathbf{u}_\sigma$:
+
+    \begin{equation}
+        \nabla\cdot\mathbf{u}_\sigma=-\frac{1}{n_\sigma}\frac{\mathrm{d}n_\sigma}{\mathrm{d}t}
+    \end{equation}
+
+    We extend the term $\mathrm{Tr}\left(\mathbf{P}_\sigma\cdot\nabla\mathbf{u}_\sigma\right)$ in coordinates by the Einstein summation convention:
+
+    \begin{equation}
+        \mathrm{Tr}\left(\mathbf{P}_\sigma\cdot\nabla\mathbf{u}_\sigma\right)\equiv P^{i}_{\,\,j}\partial_iu^j
+    \end{equation}
+
+    The pressure tensor is usually diagonal. Furthermore, its behaviour is often characterized by two components, one of which is parallel to the plasma motion, $P_\sigma^\parallel$, and the other corresponds to the directions perpendicular to this motion, $P_\sigma^\perp$. Under the assumption of such a tensor, we introduce the direction $\mathbf{\hat{s}}$ as the one that follows the velocity $\mathbf{u}_\sigma$:
+
+    \begin{equation}
+        \mathrm{Tr}\left(\mathbf{P}_\sigma\cdot\nabla\mathbf{u}_\sigma\right)=P_\sigma^\perp\nabla\cdot\mathbf{u}_\sigma+(P_\sigma^\parallel-P_\sigma^\perp)\frac{\partial\mathbf{u}_\sigma}{\partial\mathbf{s}}
+    \end{equation}
+
+    The equation (\ref{eq4-42}) turns out in the following form in this specific case:
+
+    \begin{equation}
+        \label{eq4-46}
+        n_\sigma^2\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{P_\sigma^\perp}{n_\sigma^2}\right)+n_\sigma\frac{\mathrm{d}}{\text{Dt}}\left(\frac{P_\sigma^\parallel}{n_\sigma}\right)+(P_\sigma^\parallel-P_\sigma^\perp)\frac{\partial\mathbf{u}_\sigma}{\partial\mathbf{s}}=0 
+    \end{equation}
+\end{enumerate}
+
+\section{Magnetohydrodynamics}
+
+\label{mhdmodel}
+
+In contrast to the two-fluid model, magnetohydrodynamics treats the entire plasma as a single fluid. Consequently, we introduce the following quantities: the total mass density, the center of mass velocity, the total charge density, and the total current density:
+
+\begin{equation}
+    \rho=\sum_{\sigma}n_\sigma m_\sigma\quad\mathbf{U}=\frac{1}{\rho}\sum_{\sigma}n_\sigma m_\sigma\mathbf{u}_\sigma\quad\rho_q=\sum_{\sigma}n_\sigma q_\sigma\quad\mathbf{J}=\sum_{\sigma}n_\sigma q_\sigma\mathbf{u}_\sigma
+\end{equation}
+
+By multiplying the continuity equation (\ref{eq4-13}) by $m_\sigma$ and summing over all species $\sigma$, the magnetohydrodynamic continuity equation turns out in the following form:
+
+\begin{equation}
+    \frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\mathbf{U})=0
+\end{equation}
+
+To arrive at the magnetohydrodynamic representation of the equation of motion analogous to the equation (\ref{eq4-25}), we introduce the magnetohydrodynamic pressure tensor:
+
+\begin{equation}
+    \mathbf{P}_\text{MHD}=\sum_{\sigma}\mathbf{P}_\sigma=\sum_{\sigma}\iiint_{\mathbb{R}^3}f_\sigma m_\sigma\overline{\mathbf{v}}_\sigma\overline{\mathbf{v}}_\sigma\,\mathrm{d}^3\overline{\mathbf{v}}_\sigma
+\end{equation}
+
+By summing the equation (\ref{eq4-25}) over all species $\sigma$ present in the plasma, we obtain:
+
+\begin{equation}
+    \label{eq-3-46}
+    \rho\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=\rho_q\mathbf{E}+\mathbf{J}\times\mathbf{B}-\nabla\cdot\mathbf{P}_\text{MHD}
+\end{equation}
+
+where $\mathrm{d}_t=\partial_t+\mathbf{U}\cdot\nabla$. The friction terms are internal forces, thus disappear in the MHD model.
+
+\section{Conservative properties of a Vlasov-Maxwell system}
+
+\label{vlasov-maxwell}
+
+A Vlasov-Maxwell system consists of a collisionless plasma whose distribution function is governed by the Vlasov equation, and of the electromagnetic field in which the plasma is submerged, described by Maxwell's equations. The diverse conservation laws exhibited by a Vlasov-Maxwell system include, trivially, the continuity, total momentum, and total energy conservation laws. The latter two, of course, refer to the momentum and, respectively, the energy carried by both matter and the electromagnetic fields. On the contrary, it is worth noting that the entropy of the Vlasov-Maxwell system is a conserved quantity as well. The entropy is formally defined as:
+
+\begin{equation}
+    S[f_\sigma]=-\sum_{\sigma}\iiint_{\mathbb{R}^3}\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{x},\mathbf{v},t)\ln{f_\sigma(\mathbf{x},\mathbf{v},t)}\,\mathrm{d}^3\mathbf{v}\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+where the necessary precautions regarding dimensions are taken into account when computing the logarithm of the distribution function, that is to say, it is simply normalised to be dimensionless. Conservation of entropy is proven by observing the following, where we omit the sum:
+
+\begin{equation}
+    \frac{\mathrm{d}S[f_\sigma]}{\mathrm{d}t}=-\iiint_{\mathbb{R}^3}\iiint_{\mathbb{R}^3}\frac{\partial}{\partial t}\left[f_\sigma(\mathbf{x},\mathbf{v},t)\ln{f_\sigma(\mathbf{x},\mathbf{v},t)}\right]\,\mathrm{d}^3\mathbf{v}\,\mathrm{d}^3\mathbf{x}=
+\end{equation}
+
+\begin{equation}
+    =-\iiint_{\mathbb{R}^3}\iiint_{\mathbb{R}^3}\frac{\partial f_\sigma(\mathbf{x},\mathbf{v},t)}{\partial t}\left[\ln{f}_\sigma(\mathbf{x},\mathbf{v},t)+1\right]\mathrm{d}^3\mathbf{v}\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+We now employ the Vlasov equation and observe:
+
+\begin{equation}
+    \frac{\mathrm{d}S_\sigma}{\mathrm{d}t}=\iiint_{\mathbb{R}^3}\iiint_{\mathbb{R}^3}\left[1+\ln{f_\sigma}\right]\left(\frac{\partial}{\partial\mathbf{x}}\cdot(f_\sigma\mathbf{v})+\frac{\partial}{\partial\mathbf{v}}\cdot(f_\sigma\mathbf{a})\right)\,\mathrm{d}^3\mathbf{v}\,\mathrm{d}^3\mathbf{v}=
+\end{equation}
+
+\begin{equation}
+    =\iiint_{\mathbb{R}^3}\iiint_{\mathbb{R}^3}\left[\frac{\partial}{\partial\mathbf{x}}\cdot(f_\sigma\mathbf{v}\ln{f_\sigma})+\frac{\partial}{\partial\mathbf{v}}\cdot(f_\sigma\mathbf{a}\ln{f_\sigma})\right]\,\mathrm{d}^3\mathbf{v}\,\mathrm{d}^3\mathbf{x}=
+\end{equation}
+
+\begin{equation}
+    =\oint_{\partial\mathbb{R}^6}\left(f_\sigma\mathbf{v}\ln{f_\sigma}+f_\sigma\mathbf{a}\ln{f_\sigma}\right)\cdot\mathrm{d}\boldsymbol{\Sigma}=0
+\end{equation}
+
+for any non-pathological distribution function that rapidly decays to zero as $\mathbf{x}$ and $\mathbf{v}$ go to infinity.

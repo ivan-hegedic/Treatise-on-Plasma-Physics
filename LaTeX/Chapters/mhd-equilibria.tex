@@ -1,0 +1,1192 @@
+\chapter{Magnetohydrodynamic equilibria}
+
+\label{mhd-equilibria}
+
+This chapter is entirely dedicated to the theoretical development of magnetohydrodynamic equilibria. Considering our previous results on the magnetohydrodynamic model, we conclude that it fails to capture the diverse intricacies predicted by other models. It is only natural to contest the validity of using the magnetohydrodynamic model to describe macroscopic plasma equilibria. In fact, the magnetohydrodynamic model, providing an entirely macroscopic perspective on plasma behaviour, allows us to efficiently assess situations in which the greater detail and accuracy of the two-fluid or Vlasov models are not our primary concern. Since both the two-fluid and the Vlasov model focus on microscopic behaviour more than global behaviour, they prove to be unsuitable for systems characterised by complex geometry, especially since those are often of utmost importance in the magnetohydrodynamic description.
+
+\section{Magnetic field structure revisited}
+
+The simplest non-trivial magnetic field that we shall first consider is a static free-space magnetic field produced by external currents that are physically outside of our system. The Maxwell-Ampère equation thus describes a curl-free magnetic field, which can consequently be expressed as a gradient of a scalar field, more precisely, of a magnetostatic potential.
+
+\begin{equation}
+    \nabla\times\mathbf{B}=\mathbf{0}\implies\mathbf{B}=\nabla\chi\qquad\nabla\cdot\mathbf{B}=0\implies\nabla^2\chi=0
+\end{equation}
+
+The magnetostatic potential thus satisfies the Laplace equation, and the system is entirely analogous to an electrostatic system. Thus, the magnetostatic potential inside an evacuated volume is uniquely determined by either the Dirichlet or the Neumann boundary conditions for $\chi$. Moreover, if the system's magnetic configuration is continuously symmetric along a certain coordinate, then the linearised equations governing the magnetostatic potential can be Fourier-transformed along that coordinate.
+
+\quad Non-vacuum fields are more complicated, first because certain current distributions exist within the system, and second because they exhibit inelegant dependencies on boundary conditions. Furthermore, vacuum fields are peculiarly distinguished from non-vacuum fields by their property of being the lowest-energy fields that satisfy any given boundary conditions. Let us prove this statement. Consider an evacuated volume $\Omega$ whose boundary is $\partial\Omega$. Let $\mathbf{B}_\text{min}$ be the vacuum field describing the lowest-energy configuration that satisfies the necessary boundary conditions imposed on $\partial\Omega$. Let $\mathbf{B}\neq\mathbf{B}_\text{min}$ be another arbitrary field satisfying the same boundary conditions. Let $\delta\mathbf{B}=\mathbf{B}-\mathbf{B}_\text{min}$; hence, it vanishes on the boundary. The magnetic energy associated with the arbitrary field is given by:
+
+\begin{equation}
+    W=\frac{1}{2\mu_0}\iiint_{\Omega}\mathbf{B}^2\,\mathrm{d}^3\mathbf{r}=\frac{1}{2\mu_0}\iiint_{\Omega}\left[\mathbf{B}_\text{min}^2+\mathbf{B}_\text{min}\cdot\delta\mathbf{B}+(\delta\mathbf{B})^2\right]\,\mathrm{d}^3\mathbf{r}=
+\end{equation}
+
+\begin{equation}
+    \label{eq-mhd-3}
+    =W_\text{min}+\frac{1}{2\mu_0}\iiint_\Omega\mathbf{B}_\text{min}\cdot(\delta\mathbf{B})\,\mathrm{d}^3\mathbf{r}+\frac{1}{2\mu_0}\iiint_\Omega(\delta\mathbf{B})^2\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+Let us focus on the middle term in the previous expression, since it is precisely this term that can contribute negatively to the total associated magnetic energy. Using $\delta\mathbf{B}=\nabla\times(\delta\mathbf{A})+\nabla(\delta\Phi)$, the middle term can be recast as follows:
+
+\begin{equation}
+    \iiint_\Omega\mathbf{B}_\text{min}\cdot(\delta\mathbf{B})\,\mathrm{d}^3\mathbf{r}=\iiint_{\Omega}\left[\nabla\cdot\left(\delta\mathbf{A}\times\mathbf{B}_\text{min}\right)+\nabla\cdot(\mathbf{B}_\text{min}\delta\Phi)\right]\,\mathrm{d}^3\mathbf{r}+\iiint_\Omega\delta\mathbf{A}\cdot(\nabla\times\mathbf{B}_\text{min})\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+The first term vanishes because $\delta\mathbf{A}$ must vanish on the boundary since both $\mathbf{B}$ and $\mathbf{B}_\text{min}$ are assumed to satisfy the same boundary conditions. Moreover, the potential contribution vanishes since $\mathbf{B}$ satisfies $\nabla\cdot\mathbf{B}=0$. The last term also vanishes since $\mathbf{B}_\text{min}$ is a curl-free field. The middle term in equation (\ref{eq-mhd-3}) evaluates to zero, so that it is only the third term that can, evidently, contribute only positively to the total magnetic energy. Thus, $\mathbf{B}_\text{min}$ indeed describes the lowest-energy configuration. An important corollary is that all configurations satisfying the imposed boundary conditions and having finite current within the system do not represent the lowest-energy configuration and can, in principle, use the free energy to drive instabilities with respect to the imposed boundary conditions.
+
+\subsection{Force-free magnetic fields}
+
+\label{subsec-force-free}
+
+Although we have shown that non-vacuum magnetic fields necessarily represent configurations of higher energy, it is not necessary that such configurations present instabilities or, more precisely, that they decay towards the associated vacuum configuration. This is possible for configurations referred to as force-free, in which the current distribution is not identically zero, but obeys $\mathbf{J}\times\mathbf{B}=\mathbf{0}$, that is, it is parallel to the magnetic field. If the initial conditions imposed on a plasma are non-force-free, and, during its subsequent evolution, the plasma transitions into a force-free configuration, it can get trapped in that particular configuration since, in such a state, no force drives its evolution further.
+
+\quad Our considerations on the concepts of magnetic pressure and tension from subsection \ref{subsec-magnetic-tensionandpressure} allow us to gain further insight regarding the evolution of non-force-free configurations. Let us consider the example of a simple circular loop current. The magnetic tension, as given in equation (\ref{eq-5-16}), acts along the magnetic field's curvature vector, thereby maintaining the loop's constricted shape and pinching it into a thinner loop. Meanwhile, the magnetic pressure force, expressed in equation (\ref{eq-5-15}), acts in the direction of smaller $\mathbf{B}^2$. This is illustrated in our example of a current loop by the fact that currents flow in opposite directions at diametrically opposite points of the loop and thus mutually repel. Since, due to the circular geometry, $\mathbf{B}^2$ is much larger inside the circular loop than outside, the loop experiences a force trying to expand the loop. Thus, if the considered circular loop carrying the current were elastic and freely deformable, magnetic forces would elongate into a thinner, larger loop.
+
+\subsection{Magnetohydrodynamic virial theorem}
+
+We re-examine the considerations on magnetic tension and pressure in the previous subsection, or, more precisely, the force density given by equation (\ref{eq-5-11}), to define the stress tensor as follows:
+
+\begin{equation}
+    \mathbf{f}=-\nabla\cdot\mathbf{P}_\text{MHD}+\frac{1}{\mu_0}(\mathbf{B}\cdot\nabla)\mathbf{B}-\nabla\left(\frac{\mathbf{B}^2}{2\mu_0}\right)=-\nabla\cdot\left(\mathbf{P}_\text{MHD}+\frac{\mathbf{B}^2}{2\mu_0} \mathbf{1}-\frac{\mathbf{B}\mathbf{B}}{\mu_0}\right)
+\end{equation}
+
+This allows us to express magnetohydrostatic equilibria as follows elegantly:
+
+\begin{equation}
+    \nabla\cdot\boldsymbol{\mathbf{T}}_\text{MHD}=\nabla\cdot\left(\mathbf{P}_\text{MHD}+\frac{\mathbf{B}^2}{2\mu_0} \mathbf{1}-\frac{\mathbf{B}\mathbf{B}}{\mu_0}\right)=\mathbf{0}
+\end{equation}
+
+The magnetohydrodynamic stress tensor $\mathbf{{T}}_\text{MHD}$ enables us to derive the magnetohydrodynamic virial theorem, which has fundamentally fuelled the theoretical and experimental development of magnetic confinement. Let us suppose that there exists a finite three-dimensional system $\Omega$ characterised by finite pressure and self-confined via currents at its interior. There are no currents in the vacuum region, that is, in the system's exterior. Such a system is thus in equilibrium, as governed by the condition above. Let us now consider the following expression:
+
+\begin{equation}
+    \nabla\cdot(\mathbf{T}_\text{MHD}\cdot\mathbf{r})=\mathbf{r}\cdot(\nabla\cdot\mathbf{T}_\text{MHD})+\text{Tr}\,\mathbf{T}_\text{MHD}
+\end{equation}
+
+where, by hypothesis, the first term vanishes. Let us expand the trace:
+
+\begin{equation}
+    \text{Tr}\,\mathbf{T}_\text{MHD}\bigr|_\Omega=\left[\text{Tr}\,\mathbf{P}_\text{MHD}+\frac{\mathbf{B}^2}{2\mu_0}\right]\Biggr|_\Omega>0
+\end{equation}
+
+The virial $\nabla\cdot(\mathbf{T}_\text{MHD}\cdot\mathbf{r})$ is positive-definite inside the system, and certainly semi-positive-definite outside the system. Its integral over all space ought to evaluate to a positive quantity:
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\nabla\cdot(\mathbf{T}_\text{MHD}\cdot\mathbf{r})\,\mathrm{d}^3\mathbf{r}=\oiint_{\partial\mathbb{R}^3}(\mathbf{T}_\text{MHD}\cdot\mathbf{r})\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+By assumption, the plasma is of finite extent, so the pressure term vanishes at infinity. The magnetic field also vanishes at infinity since localised currents within the plasma produce it. The entire integral evaluates to zero identically, which contradicts the positive-definiteness of the introduced virial. That system cannot be. All three-dimensional static plasma confinement is necessarily maintained by currents external to the plasma, but also held by some mechanical structure. If the former would not be supported by mechanical means, these currents could be considered as part of the system, and the virial theorem above would be violated. Therefore, any plasma system of finite pressure and finite extent must have a tangible exterior surface on which the magnetohydrodynamic pressure can act.
+
+\subsection{Flux preservation and inductance}
+
+Another useful way to visualise magnetic-field behaviour is through magnetic self-inductance. Self-inductance of some system carrying a total current $I$ is defined as the ratio between the magnetic flux through the system and this current that produces it. We shall further explore the consequences of such a definition via the following considerations. Let ${\Sigma}$ denote some cross-section of a system $\Omega$:
+
+\begin{equation}
+    \Phi=\iint_\Sigma\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\iint_\Sigma(\nabla\times\mathbf{A})\cdot\mathrm{d}\mathbf{S}=\oint_{\partial\Sigma}\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+The magnetic energy stored within the system is expressed as follows:
+
+\begin{equation}
+    W=\frac{1}{2\mu_0}\iiint_{\Omega}\mathbf{B}^2\,\mathrm{d}^3\mathbf{r}=\frac{1}{2\mu_0}\iiint_\Omega\mathbf{B}\cdot(\nabla\times\mathbf{A})\,\mathrm{d}^3\mathbf{r}=\frac{1}{2\mu_0}\iiint_\Omega\nabla\cdot(\mathbf{A}\times\mathbf{B})+\mathbf{A}\cdot(\nabla\times\mathbf{B})\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+\begin{equation}
+    W=\frac{1}{2\mu_0}\oiint_{\partial\Omega}(\mathbf{A}\times\mathbf{B})\cdot\mathrm{d}\mathbf{S}+\frac{1}{2}\iiint_\Omega\mathbf{A}\cdot\mathbf{J}\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+The first term vanishes if the boundary were at infinity, so that we shall focus on the latter.
+
+\begin{equation}
+    W=\frac{1}{2}\iiint_\Omega\mathbf{A}\cdot\mathbf{J}\,\mathrm{d}^3\mathbf{r}=\frac{1}{2}\iiint_\Omega\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}\,\mathbf{J}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+where $\mathrm{d}\boldsymbol{\ell}$ and $\mathrm{d}\mathbf{S}$ are the differential length and surface elements parallel and perpendicular to the current density $\mathbf{J}$, respectively. For a circular loop carrying a total current $I$, the previous expression simplifies:
+
+\begin{equation}
+    W=\frac{1}{2}I\oint_{\partial\Sigma}\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}=\frac{1}{2}\Phi I=\frac{1}{2}LI^2=\frac{1}{2}\frac{\Phi^2}{L}
+\end{equation}
+
+For a perfectly conducting system, the magnetic flux produced is conserved; if the magnetic flux varied, a non-zero voltage distribution would occur in the loop, contradicting the perfect-conductivity assumption. In the last expression, we find that the system evolves to increase its self-inductance.
+
+\section{Basic properties of ideal magnetohydrodynamics}
+
+We shall summarise the magnetohydrodynamic equations and use them to derive certain elementary properties of ideal magnetohydrodynamic systems. Such systems are, among other laws, governed by the imposed zero resistivity, so that Ohm's law and Maxwell-Faraday equation in conjunction give:
+
+\begin{equation}
+    \label{eq-6-15-x}
+    \eta\mathbf{J}=\mathbf{E}+\mathbf{U}\times\mathbf{B}\implies\frac{\partial\mathbf{B}}{\partial t}=\nabla\times(\mathbf{U}\times\mathbf{B})
+\end{equation}
+
+We shall employ this result in our subsequent considerations. The reader is advised to subconsciously keep track of the number of results that use this equation, so that when we explore the resistive magnetohydrodynamic model, the reader gains insight into just how many of these concepts fail to retain their validity.
+
+\subsection{Magnetic flux tubes}
+
+In the magnetohydrodynamic model, magnetic flux tubes are of fundamental importance. The term is somewhat synonymous with the concept of magnetic surfaces, but the two are not interchangeable. More precisely, in a simple toroidal system with a single magnetic axis, flux tubes and magnetic surfaces designate the same concept. We shall nevertheless use the following definition.
+
+\quad In toroidal systems with multiple magnetic axes, we define a \textit{flux tube} as the magnetic surface of maximal volume associated with a single magnetic axis. Emphasis on the word \textit{maximal}; it may be possible that the maximum volume is not finite, as we shall see in some illustrative examples. A well-defined definition of a flux tube in a multiply-axed system is thus the supremum over volume of nested magnetic surfaces associated with a common magnetic axis. The supremum is taken in a manner to preserve the topology of the nested magnetic surfaces. In confined systems of finite extent, the supremum is indeed physically reached. We call \textit{domain} of a flux tube the three-dimensional domain where its associated magnetic field is non-zero. The magnetic field structure within a system characterised by multiple magnetic axes is topologically described by the interrelation among associated magnetic flux tubes, which is physically manifested by their self-twisting and mutual linkage. 
+
+\quad The ideal magnetohydrodynamic model provides us with an essential result, the frozen flux theorem. Consider the magnetic flux through the cross-section $\Sigma$ of a flux tube:
+
+\begin{equation}
+    \diff{\Phi}{t}=\frac{\mathrm{d}}{\mathrm{d}t}\iint_\Sigma\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\iint_\Sigma\left[\frac{\partial\mathbf{B}}{\partial t}+(\nabla\cdot\mathbf{B})\mathbf{U}\right]\cdot\mathrm{d}\mathbf{S}+\oint_{\partial\Sigma}\left(\mathbf{B}\times\mathbf{U}\right)\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+where the second term inside the surface integral identically vanishes for $\nabla\cdot\mathbf{B}=0$. The first term gives:
+
+\begin{equation}
+    \iint_\Sigma\frac{\partial\mathbf{B}}{\partial t}\cdot\mathrm{d}\mathbf{S}=\iint_{\Sigma}\left(\nabla\times(\mathbf{U}\times\mathbf{B})\right)\cdot\mathrm{d}\mathbf{S}=\oint_{\partial\Sigma}(\mathbf{U}\times\mathbf{B})\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+\begin{equation}
+    \diff{\Phi}{t}=\iint_\Sigma\frac{\partial\mathbf{B}}{\partial t}\cdot\mathrm{d}\mathbf{S}+\oint(\mathbf{B}\times\mathbf{U})\cdot\mathrm{d}\boldsymbol{\ell}=\oint(\mathbf{U}\times\mathbf{B})\cdot\mathrm{d}\boldsymbol{\ell}+\oint(\mathbf{B}\times\mathbf{U})\cdot\mathrm{d}\boldsymbol{\ell}=0
+\end{equation}
+
+This property of ideal magnetohydrodynamics is commonly referred to as the \textit{frozen flux theorem}.
+
+\subsection{Magnetic helicity: interlude to the topology of magnetic field structure}
+
+The helicity of a particular magnetic flux tube, whose domain is $\Omega$, is a measure of the extent to which magnetic field-lines wrap and coil around one another. It is formally defined via the following integral:
+
+\begin{equation}
+    H=\iiint_\Omega\mathbf{A}\cdot\mathbf{B}\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+The validity of such a definition is indeed questionable since $\mathbf{A}$ can be subjected to a gauge transformation via $\mathbf{A}\to\mathbf{A}+\nabla f$ for some scalar function $f$. Thus, magnetic helicity would be of little practical use if it were itself gauge-dependent, since gauge has no intrinsic physical significance. Let us now consider the case of a volume enclosed by a magnetic surface, such that $\mathbf{B}\cdot\mathbf{n}=0$, and let $H'$ be the helicity within the same surface with the aforementioned associated gauge:
+
+\begin{equation}
+    H'-H=\iiint_\Omega\mathbf{B}\cdot\nabla f\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\nabla\cdot(f\mathbf{B})\,\mathrm{d}^3\mathbf{r}=\iint_\Omega f\mathbf{B}\cdot\mathrm{d}\mathbf{S}=0
+\end{equation}
+
+For volumes enclosed by magnetic surfaces, their associated magnetic helicities are gauge-independent.
+
+\quad Let us demonstrate that the magnetic helicity of any magnetic surface is an invariant:
+
+\begin{equation}
+    \diff{}{t}\iiint_\Omega\mathbf{A}\cdot\mathbf{B}\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\frac{\partial}{\partial t}(\mathbf{A}\cdot\mathbf{B})\,\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\cdot\mathrm{d}\mathbf{S}=
+\end{equation}
+
+\begin{equation}
+    =\iiint_\Omega\left(\frac{\partial\mathbf{A}}{\partial t}\cdot\mathbf{B}+\mathbf{A}\cdot\frac{\partial\mathbf{B}}{\partial t}\right)\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+Using equation (\ref{eq-6-15-x}), we find that, for some gauge $f$:
+
+\begin{equation}
+    \label{eq-6-27}
+    \frac{\partial\mathbf{A}}{\partial t}=\mathbf{U}\times\mathbf{B}+\nabla f\implies\iiint_\Omega\frac{\partial\mathbf{A}}{\partial t}\cdot\mathbf{B}\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\left(\mathbf{U}\times\mathbf{B}+\nabla f\right)\cdot\mathbf{B}\,\mathrm{d}^3\mathbf{r}=0
+\end{equation}
+
+since the first term is perpendicular to the magnetic field, and the second vanishes because we have chosen a volume enclosed by a magnetic surface.
+
+\begin{equation}
+    \iiint_\Omega\mathbf{A}\cdot\frac{\partial\mathbf{B}}{\partial t}\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\mathbf{A}\cdot\left[\nabla\times\frac{\partial\mathbf{A}}{\partial t}\right]\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\left[-\nabla\cdot\left(\mathbf{A}\times\frac{\partial\mathbf{A}}{\partial t}\right)+(\nabla\times\mathbf{A})\cdot\frac{\partial\mathbf{A}}{\partial t}\right]\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+where we recognise that the second integral is equal to that in equation (\ref{eq-6-27}), and therefore vanishes. The first integral is evaluated by means of the divergence theorem, giving: 
+
+\begin{equation}
+    \diff{H}{t}=\oiint_{\partial\Omega}\left[-\left(\mathbf{A}\times\frac{\partial\mathbf{A}}{\partial t}\right)+(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\right]\cdot\mathrm{d}\mathbf{S}=\oiint_{\partial\Omega}\left[-\left(\mathbf{A}\times\left(\mathbf{U}\times\mathbf{B}+\nabla f\right)\right)+(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\right]\cdot\mathrm{d}\mathbf{S}=
+\end{equation}
+
+\begin{equation}
+    =\oiint_{\partial\Omega}\left[(\mathbf{A}\cdot\mathbf{U})\mathbf{B}-(\mathbf{A}\cdot\mathbf{B})\mathbf{U}+(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\right]\cdot\mathrm{d}\mathbf{S}-\oiint_{\partial\Omega}\left(\mathbf{A}\times\nabla f\right)\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+where the first integral entirely evaluates to zero since, again, $\partial\Omega$ is a magnetic surface, thus $\mathbf{B}\perp\mathrm{d}\mathbf{S}$, and the latter two terms cancel out. The single remaining integral also evaluates to zero:
+
+\begin{equation}
+    \oiint_{\partial\Omega}\left(\mathbf{A}\times\nabla f\right)\cdot\mathrm{d}\mathbf{S}=\oiint_{\partial\Omega}\left[f\nabla\times\mathbf{A}-\nabla\times(f\mathbf{A})\right]\cdot\mathrm{d}\mathbf{S}=\oiint_{\partial\Omega}\left[f\mathbf{B}-\nabla\times(f\mathbf{A})\right]\cdot\mathrm{d}\mathbf{S}=0
+\end{equation}
+
+where we recognise that the first term vanishes since we have, yet again, chosen a magnetic surface, and the second term vanishes by Stokes's theorem since a closed surface has no boundary. We have thus fully demonstrated that the magnetic helicity, along with the magnetic flux, within a volume enclosed by a magnetic surface is an invariant in ideal magnetohydrodynamics.
+
+\quad We shall now briefly discuss how magnetic helicities of magnetic flux tubes describe a system's topology of magnetic surfaces, firstly with an example of a single flux tube within a toroidal system:
+
+\begin{equation}
+    H_\text{self}=\iiint_\Omega\mathbf{A}\cdot\mathbf{B}\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\mathbf{B}\cdot\mathrm{d}\mathbf{S}\,\mathbf{A}\cdot\mathrm{d}\boldsymbol{\ell}
+\end{equation}
+
+It is now opportune to discuss what the differential term $\mathbf{B}\cdot\mathrm{d}\mathbf{S}$ truly designates. Following our considerations on magnetic field structures, and envisioning the flux tube as a toroid, we can consider $\mathrm{d}\mathbf{S}$ to be the oriented differential element of the toroidal cross-section of the flux tube, thus $\mathbf{B}\cdot\mathrm{d}\mathbf{S}=\mathrm{d}\Phi_\text{tor}$. Consequently, $\mathrm{d}\boldsymbol{\ell}$ thus represents the differential length element of some curve $\mathcal{C}$ in the toroidal direction. Upon applying Stokes's theorem, we obtain the magnetic flux through the poloidal disk surface. Notice that the choice of curve $\mathcal{C}$ matters not, so long as the topology of the magnetic flux tube remains considered. One can, in ideal magnetohydrodynamics at least, always connect the curve $\mathcal{C}$ to the magnetic axis via a ribbon-like surface, and create a surface whose boundary is $\mathcal{C}$ via the disk enclosed by the axis. The flux enclosed by the curve $\mathcal{C}$ is thus $\Phi_\text{pol}^\mathrm{d}+\Phi_\text{pol}^\text{r}$, taken with the sign. This sum is indeed constant, as shown in equation (\ref{eq-5-32}), so that we may write:
+
+\begin{equation}
+    H_\text{self}=\Phi_\text{tor}\Phi_\text{pol}^\text{r}=\hcancel{\iota}\Phi_\text{tor}^2
+\end{equation}
+
+where the rotational transform may be negative, and $\Phi_\text{tor}$ and $\Phi_\text{pol}^\text{r}$ denote the toroidal and the poloidal disk fluxes of the whole flux tube, respectively. Notice that the self-helicity of a magnetic surface is indeed a flux function, and its definition can also be extended to general magnetic surfaces.
+
+\quad We shall now introduce the \textit{mutual} magnetic helicity associated with two magnetic flux tubes. Let $\mathbf{A}_1$ and $\mathbf{A}_2$ be the magnetic vector potentials of the first and the second flux tube, respectively, whose domains are $\Omega_1$ and $\Omega_2$. Denote $\Omega=\Omega_1\cup\Omega_2$. We shall define their mutual helicity as follows:
+
+\begin{equation}
+    H_{1\to2}=\iiint_{\Omega}\mathbf{A}_1\cdot\mathbf{B}_2\,\mathrm{d}^3\mathbf{r}=\iiint_{\Omega}\mathbf{A}_1\cdot(\nabla\times\mathbf{A}_2)\,\mathrm{d}^3\mathbf{r}=
+\end{equation}
+
+\begin{equation}
+    =\iiint_\Omega\left[-\nabla\cdot\left(\mathbf{A}_1\times\mathbf{A}_2\right)\right]\,\mathrm{d}^3\mathbf{r}+\iiint_\Omega(\nabla\times\mathbf{A}_1)\cdot\mathbf{A}_2\,\mathrm{d}^3\mathbf{r}=-\oiint_{\partial\Omega}\left(\mathbf{A}_1\times\mathbf{A}_2\right)\cdot\mathrm{d}\mathbf{S}+H_{2\to1}
+\end{equation}
+
+The excessive term necessarily vanishes by the definition of the domain of a flux tube, so $H_{1\to2}=H_{2\to1}$. Furthermore, by an analogous argument, the definition above is gauge-independent, so that mutual helicity is well-defined.
+
+\quad For two flux tubes interlinked once, denoted as the $i$-th and $j$-th tubes, we perform an analogous procedure; however, now, we shall distinguish the two magnetic axes corresponding to their associated flux tubes. Notice that, since both the magnetic flux and the helicity are invariant inside each flux tube, we may freely deform the flux tubes to make their cross-sections within the linkage region perpendicular:
+
+\begin{equation}
+    H_{i,j}=\pm\Phi_\text{tor}^{(i)}\Phi_\text{tor}^{(j)}
+\end{equation}
+
+where the exact sign depends on the chosen orientation of both cross-sections.
+
+\quad Our considerations so far concerned only toroidal magnetic field structures. It is worth noting that, in helical magnetic field structures, e.g., in stellarators, the magnetic helicity of a flux tube contains two contributions, the \textit{twist}, embodying the same concept as the rotational transform, as well as the \textit{writhe}, which represents the winding and kinking of the magnetic axis itself. In toroidal systems, the magnetic axis has identically zero writhe. We shall return to these considerations once we have further developed our understanding of helical magnetic field structures.
+
+\quad Yet another analogous procedure, as the above, shows that, in general, having a total of $N$ flux tubes, each with its respective rotational transform, and knowing the number of linkages for each pair of flux tubes, the total magnetic helicity of the system is given, each term up to a sign, as follows:
+
+\begin{equation}
+    \label{eq-6-33}
+    H_\text{tot}=\sum_{i=1}^N\hcancel{\iota}^{(i)}\left[\Phi_\text{tor}^{(i)}\right]^2+\sum_{i=1}^{N}\sum_{j=1}^NL_{ij}\Phi_\text{tor}^{(i)}\Phi_\text{tor}^{(j)}
+\end{equation}
+
+We notice that the total helicity is a quadratic form in terms of the toroidal fluxes within each flux tube, so that the entire system's topology can be represented via an associated linkage matrix. In systems with a great number of linkages, the self-helicity may be neglected in certain circumstances.
+
+\quad In systems whose magnetic field structure is characterised by at least two magnetic axes, the magnetic field cannot globally be described via many, if any, of the flux coordinate systems explored in chapter \ref{magnetic-field-structure}, since these magnetic surfaces do not form a nested family of toroidal surfaces, and, throughout chapter \ref{magnetic-field-structure}, we have tacitly assumed the existence of a unique magnetic axis. Accent on the word \textit{globally}; our considerations on flux coordinate systems were certainly not for naught. We can always construct such flux coordinate systems within the volume of a certain flux tube.
+
+\quad Let us gain much greater insight into the geometry of magnetic field structures with interlinked magnetic flux tubes by considering two non-intersecting smooth curves, $\gamma_1,\gamma_2\in\mathcal{C}^1(\mathcal{S}^1,\mathbb{R}^3)$. We introduce the Gauss map from the torus to the unit sphere as follows:
+
+\begin{equation}
+    \Gamma=\frac{\gamma_1(s)-\gamma_2(t)}{\|\gamma_1(s)-\gamma_2(t)\|}
+\end{equation}
+
+By picking a point $P$ on the unit sphere $\mathcal{S}^1$ and projecting a link orthogonally to the tangent plane of the point, we may create the so-called \textit{link diagram}. Picking a point $(s,t)$ on the unit sphere that goes to the point $P$ corresponds to a crossing in the link diagram, where $\gamma_1$ winds around $\gamma_2$. By the definition of the Gauss map, the neighbourhood of such a point either preserves or reverses the orientation, depending on the sign of crossing, which is determined via the right-hand rule. To compute the linking number, it suffices to count the \textit{signed} number of times that the Gauss map covers the point $P$. This formulation of the linking number allows us to represent the linking number between the curves $\gamma_1$ and $\gamma_2$ as follows:
+
+\begin{equation}
+    \text{link}(\gamma_1,\gamma_2)=\frac{1}{4\pi}\oint_{\gamma_1}\oint_{\gamma_2}\frac{\mathbf{r_1-\mathbf{r}_2}}{\|\mathbf{r}_1-\mathbf{r}_2\|^3}\cdot\left(\mathrm{d}\boldsymbol{\ell}_1\times\mathrm{d}\boldsymbol{\ell}_2\right)
+\end{equation}
+
+which is commonly referred to as the \textit{Gauss linking integral}, specifically computes the total signed area of the image of the Gauss map, and is then divided by the area of the unit sphere. Let us examine how this definition precisely relates to the mutual magnetic helicity of two flux tubes. Let $\gamma_\text{1}$ and $\gamma_\text{j}$ now represent each a single magnetic field line belonging to two distinct magnetic flux tubes, $\Omega_1$ and $\Omega_2$, such that $\Omega=\Omega_1\cup\Omega_2$, whose cross-sections shall be denoted as $\Sigma_1$ and $\Sigma_2$, respectively. The equation of a magnetic field line applies to each curve. Let us now show that the following integral is equivalent to the above definition of mutual magnetic helicity.
+
+\begin{equation}
+    H_{1\leftrightarrow2}=\iiint_\Omega\iiint_\Omega(\underbrace{\mathbf{B}_1\cdot\mathrm{d}\boldsymbol{\Sigma}_1}_{\mathrm{d}\Phi_1^\text{tor}})(\underbrace{\mathbf{B}_2\cdot\mathrm{d}\boldsymbol{\Sigma}_2}_{\mathrm{d}\Phi_2^\text{tor}})\frac{\mathbf{r}_1-\mathbf{r}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|^3}\cdot\left(\mathrm{d}\boldsymbol{\ell}_1\times\mathrm{d}\boldsymbol{\ell}_2\right)
+\end{equation}
+
+where we have chosen a parametrisation of both $\Omega_1$ and $\Omega_2$ such that $\mathrm{d}\boldsymbol{\Sigma}$ denotes the oriented surface differential at all points orthogonal to the magnetic field-lines whose length differential is $\mathrm{d}\boldsymbol{\ell}$. Isolating independent terms gives:
+
+\begin{equation}
+    H_{1\leftrightarrow2}=\iiint_\Omega(\mathbf{B}_1\cdot\mathrm{d}\boldsymbol{\Sigma}_1)\,\mathrm{d}\boldsymbol{\ell}_1\cdot\iiint_\Omega(\mathbf{B}_2\cdot\mathrm{d}\boldsymbol{\Sigma}_2)\frac{\mathrm{d}\boldsymbol{\ell}_2\times(\mathbf{r}_1-\mathbf{r}_2)}{\|\mathbf{r}_1-\mathbf{r}_2\|^3}
+\end{equation}
+
+Having chosen $\mathbf{B}\cdot\mathrm{d}\boldsymbol{\Sigma}=\|\mathbf{B}\|\,\mathrm{d}\Sigma$, and the magnetic differential equation gives $\mathrm{d}\boldsymbol{\ell}\times\mathbf{B}=\mathbf{0}$, we find:
+
+\begin{equation}
+    H_{1\leftrightarrow2}=\iiint_\Omega\mathbf{B}_1(\mathbf{r}_1)\,\mathrm{d}^3\mathbf{r}_1\cdot\iiint_\Omega\frac{\mathbf{B_2}(\mathbf{r}_2)\times(\mathbf{r}_1-\mathbf{r}_2)}{\|\mathbf{r}_1-\mathbf{r}_2\|^3}\,\mathrm{d}^3\mathbf{r}_2
+\end{equation}
+
+We recognise that the inner integral gives precisely the magnetic vector potential via a convolution:
+
+\begin{equation}
+    \iiint_\Omega\mathbf{B}_2\times\nabla_2\left(\frac{1}{\|\mathbf{r}_1-\mathbf{r}_2\|}\right)\,\mathrm{d}^3\mathbf{r}_2=\iiint_\Omega\left[\frac{\nabla_2\times\mathbf{B}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|}-\nabla_2\times\left(\frac{\mathbf{B}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|}\right)\right]\,\mathrm{d}^3\mathbf{r}_2=
+\end{equation}
+
+\begin{equation}
+    \label{eq-6-40}
+    =\iiint_\Omega\frac{\mu_0\mathbf{J_2}(\mathbf{r}_2)}{\|\mathbf{r}_1-\mathbf{r}_2\|}\,\mathrm{d}^3\mathbf{r}_2+\oiint_{\partial\Omega}\left(\frac{\mathbf{B}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|}\right)\times\mathrm{d}\mathbf{S}=\mathbf{A}_2(\mathbf{r}_1)+\oiint_{\partial\Omega}\left(\frac{\mathbf{B}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|}\right)\times\mathrm{d}\mathbf{S}
+\end{equation}
+
+where the remaining integral vanishes by the definition of a domain of a magnetic flux tube. These two definitions for mutual magnetic helicity are thus equivalent:
+
+\begin{equation}
+    H_{1\leftrightarrow2}=\iiint_\Omega\mathbf{A}_2\cdot\mathbf{B}_1\,\mathrm{d}^3\mathbf{r}=\iiint_\Omega\mathbf{A}_1\cdot\mathbf{B}_2\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+where we place emphasis on the last equality, since we could've chosen to integrate first with respect to the other flux tube. Notice that in equation (\ref{eq-6-40}), we have used the Coulomb gauge. However, this choice is arbitrary, since the boundary of the domain of integration is the boundary of a flux tube, and the gauge term vanishes identically. It was only convenient to employ the Coulomb gauge.
+
+\quad The conclusion of this parallel to a purely mathematical concept is that helicity fundamentally measures the linking number over all pairs of two magnetic field-lines, each belonging to its respective magnetic flux-tube. Moreover, we are now absolutely certain that the linking matrix given in equation (\ref{eq-6-33}) contains exclusively integer entries, since, in Euclidean space, the linking number is always an integer.
+
+\subsubsection{Transport of magnetic helicity}
+
+In this short subsection, we shall explore the transport properties of magnetic helicities under general considerations of resistive magnetohydrodynamics. The time derivative of magnetic helicity reads:
+
+\begin{equation}
+    \diff{H}{t}=\iiint_\Omega\frac{\partial}{\partial t}(\mathbf{A}\cdot\mathbf{B})\,\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\cdot\mathrm{d}\mathbf{S}=\iiint_\Omega\left(\frac{\partial\mathbf{A}}{\partial t}\cdot\mathbf{B}+\mathbf{A}\cdot\frac{\partial\mathbf{B}}{\partial t}\right)\,\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial\mathbf{A}}{\partial t}=-\mathbf{E}-\nabla\phi\qquad\frac{\partial\mathbf{B}}{\partial t}=-(\nabla\times\mathbf{E})
+\end{equation}
+
+\begin{equation}
+    \diff{H}{t}=-\iiint_\Omega\left[(\nabla\times\mathbf{A})\cdot\mathbf{E}+\mathbf{A}\cdot(\nabla\times\mathbf{E})\right]\,\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+where the potential term vanishes since $\Omega$ is a flux tube. The first term simplifies into:
+
+\begin{equation}
+    \diff{H}{t}=\iiint_{\Omega}\nabla\cdot(\mathbf{A}\times\mathbf{E})\,\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\cdot\mathrm{d}\mathbf{S}=\oiint_{\partial\Omega}\left[\mathbf{A}\times\mathbf{E}+(\mathbf{A}\cdot\mathbf{B})\mathbf{U}\right]\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+The general resistive magnetohydrodynamic model describes the current via a resistivity tensor:
+
+\begin{equation}
+    \boldsymbol{\eta}\cdot\mathbf{J}=\mathbf{E}+\mathbf{U}\times\mathbf{B}
+\end{equation}
+
+Here, we omit mathematical labour, since it merely consists of expanding the double vector product, which cancels out with the other boundary contribution, while the term $(\mathbf{A}\cdot\mathbf{U})\mathbf{B}$ does not contribute since we have chosen a flux tube:
+
+\begin{equation}
+    \diff{H}{t}=-2\iiint_{\Omega}\mathbf{B}\cdot\boldsymbol{\eta}\cdot\mathbf{J}\,\mathrm{d}^3\mathbf{r}+\oiint_{\partial\Omega}\left[\mathbf{A}\times(\boldsymbol{\eta}\cdot\mathbf{J})\right]\cdot\mathrm{d}\mathbf{S}
+\end{equation}
+
+Although it is difficult to evaluate the previous integral in practice, it is worth comparing the magnetic helicity dissipation to the Ohmic resistive dissipation rate, given by:
+
+\begin{equation}
+    \left(\diff{W}{t}\right)_\text{Ohm}=\iiint_{\Omega}\mathbf{J}\cdot\boldsymbol{\eta}\cdot\mathbf{J}\,\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+The Cauchy-Schwarz inequality for the volume integral gives:
+
+\begin{equation}
+    \left(\iiint_{\Omega}\mathbf{B}\cdot\boldsymbol{\eta}\cdot\mathbf{J}\,\mathrm{d}^3\mathbf{r}\right)^2\leq\left(\iiint_{\Omega}\mathbf{B}^2\,\mathrm{d}^3\mathbf{r}\right)\left(\iiint_{\Omega}\mathbf{J}\cdot(\boldsymbol{\eta}^\top\boldsymbol{\eta})\cdot\mathbf{J}\,\mathrm{d}^3\mathbf{r}\right)
+\end{equation}
+
+where we recognise the total magnetic energy within the system, $W_\mathbf{B}$, while the latter term cannot be further simplified without approximations. In the case of scalar resistivity, $\boldsymbol{\eta}\cdot\mathbf{J}\equiv\eta\mathbf{J}$, we find:
+
+\begin{equation}
+    \left(\diff{H}{t}\right)^2\lesssim8\mu_0\langle\eta\rangle W_\mathbf{B}\left(\diff{W}{t}\right)_\text{Ohm}
+\end{equation}
+
+where we allow the resistivity $\eta$ to be variable within the magnetic flux tube.
+
+\section{Ideal magnetohydrostatic equilibria}
+
+\subsection{Grad-Shafranov equation}
+
+The Grad-Shafranov equation is obtained via the ideal magnetohydrostatic equilibrium condition applied to an axisymmetric toroidal system; we reiterate multiple results derived in chapter \ref{magnetic-field-structure}. The magnetic field in such a system may be expressed as:
+
+\begin{equation}
+    \mathbf{B}=\frac{1}{2\pi}\left(\nabla\Phi_\text{pol}^\mathrm{d}\times\nabla\zeta+\mu_0I_\text{pol}^\mathrm{d}\nabla\zeta\right)
+\end{equation}
+
+The first term is only familiar and simply denotes the poloidal magnetic field, while the second term is obtained via the Maxwell-Ampère equation for the axisymmetric system. We reuse the Maxwell-Ampère equation to evaluate the poloidal current density:
+
+\begin{equation}
+    \mathbf{J}_\text{pol}=\frac{1}{\mu_0}\nabla\times\mathbf{B}_\text{tor}=\frac{1}{2\pi\mu_0}\nabla\times\left(\mu_0I_\text{pol}^\mathrm{d}\nabla\zeta\right)=\frac{\nabla I_\text{pol}^\mathrm{d}\times\nabla\zeta}{2\pi}
+\end{equation}
+
+We shall use a less straightforward approach to finding the toroidal current density. Notice:
+
+\begin{equation}
+    \nabla\zeta\cdot(\nabla\times\mathbf{B}_\text{pol})=\nabla\cdot\left(\mathbf{B}_\text{pol}\times\nabla\zeta\right)=\frac{1}{2\pi}\nabla\cdot\left[\left(\nabla\Phi_\text{pol}^\mathrm{d}\times\nabla\zeta\right)\times\nabla\zeta\right]=-\frac{1}{2\pi}\nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)
+\end{equation}
+
+where we have used a cylindrical coordinate system, so $r\nabla\zeta=\boldsymbol{\hat{\zeta}}$. Since $\Phi_\text{pol}^\mathrm{d}$ is a flux function, its gradient is perpendicular to magnetic surfaces, and since the toroidal system is axisymmetric, these are necessarily tangent to the toroidal gradient $\nabla\zeta$, hence $\nabla\zeta\cdot\nabla\Phi_\text{pol}^\mathrm{d}=0$:
+
+\begin{equation}
+    \label{eq-6-54}
+    \mathbf{J}_\text{tor}=\frac{1}{\mu_0}\left[(\nabla\times\mathbf{B}_\text{tor})\cdot\boldsymbol{\hat{\zeta}}\right]\boldsymbol{\hat{\zeta}}=-\frac{r^2}{2\pi\mu_0}\nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)\nabla\zeta
+\end{equation}
+
+We may now input these expressions into:
+
+\begin{equation}
+    \mathbf{J}\times\mathbf{B}=\frac{1}{4\pi^2}\left[\nabla I_\text{pol}^\mathrm{d}\times\nabla\zeta-\frac{r^2}{2\pi\mu_0}\nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)\nabla\zeta\right]\times\left(\nabla\Phi_\text{pol}^\mathrm{d}\times\nabla\zeta+\mu_0I_\text{pol}^\mathrm{d}\nabla\zeta\right)=
+\end{equation}
+
+Notice that both $I_\text{pol}^\mathrm{d}$ and $\Phi_\text{pol}^\text{r}$ are flux functions, so the vector product of the first term in the first bracket and the first term in the other bracket is identically zero. The other terms give:
+
+\begin{equation}
+    \nabla\zeta\times\left(\nabla\Phi_\text{pol}^\mathrm{d}\times\nabla\zeta\right)=\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\qquad\nabla\zeta\times(\nabla\zeta\times\nabla I_\text{pol}^\mathrm{d})=-\frac{1}{r^2}\nabla I_\text{pol}^\mathrm{d}
+\end{equation}
+
+which, in return, gives the ideal magnetohydrostatic equilibrium condition as follows:
+
+\begin{equation}
+    \label{eq-6-57}
+    \nabla p+\frac{I_\text{pol}^\mathrm{d}}{4\pi^2r^2}\nabla I_\text{pol}^\mathrm{d}+\frac{1}{\mu_0}\nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)\nabla\Phi_\text{pol}^\mathrm{d}=\mathbf{0}
+\end{equation}
+
+Since both the pressure and the poloidal disk current are flux functions, we may apply the derivative chain rule with respect to the magnetic poloidal disk flux and factor out its gradient:
+
+\begin{equation}
+    \label{eq-6-58}
+    4\pi^2\mu_0\diff{p}{\Phi_\text{pol}^\mathrm{d}}+\frac{\mu_0^2 I_\text{pol}^\mathrm{d}}{r^2}\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}+\nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)=0
+\end{equation}
+
+The equation above is commonly referred to as the \textit{Grad-Shafranov equation}, valid for all axisymmetric toroidal systems. It is remarkable that the system's axisymmetry has substantially reduced the complexity of the initial magnetohydrostatic equilibrium, which is naturally three-dimensional, whereas the Grad-Shafranov equation is one-dimensional.
+
+\quad Analytical solutions of the equation exist only for very simple conditions on the pressure and the poloidal disk current, since their derivatives are involved in the equation. Generally, the Grad-Shafranov equation is solved numerically; however, if the pressure and poloidal disk current profiles are measured, solving for the magnetic poloidal disk flux may yield a feasible result, but such solutions are generally analytic only if boundary conditions are given in explicit forms and if the equations describing magnetic surfaces are separable in some coordinate system.
+
+\quad Exploring idealised solutions is nevertheless useful from a pragmatic point of view, since they allow us to gain insight as illustrative examples, and serve as references for validating the accuracy of numerical models. The following subsection presents several examples of such analytical solutions.
+
+\subsubsection{Solovev's solution to the Grad-Shafranov equation}
+
+A first example of an analytical solution to the magnetic surface profile within an axisymmetric toroidal system is determined via the following hypotheses:
+
+\begin{enumerate}
+    \item The pressure is assumed to depend linearly on the poloidal disk flux:
+
+    \begin{equation}
+        P(\Phi_\text{pol}^\mathrm{d})=P^\square+\lambda\Phi_\text{pol}^\mathrm{d}
+    \end{equation}
+
+    \item The poloidal disk current is assumed to be constant throughout the system:
+
+    \begin{equation}
+        \diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}=0
+    \end{equation}
+\end{enumerate}
+
+The Grad-Shafranov equation thus becomes:
+
+\begin{equation}
+    \label{eq-6-61}
+    4\pi^2\mu_0\lambda+\nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)=0\implies r\frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial\Phi_\text{pol}^\mathrm{d}}{\partial r}\right)+\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial z^2}+4\pi^2\mu_0\lambda r^2=0
+\end{equation}
+
+Before attempting to solve the equation, we shall first consider the case $\lambda=0$, which implies constant pressure within the system, which further gives the condition:
+
+\begin{equation}
+    \nabla p=\mathbf{J}\times\mathbf{B}=\mathbf{0}
+\end{equation}
+
+Therefore, the current density is parallel to the magnetic field, reflecting on Grad-Shafranov equation:
+
+\begin{equation}
+    \nabla\cdot\left(\frac{\nabla\Phi_\text{pol}^\mathrm{d}}{r^2}\right)=0\implies\frac{\nabla\Phi_\text{pol}^\mathrm{d}}{r^2}=\nabla\times\mathbf{S}
+\end{equation}
+
+for some vector field $\mathbf{S}$. Obtaining the homogeneous solution is equivalent to finding $\mathbf{S}$ such that:
+
+\begin{equation}
+    \nabla\Phi_\text{pol}^\mathrm{d}=r^2\nabla\times\mathbf{S}
+\end{equation}
+
+The toroidal and poloidal components necessarily vanish:
+
+\begin{equation}
+    \frac{\partial S^\varrho}{\partial\zeta}=\frac{\partial S^\zeta}{\partial\varrho}\quad\text{and}\quad\frac{\partial S^\theta}{\partial\varrho}=\frac{\partial S^\varrho}{\partial\theta}\implies\frac{\partial^2S^\varrho}{\partial\theta\partial\zeta}=\frac{\partial^2S^\zeta}{\partial\varrho\partial\theta}=\frac{\partial^2S^\theta}{\partial\varrho\partial\zeta}\implies\frac{\partial}{\partial\varrho}\bigg(\frac{\partial S^\zeta}{\partial\theta}-\frac{\partial S^\theta}{\partial\zeta}\bigg)=0
+\end{equation}
+
+The only possibly non-zero component of $\nabla\times\mathbf{S}$ is thus not a flux function. This is of rather weak significance since we're trying to solve for a flux function, but it nonetheless states that $\nabla\times\mathbf{S}$ is the same for points on all magnetic surfaces with common $\theta$ and $\zeta$ coordinates. The only possible vector field $\mathbf{S}$ satisfying this requirement is a vector field that depends only on $\theta$ and $\zeta$. Let $f(\theta,\zeta)$ denote the component of $\nabla\times\mathbf{S}$ along $\nabla\Phi_\text{pol}^\text{r}$. Axisymmetry allows us to eliminate the $\zeta$ dependence, so $\nabla\times\mathbf{S}$ depends only on the poloidal angle $\theta$. Notice that we still cannot give any further conditions on $\mathbf{S}$ without advanced mathematical tools, so we shall retake such discussions for another subsection. The condition $\mathbf{J}\times\mathbf{B}=\mathbf{0}$ is commonly referred to as the \textit{force-free} condition, which has been briefly discussed in subsection \ref{subsec-force-free}. The full treatment of the homogeneous solution is given in subsection \ref{subsec-force-free-sols}.
+
+\quad We now proceed to find the particular solution by first introducing the substitution $\Phi_\text{pol}^\mathrm{d}(r,z)=r^2\psi(r,z)$ to eliminate the extraneous radial dependencies as follows:
+
+\begin{equation}
+    r\frac{\partial}{\partial r}\left[\frac{1}{r}\frac{\partial}{\partial r}\left(r^2\psi\right)\right]+r^2\frac{\partial\psi}{\partial z^2}+4\pi^2\mu_0\lambda r^2=0\implies
+    \frac{\partial^2\psi}{\partial r^2}+\frac{3}{r}\frac{\partial\psi}{\partial r}+\frac{\partial^2\psi}{\partial z^2}+4\pi^2\mu_0\lambda=0
+\end{equation}
+
+Note that, again, we're only searching for the particular solution. Since the highest order derivative in both the radial and the axial coordinates is of second order, there is a constant non-zero term, as well as the fact that radial and axial derivatives aren't coupled, we seek separable quadratic solutions in $r$ and $z$ for $\psi(r,z)$. One can nevertheless assume such functional dependence, and show it cannot be:
+
+\begin{equation}
+    \psi(r,z)=C(r-a)^2+C'(z-b)^2+C''\implies C\left[1+3\left(1-\frac{a}{r}\right)\right]+C'+2\pi^2\mu_0\lambda=0 
+\end{equation}
+
+For a system that is reflected about the horizontal plane determined by $z=0$, the axial coordinate $z$ can only appear in terms of pair functions, so that $b=0$. Furthermore, the radial dependency in the above equation necessarily needs to vanish, so that $a=0$. We thus obtain:
+
+\begin{equation}
+    C'=-2\pi^2\mu_0\lambda-4C\implies\psi(r,z)=Cr^2-2\left(\pi^2\mu_0\lambda+2C\right)z^2+C''
+\end{equation}
+
+The general solution for the poloidal disk flux is hence the following:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}(r,z)=Cr^2\left[r^2-2\left(\frac{\pi^2\mu_0\lambda}{C}+2\right)z^2+C'\right]
+\end{equation}
+
+We determine the two constants via $\Phi_\text{pol}^\mathrm{d}(r_0,0)=\Phi_\text{pol}^{\square}$, the poloidal disk flux at the magnetic axis:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}(r_0,0)=\Phi_\text{pol}^\square\quad\text{and}\quad\nabla\Phi_\text{pol}^\mathrm{d}\Bigr|_{(r_0,0)}=\mathbf{0}
+\end{equation}
+
+\begin{equation}
+    \Phi_\text{pol}^\square=Cr_0^2\left(r_0^2+C'\right)\quad\text{and}\quad2Cr_0(2r_0^2+C')=0\implies C'=-2r_0^2\implies C=-\frac{\Phi_\text{pol}^\square}{r_0^4}
+\end{equation}
+
+Solovev's solution to the Grad-Shafranov equation is thus of the following form:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}(r,z)=\frac{\Phi_\text{pol}^\square}{r_0^4}r^2\left(2r_0^2-r^2+4\left(1-\frac{\pi^2\mu_0\lambda r_0^4}{2\Phi_\text{pol}^\square}\right)z^2\right)
+\end{equation}
+
+Let us discuss the implications of the particular solution. Notably, $\Phi_\text{pol}^\mathrm{d}$ vanishes in the limit $r\to0$ for any axial coordinate. This is only expected since, in that limit, the poloidal disk surface vanishes as well, hence the net magnetic flux can only be zero. In fact, we are certain that the flux depends on the quadratic radius in that limit, since the magnetic flux is a stream function, and, in our previous digression, namely subsection \ref{sec2-10-3-2}, we have demonstrated such dependence for a divergence-less vector field in axisymmetric geometry. The contour lines of the particular solution are illustrated in Figure \ref{fig6-1}. The red line represents the so-called \textit{separatrix}, the unique magnetic surface corresponding to zero poloidal disk flux. Magnetic surfaces with the same sign of poloidal flux as that at the magnetic axis are thus enclosed by the separatrix, and are called \textit{closed} surfaces. Meanwhile, the magnetic surfaces in the exterior of the separatrix are called \textit{open} surfaces, because they extend to infinity as the radial coordinate goes to zero.
+
+\subsubsection{Force-free solution under Solovev's hypotheses}
+
+\label{subsec-force-free-sols}
+
+We have briefly discussed homogeneous solutions to the Grad-Shafranov equation, but let us investigate these further. The governing equation describing force-free solutions is $\mathbf{J}\times\mathbf{B}=\mathbf{0}$. A force-free regime bears such a name because the term $\mathbf{J}\times\mathbf{B}$ is precisely the macroscopic form of the Lorentz force; hence, such regimes are indeed regimes where there is no Lorentz force acting on any particular plasma volume element. This condition, in conjunction with the Maxwell-Ampère equation, gives:
+
+\begin{equation}
+    \label{eq-6-73}
+    \nabla\times\mathbf{B}=\mu\mathbf{B}\qquad\text{for some }\mu
+\end{equation}
+
+where, in general, $\mu$ might be a function of position as well as of magnetic field. Let us discuss more precisely what the function $\mu$ physically represents. Substituting the Grad-Shafranov equation, specifically given by equation (\ref{eq-6-58}), into the expression for toroidal current density given by equation (\ref{eq-6-54}):
+
+\begin{equation}
+    \mathbf{J}_\text{tor}=\left(2\pi r^2\diff{p}{\Phi_\text{pol}^\mathrm{d}}+\frac{\mu_0I_\text{pol}^\mathrm{d}}{2\pi}\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}\right)\nabla\zeta
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \input{Figures/figure6-1.tikz}
+    \captionsetup{justification=centering}
+    \caption{Magnetic surface contours according to Solovev's hypotheses, only in the upper half due to reflective symmetry about the horizontal plane. The red line is the \textit{separatrix}, corresponding to zero poloidal disk flux and separating the \textit{open} surfaces from \textit{closed} ones.}
+    \label{fig6-1}
+\end{figure}
+
+The total current density is thus given by:
+
+\begin{equation}
+    \mathbf{J}=\mathbf{J}_\text{pol}+\mathbf{J}_\text{tor}=\frac{1}{2\pi}\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}\nabla\Phi_\text{pol}^\mathrm{d}\times\nabla\zeta+\left(2\pi r^2\diff{p}{\Phi_\text{pol}^\mathrm{d}}+\frac{\mu_0I_\text{pol}^\mathrm{d}}{2\pi}\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}\right)\nabla\zeta
+\end{equation}
+
+\begin{equation}
+    =2\pi r^2\diff{p}{\Phi_\text{pol}^\mathrm{d}}\nabla\zeta+\frac{1}{2\pi}\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}\left(\nabla\Phi_\text{pol}^\mathrm{d}\times\nabla\zeta+\mu_0I_\text{pol}^\mathrm{d}\nabla\zeta\right)=2\pi^2\diff{p}{\Phi_\text{pol}^\mathrm{d}}\nabla\zeta+\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}\mathbf{B}
+\end{equation}
+
+Evidently, the force-free condition mandates $\mathrm{d}p/\mathrm{d}\Phi_\text{pol}^\mathrm{d}=0$, thus the function $\mu$ is given by:
+
+\begin{equation}
+    \nabla\times\mathbf{B}=\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}\mathbf{B}\implies\mu=\diff{I_\text{pol}^\mathrm{d}}{\Phi_\text{pol}^\mathrm{d}}
+\end{equation}
+
+It is only expected that $\mu$ be a flux function. Indeed, taking the divergence of equation (\ref{eq-6-73}):
+
+\begin{equation}
+    \nabla\cdot\left(\nabla\times\mathbf{B}\right)=0=\nabla\cdot(\mu\mathbf{B})=\mu(\nabla\cdot\mathbf{B})+\mathbf{B}\cdot\nabla\mu\implies\mathbf{B}\cdot\nabla\mu=0
+\end{equation}
+
+where evidently $\nabla\cdot\mathbf{B}=0$ and the divergence of any curl is zero. Taking the curl of equation (\ref{eq-6-73}):
+
+\begin{equation}
+    \nabla^2\mathbf{B}+\mu\nabla\times\mathbf{B}+\nabla\mu\times\mathbf{B}=(\nabla^2+\mu^2)\mathbf{B}+\nabla\mu\times\mathbf{B}=\mathbf{0}
+\end{equation}
+
+which shall be accompanied by $\nabla\cdot\mathbf{B}=0$ to form a deterministic set of equations for a fully-known dependence $I_\text{pol}^\mathrm{d}(\Phi_\text{pol}^\mathrm{d})$. Returning to the so far abandoned discussion regarding the homogeneous solution of the Grad-Shafranov equation, in the particular case of Solovev's solution, the poloidal disk current was assumed constant, so that $\mu=0$. The homogeneous solution is thus given by a curl-free magnetic field; hence, it can be represented by a magnetic scalar potential. Moreover, the magnetic field itself is harmonic. In the given cylindrical coordinate system, each component is given by the appropriate expansion in cylindrical coordinates:
+
+\begin{equation}
+    \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial\mathbf{B}}{\partial r}\right)+\frac{\partial^2\mathbf{B}}{\partial z^2}=\mathbf{0}
+\end{equation}
+
+where we have eliminated the azimuthal dependence due to axisymmetry. Separating the magnetic field by component $B=R(r)Z(z)$, and further mandating regularity along the axial coordinate to obtain oscillatory axial dependencies gives:
+
+\begin{equation}
+    \frac{\partial^2R_k}{\partial r^2}+\frac{1}{r}\frac{\partial R_k}{\partial r}-k^2R_k=0\quad\text{and}\quad\frac{\partial^2Z_k}{\partial z^2}+k^2Z_k=0
+\end{equation}
+
+\begin{equation}
+    k^2r^2\frac{\partial^2R_k}{\partial(k^2r^2)}+kr\frac{\partial R_K}{\partial(kr)}-k^2r^2R_k=0\implies R_k(r)=A_kI_0(kr)+B_kK_0(kr)
+\end{equation}
+
+The general solution for each component of $\mathbf{B}$ reads as follows:
+
+\begin{equation}
+    \label{eq-6-83}
+    B(r,z)=\sum_{k=0}^\infty\left[A_kI_0(kr)+B_kK_0(kr)\right]\left[C_k\cos{(kz)}+D_k\sin{(kz)}\right]
+\end{equation}
+
+where we understand the expansion to apply to each component of the magnetic field separately. The modified Bessel functions of the second kind diverge for $r=0$, so $B_k=0$ for the radial component. We are thus left with:
+
+\begin{equation}
+    B_r(r,z)=\sum_{k=0}^\infty I_0(kr)\left[C_k\cos{(kz)}+D_k\sin{(kz)}\right]
+\end{equation}
+
+We search for physically relevant solutions of the magnetic field that vanish at infinity. Since $I_0(kr)$ diverges as $r\to\infty$, the radial component entirely vanishes, while $A_k=0$ in expression (\ref{eq-6-83}) for the axial and toroidal components:
+
+\begin{equation}
+    B^{(\zeta,z)}(r,z)=\sum_{k=0}^\infty K_0(kr)\left[C_k^{(\zeta,z)}\cos{(kz)}+D_k^{(\zeta,z)}\sin{(kz)}\right]
+\end{equation}
+
+\quad We shall, moreover, reflect further on a particular Solovev's hypothesis, notably the assumption of constant poloidal disk current throughout the plasma within all magnetic surfaces. For the particular axisymmetric system, this is possible only if the poloidal disk current were flowing at the $z$-axis. Moreover, the ideal magnetohydrodynamic condition $\nabla\cdot\mathbf{J}=0$ insists that a non-zero current necessarily flows along the entirety of the $z$-axis; otherwise, accumulation of charge would arise. This physically represents a symmetry under translation along the $z$-axis, so that the axial component of the magnetic field vanishes, and the azimuthal component depends only on the radial coordinate. The only possibly non-vanishing component is therefore the azimuthal component, given by the Maxwell-Ampère equation.
+
+\quad Thus, the force-free homogeneous solution to the Grad-Shafranov equation according to Solovev's hypotheses is a nested family of magnetic surfaces in the shape of concentric infinite cylinders aligned and anchored at the $z$-axis. Notice that all of these magnetic surfaces have identically zero poloidal disk flux, since the force-free field is purely toroidal. Therefore, the homogeneous solution to the Grad-Shafranov equation under Solovev's hypotheses is identically zero.
+
+\subsubsection{Properties of solutions to the Grad-Shafranov equation}
+
+This first solution to the Grad-Shafranov equation, although based on rather idealised hypotheses, in particular the pressure dependence, nevertheless exhibits important properties of its general solutions, which we shall enumerate below. Note that they only apply to axisymmetric toroidal systems characterised by a unique magnetic axis.
+
+\begin{enumerate}
+    \item Magnetic surfaces in axisymmetric toroidal systems indeed form a nested family of surfaces anchored about the magnetic axis, and are characterised by the same topology as the magnetic axis.
+    \item Magnetic surfaces extending to infinity are allowed. These are commonly referred to as \textit{open} surfaces. Meanwhile, localised magnetic surfaces, those that do not extend to infinity, are named \textit{closed} surfaces. Under Solovev's hypotheses, the closed surfaces are \textit{deformed tori}, while open surfaces are \textit{oblate coaxial cylindrical-like shells}.
+    \item A \textit{separatrix} is the possibly unique magnetic surface distinguishing closed surfaces from open ones in axisymmetric toroidal systems, corresponding to zero magnetic flux. Thus, open surfaces share a common sign of magnetic flux with the magnetic axis, while closed surfaces have the opposite sign of magnetic flux. Under Solovev's hypotheses, the separatrix is an ellipsoidal surface.
+    \item The total magnetic field projects into magnetic surfaces, as is only expected by the definition of magnetic surfaces.
+    \item The pressure extrema in magnetohydrostatic equilibrium systems are typically located in the proximity of the magnetic axis. Under Solovev's hypotheses, it is precisely at the magnetic axis.
+    \item It is precisely the poloidal component of the magnetic field, and consequently the poloidal disk and ribbon fluxes, that are responsible for axisymmetric toroidal magnetic confinement. The former are produced by a toroidal current density.
+    \item Under Solovev's hypotheses, force-free magnetic fields, being purely toroidal in axisymmetric toroidal systems, do not contribute to magnetic confinement.
+\end{enumerate}
+
+\subsection{Outline of exact solutions to the Grad-Shafranov equation}
+
+The main point that the author wishes to convey in this subsection is how a more general solution to the Grad-Shafranov equation swiftly becomes much more complicated. We shall consider a particular family of exact analytical solutions to the Grad-Shafranov equation obtained for quadratic dependencies of the magnetohydrodynamic pressure and poloidal disk current on the magnetic poloidal disk flux, namely:
+
+\begin{equation}
+    p(\Phi_\text{pol}^\mathrm{d})=\frac{a}{8\pi^2\mu_0}\left[\Phi_\text{pol}^\mathrm{d}\right]^2+\frac{b}{4\pi^2\mu_0}\Phi_\text{pol}^\mathrm{d}\qquad \left[I_\text{pol}^\mathrm{d}\right]^2=\frac{\alpha}{\mu_0^2}\left[\Phi_\text{pol}^\mathrm{d}\right]^2+\frac{2\beta}{\mu_0^2}\Phi_\text{pol}^\mathrm{d}+\left[I_\text{pol}^\square\right]^2
+\end{equation}
+
+where $a$, $b$, $\alpha$, and $\beta$ are free parameters determined by the total plasma current, the poloidal pressure parameter, the internal inductance, and the rotational transform of the magnetic axis, as shown later on. The Grad-Shafranov equation under these hypotheses becomes:
+
+\begin{equation}
+    \label{eq-6-87xxx}
+    \nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)+\left(\frac{\alpha}{r^2}+a\right)\Phi_\text{pol}^\mathrm{d}+\left(\frac{\beta}{r^2}+b\right)=0
+\end{equation}
+
+\begin{equation}
+    \label{eq-6-88x}
+    \frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial r^2}-\frac{1}{r}\frac{\partial\Phi_\text{pol}^\mathrm{d}}{\partial r}+\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial z^2}+\left(\alpha+ar^2\right)\Phi_\text{pol}^\mathrm{d}+\left(\beta+br^2\right)=0
+\end{equation}
+
+As with any differential equation, we seek its homogeneous solution. Since there are no mixed $r$ and $z$ terms in the partial differential equation, the homogeneous solution is necessarily separable. Before advancing any further, we shall first make a proper digression about the Frobenius method and hypergeometric functions, which will prove to be useful in this particular case.
+
+\subsubsection{Digression: Frobenius method and hypergeometric functions}
+
+We will here consider the ordinary differential equation of the form:
+
+\begin{equation}
+    \label{eq-digg-hypergeom-1}
+    \mathcal{L}_x(Q)=\frac{\mathrm{d}^2Q}{\mathrm{d}x^2}+p(x)\diff{Q}{x}+q(x)Q(x)=0
+\end{equation}
+
+such that $p(x)$ and $q(x)$ are analytic in a certain neighbourhood of point $x_0$. Moreover, we consider $p(x)$ and $q(x)$ such that each has a pole of at most first order and at most second order at $x=x_0$, respectively. In that case, the Laurent series of each of the two coefficients reads:
+
+\begin{equation}
+    p(x)=\frac{1}{x}\sum_{j=0}^\infty p_jx^j\quad\text{and}\quad q(x)=\frac{1}{x^2}\sum_{j=0}^\infty q_jx^j
+\end{equation}
+
+We are specifically looking for an analytic solution, such that:
+
+\begin{equation}
+    Q(x)=x^\lambda f(x)=x^\lambda\sum_{k=0}^\infty f_kx^k
+\end{equation}
+
+where generally $\lambda\in\mathcal{C}$, and $f(x)$ is an analytic function. Without loss of generality, we impose $f(0)=1$, as multiplying $Q(x)$ by a constant still gives a valid homogeneous solution:
+
+\begin{equation}
+    q(x)Q(x)=x^{\lambda-2}\sum_{j=0}^\infty q_jx^j\sum_{k=0}^\infty f_kx^k=\{m=j+k\}=x^{\lambda-2}\sum_{m=0}^\infty\sum_{j=0}^mq_jf_{m-j}x^m
+\end{equation}
+
+\begin{equation}
+    p(x)\diff{Q}{x}=x^{\lambda-2}\sum_{j=0}^\infty p_jx^j\sum_{k=0}^\infty(\lambda+k)f_kx^k=\{m=j+k\}=x^{\lambda-2}\sum_{m=0}^\infty\sum_{j=0}^m(\lambda+m-j)p_jf_{m-j}x^m
+\end{equation}
+
+\begin{equation}
+    \frac{\mathrm{d}^2Q}{\mathrm{d}x^2}=x^{\lambda-2}\sum_{m=0}^\infty(\lambda+m)(\lambda+m-1)f_{m}x^m
+\end{equation}
+
+Implementing these series into equation (\ref{eq-digg-hypergeom-1}), we find alongside each $x^{\lambda+m-2}$ term:
+
+\begin{equation}
+    (\lambda+m)(\lambda+m-1)f_m+\sum_{j=0}^m\left[(\lambda+m-j)p_j+q_j\right]f_{m-j}=0
+\end{equation}
+
+Regrouping the $j=0$ terms into the former term:
+
+\begin{equation}
+    \label{eq-6-96xx}
+    (\lambda+m)(\lambda+m-1)f_m+\left[(\lambda+m)p_0+q_0\right]f_m+\sum_{j=1}^m\left[(\lambda+m-j)p_j+q_j\right]f_{m-j}=0
+\end{equation}
+
+The assumption $f(0)=1$ provides the so-called \textit{indicial equation} for $m=0$:
+
+\begin{equation}
+    I(\lambda)=\lambda^2+(p_0-1)\lambda+q_0=0\implies\lambda_{1,2}=\frac{1}{2}\left(1-p_0\pm\sqrt{(p_0-1)^2-4q_0}\right)
+\end{equation}
+
+where we choose the convention $\Re\,{\lambda_1}\geq\Re\,\lambda_2$. Notice:
+
+\begin{equation}
+    (\lambda_i+m)^2+(p_0-1)(\lambda_i+m)+q_0=I(\lambda)+m\left[2\lambda_i+(p_0-1)+m\right]=m(m\pm(\lambda_1-\lambda_2))
+\end{equation}
+
+where the positive root branch corresponds to the choice $\lambda=\lambda_1$, and negative branch to $\lambda=\lambda_2$, respectively. Thus, choosing $\lambda=\lambda_1$ gives a recursion-type relation for all $m>0$ as follows:
+
+\begin{equation}
+    \label{eq-6-99x}
+    f_m=-\frac{1}{(\lambda_1-\lambda_2+m)m}\sum_{j=1}^m\left[(\lambda+m-j)p_j+q_j\right]f_{m-j}
+\end{equation}
+
+which is well-defined for all $m>0$, and thus provides a first homogeneous solution of the second-order differential equation. The second homogeneous solution, however, depends on the general nature of the term $\lambda_1-\lambda_2$, since it may produce divergences. For our purposes, we assume $\lambda_1-\lambda_2\in\mathbb{R}$:
+
+\begin{enumerate}
+    \item $\lambda_1-\lambda_2\notin\mathbb{Z}$ case: the other solution is obtained by directly imposing $\lambda=\lambda_2$, giving an analogous expression to the previously obtained recursion-type relation. This certainly poses no problems regarding convergence since $m\in\mathbb{N}$, so the recursion-type relation given in equation (\ref{eq-6-99x}) is well-defined for all $m>0$.
+
+    \item $\lambda_1=\lambda_2$ case: The differential equation reduces to the indicial equation multiplied by uninteresting constants:
+
+    \begin{equation}
+        \mathcal{L}_x(Q)\sim(\lambda-\lambda_1)^2\implies\mathcal{L}_x\left(\frac{\partial}{\partial\lambda}\Big[Q(x;\lambda)\Big]\right)\biggr|_{\lambda_1}=\frac{\partial}{\partial\lambda}\Big[\mathcal{L}_x(Q(x;\lambda))\Big]\biggr|_{\lambda_1}=0
+    \end{equation}
+
+    \begin{equation}
+        \frac{\partial}{\partial\lambda}\sum_{m=0}^\infty a_m(\lambda)x^{\lambda+m}=\sum_{m=0}^\infty\frac{\partial a_m}{\partial\lambda}x^{\lambda+m}+Q(x;\lambda)\ln{x}
+    \end{equation}
+
+    \item $\lambda_1-\lambda_2\in\mathbb{N}$ case: one first ought to verify whether directly inputting $\lambda=\lambda_2$ gives a linearly independent solution. In the affirmative case of the latter, the obtained solution is indeed the second homogeneous solution. Otherwise:
+
+    \begin{equation*}
+        \mathcal{L}_x(Q)\sim(\lambda-\lambda_1)(\lambda-\lambda_2)\implies\mathcal{L}_x\left(\frac{\partial}{\partial\lambda}\Big[(\lambda-\lambda_2)y(x;\lambda)\Big]\right)\biggr|_{\lambda_2}=
+    \end{equation*}
+    
+    \begin{equation}
+        =\frac{\partial}{\partial\lambda}\Big[\mathcal{L}_x\left((\lambda-\lambda_2\right)Q(x;\lambda)\Big]\biggr|_{\lambda_2}\sim\frac{\partial}{\partial\lambda}\Big[(\lambda-\lambda_2)^2(\lambda-\lambda_1)\Big]\biggr|_{\lambda_2}=0
+    \end{equation}
+
+    Therefore, the other solution is thus given by:
+
+    \begin{equation}
+        \label{eq-6-104xxx}
+        Q_2(x)=\frac{\partial}{\partial\lambda}\Big((\lambda-\lambda_2)Q_1(x)\Big)\biggr|_{\lambda_2}
+    \end{equation}
+\end{enumerate}
+
+We now return to our preceding considerations, namely equation (\ref{eq-6-88x}). Separating:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}(r,z)=R(r)Z(z)\implies\frac{\mathrm{d}^2R}{\mathrm{d}r^2}-\frac{1}{r}\diff{R}{r}+\left(ar^2+\alpha-k^2\right)R=0\quad\text{and}\quad\frac{\mathrm{d}^2Z}{\mathrm{d}z^2}+k^2Z=0
+\end{equation}
+
+such that $k$ is an arbitrary constant. It is necessary to distinguish the solutions according to the sign of the parameter $a$. We shall first treat the case $a<0$. Implementing the substitution:
+
+\begin{equation}
+    x=r^2\sqrt{-a}\implies\frac{\mathrm{d}}{\mathrm{d}x}\left(\diff{x}{r}\diff{R}{x}\right)\diff{x}{r}-\frac{1}{r}\diff{x}{r}\diff{R}{x}+\left(ar^2+\alpha-k^2\right)R=0
+\end{equation}
+
+\begin{equation}
+    r\frac{\mathrm{d}}{\mathrm{d}x}\left(2r\sqrt{-a}\frac{\mathrm{d}R}{\mathrm{d}x}\right)-\frac{\mathrm{d}R}{\mathrm{d}x}+\left(-\frac{x}{2}+\frac{\alpha-k^2}{2\sqrt{-a}}\right)R=0\implies\frac{\mathrm{d}^2R}{\mathrm{d}x^2}+\left(-\frac{1}{4}+\frac{\alpha-k^2}{4x\sqrt{-a}}\right)R=0
+\end{equation}
+
+The solution to $R$ therefore exhibits certain exponential behaviour. Specifically, the coefficient suggests behaviour like $R(x)=x\exp{\left[-x/2\right]}\,Q(x)$, so:
+
+\begin{equation}
+    \frac{\mathrm{d}}{\mathrm{d}x}\left[\frac{\mathrm{d}}{\mathrm{d}x}\left(x\exp{\left[-\frac{x}{2}\right]}Q(x)\right)\right]=x\exp{\left[-\frac{x}{2}\right]}\left(\frac{\mathrm{d}^2Q}{\mathrm{d}x^2}+\frac{2-x}{x}\frac{\mathrm{d}Q}{\mathrm{d}x}+\left[\frac{1}{4}-\frac{1}{x}\right]Q\right)
+\end{equation}
+
+\begin{equation}
+    x\frac{\mathrm{d}^2Q}{\mathrm{d}x^2}+(2-x)\frac{\mathrm{d}Q}{\mathrm{d}x}-\left(\frac{k^2-\alpha}{4\sqrt{-a}}+1\right)Q=0
+\end{equation}
+
+Recasting the obtained ordinary differential equation of second order into the following form, we observe the necessity to have previously covered the Frobenius method.
+
+\begin{equation}
+    \label{eq-6-94}
+    \mathcal{L}_x(Q)=\frac{\mathrm{d}^2Q}{\mathrm{d}x^2}+\left(\frac{2}{x}-1\right)\diff{Q}{x}-\frac{\eta+1}{x}Q=0\quad\text{where}\quad\eta=\frac{k^2-\alpha}{4\sqrt{-a}}
+\end{equation}
+
+The coefficients alongside $\mathrm{d}Q/\mathrm{d}x$ and $Q$ have regular singularities at $x=0$, notably first-order poles, so that their respective Laurent coefficients read as follows:
+
+\begin{equation}
+    \label{eq-6-96}
+    p_{(0)}=2,\quad p_{(1)}=-1\quad\forall n\geq2, p_{(n)}=0\quad\text{and}\quad q_{(0)}=0,\quad q_{(1)}=-\eta-1,\quad\forall n\geq2,q_{(n)}=0
+\end{equation}
+
+The indicial equation gives the following solutions for $\lambda$:
+
+\begin{equation}
+    \lambda^2+\lambda=0\implies\lambda_1=0,\quad\lambda_2=-1
+\end{equation}
+
+Observe $\lambda_1-\lambda_2\in\mathbb{N}$. Let the first solution, $Q_1(x)$, be associated with $\lambda_1=0$:
+
+\begin{equation}
+    m(m-1)f_{m}+mp_{0}f_{m}+(m-1)p_{1}f_{m-1}+q_{1}f_{m-1}=0\implies f_{m}=\frac{m+\eta}{m(m+1)}f_{m-1}
+\end{equation}
+
+\begin{equation}
+    f_{m}=\prod_{k=1}^m\frac{\eta+k}{k(k+1)}=\frac{(\eta+1)_m}{m!(2)_m}
+\end{equation}
+
+where the indices denote the Pochhammer symbol, so that the confluent hypergeometric function of the first kind gives:
+
+\begin{equation}
+    Q_1(x)={_1F_1}(\eta+1;2;x)=\sum_{m=0}^\infty\frac{(\eta+1)_m}{(2)_m}\frac{x^m}{m!}
+\end{equation}
+
+In the search for the other homogeneous solution associated with $\lambda_2=-1$, one first verifies whether it gives a linearly independent second homogeneous solution:
+
+\begin{equation}
+    m\left[m-(\lambda_1-\lambda_2)\right]f_m+\left[(\lambda_2+m-1)p_1+q_1\right]f_{m-1}=0
+\end{equation}
+
+\begin{equation}
+    m\left(m-1\right)f_m+\left[(m-2)p_1+q_1\right]f_{m-1}=0
+\end{equation}
+
+$f_1$ is a free coefficient, that is, the recursion relation does not hold for all $m>0$. We thus return to equation (\ref{eq-6-96xx}) and find the recursion relation for Laurent coefficients of $f(x)$ in terms of the general parameter $\lambda$, so that we may use expression (\ref{eq-6-104xxx}):
+
+\begin{equation}
+    \left[(\lambda+m)^2+(p_0-1)(\lambda+m)+q_0\right]f_m+\left[(\lambda+m-1)p_1+q_1\right]f_{m-1}=0
+\end{equation}
+
+\begin{equation}
+    f_m=\frac{\eta+\lambda+m}{(\lambda+m)(\lambda+m+1)}f_{m-1}=\frac{(\eta+\lambda+1)_m}{(\lambda+1)_m(\lambda+2)_m}f_0
+\end{equation}
+
+Notice that our negative branch solution to the indicial equation was $\lambda_2=-1$, so that the first Pochhammer symbol in the denominator exhibits divergent behaviour resolved via the $\lambda-\lambda_2$ term:
+
+\begin{equation}
+    (\lambda-\lambda_2)Q_1(x)=(\lambda+1)\sum_{m=0}^\infty\frac{(\eta+\lambda+1)_m}{(\lambda+1)_{m}(\lambda+2)_m}x^{\lambda+m}=\sum_{m=0}^\infty\frac{(\eta+\lambda+1)_m}{(\lambda+2)_{m-1}(\lambda+2)_m}x^{\lambda+m}
+\end{equation}
+
+\begin{equation}
+    Q_2(x)=\frac{\partial}{\partial\lambda}\Big((\lambda-\lambda_2)Q_1(x)\Big)\biggr|_{\lambda_2}=\frac{\partial}{\partial\lambda}\left(\sum_{m=0}^\infty\frac{(\eta+\lambda+1)_m}{(\lambda+2)_{m-1}(\lambda+2)_m}x^{\lambda+m}\right)\biggr|_{\lambda_2}
+\end{equation}
+
+Computing the derivative above is very arduous. We proceed in a straightforward manner:
+
+\begin{equation*}
+    Q_2(x)=\sum_{m=0}^\infty\frac{(\eta)_m}{(1)_{m-1}(1)_m}\frac{\partial}{\partial\lambda}\left(x^{\lambda+m}\right)\biggr|_{\lambda_2}+\frac{1}{x}\sum_{m=0}^\infty\frac{\partial}{\partial\lambda}\left(\frac{(\eta+\lambda+1)_m}{(\lambda+2)_{m-1}(\lambda+2)_m}\right)\biggr|_{\lambda_2}x^m=
+\end{equation*}
+
+\begin{equation}
+    =\eta\ln{x}\sum_{m=0}^\infty\frac{(\eta+1)_{m}}{(1)_{m}(2)_m}x^{m}+\frac{1}{x}\sum_{m=0}^\infty\frac{\partial b_m(\lambda)}{\partial\lambda}\biggr|_{\lambda_2}x^m=\eta\ln{(x)}{_1F_1}(1+\eta;2;x)+\frac{1}{x}\sum_{m=0}^\infty\frac{\partial b_m(\lambda)}{\partial\lambda}\biggr|_{\lambda_2}x^m
+\end{equation}
+
+It is much easier to compute the logarithmic derivative:
+
+\begin{equation*}
+    \frac{1}{b_m(\lambda)}\frac{\partial b_m(\lambda)}{\partial\lambda}\biggr|_{\lambda_2}=\frac{\partial\ln{b_m(\lambda)}}{\partial\lambda}\biggr|_{\lambda_2}=\frac{\partial}{\partial\lambda}\Big(\ln{(\eta+\lambda+1)_m}-\ln{(\lambda+2)_{m-1}}-\ln{(\lambda+2)_m}\Big)\biggr|_{\lambda_2}=
+\end{equation*}
+
+\begin{equation*}
+    =\frac{\partial}{\partial\lambda}\left(\ln{\frac{\Gamma(\eta+\lambda+m+1)}{\Gamma(\eta+\lambda+1)}}-\ln{\frac{\Gamma(\lambda+m+1)}{\Gamma(\lambda+2)}}-\ln{\frac{\Gamma(\lambda+m+2)}{\Gamma(\lambda+2)}}\right)\biggr|_{\lambda_2}=
+\end{equation*}
+
+\begin{equation}
+    =\psi(\eta+m)-\psi(\eta)-\psi(m)-\psi(m+1)+2\psi(1)
+\end{equation}
+
+The second solution thus reads:
+
+\begin{equation*}
+    Q_2(x)=\eta\ln{(x)}{_1F_1}(1+\eta;2;x)+\frac{1}{x}\bigg[\sum_{m=0}^\infty\frac{(\eta)_m}{(1)_{m-1}}\Big(\psi(\eta+m)-\psi(\eta)-\psi(m)-\psi(m+1)+2\psi(1)\Big)\bigg]\frac{x^m}{m!}=
+\end{equation*}
+
+\begin{equation}
+    =\eta\ln{(x)}{_1F_1}(1+\eta;2;x)+\frac{1}{x}+\sum_{m=1}^\infty\frac{(\eta)_m}{(m-1)!m!}\left[\sum_{k=0}^{m-1}\frac{1}{\eta+k}-H_{m-1}-H_m\right]x^{m-1}
+\end{equation}
+
+where we have introduced the harmonic numbers, $H_m=\psi(m+1)+\gamma$, and the Euler-Mascheroni constant, $\psi(1)=-\gamma$. The last term can be expressed via ${_1F_1(\eta;1;x)}$, but still contains terms without a closed form, so we shall leave the result as is. We remind $x=r^2\sqrt{-a}$. The full solution for the homogeneous magnetic poloidal disk flux is therefore:
+
+\begin{equation*}
+    \Phi_{\text{pol}}^\text{d\,(h)}(r,z)=r^2\sqrt{-a}\exp{\left[-\frac{r^2\sqrt{-a}}{2}\right]}\Bigg[C_1{_1F_1}(\eta+1;2;r^2\sqrt{-a})+C_2\Bigg(\eta\ln{(r^2\sqrt{-a})}{_1F_1}(1+\eta;2;r^2\sqrt{-a})\,+
+\end{equation*}
+
+\begin{equation}
+    +\,\frac{1}{r^2\sqrt{-a}}+\sum_{m=1}^\infty\frac{(\eta)_m}{(m)!}\bigg[\sum_{k=0}^{m-1}\frac{1}{\eta+k}-H_{m-1}-H_m\bigg]\frac{\left(r^2\sqrt{-a}\right)^{m-1}}{(m-1)!}\Bigg)\Bigg]\Big[C_3\cos{(kz)}+C_4\sin{(kz)}\Big]
+\end{equation}
+
+with $C_1$, $C_2$, $C_3$, and $C_4$ as arbitrary constants fixed through boundary conditions. It is important to note that, following the above considerations, $\eta\neq0$, and this will be addressed later on. For $\eta=1$, simplifies the above computations, namely:
+
+\begin{equation}
+    Q_1(x)=\sum_{m=0}^\infty\frac{x^m}{m!}=\exp{(x)}\quad\text{and}\quad Q_2(x)=\frac{1}{x}-\exp{(x)}E_1(x)-\gamma\exp{(x)}
+\end{equation}
+
+where $E_1(x)$ denotes the principal branch of the exponential integral function, so that:
+
+\begin{equation*}
+    \Phi_{\text{pol}}^\text{d\,(h)}(r,z;\eta=1)=r^2\sqrt{-a}\exp{\left[-\frac{r^2\sqrt{-a}}{2}\right]}\Bigg[C_1\exp{(r^2\sqrt{-a})}\,+
+\end{equation*}
+
+\begin{equation}
+    +\,C_2\left(\frac{1}{r^2\sqrt{-a}}-\exp{(r^2\sqrt{-a})}E_1(r^2\sqrt{-a})\right)\Bigg]\Big[C_3\cos{(kz)}+C_4\sin{(kz)}\Big]
+\end{equation}
+
+The particular solution in the $a<0$ case may be separated into the radial and axial parts by the linearity of equation (\ref{eq-6-88x}). Namely, the axial part presents no inhomogeneous terms, and as such, presents minor modifications of functional dependencies of the particular solution. For demonstrative purposes, we impose:
+
+\begin{equation}
+    \Phi_{\text{pol}}^\text{d\,(p)}(r)=-\frac{\beta}{\alpha}+\psi(r)\implies\frac{\mathrm{d}^2\psi}{\mathrm{d}r^2}-\frac{1}{r}\diff{\psi}{r}+(ar^2+\alpha)\psi(r)=\left(\frac{\beta}{\alpha}a-b\right)r^2
+\end{equation}
+
+Using the identical substitution as above, namely $x=r^2\sqrt{-a}$, we obtain:
+
+\begin{equation}
+    \frac{\mathrm{d}^2\psi}{\mathrm{d}x^2}+\left(-\frac{1}{4}+\frac{\alpha}{4x\sqrt{-a}}\right)\psi(x)=\frac{1}{4}\left(\frac{b}{a}-\frac{\beta}{\alpha}\right)
+\end{equation}
+
+As we have previously done in a similar fashion, we introduce:
+
+\begin{equation}
+    \psi(x)=\frac{1}{4}\left(\frac{b}{a}-\frac{\beta}{\alpha}\right)x\exp{\left[-\frac{x}{2}\right]}\xi(x)\implies x\frac{\mathrm{d}^2\xi}{\mathrm{d}x^2}+(2-x)\diff{\xi}{x}+\left[\frac{\alpha}{4\sqrt{-a}}-1\right]\xi(x)=\exp{\left[\frac{x}{2}\right]}
+\end{equation}
+
+Since the exponential in the right-hand side is analytic, we equally search for analytic solutions, so that:
+
+\begin{equation}
+    \sum_{m=0}^\infty\left[m(m-1)\xi_mx^{m-1}+(2-x) m\xi_mx^{m-1}-\kappa\xi_mx^m-\frac{1}{m!}\left(\frac{x}{2}\right)^m\right]=0
+\end{equation}
+
+where we have defined $\kappa=1-\alpha/4\sqrt{-a}\equiv1+\eta(k=0)$. The indicial equation reads $2\xi_1-\kappa\xi_0=1$. We now regroup terms associated with the same power $x^m$, notably by separating the entire sum into terms with $x^m$ and $x^{m-1}$, respectively, followed by the shift $m\to m+1$:
+
+\begin{equation}
+    \sum_{m=0}^\infty(m+1)m\xi_{m+1}x^{m}+2(m+1)\xi_{m+1}x^{m}=\sum_{m=0}^\infty m\xi_mx^{m}-\kappa\xi_mx^m-\frac{1}{m!}\left(\frac{x}{2}\right)^m
+\end{equation}
+
+\begin{equation}
+    \xi_{m}=\frac{\kappa+m-1}{m(m+1)}\xi_{m-1}+\frac{1}{2^{m-1}(m+1!)}
+\end{equation}
+
+The homogeneous part of the recursion relation above is easily found:
+
+\begin{equation}
+    \xi_m^{(h)}=\xi_0\prod_{k=0}^m\frac{\kappa+k-1}{k(k+1)}=\frac{(\kappa)_m}{m!(m+1)!}\xi_0
+\end{equation}
+
+To determine the inhomogeneous part, we let $\xi_m=A_m\xi_m^{(h)}$, so that:
+
+\begin{equation}
+    A_m\xi_m^{(h)}=\frac{\kappa+m-1}{m(m+1)}A_{m-1}\xi_{m-1}^{(h)}+\frac{1}{2^{m-1}(m-1!)}\
+\end{equation}
+
+\begin{equation}
+    A_m-A_{m-1}=\frac{1}{\xi_m^{(h)}2^{m-1}(m-1!)}=\frac{m!(m+1)!}{(\kappa)_m2^{m-1}(m-1!)}\frac{1}{\xi_0}
+\end{equation}
+
+The solution to the recursion relation is therefore:
+
+\begin{equation}
+    \xi_m=\frac{(\kappa)_m}{m!(m+1)!}\left[\xi_0+\sum_{j=1}^m\frac{j!}{2^{j-1}(\kappa)_j}\right]
+\end{equation}
+
+\begin{equation}
+    \xi(x)=\sum_{m=0}^\infty\frac{\xi_0(\kappa)_m}{(2)_m}\frac{x^m}{m!}+\sum_{m=0}^\infty\frac{(\kappa)_m}{(2)_m}\sum_{j=1}^m\frac{j!}{2^{j-1}(\kappa)_j}\frac{x^m}{m!}=\xi_0{_1F_1}(\kappa;2;x)+\sum_{m=0}^\infty\frac{(\kappa)_m}{(2)_m}\frac{x^m}{m!}\sum_{j=1}^m\frac{2^{1-j}j!}{(\kappa)_j}
+\end{equation}
+
+where the sum can be expressed in terms of hypergeometric functions, just not in closed form, namely:
+
+\begin{equation}
+    \xi(x)=-\frac{1}{\kappa}+\frac{1+\kappa\xi_0}{\kappa}{_1F_1}(\kappa;2;x)+2\kappa\underbrace{\sum_{m=2}^\infty\frac{(\kappa+1)_{m-1}}{m!(m+1)!}\sum_{j=2}^m\frac{j!}{(\kappa)_j}\frac{x^j}{2^j}}_{\theta(x)}
+\end{equation}
+
+One may expand the nested sum to obtain:
+
+\begin{equation}
+    \theta(x)=\frac{1}{2\kappa}+\frac{1}{\kappa}\left[{_2F_1(1,1;\kappa;1/2)}-1-\frac{1}{2\kappa}\right]{_1F_1}(\kappa;2;x)-\frac{1}{\kappa}\sum_{m=0}^\infty\frac{{_2F_1(m+2,1;m+\kappa+1;1/2)}}{2^{m+1}(m+\kappa)m!}x^m
+\end{equation}
+
+We shall now revert $\kappa=1+\eta(k=0)=1+\eta_0$ preventively in order to demonstrate a point:
+
+\begin{equation}
+    \xi(x)=\left[2{_2F_1}\left(1,1;1+\eta_0;1/2\right)-2+\xi_0\right]{_1F_1}(1+\eta_0;2;x)-\sum_{m=0}^\infty\frac{{_2F_1}(m+2,1;m+\eta_0+2;1/2)}{2^m(m+\eta_0+1)m!}x^m
+\end{equation}
+
+Notice that the first term can be absorbed into the homogeneous solution. The chosen particular solution of only radial dependence for the magnetic poloidal disk flux reads:
+
+\begin{equation}
+    \Phi_\text{pol}^\text{d\,(p)}(r)=-\frac{\beta}{\alpha}+\frac{r^2\sqrt{-a}}{4}\exp{\left[-\frac{r^2\sqrt{-a}}{2}\right]}\left(\frac{\beta}{\alpha}-\frac{b}{a}\right)\sum_{m=0}^\infty\frac{{_2F_1}(m+1,1;1+\eta_0;1/2)}{2^m(m+\eta_0+1)m!}\left(r^2\sqrt{-a}\right)^m
+\end{equation}
+
+So that the general solution for the $a<0$ case is given by a linear combination of the particular solution and the sum over values of $k$ for the homogeneous solution.
+
+\quad We now consider the case $a>0$, and particularly, its homogeneous solution. Introducing a similar substitution, namely $x=r^2\sqrt{a}/2$, we find:
+
+\begin{equation}
+    \frac{\mathrm{d}^2R}{\mathrm{d}x^2}+\left(1-\frac{2\eta}{x}\right)R(x)=0\quad\text{where}\quad\eta=\frac{k^2-\alpha}{4\sqrt{a}}
+\end{equation}
+
+We begin the solution procedure by introducing the substitution:
+
+\begin{equation}
+    R(x)=x\exp{\left[-\mathrm{i}x\right]}w(x)\implies\exp{\left[-\mathrm{i}x\right]}\left[x\frac{\mathrm{d}^2w}{\mathrm{d}x^2}+2(1-\mathrm{i}x)\diff{w}{x}-2(\mathrm{i}+\eta)w(x)\right]=0
+\end{equation}
+
+We perform the substitution $z=2\mathrm{i}x$ to obtain a very familiar equation:
+
+\begin{equation}
+    z\frac{\mathrm{d}^2w}{\mathrm{d}z^2}+(2-z)\diff{w}{x}-(1-\mathrm{i}\eta)w(x)=0
+\end{equation}
+
+whose solution is precisely the confluent hypergeometric function of the first kind, namely:
+
+\begin{equation}
+    w(x)={_1F_1}(1+\mathrm{i}\eta;2;x)\implies R(x)=x\exp{\left[-\mathrm{i}x\right]}{_1F_1}(1+\mathrm{i}\eta;2;x)=F_0(\eta,x)
+\end{equation}
+
+where we have introduced the so-called \textit{Coulomb wave function} of the first kind, $F_L(\eta,x)$ for $L=0$. The second linearly independent solution is the Coulomb wave function of the second kind, $G_0(\eta, x)$, so that the general homogeneous solution to the above equation reads:
+
+\begin{equation}
+    \Phi_\text{pol}^\text{d\,(h)}(r,z)=\left[C_1F_0\left(\eta,\frac{r^2\sqrt{a}}{2}\right)+C_2G_0\left(\eta,\frac{r^2\sqrt{a}}{2}\right)\right]\Big[C_3\cos{(kz)}+C_4\sin{(kz)}\Big]
+\end{equation}
+
+The treatment of the particular solution follows an analogous fashion as in the $a<0$ case, and shall not be considered, since it presents equally challenging computations. However, what is indeed valuable to consider is how the free parameters $a$, $b$, $\alpha$, and $\beta$ can be determined using integral relations concerning the global plasma parameters, namely: the toroidal plasma current, $I_\text{tor}^\text{pl}$, the poloidal magnetic pressure parameter $\beta_\text{pol}$, the internal inductance $l_\text{int}$, and the rotational transform, or equivalently, the safety factor, at the plasma boundary or the magnetic axis, $q_\text{b}$ or $q_\text{ax}$, respectively. Moreover, the knowledge of the plasma contour and the magnetic poloidal disk flux at the plasma boundary determines the four arbitrary constants, each quadruple associated with $k\in\mathbb{N}$, in the series expansion of the homogeneous solutions for the magnetic poloidal disk flux, and thus presents a somewhat methodological procedure when evaluating the magnetic field structure of a given system, so it will not be further discussed. Let us, therefore, return to the above statement regarding the free parameters.
+
+\quad We had previously derived how the toroidal current density relates to the Grad-Shafranov equation, namely expression (\ref{eq-6-54}), which we retake and use equation (\ref{eq-6-87xxx}):
+
+\begin{equation}
+    \mathbf{J}_\text{tor}=\frac{1}{2\pi\mu_0}\left[\left(ar+\frac{\alpha}{r}\right)\Phi_\text{pol}^\mathrm{d}+br+\frac{\beta}{r}\right]\,\mathbf{\hat{\zeta}}
+\end{equation}
+
+Integrating the above over a toroidal cross-section of the plasma $\Sigma$, we obtain:
+
+\begin{equation}
+    2\pi\mu_0I_\text{tor}^\text{pl}=a\iint_{\Sigma}\Phi_\text{pol}^\mathrm{d}r\,\mathrm{d}r\,\mathrm{d}z+\alpha\iint_\Sigma\frac{\Phi_\text{pol}^\mathrm{d}}{r}\,\mathrm{d}r\,\mathrm{d}z+b\iint_\Sigma r\,\mathrm{d}r\,\mathrm{d}z+\beta\iint_\Sigma\frac{\mathrm{d}r\,\mathrm{d}z}{r}
+\end{equation}
+
+The poloidal magnetic pressure parameter is defined as follows:
+
+\begin{equation}
+    \beta_\text{pol}=\frac{2\mu_0\langle p\rangle}{\langle\mathbf{B}_\text{pol}^2\rangle}=\frac{2\mu_0\iint_\Sigma pr\,\mathrm{d}r\,\mathrm{d}z}{\langle\mathbf B_\text{pol}^2\rangle\iint r\,\mathrm{d}r\,\mathrm{d}z}\quad\text{along with}\quad\langle\mathbf{\|\mathbf{B}_\text{pol}\|\rangle}=\frac{\mu_0I_\text{tor}^\text{pl}}{\oint\,\mathrm{d}\ell}
+\end{equation}
+
+The quadratic dependence on pressure allows us to determine:
+
+\begin{equation}
+    \frac{a}{2}\iint_\Sigma\left(\Phi_\text{pol}^\mathrm{d}\right)^2r\,\mathrm{d}r\,\mathrm{d}z+b\iint_\Sigma\Phi_\text{pol}^\mathrm{d}\,r\mathrm{d}r\,\mathrm{d}z=2\pi^2\mu_0^2\beta_\text{p}\frac{\iint_\sigma r\,\mathrm{d}r\,\mathrm{d}z}{\left(\oint\,\mathrm{d}\ell\right)^2}\left(I_\text{tor}^\text{pl}\right)
+\end{equation}
+
+The internal inductance is defined as follows.
+
+\begin{equation}
+    l_\text{int}=\frac{\left(\oint\,\mathrm{d}\ell\right)^2}{2\pi\mu_0\left(I_\text{tor}^\text{pl}\right)^2}\frac{\iint_\Sigma\Phi_\text{pol}^\mathrm{d}\|\mathbf{J}_\text{tor}\|\,\mathrm{d}r\,\mathrm{d}z}{\iint_\Sigma r\,\mathrm{d}r\,\mathrm{d}z}\implies a\iint_\Sigma\left(\Phi_\text{pol}^\mathrm{d}\right)^2r\,\mathrm{d}r\,\mathrm{d}z+\alpha\iint_\Sigma\frac{(\Phi_\text{pol}^\mathrm{d})^2}{r}\,\mathrm{d}r\,\mathrm{d}z\,+
+\end{equation}
+
+\begin{equation}
+    +\,b\iint_\Sigma\Phi_\text{pol}^\mathrm{d}r\,\mathrm{d}r\,\mathrm{d}z+\beta\iint_\Sigma\frac{\Phi_\text{pol}^\mathrm{d}}{r}\,\mathrm{d}r\,\mathrm{d}z=4\pi^2\mu_0^2l_\text{int}\left(I_\text{tor}^\text{pl}\right)\frac{\iint_\Sigma r\,\mathrm{d}r\,\mathrm{d}z}{\left(\oint\,\mathrm{d}\ell\right)^2}
+\end{equation}
+
+The safety factor at any magnetic surface is determined via:
+
+\begin{equation}
+    q(\Phi_\text{pol}^\mathrm{d})=\frac{\mu_0}{4\pi^2}F(\Phi_\text{pol}^\mathrm{d})\oint_{\Phi_\text{pol}^\mathrm{d}=\text{const.}}\frac{\mathrm{d}\ell}{r^2\|\mathbf{B}_\text{pol}\|}
+\end{equation}
+
+such that evaluating it at either the plasma boundary or at the magnetic axis involves taking the continuous limit. The previous four equations constitute a deterministic system for the free parameters $a$, $b$, $\alpha$, and $\beta$, given the four plasma quantities specified above, the plasma contour in space, and its poloidal disk flux profile at the plasma boundary.
+
+\quad It is ultimately worth noting that linear relations between magnetohydrodynamic pressure and the flux function with quadratic corrections hold surprisingly well in a majority of non-idealised, realistic cases. Even in weakly resistive plasmas, ideal magnetohydrostatic equilibria describe their magnetic field structure to a reasonable and acceptable accuracy. It is only in specific circumstances that one ought to consider some decaying behaviour via exponential dependencies of pressure on the flux function.
+
+\quad We shall consider another family of exact solutions to the Grad-Shafranov equation with somewhat similar hypotheses to Solovev's, notably the assumption of constant poloidal disk current. The functional dependence of pressure on the magnetic poloidal disk flux is assumed to be rational, a common feature in divertor-tokamak configurations. We impose:
+
+\begin{equation}
+    I_\text{pol}^\mathrm{d}=\text{const.}\quad\text{and}\quad p(\Phi_\text{pol}^\mathrm{d})=\alpha+\frac{\beta}{(\Phi_\text{pol}^\mathrm{d})^2}
+\end{equation}
+
+which provides the Grad-Shafranov equation in the following form:
+
+\begin{equation}
+    \nabla\cdot\left(\frac{1}{r^2}\nabla\Phi_\text{pol}^\mathrm{d}\right)-\frac{8\pi^2\mu_0\beta}{(\Phi_\text{pol}^\mathrm{d})^3}=0\Longleftrightarrow\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial r^2}-\frac{1}{r}\frac{\partial\Phi_\text{pol}^\mathrm{d}}{\partial r}+\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial z^2}-\frac{8\pi^2\mu_0\beta r^2}{(\Phi_\text{pol}^\mathrm{d})^3}=0
+\end{equation}
+
+The obtained equation for $\Phi_\text{pol}^\mathrm{d}$ is a homogeneous partial equation; we expect to obtain at most two linearly independent solutions whose particular combination shall be given by boundary conditions, just as for Solovev's solution. In particular, we shall employ a dimensionality-reduction technique. Having at disposal $I_\text{pol}^\mathrm{d}=\text{const.}$ as well as axisymmetry, we are motivated to introduce the substitution $x=Ar^2+\eta(z)$, and subsequently find such $\eta(z)$, if it exists, so that the partial differential equation can be reduced to an ordinary one. The coordinate transformation is given via substitutions $x=Ar^2+\eta(z)$ and $\zeta=z$, giving:
+
+\begin{equation}
+    \frac{\partial}{\partial r}=\frac{\partial x}{\partial r}\frac{\partial}{\partial x}+\frac{\partial\zeta}{\partial r}\frac{\partial}{\partial\zeta}=2Ar\frac{\partial}{\partial x},\quad\frac{\partial}{\partial z}=\frac{\partial x}{\partial z}\frac{\partial}{\partial x}+\frac{\partial\zeta}{\partial z}\frac{\partial}{\partial\zeta}=\eta'(z)\frac{\partial}{\partial x}+\frac{\partial}{\partial\zeta}
+\end{equation}
+
+The second derivatives with respect to $r$ and $z$ require further attention:
+
+\begin{equation}
+    \frac{\partial^2}{\partial r^2}=\frac{\partial}{\partial r}\left(2Ar\frac{\partial}{\partial x}\right)=2A\frac{\partial}{\partial x}+2Ar\frac{\partial^2}{\partial x^2}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2}{\partial z^2}=\frac{\partial}{\partial z}\left(\eta'(z)\frac{\partial}{\partial x}+\frac{\partial}{\partial\zeta}\right)=\eta''(z)\frac{\partial}{\partial x}+(\eta'(z))^2\frac{\partial^2}{\partial x^2}+2\eta'(z)\frac{\partial^2}{\partial x\partial\zeta}+\frac{\partial^2}{\partial\zeta^2}
+\end{equation}
+
+The Grad-Shafranov operator thus becomes:
+
+\begin{equation}
+    (2Ar)^2\frac{\partial^2}{\partial x^2}+\eta''(z)\frac{\partial}{\partial x}+(\eta'(z))^2\frac{\partial^2}{\partial x^2}+2\eta'(z)\frac{\partial^2}{\partial x\partial\zeta}+\frac{\partial^2}{\partial\zeta^2}
+\end{equation}
+
+\begin{equation}
+    \left[4A(x-\eta(z))+(\eta'(z))^2\right]\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial x^2}+\eta''(z)\frac{\partial\Phi_\text{pol}^\mathrm{d}}{\partial x}+2\eta'(z)\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial x\partial\zeta}+\frac{\partial^2\Phi_\text{pol}^\mathrm{d}}{\partial\zeta^2}-\frac{8\pi^2\mu_0\beta(x-\eta(z))}{A(\Phi_\text{pol}^\mathrm{d})^3}=0
+\end{equation}
+
+Imposing $\Phi_\text{pol}^\mathrm{d}(x)$ only, the $\zeta$ derivatives vanish, leaving:
+
+\begin{equation}
+    \left[4A(x-\eta(z))+(\eta'(z))^2\right]\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+2\eta''(z)\frac{\mathrm{d}\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x}-\frac{8\pi^2\mu_0\beta(x-\eta(z))}{A(\Phi_\text{pol}^\mathrm{d})^3}=0
+\end{equation}
+
+We are now ready to define the function $\eta(z)$ in order to eliminate the axial dependence. Since, $\eta''(z)$, $(\eta'(z))^2$, and $\eta(z)$ terms appear, we shall define the auxiliary function via $(\eta'(z))^2=4a\eta(z)+b$. This ensures that only the first power of $\eta(z)$ remains in the equation, since differentiating the auxiliary definition twice with respect to $z$ gives a constant, $\eta''(z)=a$.
+
+\begin{equation}
+    \left[4Ax+b+4(a-A)\eta(z)\right]\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+2a\frac{\mathrm{d}\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x}-\frac{8\pi^2\mu_0\beta(x-\eta(z))}{A(\Phi_\text{pol}^\mathrm{d})^3}=0
+\end{equation}
+
+Before proceeding, let us truly determine the explicit expression for the auxiliary function:
+
+\begin{equation}
+    \eta'(z)=\sqrt{4a\eta(z)+b}\implies\int\left(\frac{\mathrm{d}\eta}{\sqrt{4a\eta+b}}=\mathrm{d}z\right)\implies\eta(z)=a(z-z_0)^2-\frac{b}{4a}
+\end{equation}
+
+We separate terms containing $\eta(z)$ and employ the $\eta$\textit{-independence} argument:
+
+\begin{equation}
+    \left[(4Ax+b)\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+2a\frac{\mathrm{d}\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x}-\frac{8\pi^2\mu_0\beta x}{A(\Phi_\text{pol}^\mathrm{d})^3}\right]+4\eta(z)\left[(a-A)\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+\frac{2\pi^2\mu_0\beta}{A(\Phi_\text{pol}^\mathrm{d})^3}\right]=0
+\end{equation}
+
+\begin{align}
+    \eta\text{-independent:}&\quad(4Ax+b)\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+2a\frac{\mathrm{d}\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x}-\frac{8\pi^2\mu_0\beta x}{A(\Phi_\text{pol}^\mathrm{d})^3}=0\\
+    \text{constraint:}&\quad4(a-A)\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+\frac{8\pi^2\mu_0\beta}{A(\Phi_\text{pol}^\mathrm{d})^3}=0
+\end{align}
+
+We proceed to find a valid solution by solving the $\eta$-independent part and verifying that it indeed satisfies the constraint. On the contrary, if the solution doesn't obey the constraint, it suggests a separable behaviour, which can most likely be evaluated in terms of infinite series for once separated functions. Moreover, the coordinate transformation requires further definition for the, so far arbitrary, coefficient $A$, which we will fix using $\beta$. If a solution for $\Phi_\text{pol}^\mathrm{d}$ satisfies both equations, it automatically satisfies their sum. We are thus motivated to multiply the \textit{constraint} equation by $x$, and add them, which further eliminates the uncomfortable constant $A$ and the cubic rational term:
+
+\begin{equation}
+    (4ax+b)\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}+2a\diff{\Phi_\text{pol}^\mathrm{d}}{x}=0
+\end{equation}
+
+Substituting $\psi=\mathrm{d}\Phi_\text{pol}^\mathrm{d}/\mathrm{d}x$, we find:
+
+\begin{equation}
+    (4ax+b)\diff{\psi}{x}+2a\psi=0\implies\diff{}{x}\left(\ln{\psi}+\frac{1}{2}\ln{(4ax+b)}\right)=0\implies\psi(x)=\frac{C}{\sqrt{4ax+b}}
+\end{equation}
+
+where $C$ is an integration constant. We easily find the magnetic poloidal disk flux:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}(x)=\frac{C}{2}\sqrt{4ax+b}+C'
+\end{equation}
+
+It is only evident that $C'=0$ due to the cubic rational term, which would simply not cancel if it contained any non-zero additive constant:
+
+\begin{equation}
+    \diff{\Phi_\text{pol}^\mathrm{d}}{x}=\frac{Ca}{\sqrt{4ax+b}}\implies\frac{\mathrm{d}^2\Phi_\text{pol}^\mathrm{d}}{\mathrm{d}x^2}=-\frac{2Ca^2}{(4ax+b)^{3/2}}
+\end{equation}
+
+\begin{equation}
+    \frac{8(a-A)a^2C}{(4ax+b)^{3/2}}=\frac{64\pi^2\mu_0\beta}{AC^3({4ax+b})^{3/2}}\implies (a-A)a^2C=\frac{8\pi^2\mu_0\beta}{AC^3}\implies\beta=\frac{C^4Aa^2(a-A)}{8\pi^2\mu_0}
+\end{equation}
+
+This yields an expression for the linear coefficient $A$ in the transformation, since $\beta$ is most likely measured, whereas the measured poloidal disk flux may provide the integration constant $C$ at a given location. The full explicit general solution to the Grad-Shafranov equation is therefore given by:
+
+\begin{equation}
+    \Phi_\text{pol}^\mathrm{d}(r,z)=\frac{C}{2}\sqrt{4aAr^2+4a^2(z-z_0)^2+b\left(1-\frac{1}{4a}\right)}
+\end{equation}
+
+Firstly, it is valuable to deduce the position and shape of the magnetic axis solely from the explicit expression. The magnetic surfaces are either ellipsoids or hyperboloids, depending on the sign of $A$. For ellipsoidal surfaces, the magnetic axis degenerates into the point $(0,z_0)$, while for hyperboloidal surfaces, the magnetic \textit{axis} is obtained by setting $\Phi_\text{pol}^\mathrm{d}(r,z)=\sqrt{b(1-1/4a)}$, giving as the solution an infinite cone described by $Ar^2+a(z-z_0)^2=0$ reflected about the $z=z_0$ plane. Indeed, in this system, the magnetic \textit{axis} is not a simple closed curve, but a family of curves spanning the entire cone. They, in a way, represent the symmetry axes in each azimuthal plane and divide two opposite-facing pairs of cusp-mirror-like configurations of magnetic surfaces. This demonstrates that in non-linear systems, magnetic axes become non-trivial. We thus observe that it was necessary and properly executed to define magnetic axes as the zero-volume magnetic surfaces.
+
+\subsection{Generalisation to helical systems}
+
+Here, we revisit our considerations on magnetic field structure in systems characterised by helical symmetry discussed in subsection \ref{subsec-helical-structure} in the previous chapter. We apply our findings to the usual magnetohydrostatic equilibrium equation by performing the vector product of the current density as given by equation (\ref{eq-5-162}) with the magnetic field density given by (\ref{eq-5-150}):
+
+\begin{equation*}
+    (\ell^2+k^2r^2)\Big[\mu_0\nabla p+(\mathbf{h}\times\nabla f)\times(\mathbf{h}\times\nabla\varrho)\Big]\,+
+\end{equation*}
+
+\begin{equation}
+    \label{eq-5-163}
+    +\,f\nabla f+\left(\frac{\ell^2+k^2r^2}{r}\left[\frac{\partial}{\partial r}\left(\frac{r}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\frac{1}{r}\frac{\partial^2\varrho}{\partial u^2}\right]-\frac{2k\ell}{\ell^2+k^2r^2}f\right)\nabla\varrho=\mathbf{0}
+\end{equation}
+
+The second term in the above equation (\ref{eq-5-163}) evaluates to zero due to our considerations in subsection \ref{subsec-helical-structure}. This term reduces to the vector product $\nabla f\times\nabla\varrho$, which we have determined to be identically zero:
+
+\begin{equation}
+    (\mathbf{h}\times\nabla f)\times(\mathbf{h}\times\nabla\varrho)=\left[\mathbf{h}\cdot(\nabla f\times\nabla\varrho)\right]\mathbf{h}=\mathbf{0}
+\end{equation}
+
+Equation (\ref{eq-5-163}) thus represents the generalisation of the Grad-Shafranov equation to helical systems:
+
+\begin{equation}
+    \label{eq-5-164}
+    \frac{\ell^2+k^2r^2}{r}\left[\frac{\partial}{\partial r}\left(\frac{r}{\ell^2+k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\frac{1}{r}\frac{\partial^2\varrho}{\partial u^2}\right]=\frac{2k\ell}{\ell^2+k^2r^2}f-f\diff{f}{\varrho}-\mu_0(\ell^2+k^2r^2)\diff{p}{\varrho}
+\end{equation}
+
+We demonstrate its general properties by considering the two limiting cases: $\ell=0$, corresponding to axisymmetry, and $k=0$, corresponding to translational symmetry. Inputting $\ell=0$ gives:
+
+\begin{equation}
+    k^2r\frac{\partial}{\partial r}\left(\frac{1}{k^2r^2}\frac{\partial\varrho}{\partial r}\right)+\frac{\partial^2\varrho}{\partial z^2}=-f\diff{f}{\varrho}-\mu_0k^2r^2\diff{p}{\varrho}
+\end{equation}
+
+where $u(\ell=0)=kz$ and the free factor $k$ can be set to unity, giving the usual Grad-Shafranov equation for toroidal systems as given in equation (\ref{eq-6-58}). Conversely, inputting $k=0$ gives:
+
+\begin{equation}
+    \frac{\ell^2}{r}\frac{\partial}{\partial r}\left(\frac{r}{\ell^2}\frac{\partial\varrho}{\partial r}\right)+\frac{1}{r^2}\frac{\partial^2\varrho}{\partial\varphi^2}=-f\diff{f}{\varrho}-\mu_0\ell^2\diff{p}{\varrho}
+\end{equation}
+
+where $u(k=0)=\ell\varphi$ and the free factor $\ell$ can be set to unity, giving the Grad-Shafranov equation for axial systems. The function $f$ thus clearly corresponds to the total poloidal current which governs the force-free magnetic field in the absence of toroidal current responsible for magnetic confinement.

@@ -1,0 +1,820 @@
+\chapter{Neoclassical transport in plasmas}
+
+In this chapter, we develop a theoretical framework for neoclassical transport, which provides a more general foundation than classical transport, particularly for transport phenomena such as electrical resistivity, collision frequencies, and the diffusion of momentum and kinetic energy. The term \textit{neoclassical} given to this theory is fully justified in the sense that the basic mechanisms at work are the same as those in the classical theory, which has been tacitly the subject of the first chapter. The neoclassical theory explains the behaviour of plasmas in inhomogeneous and curved magnetic fields with excellent accuracy. The main conceptual result of the theory is that the global geometry of magnetic field structures influences transport processes in plasmas; hence, our preceding considerations of magnetic field structures. We shall observe that, even in weakly toroidal plasmas, neoclassical effects have, in fact, a prominent influence on the general plasma particle motion.
+
+\section{Fokker-Planck collision theory}
+
+In this section, we lay the necessary groundwork to formally treat interparticle collisions in plasmas. We shall start by first deriving the main result of the Fokker-Planck collision theory, that is, the Fokker-Planck equation, and subsequently find analytical expressions of quantities of interest when only interparticle collisions are taken into account, in particular, electrical resistivity, diffusion of momentum, and of energy. It is worth noting that these are the demonstrations of results that were only magically revealed in the first chapter.
+
+\label{fokker}
+
+\subsection{Fokker-Planck equation}
+
+Let particle species $\sigma$ be the incident particle species and $\rho$ the target particle species in a plasma. It is appropriate to introduce a change of variables $(\mathbf{r}_\sigma, \mathbf{r}_\rho)\mapsto(\mathbf{R}, \mathbf{r})$ such that $\mathbf{R}$ is the position vector of the centre of mass and $\mathbf{r}$ the position vector of a single incident particle relative to a target particle:
+
+\begin{equation}
+    \mathbf{R}=\frac{m_\sigma\mathbf{r}_\sigma+m_\rho\mathbf{r}_\rho}{m_\sigma+m_\rho}\implies\ddot{\mathbf{R}}=\frac{m_\sigma\ddot{\mathbf{r}}_\sigma+m_\rho\ddot{\mathbf{r}}_\rho}{m_\sigma+m_\rho}=\mathbf{0}\implies\frac{\mathrm{d}\dot{\mathbf{R}}}{\mathrm{d}t}=\mathbf{0}
+\end{equation}
+
+\begin{equation}
+    \mathbf{r}=\mathbf{r}_\sigma -\mathbf{r}_\rho \quad\text{and}\quad\frac{1}{\mu_{\sigma\rho}}=\frac{1}{m_\sigma }+\frac{1}{m_\rho }
+\end{equation}
+
+\begin{equation}
+    \ddot{\mathbf{r}}=\ddot{\mathbf{r}}_\sigma-\ddot{\mathbf{r}}_\rho=\frac{q_\sigma q_\rho }{4\pi\varepsilon_0 m_\sigma }\frac{\mathbf{r}}{\|\mathbf{r}\|^3}-\left(-\frac{q_\sigma q_\rho }{4\pi\varepsilon_0 m_\rho }\frac{\mathbf{r}}{\|\mathbf{r}\|^3}\right)=\frac{q_\sigma q_\rho }{4\pi\varepsilon_0\mu_{\sigma\rho}}\frac{\mathbf{r}}{\|\mathbf{r}\|^3}
+\end{equation}
+
+The position vectors of the two particles can be found from the new variables:
+
+\begin{equation}
+    \label{eq-fokker-5}
+    \mathbf{r}_\sigma =\frac{m_\sigma \mathbf{r}_\sigma +m_\rho \mathbf{r}_\rho +m_\rho (\mathbf{r}_\sigma -\mathbf{r}_\rho )}{m_\sigma +m_\rho }=\mathbf{R}+\frac{m_\rho }{m_\sigma +m_\rho }\mathbf{r}
+\end{equation}
+
+\begin{equation}
+    \label{eq-fokker-6}
+    \mathbf{r}_\rho =\frac{m_\sigma \mathbf{r}_\sigma +m_\rho \mathbf{r}_\rho +m_\sigma (\mathbf{r}_\rho -\mathbf{r}_\sigma )}{m_\sigma +m_\rho }=\mathbf{R}-\frac{m_\sigma }{m_\sigma +m_\rho }\mathbf{r}
+\end{equation}
+
+It is also appropriate to relate the deviation of the relative velocity of the incident particle in the target particle's frame of reference with that in the laboratory frame:
+
+\begin{equation}
+    \label{eq-fokker-7}
+    \Delta\mathbf{v}_\sigma=\mathbf{v}_\sigma'-\mathbf{v}_\sigma=\dot{\mathbf{r}}'_\sigma-\dot{\mathbf{r}}_\sigma=\dot{\mathbf{R}}+\frac{m_\rho}{m_\sigma+m_\rho}\dot{\mathbf{r}}'-\dot{\mathbf{R}}-\frac{m_\rho}{m_\sigma+m_\rho}\dot{\mathbf{r}}=\frac{m_\rho}{m_\sigma+m_\rho}\Delta\mathbf{v}_\text{r}
+\end{equation}
+
+As demonstrated in chapter \ref{fundamentals}, the conservation of the Laplace-Runge-Lenz vector proves particularly useful for determining the deflection angle of the incident particle:
+
+\begin{equation}
+   \boldsymbol{\epsilon}_\sigma=-\frac{4\pi\varepsilon_0}{\mu_{\sigma\rho}q_\sigma q_\rho }\mathbf{p}_\sigma\times\boldsymbol{\mathcal{L}}_\sigma-\mathbf{\hat{r}}=-\frac{4\pi\varepsilon_0\mu_{\sigma\rho}\mathbf{v}_\text{rel}^2b}{q_\sigma q_\rho }\,\mathbf{\hat{x}}+\mathbf{\hat{z}}
+\end{equation}
+
+\begin{equation}
+    \boldsymbol{\epsilon}_\sigma=\left[\sin{\theta}-\frac{4\pi\varepsilon_0\mu_{\sigma\rho}\mathbf{v}_\text{rel}^2 b}{q_\sigma q_\rho }\cos{\theta}\right]\mathbf{\hat{x}}+\left[\frac{4\pi\varepsilon_0\mu_{\sigma\rho}\mathbf{v}_\text{rel}^2b}{q_\sigma q_\rho }\sin{\theta}-\cos{\theta}\right]\mathbf{\hat{z}}\implies\tan{\frac{\theta}{2}}=\frac{q_\sigma q_\rho }{4\pi\varepsilon_0\mu_{\sigma\rho}\mathbf{v}_\text{rel}^2b}
+\end{equation}
+
+The utility of changing the reference frame becomes clear in the following. We can write the deviation of the relative velocity of the incident particle as a function of the deflection angle and perform the calculation in this frame, then change reference frames using equation (\ref{eq-fokker-7}) as follows:
+
+\begin{equation}
+    \Delta\mathbf{v}_\text{rel}=v_\text{rel}(\cos{\theta}-1)\,\mathbf{\hat{z}}+v_\text{rel}\sin{\theta}\,\mathbf{\hat{x}}
+\end{equation}
+
+The core idea of the Fokker-Planck collision theory is to define a conditional probability density, $F_\sigma(\mathbf{v}_\sigma,\allowbreak\Delta\mathbf{v}_\sigma)$, which represents the probability that, knowing a particle of species $\sigma$ moves at velocity $\mathbf{v}_\sigma$ at instant $t$, it moves at velocity $\mathbf{v}_\sigma+\Delta\mathbf{v}_\sigma$ at instant $t+\Delta t$. This probability density is necessarily normalizable with respect to the velocity deviation:
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3} F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\,\mathrm{d}^3\Delta\mathbf{v}_\sigma=1
+\end{equation}
+
+The objective of defining such a probability density becomes evident when considering the expression of the distribution function at instant $t$ as a function of its expression at the previous instant, $t-\Delta t$:
+
+\begin{equation}
+    f_\sigma(\mathbf{v}_\sigma,t)=\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{v}_\sigma-\Delta\mathbf{v}_\sigma,t-\Delta t)F_\sigma(\mathbf{v}_\sigma-\Delta\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\,\mathrm{d}^3\Delta\mathbf{v}_\sigma
+\end{equation}
+
+We perform the Taylor expansion of the integrand in the previous equation:
+
+\iffalse
+
+\begin{gather}
+	f_\sigma(\mathbf{v}_\sigma-\Delta\mathbf{v}_\sigma,t-\Delta t)F_\sigma(\mathbf{v}_\sigma-\Delta\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)=f_\sigma(\mathbf{v}_\sigma,t)F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)-\Delta t\frac{\partial f_\sigma}{\partial t}F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma) {+} \\
+	{-}\Delta\mathbf{v}_\sigma\cdot\frac{\partial}{\partial\mathbf{v}_\sigma}\left(f_\sigma(\mathbf{v}_\sigma,t)F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\right)+\frac{1}{2}\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_{\sigma} \mathbin{:} \frac{\partial^2}{\partial\mathbf{v}_\sigma^2}\left(f_\sigma(\mathbf{v}_\sigma,t)F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\right)
+\end{gather}
+
+\fi
+
+By employing the normalization of the probability density $F_\sigma$, the following differential equation arises:
+
+\iffalse
+
+\begin{gather}
+    \frac{\partial f_\sigma}{\partial t}=-\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(\frac{\iiint_{\mathbb{R}^3}\Delta\mathbf{v}_\sigma F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\,\mathrm{d}^3\Delta\mathbf{v}_\sigma}{\Delta t}f_\sigma(\mathbf{v}_\sigma,t)\right)\,+\\+\,\frac{1}{2}\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}:\left(\frac{\iiint_{\mathbb{R}^3}\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\,\mathrm{d}^3\Delta\mathbf{v}_\sigma}{\Delta t}f_\sigma(\mathbf{v}_\sigma,t)\right)
+\end{gather}
+
+\fi
+
+It is worth remarking on the appearance of the first and second moments of the probability function:
+
+\begin{equation}
+    \left\langle\frac{\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle=\frac{1}{\Delta t}\iiint_{\mathbb{R}^3}\Delta\mathbf{v}_\sigma F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\,\mathrm{d}^3\Delta\mathbf{v}_\sigma
+\end{equation}
+
+\begin{equation}
+    \left\langle\frac{\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle=\frac{1}{\Delta t}\iiint_{\mathbb{R}^3}\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma F_\sigma(\mathbf{v}_\sigma,\Delta\mathbf{v}_\sigma)\,\mathrm{d}^3\Delta\mathbf{v}_\sigma
+\end{equation}
+
+\iffalse
+
+\begin{equation}
+    \label{eq-7-17}
+    \frac{\partial f_\sigma}{\partial t}=-\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(\left\langle\frac{\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle f_\sigma(\mathbf{v}_\sigma,t)\right)+\frac{1}{2}\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}:\left(\left\langle\frac{\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle f_\sigma(\mathbf{v}_\sigma,t)\right)
+\end{equation}
+
+\fi
+
+The first term on the right side of the previous equation represents the slowing down of incident particles, while the second represents their spread in phase space due to diffusion. Our goal is now to evaluate these terms. Considerations explored in the previous chapter indicate the dominance of small-angle deflections, hence the motivation for the following approximation:
+
+\begin{equation}
+    \theta\simeq\frac{q_\sigma q_\rho }{2\pi\varepsilon_0\mu_{\sigma\rho}\mathbf{v}_\text{rel}^2b}\implies\sin{\theta}\simeq\theta,\cos{\theta}\simeq1-\frac{\theta^2}{2}
+\end{equation}
+
+\begin{equation}
+    \Delta\mathbf{v}_\text{rel}\simeq-\frac{v_\text{rel}\theta^2}{2}\,\mathbf{\hat{z}}+v_\text{rel}\theta\left(\cos{\varphi}\,\mathbf{\hat{x}}+\sin{\varphi}\,\mathbf{\hat{y}}\right)
+\end{equation}
+
+where $\varphi$ represents the angle between the axes $\mathbf{\hat{b}}$ and $\mathbf{\hat{x}}$. It remains to determine the mean velocity deviation taken over all possible values of $b$ and $\varphi$, that is, over $b\in[b_{\pi/2},\lambda_D]$ and $\varphi\in[0,2\pi)$. The cross-section associated with impact parameter $b$ and azimuthal angle range is $b\,\mathrm{d}b\,\mathrm{d}\varphi$. In a time span $\Delta t$, the incident particle travels distance $v_\sigma\,\Delta t$, so the effective volume swept by this particle is $b\,\mathrm{d}b\,\mathrm{d}\varphi\,v_\sigma\,\Delta t$. The number of target particles having a velocity $\mathbf{v}_\rho$ is $f_\rho(\mathbf{\mathbf{v}_\rho})\,\mathrm{d}^3\mathbf{v}_\rho b\,\mathrm{d}b\,\mathrm{d}\varphi\,v_\sigma\,\Delta t$, so the mean relative velocity deviation of the incident particle is determined by integrating over the ranges of impact parameter and azimuthal angle to determine the mean velocity deviation:
+
+\begin{equation}
+    \Delta\mathbf{v}_\text{rel}\Bigr|_{\text{all }b\text{ and }\varphi}=v_\sigma\Delta tf_\rho (\mathbf{v}_\rho )\,\mathrm{d}^3\mathbf{v}_\rho \int_0^{2\pi}\,\mathrm{d}\varphi\int_{b_{\pi/2}}^{\lambda_D}\Delta\mathbf{v}_\sigma\,b\,\mathrm{d}b
+\end{equation}
+
+Integrals with respect to axes $\mathbf{\hat{x}}$ and $\mathbf{\hat{y}}$ evaluate to zero due to symmetry:
+
+\begin{equation}
+    \Delta\mathbf{v}_\text{rel}\Bigr|_{\text{all }b\text{ and }\varphi}=-\mathbf{v}_\text{rel}^2\Delta tf_\rho (\mathbf{v}_\rho )\,\mathrm{d}^3\mathbf{v}_\rho \pi\int_{b_{\pi/2}}^{\lambda_D}\theta^2b\,\mathrm{d}b=-\frac{\Delta t}{4\pi}f_\rho (\mathbf{v}_\rho )\,\mathrm{d}\mathbf{v}_\rho\left(\frac{q_\sigma q_\rho }{\varepsilon_0\mu_{\sigma\rho}\|\mathbf{v}_\text{rel}\|}\right)^2\ln{\frac{\lambda_D}{b_{\pi/2}}}
+\end{equation}
+
+In view of equations (\ref{eq-7-5}) and (\ref{eq-7-6}), it is possible to express the mean velocity deviation undergone by the incident particle in the laboratory frame:
+
+\begin{equation}
+     \Delta\mathbf{v}_\sigma\Bigr|_{\text{all }b\text{ and }\varphi}=-\Delta t\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2\mu_{\sigma\rho} m_\sigma }\ln{\frac{\lambda_D}{b_{\pi/2}}}\frac{\mathbf{v}_\sigma -\mathbf{v}_\rho }{\|\mathbf{v}_\sigma -\mathbf{v}_\rho \|^3}f_\rho (\mathbf{v}_\rho )\,\mathrm{d}^3\mathbf{v}_\rho 
+\end{equation}
+
+By taking the average over all possible velocities of the target particle, it follows:
+
+\begin{equation}
+    \Delta\mathbf{v}_\sigma \Bigr|_{\text{all }b\text{, }\varphi\text{ and }\mathbf{v}_\rho }=-\Delta t\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2\mu_{\sigma\rho} m_\sigma }\ln{\frac{\lambda_D}{b_{\pi/2}}}\iiint_{\mathbb{R}^3}\frac{\mathbf{v}_\sigma -\mathbf{v}_\rho }{\|\mathbf{v}_\sigma -\mathbf{v}_\rho \|^3}f_\rho (\mathbf{v}_\rho )\,\mathrm{d}^3\mathbf{v}_\rho 
+\end{equation}
+
+The integral found appears difficult to evaluate; however, the following equivalences come to our aid:
+
+\begin{equation}
+    \frac{\partial}{\partial\mathbf{v}_\sigma }=\frac{\partial}{\partial\mathbf{v}_\text{rel}}\frac{\partial\mathbf{v}_\text{rel}}{\partial\mathbf{v}_\sigma }=\frac{\partial}{\partial\mathbf{v}_\text{rel}}\quad\text{and}\quad\frac{\partial\|\mathbf{v}\|}{\partial\mathbf{v}}=\frac{\mathbf{v}}{\|\mathbf{v}\|}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial\|\mathbf{v}_\text{rel}\|}{\partial\mathbf{v}_\sigma }=\frac{\mathbf{v}_\text{rel}}{\|\mathbf{v}_\text{rel}\|}\quad\text{and}\quad\frac{\partial}{\partial\mathbf{v}_\sigma }\left(\frac{1}{\|\mathbf{v}_\text{rel}\|}\right)=-\frac{\mathbf{v}_\text{rel}}{\|\mathbf{v}_\text{rel}\|^3}=-\frac{\mathbf{v}_\sigma -\mathbf{v}_\rho }{\|\mathbf{v}_\sigma -\mathbf{v}_\rho \|^3}
+\end{equation}
+
+\begin{equation}
+    \Delta\mathbf{v}_\sigma \Bigr|_{\text{all }b\text{, }\varphi\text{ and }\mathbf{v}_\rho }=\Delta t\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2\mu_{\sigma\rho} m_\sigma }\ln{\frac{\lambda_D}{b_{\pi/2}}}\frac{\partial}{\partial\mathbf{v}_\sigma }\iiint_{\mathbb{R}^3}\frac{f_\rho (\mathbf{v}_\rho )}{\|\mathbf{v}_\sigma -\mathbf{v}_\rho \|}\,\mathrm{d}^3\mathbf{v}_\rho 
+\end{equation}
+
+We have thus determined the first term associated with the slowing down of incident particles:
+
+\begin{equation}
+    \left\langle\frac{\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle=\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2\mu_{\sigma\rho} m_\sigma }\ln{\frac{\lambda_D}{b_{\pi/2}}}\frac{\partial}{\partial\mathbf{v}_\sigma}\iiint_{\mathbb{R}^3}\frac{f_\rho(\mathbf{v}_\rho)}{\|\mathbf{v}_\sigma-\mathbf{v}_\rho\|}\,\mathrm{d}^3\mathbf{v}_\rho
+\end{equation}
+
+The procedure regarding the second term is analogous, so we start with the following:
+
+\begin{equation}
+    \Delta\mathbf{v}_\text{rel}\Delta\mathbf{v}_\text{rel}=\begin{pmatrix}v_\text{rel}\theta\cos{\varphi}\\v_\text{rel}\theta\sin{\varphi}\\-v_\text{rel}\theta^2/2\end{pmatrix}\begin{pmatrix}v_\text{rel}\theta\cos{\varphi}\\v_\text{rel}\theta\sin{\varphi}\\-v_\text{rel}\theta^2/2\end{pmatrix}^\top
+\end{equation}
+
+The mixed terms all vanish to zero, due to the orthogonality of trigonometric functions. The component along $\mathbf{\hat{z}}\mathbf{\hat{z}}$ is negligible, due to its quartic dependence on angle $\theta$ compared to the quadratic dependencies of the components along $\mathbf{\hat{x}}\mathbf{\hat{x}}$ and $\mathbf{\hat{y}}\mathbf{\hat{y}}$:
+
+\begin{equation}
+    \Delta\mathbf{v}_\text{rel}\Delta\mathbf{v}_\text{rel}\Bigr|_{\text{all }b\text{ and }\varphi}=\Delta t\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2\mu_{\sigma\rho}^2\|\mathbf{v}_\text{rel}\|}f_\rho (\mathbf{v}_\rho )\,\mathrm{d}^3\mathbf{v}_\rho \left(\mathbf{\hat{x}}\mathbf{\hat{x}}+\mathbf{\hat{y}}\mathbf{\hat{y}}\right)
+\end{equation}
+
+It is worth noting the fact that the $\mathbf{\hat{z}}$ axis is precisely defined by the relative velocity, $\mathbf{v_\text{rel}}$:
+
+\begin{equation}
+    \mathbf{\hat{x}}\mathbf{\hat{x}}+\mathbf{\hat{y}}\mathbf{\hat{y}}=\mathbf{1}-\frac{\mathbf{v}_\text{rel}\mathbf{v}_\text{rel}}{\mathbf{v}_\text{rel}^2}\implies\Delta\mathbf{v}_\text{rel}\Delta\mathbf{v}_\text{rel}\Bigr|_{\text{all }b\text{ and }\varphi}=\frac{q_\sigma ^2q_\rho ^2\Delta t f_\rho (\mathbf{v}_\rho )}{4\pi\varepsilon_0^2\mu_{\sigma\rho}^2}\frac{\mathbf{v}_\text{rel}^2\mathbf{1}-\mathbf{v}_\text{rel}\mathbf{v}_\text{rel}}{\|\mathbf{v}_\text{rel}\|^3}\,\mathrm{d}^3\mathbf{v}_\rho 
+\end{equation}
+
+where $\mathbf{1}$ represents the unit tensor. The velocity deviation of the incident particle in the laboratory frame is found using equation (\ref{eq-7-7}):
+
+\begin{equation}
+    \Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma\Bigr|_{\text{all }b\text{ and }\varphi}=\Delta t\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2m_\sigma ^2}\frac{\mathbf{v}_\text{rel}^2\mathbf{1}-\mathbf{v}_\text{rel}\mathbf{v}_\text{rel}}{\|\mathbf{v}_\text{rel}\|^3}f_\rho (\mathbf{v}_\rho )\,\mathrm{d}^3\mathbf{v}_\rho 
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2\|\mathbf{v}_\text{rel}\|}{\partial\mathbf{v}_\sigma \partial\mathbf{v}_\sigma }=\frac{\partial}{\partial\mathbf{v}_\sigma }\left(\frac{\mathbf{v}_\text{rel}}{\|\mathbf{v}_\text{rel}\|}\right)=\frac{\mathbf{v}_\text{rel}^2\mathbf{1}-\mathbf{v}_\text{rel}\mathbf{v}_\text{rel}}{\|\mathbf{v}_\text{rel}\|^3}
+\end{equation}
+
+from which we find the second term associated with the diffusion of incident particles:
+
+\begin{equation}
+    \left\langle\frac{\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle=\frac{q_\sigma ^2q_\rho ^2}{4\pi\varepsilon_0^2 m_\sigma ^2}\ln{\frac{\lambda_D}{b_{\pi/2}}}\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\iiint_{\mathbb{R}^3}\|\mathbf{v}_\sigma-\mathbf{v}_\rho\|f_\rho(\mathbf{v}_\rho)\,\mathrm{d}^3\mathbf{v}_\rho
+\end{equation}
+
+It is now appropriate to introduce the Rosenbluth potentials between species $\sigma$ and $\rho$:
+
+\begin{equation}
+    g_\rho(\mathbf{v}_\sigma)=\iiint_{\mathbb{R}^3}\|\mathbf{v}_\sigma-\mathbf{v}_\rho\|f_\rho(\mathbf{v}_\rho)\,\mathrm{d}^3\mathbf{v}_\rho\quad\text{and}\quad h_\rho(\mathbf{v}_\sigma)=\frac{m_\sigma}{\mu_{\sigma\rho}}\iiint_{\mathbb{R}^3}\frac{f_\rho(\mathbf{v}_\rho)}{\|\mathbf{v}_\sigma-\mathbf{v}_\rho\|}\,\mathrm{d}^3\mathbf{v}_\rho
+\end{equation}
+
+This allows writing the two terms in easily graspable forms:
+
+\begin{equation}
+    \left\langle\frac{\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle=\frac{q_\sigma^2 q_\rho^2}{4\pi\varepsilon_0^2m_\sigma^2}\ln{\frac{\lambda_D}{b_{\pi/2}}}\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\quad\text{and}\quad\left\langle\frac{\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma}{\Delta t}\right\rangle=\frac{q_\sigma^2q_\rho^2}{4\pi\varepsilon_0^2m_\sigma^2}\ln{\frac{\lambda_D}{b_{\pi/2}}}\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}
+\end{equation}
+
+By substituting the previous results into equation (\ref{eq-7-17}), the Fokker-Planck equation follows:
+
+\iffalse
+
+\begin{equation}
+    \label{eq-1-91}
+    \frac{\partial f_\sigma}{\partial t}=\sum_{\rho}\frac{q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2m_\sigma^2}\left[-\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\right)+\frac{1}{2}\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}:\left(f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\right)\right]
+\end{equation}
+
+\fi
+
+\subsection{Dissipation of momentum}
+
+It is appropriate to apply the theory developed above to plasma dynamics models. As will be seen in the third chapter, the average velocity of particles of a species, here $\sigma$, is defined by:
+
+\begin{equation}
+    \mathbf{u}_\sigma=\frac{1}{n_\sigma}\iiint_{\mathbb{R}^3}\mathbf{v}_\sigma f_\sigma(\mathbf{v}_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma\quad\text{where}\quad n_\sigma=\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{v}_\sigma)\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+It is evident that the time derivative of the average velocity is the first moment of equation (\ref{eq-1-91}). Integration by parts of the left side of this equation yields the following results:
+
+\begin{equation}
+    -\iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\right)\,\mathrm{d}^3\mathbf{v}_\sigma=\iiint_{\mathbb{R}^3}f_\sigma\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+\iffalse
+
+\begin{equation*}
+    \iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}:\left(f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\right)\,\mathrm{d}\mathbf{v}_\sigma=-\iiint_{\mathbb{R}^3}\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\right)\,\mathrm{d}^3\mathbf{v}_\sigma=
+\end{equation*}
+
+\fi
+
+\begin{equation}
+    =-\oiint_{\partial\mathbb{R}^3}f_\sigma\frac{\partial^2g_\sigma}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\cdot\mathrm{d}\boldsymbol{\sigma}_{\mathbf{v}_\sigma}=\mathbf{0}\quad\text{since }\lim_{\|\mathbf{v}_\sigma\|\to\infty}f_\sigma(\mathbf{v}_\sigma)=0
+\end{equation}
+
+We thus obtain an expression for the time derivative of the macroscopic velocity of species $\sigma$:
+
+\begin{equation}
+    n_\sigma\frac{\partial\mathbf{u}_\sigma}{\partial t}=\sum_\rho\frac{q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2m_\sigma^2}\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{v}_\sigma)\frac{\partial h_\rho(\mathbf{v}_\sigma)}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+We define the slowing down frequency between species $\sigma$ and $\rho$ via the following relation:
+
+\begin{equation}
+    n_\sigma\frac{\partial\mathbf{u}_\sigma}{\partial t}=-\sum_{\rho}n_\sigma\nu_{\sigma\to\rho}\mathbf{u}_\sigma\implies\nu_{\sigma\to\rho}\mathbf{u}_\sigma=-\frac{q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2n_\sigma m_\sigma^2}\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{v}_\sigma)\frac{\partial h_\rho(\mathbf{v}_\sigma)}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+Consider the case of Maxwellian distributions. Since the slowing down frequency is independent of the chosen inertial reference frame, we shall move into the frame of target particles of species $\rho$, such that, in the most general case, the incident particle distribution function is a shifted Maxwellian about the macroscopic velocity $\mathbf{u}_\sigma$. The Rosenbluth potential $h_\rho(\mathbf{v}_\sigma)$ of the target species $\rho$ is given by:
+
+\begin{equation}
+    h_\rho(\mathbf{v}_\sigma)=\frac{n_\rho m_\sigma}{\mu_{\sigma\rho}}\left(\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}\right)^{3/2}\iiint_{\mathbb{R}^3}\exp{\left[-\frac{m_\rho\mathbf{v}_\rho^2}{2k_\mathrm{B}T_\rho}\right]}\frac{\mathrm{d}^3\mathbf{v}_\rho}{\|\mathbf{v}_\sigma-\mathbf{v}_\rho\|}=\frac{n_\rho m_\sigma}{\mu_{\sigma\rho}}\left(\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}\right)^{3/2}I(\mathbf{v}_\sigma)
+\end{equation}
+
+where, implementing the substitution $\mathbf{v}_\rho=\mathbf{v}_\sigma+\bar{\mathbf{v}}_\rho$, the integral $I(\mathbf{v}_\sigma)$ reads:
+
+\begin{equation}
+    I(\mathbf{v}_\sigma)=\iiint_{\mathbb{R}^3}\exp{\left[-\frac{m_\rho(\mathbf{v}_\sigma+\bar{\mathbf{v}}_\rho)^2}{2k_\mathrm{B}T_\rho}\right]}\frac{\mathrm{d}^3\bar{\mathbf{v}}_\rho}{\|\bar{\mathbf{v}}_\rho\|}=\iiint_{\mathbb{R}^3}\exp{\left[-\frac{m_\rho}{2k_\mathrm{B}T_\rho}\left(\mathbf{v}_\sigma^2+2\mathbf{v}_\sigma\cdot\bar{\mathbf{v}}_\rho+\bar{\mathbf{v}}_\rho^2\right)\right]}\frac{\mathrm{d}^3\bar{\mathbf{v}}_\rho}{\|\bar{\mathbf{v}}_\rho\|}
+\end{equation}
+
+It is only appropriate to choose a spherical coordinate system such that the polar angle $\theta=0$ corresponds to the positive direction along $\mathbf{v}_\sigma$, giving:
+
+\begin{equation}
+    I(\mathbf{v}_\sigma)=\int_0^{2\pi}\int_0^\infty\bar{v}_\rho\exp{\left[-\frac{m_\rho}{2k_\mathrm{B}T_\rho}(v_\sigma^2+\bar{v}_\rho^2)\right]}\int_0^\pi\exp{\left[-\frac{m_\rho v_\sigma\bar{v}_\rho}{k_\mathrm{B}T_\rho}\cos{\theta}\right]}\sin{\theta}\,\mathrm{d}\theta\,\mathrm{d}\bar{v}_\rho
+\end{equation}
+
+Notice that the inner integral over the polar angle evaluates to:
+
+\begin{equation}
+    \frac{k_\mathrm{B}T_\rho}{m_\rho v_\sigma\bar{v}_\rho}\int_0^\pi\mathrm{d}\left(\exp{\left[-\frac{m_\rho v_\sigma\bar{v}_\rho}{k_\mathrm{B}T_\rho}\cos{\theta}\right]}\right)=\frac{2k_\mathrm{B}T_\rho}{m_\rho v_\sigma\bar{v}_\rho}\sinh{\frac{m_\rho v_\sigma\bar{v}_\rho}{k_\mathrm{B}T_\rho}}
+\end{equation}
+
+\begin{equation}
+    I(\mathbf{v}_\sigma)=\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho v_\sigma}\int_0^\infty\left(\exp{\left[-\frac{m_\rho(\bar{v}_\rho -v_\sigma)^2}{2k_\mathrm{B}T_\rho}\right]}-\exp{\left[-\frac{m_\rho(\bar{v}_\rho+v_\sigma)^2}{2k_\mathrm{B}T_\rho}\right]}\right)\mathrm{d}\bar{v}_\rho
+\end{equation}
+
+Proceed with caution. Let $\xi=(\bar{v}_\rho-v_\sigma)\sqrt{m_\rho/2k_\mathrm{B}T_\rho}$ and $\zeta=(\bar{v}_\rho+v_\sigma)\sqrt{m_\rho/2k_\mathrm{B}T_\rho}$, so that:
+
+\begin{equation}
+    I(\mathbf{v}_\sigma)=\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho v_\sigma}\sqrt{\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\left(\int_{-v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}}^\infty\exp{\left[-\xi^2\right]}\,\mathrm{d}\xi-\int_{v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}}^\infty\exp{\left[-\zeta^2\right]}\,\mathrm{d}\zeta\right)=
+\end{equation}
+
+\begin{equation}
+    =\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho v_\sigma}\sqrt{\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\int_{-v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}}^{v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}}\exp{\left[-\xi^2\right]}\,\mathrm{d}\xi=\frac{2\pi}{v_\sigma}\left(\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}\frac{\sqrt{\pi}}{2}\frac{2}{\sqrt{\pi}}\int_0^{v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}}\exp{\left[-\xi^2\right]}\,\mathrm{d}\xi=
+\end{equation}
+
+\begin{equation}
+    =\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho v_\sigma}\sqrt{\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho}}\text{erf}\,\left(v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)=\frac{1}{\|\mathbf{v}_\sigma\|}\left(\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}\text{erf}\,\left(\|\mathbf{v}_\sigma\|\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)
+\end{equation}
+
+Thus, we find the Rosenbluth potential of species $\rho$:
+
+\begin{equation}
+    h_\rho(\mathbf{v}_\sigma)=\frac{n_\rho m_\sigma}{\mu_{\sigma\rho}\|\mathbf{v}_\sigma\|}\text{erf}\,\left(\|\mathbf{v}_\sigma\|\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)
+\end{equation}
+
+Its velocity gradient with respect to $\mathbf{v}_\sigma$ can be found as follows:
+
+\begin{equation}
+    \frac{\partial h_\rho(\mathbf{v}_\sigma)}{\partial\mathbf{v}_\sigma}=\frac{\partial h_\rho(\mathbf{v}_\sigma)}{\partial\|\mathbf{v}_\sigma\|}\frac{\partial\|\mathbf{v}_\sigma\|}{\partial\mathbf{v}_\sigma}=\frac{\mathbf{v}_\sigma}{\|\mathbf{v}_\sigma\|}\frac{\partial h_\rho(\mathbf{v}_\sigma)}{\partial\|\mathbf{v}_\sigma\|}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial h_\rho(\mathbf{v}_\sigma)}{\partial\mathbf{v}_\sigma}=\frac{n_\rho m_\sigma\mathbf{v}_\sigma}{\mu_{\sigma\rho}\|\mathbf{v}_\sigma\|^2}\sqrt{\frac{2m_\rho}{\pi k_\mathrm{B}T_\rho}}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}-\frac{n_\rho m_\sigma\mathbf{v}_\sigma}{\mu_{\sigma\rho}\|\mathbf{v}_\sigma\|^3}\,\text{erf}\,\left(\|\mathbf{v}_\sigma\|\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)
+\end{equation}
+
+We now only have to average the previous expression over $\mathbf{v}_\sigma$. However, this proves to be a difficult task. We instead resort to partial integration, since at infinity, the Maxwellian term ensures that the integrand evaluates to zero:
+
+\begin{equation}
+    \mathbf{K}(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\frac{\mathbf{v}_\sigma-\mathbf{u}_\sigma}{\|\mathbf{v}_\sigma\|}\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left(\|\mathbf{v}_\sigma\|\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+such that we shall at last find:
+
+\begin{equation}
+    \nu_{\sigma\to\rho}\mathbf{u}_\sigma=-\frac{n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2\mu_{\sigma\rho}m_\sigma}\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\left(\frac{m_\sigma}{2\pi k_\mathrm{B}T_\sigma}\right)^{3/2}\mathbf{K}(\mathbf{u}_\sigma)
+\end{equation}
+
+Notice that the components perpendicular to $\mathbf{u}_\sigma$ in $\mathbf{K}(\mathbf{u}_\sigma)$ evaluate to zero due to axial symmetry. We shall henceforth endeavour to evaluate the following:
+
+\begin{equation}
+    \mathbf{K}(\mathbf{u}_\sigma)=2\pi\,\mathbf{\hat{u}}_\sigma\int_0^\infty v_\sigma\exp{\left[-\frac{m_\sigma(v_\sigma^2+u_\sigma^2)}{2k_\mathrm{B}T_\sigma}\right]}\,\text{erf}\,\left(v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)I(\mathbf{u}_\sigma,\mathbf{v}_\sigma)\,\mathrm{d}v_\sigma
+\end{equation}
+
+where the integral with respect to the polar angle reads:
+
+\begin{equation}
+    I(\mathbf{u}_\sigma,\mathbf{v}_\sigma)=\int_0^\pi(v_\sigma\cos{\theta}-u_\sigma)\exp{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\cos{\theta}\right]}\sin{\theta}\,\mathrm{d}\theta
+\end{equation}
+
+whose solution is found using trigonometric substitution:
+
+\begin{equation}
+    I(\mathbf{u}_\sigma,\mathbf{v}_\sigma)=\frac{2k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma}\cosh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}-\frac{2 k_\mathrm{B}T_\sigma}{m_\sigma v_\sigma}\left(\frac{k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma^2}+1\right)\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}
+\end{equation}
+
+Notice that the integrand is a pair function of $v_\sigma$, and there are no issues with convergence since the integral converges absolutely. We shall henceforth separate $\mathbf{K}(\mathbf{u}_\sigma)=[K_1(\mathbf{u}_\sigma)-K_2(\mathbf{u}_\sigma)]\,\mathbf{\hat{u}}_\sigma$ to pragmatically evaluate the integral:
+
+\begin{equation}
+    {K}_1(\mathbf{u}_\sigma)=\frac{4\pi k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma}\int_0^\infty v_\sigma\exp{\left[-\frac{m_\sigma(v_\sigma^2+u_\sigma^2)}{2k_\mathrm{B}T_\sigma}\right]}\cosh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left(\sqrt{\frac{m_\rho v_\sigma^2}{2k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}v_\sigma
+\end{equation}
+
+\begin{equation}
+    {K}_2(\mathbf{u}_\sigma)=\frac{4\pi k_\mathrm{B}T_\sigma}{m_\sigma}\left(\frac{k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma^2}+1\right)\int_0^\infty\exp{\left[-\frac{m_\sigma(v_\sigma^2+u_\sigma^2)}{2k_\mathrm{B}T_\sigma}\right]}\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\left(\sqrt{\frac{m_\rho v_\sigma^2}{2k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}v_\sigma
+\end{equation}
+
+Let us extract the constant factors in the previous integrals:
+
+\begin{equation}
+    K_1(\mathbf{u}_\sigma)=\frac{4\pi k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma}\exp{\left[-\frac{m_\sigma u_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\bar{K}_1(u_\sigma)
+\end{equation}
+
+\begin{equation}
+    \bar{K}_1(u_\sigma)=\int_0^\infty v_\sigma\exp{\left[-\frac{m_\sigma v_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\cosh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left(v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}v_\sigma
+\end{equation}
+
+\begin{equation}
+    K_2(\mathbf{u}_\sigma)=\frac{4\pi k_\mathrm{B}T_\sigma}{m_\sigma}\left(1+\frac{k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma^2}\right)\exp{\left[-\frac{m_\sigma u_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\bar{K}_2(u_\sigma)
+\end{equation}
+
+\begin{equation}
+    \bar{K}_2(u_\sigma)=\int_{0}^\infty\exp{\left[-\frac{m_\sigma v_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left(v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}v_\sigma=
+\end{equation}
+
+\begin{equation}
+    =\frac{1}{2}\int_{-\infty}^{\infty}\exp{\left[-\frac{m_\sigma v_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left(v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}v_\sigma=
+\end{equation}
+
+\begin{equation}
+    =\frac{1}{2}\int_{-\infty}^\infty\exp{\left[-\frac{m_\sigma v_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\exp{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left(v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}v_\sigma
+\end{equation}
+
+Notice that the second integral, $\bar{K}_2$, generates the first upon differentiating under the integral sign with respect to the parameter inside the hyperbolic sine term:
+
+\begin{equation}
+    \frac{\partial\bar{K}_2}{\partial u_\sigma}=\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\bar{K}_1(u_\sigma)\implies\bar{K}_1(u_\sigma)=\frac{k_\mathrm{B}T_\sigma}{m_\sigma}\frac{\partial\bar{K}_2}{\partial u_\sigma}
+\end{equation}
+
+Notice that defining $v_\sigma=2u_\sigma x$ gives:
+
+\begin{equation}
+    \bar{K}_2(u_\sigma)=u_\sigma\int_{-\infty}^\infty\exp{\left[-\frac{2m_\sigma u_\sigma^2}{k_\mathrm{B}T_\sigma}(x^2-x)\right]}\text{erf}\,\left(x\sqrt{\frac{2m_\rho u_\sigma^2}{k_\mathrm{B}T_\rho}}\right)\,\mathrm{d}x
+\end{equation}
+
+where we shall define $a=2m_\sigma u_\sigma^2/k_\mathrm{B}T_\sigma$ and $b=\sqrt{2m_\rho u_\sigma^2/k_\mathrm{B}T_\rho}$, so that $\bar{K}_2(u_\sigma)=u_\sigma J(a,b)$ where:
+
+\begin{equation}
+    J(a,b)=\int_{-\infty}^\infty\exp{\left[-a(x^2-x)\right]}\text{erf}\,(bx)\,\mathrm{d}x=\exp{\left[\frac{a}{4}\right]}\int_{-\infty}^\infty\exp{\left[-a\left(x-\frac{1}{2}\right)^2\right]}\text{erf}\,\left(bx\right)\,\mathrm{d}x
+\end{equation}
+
+Performing the shift $t=x-\frac{1}{2}$, we obtain:
+
+\begin{equation}
+    J(a,b)=\exp{\left[\frac{a}{4}\right]}\int_{-\infty}^\infty\exp{\left(-at^2\right)}\,\text{erf}\,\left(bt+\frac{b}{2}\right)\,\mathrm{d}t
+\end{equation}
+
+We shall define the following integral:
+
+\begin{equation}
+    I(a,b,c)=\int_{-\infty}^\infty\exp{(-at^2)}\,\text{erf}\,(bt+c)\,\mathrm{d}t
+\end{equation}
+
+so that the integral $J(a,b)=\exp{(a/4)}\,I(a,b,b/2)$. We perform differentiation under the integral sign with respect to the parameter $c$:
+
+\begin{equation}
+    \frac{\partial I(a,b,c)}{\partial c}=\int_{-\infty}^\infty\exp{(-at^2)}\frac{2}{\sqrt{\pi}}\exp{\left[-(bt+c)^2\right]}\,\mathrm{d}t=
+\end{equation}
+
+\begin{equation}
+    =\frac{2}{\sqrt{\pi}}\int_{-\infty}^\infty\exp{\left[-(a+b^2)t^2-2bct-c^2\right]}\,\mathrm{d}t=
+\end{equation}
+
+\begin{equation}
+    \frac{2}{\sqrt{\pi}}\int_{-\infty}^\infty\exp{\left[-(a+b^2)\left(t+\frac{bc}{a+b^2}\right)^2-\frac{ac^2}{a+b^2}\right]}\,\mathrm{d}t=
+\end{equation}
+
+\begin{equation}
+    \frac{2}{\sqrt{\pi}}\exp{\left[-\frac{ac^2}{a+b^2}\right]}\int_{-\infty}^\infty\exp{\left[-(a+b^2)u^2\right]}\,\mathrm{d}u=\frac{2}{\sqrt{a+b^2}}\exp{\left[-\frac{ac^2}{a+b^2}\right]}
+\end{equation}
+
+We shall now integrate the result with respect to the parameter:
+
+\begin{equation}
+    I(a,b,c)=\int_0^c\frac{\partial I(a,b,c)}{\partial c}\,\mathrm{d}c=\sqrt{\frac{\pi}{a}}\,\text{erf}\,\left(c\sqrt{\frac{a}{a+b^2}}\right)
+\end{equation}
+
+where the lower bound is taken to be $c=0$ since the error function is odd, giving $I(a,b,0)=0$. Finally, setting $c=b/2$ and reverting all substitutions one by one, we obtain:
+
+\begin{equation}
+    J(a,b)=\exp{\left[\frac{m_\sigma u_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\sqrt{\frac{\pi k_\mathrm{B}T_\sigma}{2m_\sigma u_\sigma^2}}\,\text{erf}\left(u_\sigma\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right)
+\end{equation}
+
+\begin{equation}
+    \label{eq-fokker-78}
+    \bar{K}_2(u_\sigma)=u_\sigma J(a,b)=\exp{\left[\frac{m_\sigma u_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\sqrt{\frac{\pi k_\mathrm{B}T_\sigma}{2m_\sigma}}\,\text{erf}\left(\frac{u_\sigma}{\sqrt{2k_\mathrm{B}T_\sigma/m_\sigma+2k_\mathrm{B}T_\rho/m_\rho}}\right)
+\end{equation}
+
+\begin{equation}
+    \bar{K}_1(u_\sigma)=\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\exp{\left[\frac{m_\sigma\mathbf{u}_\sigma^2}{2k_\mathrm{B}T_\sigma}\bigg/\left(1+\frac{T_\sigma m_\rho}{T_\rho m_\sigma}\right)\right]}\,+
+\end{equation}
+
+\begin{equation}
+    +\,u_\sigma\sqrt{\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}}\exp{\left[\frac{m_\sigma\mathbf{u}_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\text{erf}\left(\frac{u_\sigma}{\sqrt{2k_\mathrm{B}(T_\sigma/m_\sigma+T_\rho/m_\rho)}}\right)
+\end{equation}
+
+We may now express the integrals $K_1(\mathbf{u}_\sigma)$ and $K_2(\mathbf{u}_\sigma)$:
+
+\begin{equation}
+    K_1(\mathbf{u}_\sigma)=\frac{1}{\|\mathbf{u}_\sigma\|\sqrt{\pi}}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\exp{\left[-\frac{m_\sigma\mathbf{u}_\sigma^2}{2k_\mathrm{B}T_\sigma}\bigg/\left(1+\frac{m_\sigma T_\rho}{m_\rho T_\sigma}\right)\right]}\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\Big/\left(1+\frac{m_\sigma T_\rho}{m_\rho T_\sigma}\right)}+
+\end{equation}
+
+\begin{equation}
+    +\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\text{erf}\,\left(u_\sigma\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right)
+\end{equation}
+
+\begin{equation}
+    K_2(\mathbf{u}_\sigma)=\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\left(1+\frac{k_\mathrm{B}T_\sigma}{m_\sigma \mathbf{u}_\sigma^2}\right)\,\text{erf}\left(\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right)
+\end{equation}
+
+The integral $\mathbf{K}(\mathbf{u}_\sigma)$ was defined as follows:
+
+\begin{equation}
+    \mathbf{K}(\mathbf{u}_\sigma)=\frac{\mathbf{u}_\sigma}{\mathbf{u}_\sigma^2\sqrt{\pi}}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\exp{\left[-\frac{m_\sigma\mathbf{u}_\sigma^2}{2k_\mathrm{B}T_\sigma}\bigg/\left(1+\frac{m_\sigma T_\rho}{m_\rho T_\sigma}\right)\right]}\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\Big/\left(1+\frac{m_\sigma T_\rho}{m_\rho T_\sigma}\right)}\,+
+\end{equation}
+
+\begin{equation}
+    -\,\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\frac{k_\mathrm{B}T_\sigma\mathbf{u}_\sigma}{m_\sigma\|\mathbf{u}_\sigma\|^3}\,\text{erf}\left(\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right)
+\end{equation}
+
+Thus, the slowing down frequency between species $\sigma$ and $\rho$ turns out to be:
+
+\begin{equation*}
+    \nu_{\sigma\to\rho}=-\frac{n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{2\pi^{3/2}\varepsilon_0^2\mu_{\sigma\rho}m_\sigma}\frac{1}{\mathbf{u}_\sigma^2}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\,+
+\end{equation*}
+
+\begin{equation}
+    \label{eq-1-140}
+    +\,\frac{n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2\mu_{\sigma\rho}m_\sigma}\frac{1}{\|\mathbf{u}_\sigma\|^3}\,\text{erf}\left(\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right)
+\end{equation}
+
+Notice that, due to our definition of the slowing down frequency, if both species $\sigma$ and $\rho$ were stationary, that is $\mathbf{u}_\sigma=\mathbf{0}$, we intuitively expect that the rate of momentum loss is identically zero. Our result clearly indicates possible divergent behaviour near $\mathbf{u}_\sigma=\mathbf{0}$. Observe, however, that expanding the expression up to all non-vanishing terms of $\mathbf{u}_\sigma$ results in immediate cancellation of divergent terms, while terms of order $\mathbf{u}_\sigma^2$ and higher vanish by indeed taking the limit:
+
+\begin{equation}
+    \lim_{\mathbf{u}_\sigma\to\mathbf{0}}\nu_{\sigma\to\rho}=\frac{n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{2\pi^{3/2}\varepsilon_0^2\mu_{\sigma\rho}m_\sigma}\lim_{\mathbf{u}_\sigma\to\mathbf{0}}\left[\left(\frac{1}{\mathbf{u}_\sigma^2}-\frac{1}{\mathbf{u}_\sigma^2}\right)+\mathcal{O}(1)\right]
+\end{equation}
+
+In the case of fully stationary species $\sigma$ and $\rho$, the slowing down, or equivalently, collision frequency, is simply given by the following expression obtained by evaluating the previous limit:
+
+\begin{equation}
+    \label{eq-1-143}
+    \nu_{\sigma\to\rho}=\frac{n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{6\sqrt{2}\pi^{3/2}\varepsilon_0^2\mu_{\sigma\rho}m_\sigma}\left(\frac{k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{k_\mathrm{B}T_\rho}{m_\rho}\right)^{-3/2}
+\end{equation}
+
+Notice that conservation of momentum, however, postulates:
+
+\begin{equation}
+    \label{eq-1-144}
+    n_\sigma m_\sigma\nu_{\sigma\to\rho}=n_\rho m_\rho\nu_{\rho\to\sigma}
+\end{equation}
+
+which is indeed the case. We have thus obtained a physically relevant result.
+
+\subsection{Diffusion of kinetic energy}
+
+We begin our considerations of kinetic energy diffusion by first evaluating the first Rosenbluth potential for a stationary Maxwellian distribution of target particles, that is:
+
+\begin{equation}
+    g_\rho(\mathbf{v}_\sigma)=n_\rho\left(\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}\right)^{3/2}\iiint_{\mathbb{R}^3}\|\mathbf{v}_\sigma-\mathbf{v}_\rho\|\exp{\left[-\frac{m_\rho\mathbf{v}_\rho^2}{2k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}^3\mathbf{v}_\rho
+\end{equation}
+
+Performing the shift $\mathbf{v}_\rho=\mathbf{v}_\sigma+\bar{\mathbf{v}}_\rho$, we find:
+
+\begin{equation}
+    g_\rho(\mathbf{v}_\sigma)=n_\rho\left(\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}\right)^{3/2}\iiint_{\mathbb{R}^3}\|\bar{\mathbf{v}}_\rho\|\exp{\left[-\frac{m_\rho(\mathbf{v}_\sigma+\bar{\mathbf{v}}_\rho)^2}{2k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}^3\bar{\mathbf{v}}_\rho=
+\end{equation}
+
+\begin{equation}
+    =2\pi n_\rho\left(\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}\right)^{3/2}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}\int_0^\infty\bar{v}_\rho^3\exp{\left[-\frac{m_\rho\bar{v}_\rho^2}{2k_\mathrm{B}T_\rho}\right]}\int_0^\pi\exp{\left[-\frac{m_\rho v_\sigma\bar{v}_\rho}{k_\mathrm{B}T_\rho}\cos{\theta}\right]}\sin{\theta}\,\mathrm{d}\theta\,\mathrm{d}\bar{v}_\rho
+\end{equation}
+
+where we have evidently chosen a spherical coordinate system with $\theta=0$ aligning with $\mathbf{v}_\sigma$. We had already encountered the integral over the polar angle:
+
+\begin{equation}
+    g_\rho(\mathbf{v}_\sigma)=\frac{2n_\rho}{\|\mathbf{v}_\sigma\|}\sqrt{\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}\int_0^\infty\bar{v}_\rho^2\exp{\left[-\frac{m_\rho\bar{v}_\rho^2}{2k_\mathrm{B}T_\rho}\right]}\sinh{\left[\frac{m_\rho v_\sigma\bar{v}_\rho}{k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}\bar{v}_\rho=
+\end{equation}
+
+\begin{equation}
+    =\frac{n_\rho}{\|\mathbf{v}_\sigma\|}\sqrt{\frac{m_\rho}{2\pi k_\mathrm{B}T_\rho}}\underbrace{\int_0^\infty\bar{v}_\rho^2\left(\exp{\left[-\frac{m_\rho(\bar{v}_\rho-v_\sigma)^2}{2k_\mathrm{B}T_\rho}\right]}-\exp{\left[-\frac{m_\rho(\bar{v}_\rho+v_\sigma)^2}{2k_\mathrm{B}T_\rho}\right]}\right)\mathrm{d}\bar{v}_\rho}_{I(v_\sigma)}
+\end{equation}
+
+Performing the substitutions $\bar{v}_\rho=\xi+v_\sigma$ for the first integral and $\bar{v}_\rho=\xi-v_\sigma$ for the second, we may separate the integral as follows:
+
+\begin{equation}
+    I(v_\sigma)=4v_\sigma\int_{v_\sigma}^\infty\xi\exp{\left[-\frac{m_\rho\xi^2}{2k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}\xi+\int_{-v_\sigma}^{v_\sigma}(\xi+v_\sigma)^2\exp{\left[-\frac{m_\rho\xi^2}{2k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}\xi=4v_\sigma J(v_\sigma)+K(v_\sigma)
+\end{equation}
+
+Notice that the second integral can be expanded as:
+
+\begin{equation}
+    K(v_\sigma)=\int_{-v_\sigma}^{v_\sigma}\xi^2\exp{\left[-\frac{m_\rho\xi^2}{2k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}\xi+v_\sigma^2\int_{-v_\sigma}^{v_\sigma}\exp{\left[-\frac{m_\rho\xi^2}{2k_\mathrm{B}T_\rho}\right]}\,\mathrm{d}\xi
+\end{equation}
+
+The second integral generates the first upon differentiating with respect to the parameter in the exponent. Imposing $\alpha=m_\rho/2k_\mathrm{B}T_\rho$:
+
+\begin{equation}
+    \frac{\partial}{\partial\alpha}\left(\int_{-v_\sigma}^{v_\sigma}\exp{\left[-\alpha\xi^2\right]}\,\mathrm{d}\xi\right)=-\int_{-v_\sigma}^{v_\sigma}\xi^2\exp{\left[-\alpha\xi^2\right]}\,\mathrm{d}\xi
+\end{equation}
+
+Substituting $\zeta=\xi\sqrt{\alpha}$, we find:
+
+\begin{equation}
+    \int_{-v_\sigma}^{v_\sigma}\exp{\left[-\alpha\xi^2\right]}\,\mathrm{d}\xi=\frac{1}{\sqrt{\alpha}}\int_{-v_\sigma\sqrt{\alpha}}^{v_\sigma\sqrt{\alpha}}\exp{[-\zeta^2]}\,\mathrm{d}\zeta=\sqrt{\frac{\pi}{\alpha}}\,\text{erf}\,(v_\sigma\sqrt{\alpha})=\sqrt{\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho}}\,\text{erf}\,\left(\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right)
+\end{equation}
+
+\begin{equation}
+    \int_{-v_\sigma}^{v_\sigma}\xi^2\exp{[-\alpha\xi^2]}\,\mathrm{d}\xi=\frac{1}{2\alpha}\sqrt{\frac{\pi}{\alpha}}\,\text{erf}\,(v_\sigma\sqrt{\alpha})-\frac{v_\sigma}{\alpha}\exp{[-\alpha v_\sigma^2]}
+\end{equation}
+
+\begin{equation}
+    K(v_\sigma)=\left(\frac{k_\mathrm{B}T_\rho}{m_\rho}+\mathbf{v}_\sigma^2\right)\sqrt{\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho}}\,\text{erf}\,\left[\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]-\frac{2k_\mathrm{B}T_\rho v_\sigma}{m_\rho}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}
+\end{equation}
+
+Meanwhile, $J(v_\sigma)$ is easily solved by expanding the differential, so that:
+
+\begin{equation}
+    4v_\sigma J(v_\sigma)=\frac{4k_\mathrm{B}T_\rho v_\sigma}{m_\rho}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}
+\end{equation}
+
+\begin{equation}
+    I(v_\sigma)=\left(\frac{k_\mathrm{B}T_\rho}{m_\rho}+\mathbf{v}_\sigma^2\right)\sqrt{\frac{2\pi k_\mathrm{B}T_\rho}{m_\rho}}\,\text{erf}\,\left[\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]+\frac{2k_\mathrm{B}T_\rho v_\sigma}{m_\rho}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}
+\end{equation}
+
+We have thus obtained the Rosenbluth potential $g_\rho(\mathbf{v}_\sigma)$:
+
+\begin{equation}
+    g_\rho(\mathbf{v}_\sigma)=n_\rho\left[\left(\frac{k_\mathrm{B}T_\rho}{m_\rho\|\mathbf{v}_\sigma\|}+\|\mathbf{v}_\sigma\|\right)\,\text{erf}\,\left[\|\mathbf{v}_\sigma\|\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right]+\sqrt{\frac{2k_\mathrm{B}T_\rho}{\pi m_\rho}}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}\right]
+\end{equation}
+
+It is now only appropriate to use it to determine the diffusion of kinetic energy. We multiply the Fokker-Planck equation given in eq. (\ref{eq-1-91}) by $\mathbf{v}_\sigma^2/2$, so that:
+
+\iffalse
+
+\begin{equation}
+    \frac{1}{2}\mathbf{v}_\sigma^2\frac{\partial f_\sigma}{\partial t}=\sum_{\rho}\frac{q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2m_\sigma^2}\left[-\frac{\mathbf{v}_\sigma^2}{2}\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\right)+\frac{\mathbf{v}_\sigma^2}{4}\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}:\left(f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\right)\right]
+\end{equation}
+
+\fi
+
+We now wish to perform the average over the velocity coordinate of species $\mathbf{v}_\sigma$, thus effectively taking the second moment of the Fokker-Planck equation. We shall perform the following manipulations to simplify our expression. Notice that, when partially integrating, the Maxwellian nature of distribution functions ensures that all boundary terms vanish:
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\frac{\mathbf{v}_\sigma^2}{2}\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left(f_\sigma\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\right)\,\mathrm{d}^3\mathbf{v}_\sigma=-\iiint_{\mathbb{R}^3}\mathbf{v}_\sigma\cdot f_\sigma\frac{\partial h_\rho}{\partial\mathbf{v}_\sigma}\,\mathrm{d}^3\mathbf{v}_\sigma=
+\end{equation}
+
+\begin{equation}
+    =-\iiint_{\mathbb{R}^3}f_\sigma\left[\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot(h_\rho\mathbf{v}_\sigma)-3h_\rho\right]\,\mathrm{d}^3\mathbf{v}_\sigma=\iiint_{\mathbb{R}^3}\left(3f_\sigma+\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}_\sigma}\right)h_\rho\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+\iffalse
+
+\begin{equation}
+    \iiint_{\mathbb{R}^3}\frac{\mathbf{v}_\sigma^2}{4}\frac{\partial^2}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}:\left(f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\right)\mathrm{d}^3\mathbf{v}_\sigma=-\iiint_{\mathbb{R}^3}\frac{\mathbf{v}_\sigma}{2}\cdot\left(\frac{\partial}{\partial\mathbf{v}_\sigma}\cdot\left[f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma\partial\mathbf{v}_\sigma}\right]\right)\,\mathrm{d}^3\mathbf{v}_\sigma=
+\end{equation}
+
+\fi
+
+\begin{equation}
+    =\frac{1}{2}\iiint_{\mathbb{R}^3}f_\sigma\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma^2}\,\mathrm{d}^3\mathbf{v}_\sigma=\frac{1}{2}\iiint_{\mathbb{R}^3}g_\rho\frac{\partial^2f_\sigma}{\partial\mathbf{v}_\sigma^2}\,\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+where the second partial derivative in the last two expressions is the Laplacian in velocity coordinates, and the last equality is established using Green's 2nd identity and noticing that boundary terms vanish due to the rapid decay of both $f_\sigma$, as a Maxwellian distribution, and $g_\rho$, since its fastest growing term is linear in the velocity norm. Evaluating the terms related to $f_\sigma$, we find:
+
+\begin{equation}
+    3f_\sigma+\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}_\sigma}=n_\sigma\left(\frac{m_\sigma}{2\pi k_\mathrm{B}T_\sigma}\right)^{3/2}\left[3+\frac{m_\sigma\mathbf{u}_\sigma\cdot\mathbf{v}_\sigma}{k_\mathrm{B}T_\sigma}-\frac{m_\sigma\mathbf{v}_\sigma^2}{k_\mathrm{B}T_\sigma}\right]\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2f_\sigma}{\partial\mathbf{v}_\sigma^2}=\frac{n_\sigma}{(2\pi)^{3/2}}\left(\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\right)^{5/2}\left[\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{k_\mathrm{B}T_\sigma}-3\right]\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}
+\end{equation}
+
+Omitting the sum over target particle species, we shall express the Fokker-Planck equation as follows:
+
+\begin{equation}
+    \frac{\partial}{\partial t}\iiint_{\mathbb{R}^3}\frac{1}{2}f_\sigma\mathbf{v}_\sigma^2\,\mathrm{d}^3\mathbf{v}_\sigma=\frac{q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2m_\sigma^2}\Bigg[-\underbrace{\iiint_{\mathbb{R}^3}\left[3f_\sigma+\mathbf{v}_\sigma\cdot\frac{\partial f_\sigma}{\partial\mathbf{v}_\sigma}\right]h_\rho\,\mathrm{d}^3\mathbf{v}_\sigma}_{H(\mathbf{u}_\sigma)}+\underbrace{\frac{1}{2}\iiint_{\mathbb{R}^3}g_\rho\frac{\partial^2f_\sigma}{\partial\mathbf{v}_\sigma^2}\,\mathrm{d}^3\mathbf{v}_\sigma}_{G(\mathbf{u}_\sigma)}\Bigg]
+\end{equation}
+
+\begin{equation}
+    H(\mathbf{u}_\sigma)=\frac{n_\sigma n_\rho m_\sigma}{\mu_{\sigma\rho}}\left(\frac{m_\sigma}{2\pi k_\mathrm{B}T_\sigma}\right)^{3/2}\bar{H}(\mathbf{u}_\sigma)
+\end{equation}
+
+\begin{equation}
+    G(\mathbf{u}_\sigma)=\frac{n_\sigma n_\rho m_\sigma}{2k_\mathrm{B}T_\sigma}\left(\frac{m_\sigma}{2\pi k_\mathrm{B}T_\sigma}\right)^{3/2}\left[\frac{k_\mathrm{B}T_\rho}{m_\rho}\bar{G}_1(\mathbf{u}_\sigma)+\bar{G}_2(\mathbf{u}_\sigma)+\sqrt{\frac{2k_\mathrm{B}T_\rho}{\pi m_\rho}}\bar{G}_3(\mathbf{u}_\sigma)\right]
+\end{equation}
+
+Henceforth, we shall evaluate the following integrals:
+
+\begin{equation}
+    \bar{H}(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\left(3+\frac{m_\sigma\mathbf{u}_\sigma\cdot\mathbf{v}_\sigma}{k_\mathrm{B}T_\sigma}-\frac{m_\sigma\mathbf{v}_\sigma^2}{k_\mathrm{B}T_\sigma}\right)\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left[\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]\frac{\mathrm{d}^3\mathbf{v}_\sigma}{\|\mathbf{v}_\sigma\|}
+\end{equation}
+
+\begin{equation}
+    \bar{G}_1(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\left(\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{k_\mathrm{B}T_\sigma}-3\right)\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\,\text{erf}\,\left[\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]\frac{\mathrm{d}^3\mathbf{v}_\sigma}{\|\mathbf{v}_\sigma\|}
+\end{equation}
+
+\begin{equation}
+    \bar{G}_2(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\left(\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{k_\mathrm{B}T_\sigma}-3\right)\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\|\mathbf{v}_\sigma\|\,\text{erf}\,\left[\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+\begin{equation}
+    \bar{G}_3(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\left(\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{k_\mathrm{B}T_\sigma}-3\right)\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\exp{\left[-\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}\right]}\mathrm{d}^3\mathbf{v}_\sigma
+\end{equation}
+
+Notice that all of these integrals are absolutely convergent due to the Maxwellian terms. Several of them are of the same or equivalent type, so that we shall define the following integral in order to pragmatically evaluate the aforementioned:
+
+\begin{equation}
+    I(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left[\|\mathbf{v}_\sigma\|\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right]\frac{\mathrm{d}^3\mathbf{v}_\sigma}{\|\mathbf{v}_\sigma\|}=
+\end{equation}
+
+\begin{equation}
+    =2\pi\int_0^\infty\exp{\left[-\frac{m_\sigma(v_\sigma^2+u_\sigma^2)}{2k_\mathrm{B}T_\sigma}\right]}\,\text{erf}\,\left[v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right]J(u_\sigma, v_\sigma)\,v_\sigma\,\mathrm{d}v_\sigma
+\end{equation}
+
+\begin{equation}
+    J(u_\sigma,v_\sigma)=\int_0^\pi\exp{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\cos{\theta}\right]}\sin{\theta}\,\mathrm{d}\theta=\frac{2k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma v_\sigma}\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}
+\end{equation}
+
+\begin{equation}
+    I(\mathbf{u}_\sigma)=\frac{4\pi k_\mathrm{B}T_\sigma}{m_\sigma u_\sigma}\exp{\left[-\frac{m_\sigma\mathbf{u}_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\underbrace{\int_0^\infty\exp{\left[-\frac{m_\sigma v_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\,\text{erf}\,\left[v_\sigma\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right]\,\mathrm{d}v_\sigma}_{\bar{K}_2(u_\sigma)}
+\end{equation}
+
+where we recognise having already solved this integral in the previous section, whose solution is given by expression (\ref{eq-fokker-78}). We thus find the newly defined integral:
+
+\begin{equation}
+    I(\mathbf{u}_\sigma)=\frac{1}{\|\mathbf{u}_\sigma\|}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\text{erf}\left(\|\mathbf{u}_\sigma\|\bigg/{\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}}\right)
+\end{equation}
+
+Three of four integrals can thus be evaluated as follows:
+
+\begin{equation}
+    \bar{H}(\mathbf{u}_\sigma)=3I(\mathbf{u}_\sigma)+\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\frac{\partial I(\mathbf{u}_\sigma)}{\partial(\frac{m_\sigma}{2k_\mathrm{B}T_\sigma})}-\|\mathbf{u}_\sigma\|\frac{\partial I(\mathbf{u}_\sigma)}{\partial(\|\mathbf{u}_\sigma\|)}
+\end{equation}
+
+\begin{equation}
+    \bar{G}_1(\mathbf{u}_\sigma)=-3I(\mathbf{u}_\sigma)-\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\frac{\partial I(\mathbf{u}_\sigma)}{\partial\left(\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}\right)}
+\end{equation}
+
+\begin{equation}
+    \bar{G}_3(\mathbf{u}_\sigma)=\frac{\sqrt{\pi}}{2}\frac{\partial\bar{G}_1(\mathbf{u}_\sigma)}{\partial\left(\sqrt{\frac{m_\rho}{2k_\mathrm{B}T_\rho}}\right)}=\sqrt{\frac{\pi m_\rho}{2k_\mathrm{B}T_\rho}}\frac{\partial\bar{G}_1(\mathbf{u}_\sigma)}{\partial\left(\frac{m_\rho}{2k_\mathrm{B}T_\rho}\right)}
+\end{equation}
+
+It is, at first glance, not exactly evident how to evaluate $\bar{G}_2(\mathbf{u}_\sigma)$. Let us introduce:
+
+\begin{equation}
+    J(\mathbf{u}_\sigma)=\iiint_{\mathbb{R}^3}\|\mathbf{v}_\sigma\|\exp{\left[-\frac{m_\sigma(\mathbf{v}_\sigma-\mathbf{u}_\sigma)^2}{2k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left[\sqrt{\frac{m_\rho\mathbf{v}_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]\mathrm{d}^3\mathbf{v}_\sigma=
+\end{equation}
+
+\begin{equation}
+    =\frac{4\pi k_\mathrm{B}T_\sigma}{m_\sigma\|\mathbf{u}_\sigma\|}\int_{0}^\infty v_\sigma^2\exp{\left[-\frac{m_\sigma(v_\sigma^2+u_\sigma^2)}{2k_\mathrm{B}T_\sigma}\right]}\sinh{\left[\frac{m_\sigma u_\sigma v_\sigma}{k_\mathrm{B}T_\sigma}\right]}\text{erf}\,\left[\sqrt{\frac{m_\rho v_\sigma^2}{2k_\mathrm{B}T_\rho}}\right]\,\mathrm{d}v_\sigma
+\end{equation}
+
+Notice that we have practically already solved this integral:
+
+\begin{equation}
+    J(\mathbf{u}_\sigma)=\frac{\pi}{2\|\mathbf{u}_\sigma\|}\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\right)^3\exp{\left[-\frac{m_\sigma\mathbf{u}_\sigma^2}{2k_\mathrm{B}T_\sigma}\right]}\frac{\partial^2\bar{K}_2(\mathbf{u}_\sigma)}{\partial(\|\mathbf{u}_\sigma\|)^2}
+\end{equation}
+
+\begin{equation}
+    \bar{G}_2(\mathbf{u}_\sigma)=-3J(\mathbf{u}_\sigma)-\frac{m_\sigma}{k_\mathrm{B}T_\sigma}\frac{\partial J(\mathbf{u}_\sigma)}{\partial\left(\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}\right)}
+\end{equation}
+
+Reverting all substitutions one by one, we obtain:
+
+\begin{equation*}
+    \frac{m_\sigma}{k_\mathrm{B}T_\sigma}\frac{\partial I(\mathbf{u}_\sigma)}{\partial\left(\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}\right)}=\frac{4k_\mathrm{B}T_\sigma}{\sqrt{\pi}m_\sigma}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}+
+\end{equation*}
+
+\begin{equation}
+    -\,\frac{3}{\|\mathbf{u}_\sigma\|}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\text{erf}\,\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]
+\end{equation}
+
+\begin{equation*}
+    \|\mathbf{u}_\sigma\|\frac{\partial I(\mathbf{u}_\sigma)}{\partial(\|\mathbf{u}_\sigma\|)}=\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}\bigg/\sqrt{\frac{\pi k_\mathrm{B}T_\sigma}{2m_\sigma}+\frac{\pi k_\mathrm{B}T_\rho}{2m_\rho}}\,+
+\end{equation*}
+
+\begin{equation}
+    -\,\frac{1}{\|\mathbf{u}_\sigma\|}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\text{erf}\,{\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]}
+\end{equation}
+
+\begin{equation*}
+    J(\mathbf{u}_\sigma)=\pi\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{7/2}\frac{\left(1+\frac{m_\sigma}{2k_\mathrm{B}T_\sigma}\frac{4k_\mathrm{B}T_\rho}{m_\rho}\right)}{\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}\,+
+\end{equation*}
+
+\begin{equation}
+    +\,\frac{\pi^{3/2}}{2\|\mathbf{u}_\sigma\|}\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{5/2}\left(1+\frac{m_\sigma\mathbf{u}_\sigma^2}{k_\mathrm{B}T_\sigma}\right)\text{erf}\,{\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]}
+\end{equation}
+
+We may now express the desired integrals, namely:
+
+\begin{equation*}
+    H(\mathbf{u}_\sigma)=-\frac{4n_\sigma n_\rho m_\sigma}{\sqrt{\pi}\mu_{\sigma\rho}}\frac{k_\mathrm{B}T_\rho}{m_\rho}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}+
+\end{equation*}
+
+\begin{equation}
+    +\,\frac{n_\sigma n_\rho m_\sigma}{\mu_{\sigma\rho}\|\mathbf{u}_\sigma\|}\text{erf}\,\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]
+\end{equation}
+
+\begin{equation}
+    \frac{k_\mathrm{B}T_\rho}{m_\rho}\bar{G}_1(\mathbf{u}_\sigma)=-\frac{2k_\mathrm{B}T_\sigma}{\sqrt{\pi}m_\sigma}\frac{2k_\mathrm{B}T_\rho}{m_\rho}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\frac{\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}}{\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}}
+\end{equation}
+
+\begin{equation*}
+    \bar{G}_2(\mathbf{u}_\sigma)=\frac{2k_\mathrm{B}T_\sigma}{m_\sigma\|\mathbf{u}_\sigma\|}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\text{erf}\,\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]\,+
+\end{equation*}
+
+\begin{equation*}
+    -\frac{4\mathbf{u}_\sigma^2k_\mathrm{B}T_\sigma}{\sqrt{\pi}m_\sigma}\left(\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^2\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{7/2}+
+\end{equation*}
+
+\begin{equation}
+    +\,\frac{2k_\mathrm{B}T_\sigma}{\sqrt{\pi}m_\sigma}\frac{2k_\mathrm{B}T_\rho}{m_\rho}\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\frac{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+4\frac{2k_\mathrm{B}T_\rho}{m_\rho}}{\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{5/2}}\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}
+\end{equation}
+
+\begin{equation*}
+    \sqrt{\frac{2k_\mathrm{B}T_\rho}{\pi m_\rho}}\bar{G}_3(\mathbf{u}_\sigma)=\frac{4\mathbf{u}_\sigma^2k_\mathrm{B}T_\sigma}{\sqrt{\pi}m_\sigma}\left(\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^2\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\frac{\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}}{\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{7/2}}+
+\end{equation*}
+
+\begin{equation}
+    -\,\frac{3}{\sqrt{\pi}}\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}\left(\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^2\left(\frac{2\pi k_\mathrm{B}T_\sigma}{m_\sigma}\right)^{3/2}\frac{\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}}{\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{5/2}}
+\end{equation}
+
+Summing the last three integrals, we find that the contribution of the Rosenbluth $g$-potential is simply:
+
+\begin{equation}
+    G(\mathbf{u}_\sigma)=\frac{n_\sigma n_\rho}{\|\mathbf{u}_\sigma\|}\text{erf}\,\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]
+\end{equation}
+
+Thus, the rate of net-energy loss is given by:
+
+\begin{equation*}
+    \frac{\partial}{\partial t}\left(\frac{1}{2}n_\sigma m_\sigma\mathbf{u}_\sigma^2+\frac{3}{2}n_\sigma k_\mathrm{B}T_\sigma\right)=\frac{n_\sigma n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{2\pi^{3/2}\varepsilon_0^2\mu_{\sigma\rho}}\frac{2k_\mathrm{B}T_\rho}{m_\rho}\frac{\exp{\left[-\mathbf{u}_\sigma^2\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)\right]}}{\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}}+
+\end{equation*}
+
+\begin{equation}
+    \label{eq-fokker-138}
+    -\frac{n_\sigma n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2m_\rho\|\mathbf{u}_\sigma\|}\text{erf}\,\left[\|\mathbf{u}_\sigma\|\bigg/\sqrt{\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}}\right]
+\end{equation}
+
+Taking the stationary limit, that is, letting $\|\mathbf{u}_\sigma\|\to0$, the energy exchange rate is determined to be:
+
+\begin{equation}
+    \label{eq-fokker-139}
+    \frac{\partial}{\partial t}\left(\frac{3}{2}n_\sigma k_\mathrm{B}T_\sigma\right)=\frac{n_\sigma n_\rho q_\sigma^2q_\rho^2\ln{\Lambda}}{2\pi^{3/2}\varepsilon_0^2}\frac{2k_\mathrm{B}(T_\rho-T_\sigma)}{m_\sigma m_\rho}\bigg/\left(\frac{2k_\mathrm{B}T_\sigma}{m_\sigma}+\frac{2k_\mathrm{B}T_\rho}{m_\rho}\right)^{3/2}
+\end{equation}
+
+Notice that the determined energy exchange rate is directly proportional to the temperature difference $T_\rho-T_\sigma$, thus no energy exchange occurs in the case of two mutually thermalised species, as expected. All other terms being symmetric upon exchange $\sigma\leftrightarrow\rho$, it is clear that summing the exchange rates between two species gives identically zero, thus confirming the physical relevance of the obtained result.
+
+\quad In order to evaluate the frequency of energy dissipation, we simply impose:
+
+\begin{equation}
+    \frac{\langle\Delta E_\sigma\rangle}{\Delta t}=\frac{1}{2}m_\sigma\text{Tr}\left(\frac{\langle\Delta\mathbf{v}_\sigma\Delta\mathbf{v}_\sigma\rangle}{\Delta t}\right)=\frac{q_\sigma^2q_\rho^2\ln{\Lambda}}{4\pi\varepsilon_0^2m_\sigma}\frac{1}{2}\frac{\partial^2g_\rho}{\partial\mathbf{v}_\sigma^2}
+\end{equation}
+
+\begin{center}
+    \textbf{CONTINUE}
+\end{center}
+

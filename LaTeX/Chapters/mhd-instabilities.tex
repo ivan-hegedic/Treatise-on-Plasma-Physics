@@ -1,0 +1,243 @@
+\chapter{Magnetohydrodynamic instabilities}
+
+\label{mhd-instabilities}
+
+\section{Normal modes and instability}
+
+To study the behaviour of small perturbations about a static equilibrium state, we write for all quantities $f=f^\square+\varepsilon\bar{f}$ for $f=\mathbf{u}$, the total flow velocity, $\mathbf{B}$, the total magnetic field, $p$, the scalar magnetohydrodynamic pressure, and $\rho$, the mass density, and linearise the magnetohydrodynamic equations about the static equilibrium quantities. We recall the magnetohydrodynamic equations:
+
+\begin{equation}
+    \label{eq-instability-1}
+    \rho\frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t}=\mathbf{J}\times\mathbf{B}-\nabla p\implies\rho_0\frac{\partial\bar{\mathbf{u}}}{\partial t}=-\nabla\bar{p}+(\nabla\times\bar{\mathbf{B}})\times\frac{\mathbf{B}_0}{\mu_0}+(\nabla\times\mathbf{B}_0)\times\frac{\bar{\mathbf{B}}}{\mu_0}+\nu\nabla^2\mathbf{u}
+\end{equation}
+
+\begin{equation}
+    \label{eq-instability-2}
+    \frac{\partial\mathbf{B}}{\partial t}=\nabla\times(\mathbf{u}\times\mathbf{B})+\eta\nabla^2\mathbf{B}\implies\frac{\partial\bar{\mathbf{B}}}{\partial t}=\nabla\times(\bar{\mathbf{u}}\times\mathbf{B}_0)+\eta\nabla^2\bar{\mathbf{B}}
+\end{equation}
+
+\begin{equation}
+    \label{eq-instability-3}
+    \frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\mathbf{u})=0\implies\frac{\partial\bar{\rho}}{\partial t}=-\nabla\cdot(\rho_0\bar{\mathbf{u}})=
+\end{equation}
+
+\begin{equation}
+    \label{eq-instability-4}
+    \diff{}{t}\left(\frac{p}{\rho^\gamma}\right)=0\implies\frac{\partial p}{\partial t}+\mathbf{u}\cdot\nabla p+\gamma p\nabla\cdot\mathbf{v}=0\implies\frac{\partial\bar{p}}{\partial t}=-\bar{\mathbf{u}}\cdot\nabla p_0+\gamma p_0\nabla\cdot\bar{\mathbf{u}}
+\end{equation}
+
+In the ideal case, where $\eta,\nu\to0$, these equations can be reduced into a single equation for the displacement vector $\boldsymbol{\xi}$ defined by $\bar{\mathbf{u}}=\dot{\boldsymbol{\xi}}$, so that integration of equations (\ref{eq-instability-1}) through (\ref{eq-instability-4}) gives the perturbations $\bar{\mathbf{B}}$, $\bar{p}$ and $\bar{\rho}$ in terms of $\boldsymbol{\xi}$ as follows:
+
+\begin{equation}
+    \label{eq-instability-5}
+    \bar{\mathbf{B}}=\nabla\times(\boldsymbol{\xi}\times\mathbf{B}_0)\qquad\bar{p}=-\boldsymbol{\xi}\cdot\nabla p_0-\gamma p_0\nabla\cdot\boldsymbol{\xi}\qquad\bar{\rho}=-\nabla\cdot(\rho_0\boldsymbol{\xi})
+\end{equation}
+
+Indeed, we employed this method precisely throughout Chapter \ref{plasma-waves} when considering homogeneous plasma in a homogeneous external magnetic field. Inserting equation (\ref{eq-instability-5}) into (\ref{eq-instability-1}) gives:
+
+\begin{equation}
+    \label{eq-instability-6}
+    \rho_0\ddot{\boldsymbol{\xi}}=\mathbf{F}(\boldsymbol{\xi})=(\nabla\times\bar{\mathbf{B}})\times\frac{\mathbf{B}_0}{\mu_0}+(\nabla\times\mathbf{B}_0)\times\frac{\bar{\mathbf{B}}}{\mu_0}+\nabla(\boldsymbol{\xi}\cdot\nabla p_0+\gamma p_0\nabla\cdot\boldsymbol{\xi})
+\end{equation}
+
+The previous equation, in the ideal case $\eta,\nu\to0$, describes the time evolution of a small-amplitude perturbation applied at $t=0$ and is fully determined by the initial values $\boldsymbol{\xi}(\mathbf{x},0)$, $\dot{\boldsymbol{\xi}}(\mathbf{x},0)$, and by appropriate boundary conditions. Moreover, it is independent of the density gradient. We shall consider the case of finite resistivity later on. Instead of solving this initial value problem for different perturbations, we shall, on the contrary, consider the equivalent problem of determining the normal modes of the system of equations given by (\ref{eq-instability-6}). The linearity of the equation in terms of $\boldsymbol{\xi}$ allows us to consider a single Fourier mode, so that equation (\ref{eq-instability-6}) takes the form:
+
+\begin{equation}
+    \label{eq-inst-7}
+    -\rho_0\omega^2\boldsymbol{\xi}=\mathbf{F}(\boldsymbol{\xi})
+\end{equation}
+
+Since boundary conditions are required to solve the initial value problem, the general solution for arbitrary $\omega$ does not exist. Instead, this equation can be viewed as an eigenvalue problem for the eigenvalue $\omega^2$ and the eigenfunctions $\boldsymbol{\xi}$. The knowledge of the spectrum, i.e., the set of admissible eigenvalues, and the corresponding eigenfunctions allows us to solve the initial value problem for a homogeneous system by expanding the initial perturbation in terms of these eigenfunctions, and reducing the eigenmode problem into a purely algebraic form.
+
+\subsection{Energy principle}
+
+Contrary to homogeneous systems, solving for the time evolution of a particular perturbation in an inhomogeneous system can lead to differential equations, which, in general, require numerical treatment at some point. In this chapter, the complete spectra of eigenfunctions for a given inhomogeneous system are not of our interest; we shall focus only on the unstable part of a particular spectrum. Our general solution method is as follows: we determine stability thresholds in terms of characteristic equilibrium parameters and, if these thresholds are exceeded, we mathematically characterize the properties of the unstable modes. A particularly useful tool for this objective is the energy principle. We first show through direct calculation that the linearised force operator $\mathbf{F}(\boldsymbol{\xi})$ given in equation (\ref{eq-inst-7}) is self-adjoint:
+
+\begin{equation}
+    \iiint_{\Omega}\boldsymbol{\eta}\cdot\mathbf{F}(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}=\iiint_\Omega\boldsymbol{\xi}\cdot\mathbf{F}(\boldsymbol{\eta})\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+such that $\boldsymbol{\eta}$ is an arbitrary, \textit{test} displacement, with both displacements satisfying $\boldsymbol{\eta}\cdot\mathbf{n}=0=\boldsymbol{\xi}\cdot\mathbf{n}$ on the plasma boundary $\partial\Omega$. We separate the force operator into a pressure-associated and a magnetic-associated force operators and consider their respective inner products with $\boldsymbol{\eta}$:
+
+\begin{equation}
+    \mathbf{F}_p(\boldsymbol{\xi})=\nabla(\boldsymbol{\xi}\cdot\nabla p_0+\gamma p_0\nabla\cdot\boldsymbol{\xi})\quad\text{and}\quad\mathbf{F}_\mathbf{B}(\boldsymbol{\xi})=(\nabla\times\bar{\mathbf{B}}(\boldsymbol{\xi}))\times\frac{\mathbf{B}_0}{\mu_0}+(\nabla\times\mathbf{B}_0)\times\frac{\bar{\mathbf{B}}(\boldsymbol{\xi})}{\mu_0}
+\end{equation}
+
+Beginning with the pressure term, we find:
+
+\begin{equation*}
+    \iiint_\Omega\boldsymbol{\eta}\cdot\mathbf{F}_p(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}=\iiint_\Omega\boldsymbol{\eta}\cdot\nabla(\boldsymbol{\xi}\cdot\nabla p_0+\gamma p_0\nabla\cdot\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}=\oiint_{\partial\Omega}(\boldsymbol{\xi}\cdot\nabla p_0+\gamma p_0\nabla\cdot\boldsymbol{\xi})\boldsymbol{\eta}\cdot\mathrm{d}\mathbf{S}\,+
+\end{equation*}
+
+\begin{equation}
+    \label{eq-inst-10}
+    -\iiint_\Omega(\nabla\cdot\boldsymbol{\eta})(\boldsymbol{\xi}\cdot\nabla p_0+\gamma p_0\nabla\cdot\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}=-\iiint_\Omega\left[(\nabla\cdot\boldsymbol{\eta})(\boldsymbol{\xi}\cdot\nabla p_0)+\gamma p_0(\nabla\cdot\boldsymbol{\eta})(\nabla\cdot\boldsymbol{\xi})\right]\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+where the latter term is symmetric. We may thus hope that treating the magnetic-associated force will cancel the first term. Moving on to the latter:
+
+\begin{equation}
+    \iiint_\Omega\boldsymbol{\eta}\cdot\mathbf{F}_\mathbf{B}(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}=\iiint_\Omega\boldsymbol{\eta}\cdot\left[(\nabla\times\bar{\mathbf{B}}(\boldsymbol{\xi}))\times\frac{\mathbf{B}_0}{\mu_0}+(\nabla\times\mathbf{B}_0)\times\frac{\bar{\mathbf{B}}(\boldsymbol{\xi})}{\mu_0}\right]\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+which consists of the first term as a current-associated term and the latter as a magnetic-associated term:
+
+\begin{equation}
+    \iiint_\Omega(\nabla\times\bar{\mathbf{B}}(\boldsymbol{\xi}))\cdot(\mathbf{B}_0\times\boldsymbol{\eta})\,\mathrm{d}^3\mathbf{x}=\oiint_{\partial\Omega}\left[\bar{\mathbf{B}}(\boldsymbol{\xi})\times(\boldsymbol{\eta}\times\mathbf{B}_0)\right]\cdot\mathrm{d}\mathbf{S}+\iiint_\Omega\bar{\mathbf{B}}(\boldsymbol{\xi})\cdot\left[\nabla\times(\mathbf{B}_0\times\boldsymbol{\eta})\right]\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+At the plasma boundary, we have $\boldsymbol{\eta}\cdot\mathbf{n}=0$ as well as $\mathbf{B}_0\cdot\mathbf{n}=0$, so that the surface term evaluates to zero. We also recognise $\nabla\times(\mathbf{B}_0\times\boldsymbol{\eta})=\bar{\mathbf{B}}(\boldsymbol{\eta})$:
+
+\begin{equation}
+    \iiint_\Omega(\nabla\times\bar{\mathbf{B}}(\boldsymbol{\xi}))\cdot(\mathbf{B}_0\times\boldsymbol{\eta})\,\mathrm{d}^3\mathbf{x}=-\iiint_\Omega\bar{\mathbf{B}}(\boldsymbol{\xi})\cdot\bar{\mathbf{B}}(\boldsymbol{\eta})\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+which is totally symmetric in $\boldsymbol{\eta}\leftrightarrow\boldsymbol{\xi}$. We now treat the current-associated term with the remaining non-symmetric pressure-associated term via the magnetohydrostatic equilibium $\nabla p_0=\mathbf{J}_0\times\mathbf{B}_0$:
+
+\begin{equation*}
+    \iiint_\Omega\boldsymbol{\eta}\cdot(\mathbf{J}_0\times(\nabla\times(\boldsymbol{\xi}\times\mathbf{B}_0)))\,\mathrm{d}^3\mathbf{x}=\iiint_\Omega\mathbf{J}_0\cdot\left(\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\xi}-(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0-\mathbf{B}_0(\nabla\cdot\boldsymbol{\xi})\right]\times\boldsymbol{\eta}\right)\,\mathrm{d}^3\mathbf{x}=
+\end{equation*}
+
+\begin{equation*}
+    =\iiint_\Omega\left[\mathbf{J}_0\cdot(\boldsymbol{\eta}\times\mathbf{B}_0)\right](\nabla\cdot\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}+\iiint_\Omega\mathbf{J}_0\cdot\left[\left((\mathbf{B}_0\cdot\nabla)\boldsymbol{\xi}\right)\times\boldsymbol{\eta}-\left((\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right)\times\boldsymbol{\eta}\right]\,\mathrm{d}^3\mathbf{x}=
+\end{equation*}
+
+\begin{equation}
+    =-\iiint_\Omega(\nabla\cdot\boldsymbol{\xi})(\boldsymbol{\eta}\cdot\nabla p_0)\,\mathrm{d}^3\mathbf{x}+\iiint_\Omega\mathbf{J}_0\cdot\left[\left((\mathbf{B}_0\cdot\nabla)\boldsymbol{\xi}\right)\times\boldsymbol{\eta}-\left((\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right)\times\boldsymbol{\eta}\right]\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+The first integral is symmetric in conjunction with equation (\ref{eq-inst-10}). The remaining integral gives:
+
+\begin{equation*}
+    \iiint_\Omega\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\xi}-(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\eta}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}=
+\end{equation*}
+
+\begin{equation*}
+    =-\iiint_\Omega\boldsymbol{\xi}\cdot\left[(\mathbf{B}_0\cdot\nabla)(\boldsymbol{\eta}\times\mathbf{J}_0)\right]\,\mathrm{d}^3\mathbf{x}-\iiint_\Omega\left[(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\eta}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}=
+\end{equation*}
+
+\begin{equation*}
+    =\iiint_\Omega\boldsymbol{\xi}\cdot\left(\mathbf{J}_0\times\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\eta}\right]\right)\,\mathrm{d}^3\mathbf{x}-\iiint_\Omega\boldsymbol{\xi}\cdot\left(\boldsymbol{\eta}\times\left[(\mathbf{B}_0\cdot\nabla)\mathbf{J}_0\right]\right)\,\mathrm{d}^3\mathbf{x}-\iiint_\Omega\left[(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\eta}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}=
+\end{equation*}
+
+\begin{equation}
+    \label{eq-inst-15}
+    =\iiint_\Omega\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\eta}\right]\cdot(\boldsymbol{\xi}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}-\iiint_\Omega\left[(\mathbf{J}_0\cdot\nabla)\mathbf{B}_0\right]\cdot\left(\boldsymbol{\xi}\times\boldsymbol{\eta}\right)\,\mathrm{d}^3\mathbf{x}-\iiint_\Omega\left[(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\eta}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+where we have tacitly used integration by parts and the usual plasma boundary conditions. Since $\mathbf{B}_0$ is a divergence-free vector field, we find:
+
+\begin{equation}
+    \left[(\mathbf{J}_0\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\xi}\times\boldsymbol{\eta})+\left[(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\eta}\times\mathbf{J}_0)+\left[(\boldsymbol{\eta}\cdot\nabla)\mathbf{B}_0\right]\cdot(\mathbf{J}_0\times\boldsymbol{\xi})=0
+\end{equation}
+
+Gathering everything above concludes the proof:
+
+\begin{equation}
+    \iiint_\Omega\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\xi}-(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\eta}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}=\iiint_\Omega\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\eta}-(\boldsymbol{\eta}\cdot\nabla)\mathbf{B}_0\right]\cdot(\boldsymbol{\xi}\times\mathbf{J}_0)\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+A self-adjoint operator admits purely real eigenvalues, that is, $\omega^2$ in equation (\ref{eq-inst-7}). We easily prove this by multiplying equation (\ref{eq-inst-7}) by the complex conjugate of the perturbation:
+
+\begin{equation}
+    -\omega^2\iiint\rho_0\boldsymbol{\xi}\boldsymbol{\xi}^*\,\mathrm{d}^3\mathrm{x}=-\omega^2\iiint\rho_0\boldsymbol{\xi}^2\,\mathrm{d}^3\mathbf{x}=\langle\boldsymbol{\xi}^*,\mathbf{F}(\boldsymbol{\xi})\rangle=\langle\boldsymbol{\xi},\mathbf{F}(\boldsymbol{\xi}^*)\rangle=-(\omega^*)^2\iiint\rho_0\boldsymbol{\xi}^2\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+Therefore, necessarily $\omega^2=(\omega^*)^2$. Eigenmodes are thus either purely oscillating, i.e. $\omega^2>0\implies\omega\in\mathbb{R}$, or purely growing or decaying, that is, $\omega^2<0\implies\omega\in\mathrm{i}\mathbb{R}$. Note that, since any perturbation is real, growing eigenmodes characterised by $\Im\omega>0$ are always accompanied by conjugate decaying modes; however, these exert an uninteresting influence. We will now set the groundwork for the energy principle. We multiply equation (\ref{eq-inst-7}) by $\dot{\boldsymbol{\xi}}$ and integrate first over time, then over the plasma space:
+
+\begin{equation}
+    \int\left[\iiint_\Omega\dot{\boldsymbol{\xi}}\cdot(\rho_0\ddot{\boldsymbol{\xi}}-\mathbf{F}(\boldsymbol{\xi}))\,\mathrm{d}^3\mathbf{x}=0\right]\,\mathrm{d}t\implies\frac{1}{2}\iiint_\Omega\rho_0\dot{\boldsymbol{\xi}}^2\,\mathrm{d}^3\mathbf{x}-\frac{1}{2}\iiint_\Omega\boldsymbol{\xi}\cdot\mathbf{F}(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}=H
+\end{equation}
+
+and the total kinetic energy is given by the usual well-known definition:
+
+\begin{equation}
+    K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})=\frac{1}{2}\iiint_\Omega\rho_0(\dot{\boldsymbol{\xi}}\cdot\dot{\boldsymbol{\xi}})\,\mathrm{d}^3\mathbf{x}
+\end{equation}The second integral is evaluated with respect to time by simply noting that $\mathbf{F}(\cdot)$ is a linear operator. $H$ may be interpreted as the total energy associated with the perturbation $\boldsymbol{\xi}$, which is furthermore uniquely determined by initial conditions $\boldsymbol{\xi}(t=0)$ and $\dot{\boldsymbol{\xi}}(t=0)$. We now specifically consider the quantity:
+
+\begin{equation}
+    \delta W(\boldsymbol{\xi},\boldsymbol{\xi})=-\frac{1}{2}\iiint_\Omega\boldsymbol{\xi}\cdot\mathbf{F}(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}\implies K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})+\delta W(\boldsymbol{\xi},\boldsymbol{\xi})=H=\text{const.}
+\end{equation}
+
+If, for all square-integrable displacements from the equilibrium $\boldsymbol{\xi}$, $\delta W(\boldsymbol{\xi},\boldsymbol{\xi})>0$, then the kinetic energy of the plasma is bounded by the total available energy $H$, so that the associated equilibrium is stable. Now, assume that there is a displacement $\boldsymbol{\eta}$ such that $\delta W(\boldsymbol{\eta},\boldsymbol{\eta})<0$, therefore:
+
+\begin{equation}
+     \label{eq-inst-22}
+    \exists\gamma>0,\delta W(\boldsymbol{\eta},\boldsymbol{\eta})=-\gamma K(\boldsymbol{\eta},\boldsymbol{\eta})
+\end{equation}
+
+Choosing initial conditions $\boldsymbol{\xi}(0)=\boldsymbol{\eta}$, $\dot{\boldsymbol{\xi}}=\sqrt{\gamma}\boldsymbol{\eta}$ gives $H=0$, thus $K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})+\delta W(\boldsymbol{\xi},\boldsymbol{\xi})=0$. Cauchy-Schwarz inequality gives:
+
+\begin{equation}
+    \left(\frac{\mathrm{d}K(\boldsymbol{\xi},\boldsymbol{\xi})}{\mathrm{d}t}\right)^2=4\left(K(\dot{\boldsymbol{\xi}},\boldsymbol{\xi})\right)^2\leq4K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})K(\boldsymbol{\xi},\boldsymbol{\xi})
+\end{equation}
+
+Multiplying equation (\ref{eq-inst-7}) by $\boldsymbol{\xi}$ and integrating over the plasma gives:
+
+\begin{equation}
+    \iiint_\Omega\rho_0\ddot{\boldsymbol{\xi}}\cdot\boldsymbol{\xi}\,\mathrm{d}^3\mathbf{x}=\iiint_\Omega\boldsymbol{\xi}\cdot\mathbf{F}(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}\quad\text{with}\quad\frac{\mathrm{d}^2}{\mathrm{d}t^2}\left(\boldsymbol{\xi}^2\right)=\frac{\mathrm{d}}{\mathrm{d}t}(2\boldsymbol{\xi}\cdot\dot{\boldsymbol{\xi}})=2\dot{\boldsymbol{\xi}}^2+2\boldsymbol{\xi}\cdot\ddot{\boldsymbol{\xi}}
+\end{equation}
+
+\begin{equation}
+    2K(\ddot{\boldsymbol{\xi}},\boldsymbol{\xi})=2K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})-\frac{\mathrm{d}^2K(\boldsymbol{\xi},\boldsymbol{\xi})}{\mathrm{d}t^2}=2\delta W(\boldsymbol{\xi},\boldsymbol{\xi})\implies\frac{\mathrm{d}^2K(\boldsymbol{\xi},\boldsymbol{\xi})}{\mathrm{d}t^2}=4K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})
+\end{equation}
+
+which, combined with the Cauchy-Schwarz inequality above, gives:
+
+\begin{equation}
+    K(\boldsymbol{\xi},\boldsymbol{\xi})\frac{\mathrm{d}^2K(\boldsymbol{\xi},\boldsymbol{\xi})}{\mathrm{d}t^2}\geq\left(\frac{\mathrm{d}K(\boldsymbol{\xi},\boldsymbol{\xi})}{\mathrm{d}t}\right)^2
+\end{equation}
+
+We may introduce a new variable, $\kappa=\ln{(K(\boldsymbol{\xi},\boldsymbol{\xi})/K(\boldsymbol{\eta},\boldsymbol{\eta}))}$, such that $\boldsymbol{\xi}(t=0)=\boldsymbol{\eta}$, satisfying:
+
+\begin{equation}
+    \kappa(t=0)=0,\quad\frac{\mathrm{d}\kappa}{\mathrm{d}t}\biggr|_{t=0}=\left[\frac{1}{K(\boldsymbol{\xi},\boldsymbol{\xi})}\frac{\mathrm{d}K(\boldsymbol{\xi},\boldsymbol{\xi})}{\mathrm{d}t}\right]\biggr|_{t=0}=\frac{2K(\boldsymbol{\eta},\sqrt{\gamma}\boldsymbol{\eta})}{K(\boldsymbol{\eta},\boldsymbol{\eta})}=2\sqrt{\gamma}
+\end{equation}
+
+\begin{equation}
+    \left[K(\boldsymbol{\eta},\boldsymbol{\eta})\right]^2\exp{\left[\kappa\right]}\frac{\mathrm{d}}{\mathrm{d}t}\left(\exp{[\kappa]}\frac{\mathrm{d}\kappa}{\mathrm{d}t}\right)\geq\left[K(\boldsymbol{\eta},\boldsymbol{\eta})\right]^2\left(\exp{[\kappa]}\frac{\mathrm{d}\kappa}{\mathrm{d}t}\right)^2
+\end{equation}
+
+\begin{equation}
+    \exp{[\kappa]}\left(\exp{[\kappa]}\left(\frac{\mathrm{d}\kappa}{\mathrm{d}t}\right)^2+\exp{[\kappa]}\frac{\mathrm{d}^2\kappa}{\mathrm{d}t^2}\right)\geq\exp{[2\kappa]}\left(\frac{\mathrm{d}\kappa}{\mathrm{d}t}\right)^2
+\end{equation}
+
+\begin{equation}
+    \frac{\mathrm{d}^2\kappa}{\mathrm{d}t^2}\geq0\implies\frac{\mathrm{d}\kappa}{\mathrm{d}t}\geq\frac{\mathrm{d}\kappa}{\mathrm{d}t}\biggr|_{t=0}=2\sqrt{\gamma}\implies\kappa(t)\geq 2\sqrt{\gamma}t
+\end{equation}
+
+\begin{equation}
+    K(\boldsymbol{\xi},\boldsymbol{\xi})\geq K(\boldsymbol{\eta},\boldsymbol{\eta})\exp{[2\sqrt{\gamma}t]}\implies K(\dot{\boldsymbol{\xi}},\dot{\boldsymbol{\xi}})\geq|\delta W(\boldsymbol{\eta},\boldsymbol{\eta})|\exp{\left(2\sqrt{\gamma}t\right)}
+\end{equation}
+
+Therefore, the kinetic energy and, by extension, the displacement $\boldsymbol{\xi}$ grow at least exponentially. Furthermore, note that the equality is valid for a pure normal mode with some growth rate $\sqrt{\gamma}$, while for an initial perturbation composed of two or more eigenmodes, $\sqrt{\gamma}$ represents the average initial growth rate. Naturally, the eigenmode with the greatest growth rate dominates after sufficient time. Our considerations above allow us to restate the energy principle as follows:
+
+\quad An equilibrium is stable if and only if for all square-integrable displacement functions $\boldsymbol{\xi}(\mathbf{x})$:
+
+\begin{equation}
+    \delta W(\boldsymbol{\xi},\boldsymbol{\xi})\equiv-\frac{1}{2}\iiint_\Omega\boldsymbol{\xi}\cdot\mathbf{F}(\boldsymbol{\xi})\,\mathrm{d}^3\mathbf{x}\geq0
+\end{equation}
+
+The energy principle is therefore a useful mathematical tool to qualitatively describe the stability of some equilibrium: by simply guessing a trial displacement $\boldsymbol{\xi}$ such that $\delta W(\boldsymbol{\xi},\boldsymbol{\xi})<0$, it follows immediately that the equilibrium is unstable. The instability growth rate is also bounded from below by the value given in equation (\ref{eq-inst-22}).
+
+\quad It is now useful to return to our proof of self-adjointness of the operator $\mathbf{F}$, and discuss the various contributions to $\delta W$, notably: the plasma contribution, $\delta W_\text{P}$, the surface contribution, $\delta W_\text{S}$, and the vacuum contribution $\delta W_\text{V}$. Recognise $\delta W(\boldsymbol{\xi}, \boldsymbol{\xi})=-\frac{1}{2}\langle\boldsymbol{\xi},\mathbf{F}(\boldsymbol{\xi})\rangle$, so that:
+
+\begin{equation*}
+    \delta W_\text{P}(\boldsymbol{\xi},\boldsymbol{\xi})=\frac{1}{2}\iiint_{\Omega}\Big[\gamma p_0(\nabla\cdot\boldsymbol{\xi})^2+(\boldsymbol{\xi}\cdot\nabla p_0)(\nabla\cdot\boldsymbol{\xi})\Big]\mathrm{d}^3\mathbf{x}\,+
+\end{equation*}
+
+\begin{equation}
+    +\,\frac{1}{2\mu_0}\iiint_\Omega\left[\bar{\mathbf{B}}(\boldsymbol{\xi})\right]^2\mathrm{d}^3\mathbf{x}-\frac{1}{2}\iiint_\Omega\mathbf{J}_0\cdot\left(\left[(\mathbf{B}_0\cdot\nabla)\boldsymbol{\xi}-(\boldsymbol{\xi}\cdot\nabla)\mathbf{B}_0\right]\times\boldsymbol{\xi}\right)\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+where the first term in the first integral represents the energy of a general non-magnetic sound wave, while the latter term represents pressure-driven instabilities. The second integral simply represents the potential energy stored in the magnetic field perturbation, and the last integral is the so-called \textit{kink} term, which represents the energy released when the equilibrium current density allows the plasma to enter a lower-energy state. If one were to consider a localised region of free plasma, such that it is not bounded by confinement walls, the surface integrals in our considerations above would not evaluate to zero, and one would also have to include the vacuum region surrounding the plasma, where only the vacuum magnetic field contributions are present. We shall only state these contributions:
+
+\begin{equation}
+    \delta W_\text{S}=\frac{1}{2}\oiint_{\partial\Omega}\left[(\boldsymbol{\xi}\cdot\mathbf{n})^2\mathbf{n}\cdot\nabla\left(p_0+\frac{\mathbf{B}_0^2}{2\mu_0}\right)\Biggr|_\text{plasma}-\mathbf{n}\cdot\nabla\left(\frac{\mathbf{B}_\text{V}^2}{2\mu_0}\right)\Biggr|_\text{vacuum}\right]\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+\begin{equation}
+    \delta W_\text{V}=\frac{1}{2\mu_0}\iiint_{\mathbb{R}^3\setminus\Omega}(\delta\mathbf{B}_\text{vac})^2\,\mathrm{d}^3\mathbf{x}
+\end{equation}
+
+We can attribute certain properties to these terms depending on whether they are semi-definite positive or take on a different sign under a specific configuration. Notably, the non-magnetic sound-wave energy is always stabilising, whereas the pressure-driven instability term may introduce instability. The perturbed magnetic field energy associated with the plasma and vacuum fields, respectively, is always stabilising. The current kink term and the surface kink term may lead to instabilities depending on the configuration. 

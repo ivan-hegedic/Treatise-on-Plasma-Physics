@@ -1,0 +1,81 @@
+\usepackage[backend=biber, sorting=none]{biblatex}
+
+\usepackage[paperwidth=21.0cm, paperheight=29.7cm, top=1in, left=1in, right=1in, bottom=0.8in]{geometry}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsfonts, amsmath, amsthm, amssymb, siunitx, upgreek, float, mathtools, stmaryrd, esint, mathrsfs}
+
+\usepackage{graphicx, wrapfig, tikz, pgfcore, pgf, pgfplots, tikz-3dplot}
+
+\makeatletter
+\let\pgfversion\relax
+\newcommand{\pgfversion}{3.1.11}
+\makeatother
+
+\usepackage{tkz-euclide}
+\usetikzlibrary{intersections, patterns, calc, arrows, arrows.meta, positioning, shapes.geometric, matrix, scopes, backgrounds, fit, shapes, ext.paths.ortho, fpu, 3d, arrows, intersections, backgrounds, decorations.markings, bending}
+\usepgfplotslibrary{fillbetween, colormaps, patchplots, external}
+\usepgflibrary{shadings}
+
+\usetikzlibrary{external}
+
+\tikzexternalize[
+  prefix=tikzcache/,
+  mode=list and make
+]
+
+\tikzset{
+  external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}
+}
+
+\pgfdeclarelayer{bg}
+\pgfsetlayers{bg, main}
+\pgfplotsset{compat=1.18}
+\usepackage[pdftex, colorlinks=true, linkcolor=black,
+    anchorcolor=black, citecolor=black,
+    filecolor=black, menucolor=black,
+    runcolor=black, urlcolor=black]{hyperref}   
+\hypersetup{
+    pdftitle = {Treatise on Plasma Physics},
+    pdfauthor = {Ivan Hegedić}
+}
+\urlstyle{same}
+
+\usepackage{multicol}
+\setlength{\columnsep}{0.75cm}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{0pt}
+\renewcommand{\headrulewidth}{0pt}  
+\fancypagestyle{plain}{
+    \fancyhead{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}  
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\usepackage{caption}
+\usepackage[thinc]{esdiff}
+\setlength\parindent{0pt}
+
+\usepackage{stackengine}
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.5\ht\CBox-#1/2]{\wd\CBox}{#1}}
+\usepackage{esint}
+
+\usepackage{custom}
+
+\addbibresource{Bibliography/citations.bib}
+
+\usepackage{bm}
