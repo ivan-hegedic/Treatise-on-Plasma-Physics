@@ -1,0 +1,403 @@
+% !Tex root = ../main.tex
+
+\chapter{Computational Methods in Plasma Physics}
+
+\section{Motivation}
+
+Our theoretical considerations in this book have certainly demonstrated that plasmas are incredibly complicated physical systems. Although the general equations governing the behaviour of plasmas are adequately described by classical physics enriched by aspects of modern physics, the shear complexity of these equations make it incredibly difficult to solve a realistic problem even as only a computational simulation. We shall therefore derive and solve reduced systems of equations that describe a considered system reasonably well, and implement these in an adequate manner for numerical solutions.
+
+\vspace*{2.5pt}
+
+\quad The fundamental set of equations describing the phase space probability distribution function $f_\sigma(\mathbf{x},\mathbf{v},t)$ for species $\sigma$ of indistinguishable charged particles is a system of Vlasov (i.e. Boltzmann) equations for each species, as given by Liouville's theorem:
+
+\begin{equation}
+    \label{comp-1}
+    \frac{\partial f_\sigma(\mathbf{x},\mathbf{v},t)}{\partial t}+\frac{\partial}{\partial \mathbf{x}}\cdot \left(\mathbf{v}f_\sigma(\mathbf{x},\mathbf{v},t)\right)+\frac{\partial}{\partial \mathbf{v}}\cdot \left(\frac{q_\sigma}{m_\sigma}\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma(\mathbf{x},\mathbf{v},t)\right)=S_\sigma+\sum_{\rho}C_{\sigma\rho}
+\end{equation}
+
+where $m_\sigma$ and $q_\sigma$ are the particle mass and charge for species $\sigma$. The collision operators $C_{\sigma\rho}$ represent the effect of scattering in phase space due to collisions between particles of species $\sigma$ and $\rho$. External sources of particles, momentum and energy are represented by $S_\sigma$. The electric and magnetic fields $\mathbf{E}(\mathbf{x},t)$ and $\mathbf{B}(\mathbf{x},t)$ are obtained by solving Maxwell's equations:
+
+\begin{align*}
+    \nabla\times \mathbf{E}+\frac{\partial \mathbf{B}}{\partial t}&=\mathbf{0},&\nabla\cdot \mathbf{E}&=\frac{\rho_q}{\varepsilon_0},\\
+    \nabla\times \mathbf{B}-\frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t}&=\mu_0 \mathbf{J},&\nabla\cdot \mathbf{B}&=0,
+\end{align*}
+
+with charge and current density given by the integrals of the aforementioned distribution functions over velocity space:
+
+\begin{align*}
+    \rho_q(\mathbf{x},t)&=\sum_{\sigma}q_\sigma\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{x},\mathbf{v},t)\,\mathrm{d}^3 \mathbf{v}=\sum_{\sigma}q_\sigma n_\sigma(\mathbf{x},t),\\
+    \mathbf{J}(\mathbf{x},t)&=\sum_{\sigma}q_\sigma\iiint_{\mathbb{R}^3}\mathbf{v}f_{\sigma}(\mathbf{x},\mathbf{v},t)\,\mathrm{d}^3 \mathbf{v}=\sum_{\sigma}q_\sigma n_\sigma(\mathbf{x},t) \mathbf{u}_{\sigma}(\mathbf{x},t).
+\end{align*}
+
+These equations are suitable as a starting point for studying phenomena characteristic to particular species, scales or regimes, where one desires to isolate the microscopic dynamics of particular plasma species. However, to obtain a relevant description of the macroscopic dynamics of plasmas, we will essentially re-derive the two-fluid and MHD models, then discuss techniques for their numerical solutions.
+
+\vspace*{2.5pt}
+
+\quad Before operating on the governing equations, we shall reinstate the postulates of the collision operators, namely that they neither create nor destroy particles, momentum, or energy, but only transfer momentum or energy between different plasma species. Now, we take the first three velocity moments of the Vlasov equation corresponding to conservations of particle number, momentum, and energy. For the sake of completeness, we shall entirely re-derive the two-fluid equations and introduce some new quantities. Operating on (\ref{comp-1}), with $\iiint_{\mathbb{R}^3}\,\mathrm{d}^3\mathbf{v}$, we obtain:
+
+\begin{equation*}
+    \iiint_{\mathbb{R}^3}\left[\frac{\partial f_\sigma}{\partial t}+\frac{\partial}{\partial \mathbf{x}}\cdot \left(\mathbf{v}f_\sigma\right)+\frac{\partial}{\partial \mathbf{v}}\cdot \left(\left(\frac{q_\sigma}{m_\sigma}\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma\right)\right]\mathrm{d}^3 \mathbf{v}=\sum_{\rho}\underbrace{\iiint_{\mathbb{R}^3}C_{\sigma\rho}\,\mathrm{d}^3 \mathbf{v}}_{0}+\iiint_{\mathbb{R}^3}S_\sigma\,\mathrm{d}^3 \mathbf{v}
+\end{equation*}
+
+We now introduce $\hat{S}_\sigma(\mathbf{x},t)$ as the integrated source term $S_\sigma(\mathbf{x},\mathbf{v},t)$, $n_\sigma(\mathbf{x},t)=\iiint_{\mathbb{R}^3}f_\sigma(\mathbf{x},\mathbf{v},t)\,\mathrm{d}^3 \mathbf{v}$ and $\mathbf{u}_\sigma(\mathbf{x},t)=\frac{1}{n_\sigma(\mathbf{x},t)}\iiint_{\mathbb{R}^3}\mathbf{v}f_\sigma(\mathbf{x},\mathbf{v},t)\,\mathrm{d}^3 \mathbf{v}$ as the particle number density and mean velocity of species $\sigma$. The acceleration term can be recast into a boundary integral over the boundary at infinity. It is tacitly assumed that we shall always encounter non-pathological, sufficiently smooth velocity space distribution functions that vanish at infinity, so that we may exploit the divergence theorem and eliminate the acceleration-related integral. This yields the continuity equation for species $\sigma$ of the two-fluid model:
+
+\begin{equation}
+    \label{comp-7}
+    \frac{\partial n_\sigma}{\partial t}+\nabla\cdot \left(n_\sigma\mathbf{u}_\sigma\right)=\hat{S}_\sigma
+\end{equation}
+
+Now, operating on (\ref{comp-1}) with the velocity space integral $\iiint_{\mathbb{R}^3}m_\sigma \mathbf{v}\,\mathrm{d}^3 \mathbf{v}$, we obtain:
+
+\begin{equation*}
+    \label{comp-8}
+    \iiint_{\mathbb{R}^3}\left[\mathbf{v}\frac{\partial f_\sigma}{\partial t}+\mathbf{v}\frac{\partial}{\partial \mathbf{x}}\cdot \left(\mathbf{v}f_\sigma\right)+\mathbf{v}\frac{\partial}{\partial \mathbf{v}}\cdot \left(\frac{q_\sigma}{m_\sigma}\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma\right)\right]\mathrm{d}^3 \mathbf{v}=\sum_{\rho}\iiint_{\mathbb{R}^3} \mathbf{v} C_{\sigma\rho}\,\mathrm{d}^3 \mathbf{v}+\iiint_{\mathbb{R}^3} \mathbf{v}S_\sigma\,\mathrm{d}^3 \mathbf{v}
+\end{equation*}
+
+Since $\mathbf{x}$, $\mathbf{v}$ and $t$ are phase space coordinates, the mixed products of themselves and partial derivatives thereof trivially commute, enabling us to absorb the velocity coordinate $\mathbf{v}$ into partial derivatives with respect to time and position; the first term evaluates to $\frac{\partial}{\partial t}\left(m_\sigma n_\sigma(\mathbf{x},t)\mathbf{u}_\sigma(\mathbf{x},t)\right)$. The second term can be recasted into an elegant expression by using the well-defined substition $\mathbf{v}'=\mathbf{v}-\mathbf{u}_\sigma(\mathbf{x},t)$.
+
+\begin{align*}
+    \iiint_{\mathbb{R}^3}m_\sigma \mathbf{v}\mathbf{v}f_\sigma\,\mathrm{d}^3 \mathbf{v}&=\iiint_{\mathbb{R}^3}m_\sigma \left(\mathbf{u}_\sigma+\mathbf{v}'\right)\left(\mathbf{u}_\sigma+\mathbf{v}'\right)f_\sigma\,\mathrm{d}^3 \mathbf{v}'=\\
+    &=m_\sigma n_\sigma \mathbf{u}_\sigma \mathbf{u}_\sigma+\iiint_{\mathbb{R}^3}m_\sigma \left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right) f_\sigma\,\mathrm{d}^3 \mathbf{v}=\\
+    &=m_\sigma n_\sigma \mathbf{u}_\sigma \mathbf{u}_\sigma+\frac{1}{3}\iiint_{\mathbb{R}^3}m_\sigma \left\|\mathbf{v}-\mathbf{u}_\sigma\right\|^2 \mathbf{\hat{1}} f_\sigma\,\mathrm{d}^3 \mathbf{v}+\\
+    &+\iiint_{\mathbb{R}^3}m_\sigma \left(\left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right)-\frac{1}{3}\left\|\mathbf{v}-\mathbf{u}_\sigma\right\|^2 \mathbf{\hat{1}}\right)f_\sigma\,\mathrm{d}^3 \mathbf{v}
+\end{align*}
+
+where the mixed integrals with respect to $\mathbf{u}_\sigma$ and $\mathbf{v}'$ vanishes due by symmetry. We shall therefore define the first integral by the static pressure $p_\sigma(\mathbf{x},t)$, and the latter by the stress tensor $\boldsymbol{\pi}_\sigma(\mathbf{x},t)$ for species $\sigma$. Indeed, one has $p_\sigma = \frac{1}{3}\operatorname{Tr}{\mathbf{P}_\sigma}$. The remaining integral of the left-hand side of (\ref{comp-8}) can again be recast into a suitable form via partial integration (i.e. first Green's identity). Again, the silent assumption of a non-pathological, sufficiently smooth velocity space distribution function allows us to eliminate the boundary term:
+
+\begin{align*}
+    \iiint_{\mathbb{R}^3}q_\sigma\mathbf{v}\frac{\partial}{\partial \mathbf{v}}\cdot \left(\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right) f_\sigma\right)\,\mathrm{d}^3 \mathbf{v}&=\oiint_{\partial\mathbb{R}^3}q_\sigma \mathbf{v}\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma\,\mathrm{d}\boldsymbol{\Sigma}_{\mathbf{v}}-\iiint_{\mathbb{R}^3}q_\sigma \left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma\,\mathrm{d}^3 \mathbf{v}=\\
+    &=-q_\sigma \mathbf{E}\iiint_{\mathbb{R}^3}f_\sigma\,\mathrm{d}^3 \mathbf{v} -q_\sigma \left(\iiint_{\mathbb{R}^3}\mathbf{v}f_\sigma\,\mathrm{d}^3 \mathbf{v}\right)\times \mathbf{B}
+\end{align*}
+
+where we recognise the definitions of particle number density and mean velocity of species $\sigma$. We now introduce the external source of momentum defined as $\mathbf{\hat{M}}_\sigma(\mathbf{x},t)=\iiint_{\mathbb{R}^3}\mathbf{v}S_\sigma(\mathbf{x},\mathbf{v},t)\,\mathrm{d}^3 \mathbf{v}$ as well as the collisional source of momentum between species $\sigma$ and $\rho$ as $\mathbf{R}_{\sigma\rho}=\iiint_{\mathbb{R}^3}m_\sigma \left(\mathbf{v}-\mathbf{u}_\sigma\right)C_{\sigma\rho}\,\mathrm{d}^3 \mathbf{v}$. For the sake of clarity, the subtracted $\mathbf{u}_\sigma$ does not affect the value of $\mathbf{R}_{\sigma\rho}$ since it acts as a constant in the integral, and the collision operator preserves particle number, thus we can safely keep the substracted term. This yields the momentum equation of the two-fluid model for species $\sigma$:
+
+\begin{equation}
+    \label{comp-15}
+    \frac{\partial}{\partial t} \left(m_\sigma n_\sigma \mathbf{u}_\sigma\right)+\nabla\cdot \left(m_\sigma n_\sigma\mathbf{u}_\sigma\mathbf{u}_\sigma\right)+\nabla p_\sigma+\nabla\cdot\boldsymbol{\pi}_\sigma=q_\sigma n_\sigma \left(\mathbf{E}+\mathbf{u}_\sigma\times \mathbf{B}\right)+\sum_{\rho}\mathbf{R}_{\sigma\rho}+\mathbf{\hat{M}}_\sigma
+\end{equation}
+
+The momentum equation can be simplified by expanding the partial derivatives with respect to time and position on the momentum densities, so that:
+
+\begin{equation*}
+    m_\sigma n_\sigma \frac{\mathrm{D}\mathbf{u}_\sigma}{\mathrm{D}t}+\nabla  p_\sigma + \nabla\cdot \boldsymbol{\pi}_\sigma = q_\sigma n_\sigma \left(\mathbf{E}+ \mathbf{u}_\sigma \times \mathbf{B}\right)+\sum_{\rho}\mathbf{R}_{\sigma\rho} + \mathbf{\hat{M}}_\sigma - m_\sigma \mathbf{u}_\sigma \hat{S}_\sigma
+\end{equation*}
+
+Now, for the sake of clarity, we will operate on (\ref{comp-1}) with $\iiint_{\mathbb{R}^3}\frac{1}{2}m_\sigma \mathbf{v}^2\,\mathrm{d}^3 \mathbf{v}$ term by term:
+
+\begin{align*}
+    \iiint_{\mathbb{R}^3}\frac{1}{2}m_\sigma\mathbf{v}^2 \frac{\partial f_\sigma}{\partial t}\,\mathrm{d}^3 \mathbf{v}&=\frac{\partial}{\partial t}\iiint_{\mathbb{R}^3}\frac{1}{2}m_\sigma \left(\mathbf{u}_\sigma+\mathbf{v}'\right)^2\,\mathrm{d}^3 \mathbf{v}'=\\
+    &=\frac{\partial}{\partial t}\left(\frac{1}{2}m_\sigma n_\sigma \mathbf{u}_\sigma^2+\frac{3}{2}p_\sigma\right)
+\end{align*}
+
+where, again, the mixed integrals with respect to $\mathbf{u}_\sigma$ and $\mathbf{v}'$ vanished by symmetry about the mean velocity. Now, we turn our attention to the advective term, where we implement the same substitution, and identify the scalar pressure and stress tensor:
+
+\begin{align*}
+    \iiint_{\mathbb{R}^3}\mathbf{v}^2 \mathbf{v}f_\sigma\,\mathrm{d}^3 \mathbf{v}&=\iiiint_{\mathbb{R}^3}\left(\mathbf{u}_\sigma^2 \mathbf{u}_\sigma+\left(\mathbf{v}-\mathbf{u}_\sigma\right)^2 \mathbf{u}_\sigma + 2 \left[\mathbf{u}_\sigma \cdot \left(\mathbf{v} - \mathbf{u}_\sigma\right)\right] \left(\mathbf{v} - \mathbf{u}_\sigma\right) + (\mathbf{v}- \mathbf{u}_\sigma)^2 \left(\mathbf{v} - \mathbf{u}_\sigma\right)\right)f_\sigma\,\mathrm{d}^3 \mathbf{v}=\\
+    &= n_\sigma \mathbf{u}_\sigma^2 \mathbf{u}_\sigma + \frac{3}{m_\sigma}p_\sigma \mathbf{u}_\sigma + \frac{2}{m_\sigma}\mathbf{u}_\sigma\cdot \boldsymbol{\pi}_\sigma + \frac{2}{m_\sigma} p_\sigma \mathbf{u}_\sigma + \iiint_{\mathbb{R}^3}\left\|\mathbf{v}- \mathbf{u}_\sigma\right\|^2\left(\mathbf{v}-\mathbf{u}_\sigma\right)f_\sigma\,\mathrm{d}^3 \mathbf{v}
+\end{align*}
+
+where the mixed terms containing odd-ordered appearances of $\mathbf{v}$ vanished by symmetry. Moreover, we shall define the heat flux density of species $\sigma$ as $\mathbf{q}_\sigma=\frac{1}{2}\iiint_{\mathbb{R}^3}m_\sigma \left\|\mathbf{v}-\mathbf{u}_\sigma\right\|^2 \left(\mathbf{v}-\mathbf{u}_\sigma\right)f_\sigma \,\mathrm{d}^3 \mathbf{v}$. Following the reasonable assumptions on phase space distribution function, the acceleration term can again be integrated partially to give:
+
+\begin{equation*}
+    \iiint_{\mathbb{R}^3}\frac{1}{2}q_\sigma\mathbf{v}^2 \frac{\partial}{\partial \mathbf{v}}\cdot \left(\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma\right)\,\mathrm{d}^3 \mathbf{v}=-q_\sigma n_\sigma \mathbf{u}_\sigma \cdot \mathbf{E}
+\end{equation*}
+
+We shall simply introduce the external source of energy density as $W_\sigma = \frac{1}{2}\iiint_{\mathbb{R}^3}m_\sigma \mathbf{v}^2 S_\sigma\,\mathrm{d}^3 \mathbf{v}$, and the collisional sources of heat density $Q_{\sigma\rho}=\frac{1}{2}\iiint_{\mathbb{R}^3}m_\sigma \left\|\mathbf{v}-\mathbf{u}_\sigma\right\|^2C_{\sigma\rho}\,\mathrm{d}^3 \mathbf{v}$ due to collisions with another plasma species. Indeed, this quantity is obtained by simply noting $\mathbf{v}=\mathbf{v}-\mathbf{u}_\sigma + \mathbf{u}_\sigma$. Expanding the squared norm $\mathbf{v}^2$ gives $Q_{\sigma\rho}$, $\mathbf{u}_\sigma\cdot \mathbf{R}_{\sigma\rho}$, and zero since, again, collision operators preserve particle number. This yields the energy equation of the two-fluid model:
+
+\begin{equation*}
+    \frac{\partial}{\partial t}\left(\frac{1}{2}m_\sigma n_\sigma \mathbf{u}_\sigma^2+\frac{3}{2}p_\sigma\right)+\nabla\cdot \left(\frac{1}{2}m_\sigma n_\sigma \mathbf{u}_\sigma^2 \mathbf{u}_\sigma + \frac{5}{2}p_\sigma \mathbf{u}_\sigma + \mathbf{u}_\sigma \cdot \boldsymbol{\pi}_\sigma + q_\sigma\right)=
+\end{equation*}
+
+\begin{equation}
+    \label{comp-21}
+    =q_\sigma n_\sigma \mathbf{u}_\sigma \cdot \mathbf{E} + \sum_{\rho}\left(\mathbf{u}_\sigma \cdot \mathbf{R}_{\sigma\rho} + Q_{\sigma \rho}\right) + W_\sigma 
+\end{equation}
+
+We now define the temperature of species $\sigma$ via the scalar pressure, $k_\text{B}T_\sigma = p_\sigma / n_\sigma$. The two-fluid equations, namely (\ref{comp-7}), (\ref{comp-15}), and (\ref{comp-21}), are very general. Nonetheless, they are incomplete in the sense that we have defined new quantities, i.e. variables, that do not possess a governing \textit{equation} which would allow us to form a deterministic system of coupled equations. We are thus motivated to apply \textit{reasonably} appropriate approximations to reduce the number of variables. Notably, we shall impose approximations that allow omitting terms in Maxwell's equations that lead to light waves and high-frequency plasma oscillations. In particular, the imposed approximations are valid so long the velocities $v$, frequencies $\omega$, and length scales $L$ of considered phenomena satisfy the strong inequalities $v\ll c$, $\omega \ll \omega_{\mathrm{pe}}$, and $L \gg \lambda_{\mathrm{D}}$, respectively. We shall now focus on the case of a two-species plasma composed of electrons and ions. We find it convenient to change velocity variables $\mathbf{u}_\sigma$, specifically $\mathbf{u}_{\mathrm{e}}$ and $\mathbf{u}_{\mathrm{i}}$, to the fluid, i.e. mass velocity and current density as follows:
+
+\begin{equation*}
+    \mathbf{u}=\frac{m_{\mathrm{e}}n_{\mathrm{e}}\mathbf{u}_{\mathrm{e}}+m_{\mathrm{i}}n_{\mathrm{i}}\mathbf{u}_{\mathrm{i}}}{m_{\mathrm{e}}n_{\mathrm{e}}+m_{\mathrm{i}}n_{\mathrm{i}}}=\frac{Zm_{\mathrm{e}}\mathbf{u}_{\mathrm{e}}+m_{\mathrm{i}}\mathbf{u}_{\mathrm{i}}}{Zm_{\mathrm{e}}+m_{\mathrm{i}}}\simeq \mathbf{u}_{\mathrm{i}}
+\end{equation*}
+
+since $m_{\mathrm{e}}\ll m_{\mathrm{i}}$ and $Z\sim1$. We also consider the total charge current density, $\mathbf{J}=n_{\mathrm{i}}q_{\mathrm{i}}\mathbf{u}_{\mathrm{i}}+n_{\mathrm{e}}q_{\mathrm{e}}\mathbf{u}_{\mathrm{e}}$. By the assumption of quasi-neutrality, for the two-component case, we have $\mathbf{J}=n_{\mathrm{e}}q_{\mathrm{e}}\left(\mathbf{u}_{\mathrm{e}}-\mathbf{u}_{\mathrm{i}}\right)\equiv n_{\mathrm{e}}e \left(\mathbf{u}_{\mathrm{i}}-\mathbf{u}_{\mathrm{e}}\right)$. Therefore, the \textit{fluid}, i.e. magnetohydrodynamic equations are obtained by summing each of the two-fluid equations over all plasma species; (\ref{comp-7}) becomes the continuity equation for the total number density:
+
+\begin{equation}
+    \label{comp-23}
+    \frac{\partial n}{\partial t}+\nabla\cdot \left(n \mathbf{u}\right)=\hat{S}_{\mathrm{tot}}
+\end{equation}
+
+where $\hat{S}_{\mathrm{tot}}$ is the external source of particles, and $n(\mathbf{x},t)=\sum_{\sigma} n_\sigma(\mathbf{x},t)$ is the total number density, and $\mathbf{u}(\mathbf{x},t)=\frac{1}{n}\sum_{\sigma}n_\sigma(\mathbf{x},t)\mathbf{u}_\sigma(\mathbf{x},t)$ is the mass velocity. The magnetohydrodynamic momentum equation is obtained by summing (\ref{comp-15}) over all plasma species. Prior to simply stating the obtained equations, we note that we have intermediately introduced the total mass density $\rho(\mathbf{x},t)=\sum_{\sigma}m_\sigma n_\sigma(\mathbf{x},t)$ and the total stress tensor $\boldsymbol{\pi}(\mathbf{x},t)=\sum_{\sigma}\boldsymbol{\pi}_\sigma(\mathbf{x},t)$, and that we can use the hypothesis of quasi-neutrality and postulates of collisional operators to eliminate the drag force densities $\mathbf{R}_{\sigma \rho}$, as well as the driving electrostatic force, while (\ref{comp-23}) enables us to simplify the derivative of several products and use the convective derivative:
+
+\begin{equation}
+    \label{comp-24}
+    \rho \frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t}+\nabla\cdot\boldsymbol{\pi}=-\nabla p + \mathbf{J}\times \mathbf{B} + \left(\sum_{\sigma} \mathbf{\hat{M}}_\sigma - \mathbf{u}\hat{S}_{\mathrm{tot}}\right)
+\end{equation}
+
+where the bracketed term represents the external source of momentum in the convective reference frame. The other relevant magnetohydrodynamic equations include the energy equations for the plasma pressure and the electron pressure. We start with the two-fluid energy equation where we first identify the continuity equation by expanding the partial derivatives with respect to time and position of kinetic energy density terms:
+
+\begin{equation*}
+    \frac{3}{2}\frac{\partial p_\sigma}{\partial t}+\nabla\cdot \left(\frac{5}{2}p_\sigma \mathbf{u}_\sigma + \mathbf{q}_\sigma + \mathbf{u}_\sigma \cdot \boldsymbol{\pi}_\sigma\right)+\frac{1}{2}m_\sigma n_\sigma \frac{\mathrm{D}}{\mathrm{D}t}\left(\mathbf{u}_\sigma^2\right)+\frac{1}{2}m_\sigma \mathbf{u}_\sigma^2 \hat{S}_\sigma=
+\end{equation*}
+
+\begin{equation}
+    = q_\sigma n_\sigma \mathbf{u}_\sigma \cdot \mathbf{E}+\sum_{\rho}\left(\mathbf{u}_\sigma \cdot \mathbf{R}_{\sigma\rho}+Q_{\sigma\rho}\right)+W_\sigma 
+\end{equation}
+
+We now take the dot product of the two-fluid momentum equation with $\mathbf{u}_\sigma$, and subtract it from the above to obtain, after some further simplifications, the two-fluid internal energy equation:
+
+\begin{equation}
+    \label{comp-24}
+    \frac{3}{2}\frac{\partial p_\sigma}{\partial t}+\nabla\cdot \left(\frac{3}{2}p_\sigma \mathbf{u}_\sigma + \mathbf{q}_\sigma\right)=-p_\sigma \nabla \cdot \mathbf{u}_\sigma - \boldsymbol{\pi}_\sigma : \nabla \mathbf{u}_\sigma + \sum_{\rho} Q_{\sigma\rho} + W_\sigma - \mathbf{u}_\sigma \cdot \mathbf{\hat{M}}_\sigma + \frac{1}{2}m_\sigma \mathbf{u}_\sigma^2 \hat{S}_\sigma
+\end{equation}
+
+Using the velocity map $(\mathbf{u}_{\mathrm{i}},\mathbf{u}_{\mathrm{e}})\to(\mathbf{u},\mathbf{J})$, which is given by $\mathbf{u}_{\mathrm{e}}=\mathbf{u}-\frac{1}{en_{\mathrm{e}}}\frac{m_{\mathrm{i}}}{Zm_{\mathrm{e}}+m_{\mathrm{e}}}\mathbf{J}$ and $\mathbf{u}_{\mathrm{i}}=\mathbf{u}+\frac{1}{en_{\mathrm{e}}}\frac{Zm_{\mathrm{e}}}{Zm_{\mathrm{e}}+m_{\mathrm{i}}}\mathbf{J}$, we see that $\mathbf{u}_{\mathrm{i}}\simeq \mathbf{u}$, so that $\mathbf{u}_{\mathrm{e}}\simeq \mathbf{u}-\frac{\mathbf{J}}{en_{\mathrm{e}}}$. Notice also that quasi-neutrality implies $\nabla\cdot \mathbf{J}=0$, thus the two-fluid energy equation for the electron species becomes:
+
+\begin{equation*}
+    \frac{3}{2}\frac{\partial p_{\mathrm{e}}}{\partial t} + \nabla\cdot \left(\frac{3}{2}p_{\mathrm{e}}\mathbf{u}-\frac{3}{2}p_{\mathrm{e}}\frac{\mathbf{J}}{en_{\mathrm{e}}}+\mathbf{q}_{\mathrm{e}}\right)=-p_{\mathrm{e}}\nabla\cdot \left(\mathbf{u}-\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)-\boldsymbol{\pi}_{\mathrm{e}}:\nabla \left(\mathbf{u}-\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)+\text{source terms}
+\end{equation*}
+
+Moving the current-related term of the left-hand side to the right side and using quasi-neutrality:
+
+\begin{equation*}
+    \frac{3}{2}\frac{\partial p_{\mathrm{e}}}{\partial t}+\nabla\cdot \left(\frac{3}{2}p_{\mathrm{e}}\mathbf{u}+\mathbf{q}_{\mathrm{e}}\right)=-p_{\mathrm{e}}\nabla\cdot \mathbf{u}+\left(\frac{3}{2}\nabla p_{\mathrm{e}}-\frac{5}{2}\frac{p_{\mathrm{e}}}{n_{\mathrm{e}}}\nabla n_{\mathrm{e}}\right)\cdot \frac{\mathbf{J}}{en_{\mathrm{e}}}-\boldsymbol{\pi}_{\mathrm{e}}:\nabla \left(\mathbf{u}-\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)+\text{source terms}
+\end{equation*}
+
+Let us now focus on the source terms, and first on the collisional term. For a two-component quasi-neutral plasma, the sum over collisional sources of energies give:
+
+\begin{align*}
+    Q_{\mathrm{ei}}+Q_{\mathrm{ie}}&=\frac{1}{2}\iiint_{\mathbb{R}^3}\left(m_{\mathrm{e}}\left\|\mathbf{v}-\mathbf{u}_{\mathrm{e}}\right\|^2 C_{\mathrm{ei}}+m_{\mathrm{i}}\left\|\mathbf{v}-\mathbf{u}_{\mathrm{i}}\right\|^2C_{\mathrm{ie}}\right)\,\mathrm{d}^3 \mathbf{v}=\\
+    &=\frac{1}{2}\iiint_{\mathbb{R}^3}\left(m_{\mathrm{e}}\mathbf{v}^2C_{\mathrm{ei}}+m_{\mathrm{i}}\mathbf{v}^2 C_{\mathrm{ie}}\right)\,\mathrm{d}^3 \mathbf{v}-\mathbf{u}_{\mathrm{e}}\cdot \mathbf{R}_{\mathrm{ei}}+\mathbf{u}_{\mathrm{i}}\cdot \mathbf{R}_{\mathrm{ie}}=\\
+    &=\left(\mathbf{u}_{\mathrm{i}}-\mathbf{u}_{\mathrm{e}}\right)\cdot \mathbf{R}_{\mathrm{ei}}\equiv \frac{1}{en_{\mathrm{e}}}\mathbf{J}\cdot \mathbf{R}_{\mathrm{e}}
+\end{align*}
+
+where we used the fact that collisions preserve total kinetic energy and that self-collisional terms are identically zero when integrated over the whole of velocity space. We have also abbreviated $\mathbf{R}_{\mathrm{ei}}=\mathbf{R}_{\mathrm{e}}$ since self-drag force is identically zero. Meanwhile, we can introduce $\Delta W_\sigma = \frac{1}{2}\iiint_{\mathbb{R}^3}m_\sigma \left\|\mathbf{v}-\mathbf{u}_\sigma\right\|^2 S_\sigma\,\mathrm{d}^3 \mathbf{v}$ which is in fact equal to the signed sum of the external source terms, thus:
+
+\begin{equation}
+    \frac{3}{2}\frac{\partial p_{\mathrm{e}}}{\partial t}+\nabla\cdot \left(\frac{3}{2}p_{\mathrm{e}}\mathbf{u}+\mathbf{q}_{\mathrm{e}}\right)=-p_{\mathrm{e}}\nabla\cdot \mathbf{u}+\left(\frac{3}{2}\nabla p_{\mathrm{e}}-\frac{5}{2}\frac{p_{\mathrm{e}}}{n_{\mathrm{e}}}\nabla n_{\mathrm{e}}\right)\cdot \frac{\mathbf{J}}{en_{\mathrm{e}}}-\boldsymbol{\pi}_{\mathrm{e}}:\nabla \left(\mathbf{u}-\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)+Q_{\mathrm{ei}}+\Delta W_{\mathrm{e}}
+\end{equation}
+
+where we used the fact that collisions preserve total kinetic energy and that self-collisional terms are identically zero when integrated over the whole of velocity space. We have also abbreviated $\mathbf{R}_{\mathrm{ei}}=\mathbf{R}_{\mathrm{e}}$ since the self-drag force is identically zero. Meanwhile, we can introduce $\Delta W_\sigma = \frac{1}{2}\iiint_{\mathbb{R}^3}m_\sigma \left\|\mathbf{v}-\mathbf{u}_\sigma\right\|^2 S_\sigma\,\mathrm{d}^3 \mathbf{v}$ as the external heat source. It is now somewhat useful to develop the term $Q_{\mathrm{ei}}$, more specifically:
+
+\begin{align*}
+    Q_{\mathrm{ei}}&=\frac{1}{2}\iiint_{\mathbb{R}^3}m_{\mathrm{e}}\left\|\mathbf{v}-\mathbf{u}_{\mathrm{e}}\right\|^2C_{\mathrm{ei}}\,\mathrm{d}^3 \mathbf{v}=\frac{1}{2}\iiint_{\mathbb{R}^3}m_{\mathrm{e}}\left\|\mathbf{v}-\mathbf{u}_{\mathrm{i}}+\mathbf{u}_{\mathrm{i}}\mathbf{u}_{\mathrm{e}}\right\|^2C_{\mathrm{ei}}\,\mathrm{d}^3 \mathbf{v}=\\
+    &=\frac{1}{2}\iiint_{\mathbb{R}^3}m_{\mathrm{e}}\left\|\mathbf{v}-\mathbf{u}_{\mathrm{i}}\right\|^2C_{\mathrm{ei}}\,\mathrm{d}^3 \mathbf{v}+(\mathbf{u}_{\mathrm{i}}-\mathbf{u}_{\mathrm{e}})\cdot\iiint_{\mathbb{R}^3}m_{\mathrm{e}}\left(\mathbf{v}-\mathbf{u}_{\mathrm{i}}\right)C_{\mathrm{ei}}\,\mathrm{d}^3 \mathbf{v}=\\
+    &=Q_{\Delta \mathrm{ei}}+\left(\mathbf{u}_{\mathrm{i}}-\mathbf{u}_{\mathrm{e}}\right)\cdot \mathbf{R}_{\mathrm{ei}}=Q_{\Delta \mathrm{ei}}+\frac{\mathbf{J}}{en_{\mathrm{e}}}\cdot \mathbf{R}_{\mathrm{e}}
+\end{align*}
+
+where $Q_{\Delta{\mathrm{ei}}}$ represents the heat density due to thermalisation of electrons with the ion species, while the latter is again the frictional Joule heating. We find an analogous internal energy equation for the ion species, except that several terms containing $\mathbf{J}$ vanish since $\mathbf{u}\simeq \mathbf{u}_{\mathrm{i}}$. Summing the two gives:
+
+\begin{equation}
+    \frac{3}{2}\frac{\partial p}{\partial t}+\nabla\cdot \left(\frac{3}{2}p \mathbf{u}+\mathbf{q}\right)=-p\nabla\cdot \mathbf{u}+\left(\frac{3}{2}\nabla p_{\mathrm{e}}-\frac{5}{2}\frac{p_{\mathrm{e}}}{n_{\mathrm{e}}}\nabla n_{\mathrm{e}} + \mathbf{R}_{\mathrm{e}}\right)\cdot \frac{\mathbf{J}}{en_{\mathrm{e}}}-\boldsymbol{\pi}:\nabla \mathbf{u}+\boldsymbol{\pi}_{\mathrm{e}}:\nabla \left(\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)+\Delta W
+\end{equation}
+
+where $\Delta W$ represents the total external heat source, i.e. summed over all plasma species. Indeed, the thermalisation terms $Q_{\Delta{\mathrm{ei}}}$ and $Q_{\Delta{\mathrm{ie}}}$ cancel since collision preserve energy. If we were to consider electrons as particles with negligible mass, we may ignore the inertial terms of the two-fluid electron momentum equation to obtain a quasi-equilibrium force balance:
+
+\begin{equation}
+    \mathbf{E}+\mathbf{u}\times \mathbf{B} = \frac{1}{en_{\mathrm{e}}}\left(\mathbf{R}_{\mathrm{e}}+\mathbf{J}\times \mathbf{B}-\nabla p_{\mathrm{e}}-\nabla\cdot \boldsymbol{\pi}_{\mathrm{e}}\right)
+\end{equation}
+
+We have by now sufficiently abused the theoretical aspects of the Vlasov, two-fluid and magnetohydrodynamic model; therefore, now it is worthwhile to give conceptual meaning to the equations from a purely algebraic perspective. Notably, the Vlasov model presents three time evolution equations:
+
+\begin{gather}
+    \frac{\partial f_\sigma(\mathbf{x},\mathbf{v},t)}{\partial t}+\frac{\partial}{\partial \mathbf{x}}\cdot \left(\mathbf{v}f_\sigma(\mathbf{x},\mathbf{v},t)\right)+\frac{\partial}{\partial \mathbf{v}}\cdot \left(\frac{q_\sigma}{m_\sigma}\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma(\mathbf{x},\mathbf{v},t)\right)=S_\sigma+\sum_{\rho}C_{\sigma\rho},\\
+    \frac{\partial \mathbf{B}}{\partial t}=-\nabla\times \mathbf{E}\quad\text{with}\quad \nabla\cdot \mathbf{B}=0,\\
+    \frac{\partial \mathbf{E}}{\partial t}=-\frac{1}{\varepsilon_0}\mathbf{J}+\frac{1}{\mu_0 \varepsilon_0}\nabla\times \mathbf{B}\quad\text{with}\quad \nabla\cdot \mathbf{E}=\frac{1}{\varepsilon_0}\rho_q
+\end{gather}
+
+Indeed, the above set of equations is deterministic in the sense that it presents essentially three unknowns, $f_{\sigma}$, $\mathbf{E}$ and $\mathbf{B}$ (of course, for each plasma species we have a separate Vlasov equation, but this is irrelevant for the topic). The other two Maxwell's equations can be regarded as initial conditions. Thus, knowing $f_\sigma$ at the initial time, and given $S_\sigma$ and $C_{\sigma\rho}$, the existence of a possibly non-trivial solution is almost guaranteed since we have a deterministic set of coupled differential equations and a set of initial conditions for each unknown. The downside of the Vlasov model is that it is intrinsically extensively difficult to work with since it requires us to solve for the particle distribution functions on a particular domain of the phase space which being 7-dimensional is indeed not a small feat.  
+
+\vspace*{2.5pt}
+
+\quad However, the two-fluid model and the MHD model are more complicated since we have defined a large number of auxiliary quantities. Let us focus on the MHD model since it is somewhat more applicable than the two-fluid model in realistic scenarios. In particular, the MHD model presents in total five time evolution equations for the magnetic field $\mathbf{B}$, the mass velocity $\mathbf{u}$, the number density $n$, the electron pressure $p_{\mathrm{e}}$ and the plasma pressure, i.e. total pressure $p$. In fact, these quantities are the so-called \textit{fundamental} variables since they obey time evolution equations. Other quantities are either purely auxiliary, such as the electric field $\mathbf{E}$, the current density $\mathbf{J}$ and the mass density $\rho$ in a way that they do not increase the number of unknown variables since for each of these we can determine a relation to the fundamental variables:
+
+\begin{equation}
+    \label{comp-25}
+    \frac{\partial \mathbf{B}}{\partial t}=-\nabla\times \mathbf{E}\quad\text{with}\quad\mathbf{E}+\mathbf{u}\times \mathbf{B} = \frac{1}{en_{\mathrm{e}}}\left(\mathbf{R}_{\mathrm{e}}+\mathbf{J}\times \mathbf{B}-\nabla p_{\mathrm{e}}-\nabla\cdot \boldsymbol{\pi}_{\mathrm{e}}\right)
+\end{equation}
+
+\begin{equation}
+    \label{comp-26}
+    \rho \frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t}=-\nabla p - \nabla\cdot\boldsymbol{\pi} + \mathbf{J}\times \mathbf{B} + \left(\sum_{\sigma} \mathbf{\hat{M}}_\sigma - \mathbf{u}\hat{S}_{\mathrm{tot}}\right)\quad\text{with}\quad \mathbf{J}\simeq \frac{1}{\mu_0}\nabla \times \mathbf{B}
+\end{equation}
+
+\begin{equation}
+    \label{comp-27}
+    \frac{\partial n}{\partial t}+\nabla\cdot \left(n \mathbf{u}\right)=\hat{S}_{\mathrm{tot}}\quad\text{with}\quad \rho\simeq \frac{n m_{\mathrm{i}}}{Z+1}=\frac{n_{\mathrm{e}}m_{\mathrm{i}}}{Z}
+\end{equation}
+
+\begin{equation*}
+    \frac{3}{2}\frac{\partial p_{\mathrm{e}}}{\partial t}+\nabla\cdot \left(\frac{3}{2}p_{\mathrm{e}}\mathbf{u}+\mathbf{q}_{\mathrm{e}}\right)=-p_{\mathrm{e}}\nabla\cdot \mathbf{u}+\left(\frac{3}{2}\nabla p_{\mathrm{e}}-\frac{5}{2}\frac{p_{\mathrm{e}}}{n_{\mathrm{e}}}\nabla n_{\mathrm{e}}\right)\cdot \frac{\mathbf{J}}{en_{\mathrm{e}}}+
+\end{equation*}
+
+\begin{equation}
+    \label{comp-28}
+    -\boldsymbol{\pi}_{\mathrm{e}}:\nabla \left(\mathbf{u}-\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)+\frac{\mathbf{J}\cdot\mathbf{R}_{\mathrm{e}}}{en_{\mathrm{e}}}+Q_{\Delta\mathrm{ei}}+\Delta W_{\mathrm{e}}
+\end{equation}
+
+\begin{equation*}
+    \frac{3}{2}\frac{\partial p}{\partial t}+\nabla\cdot \left(\frac{3}{2}p \mathbf{u}+\mathbf{q}\right)=-p\nabla\cdot \mathbf{u}+\left(\frac{3}{2}\nabla p_{\mathrm{e}}-\frac{5}{2}\frac{p_{\mathrm{e}}}{n_{\mathrm{e}}}\nabla n_{\mathrm{e}} + \mathbf{R}_{\mathrm{e}}\right)\cdot \frac{\mathbf{J}}{en_{\mathrm{e}}}+
+\end{equation*}
+
+\begin{equation}
+    \label{comp-29}
+    -\boldsymbol{\pi}:\nabla \mathbf{u}+\boldsymbol{\pi}_{\mathrm{e}}:\nabla \left(\frac{\mathbf{J}}{en_{\mathrm{e}}}\right)+\Delta W
+\end{equation}
+
+However, we notice that there are many variables who do not possess a clear relation to the fundamental variables; these include: the total heat flux densities $\mathbf{q}_{\mathrm{e}}$ and $\mathbf{q}$, the collisional friction force density $\mathbf{R}_{\mathrm{e}}$, the stress tensors $\boldsymbol{\pi}$ and $\boldsymbol{\pi}_{\mathrm{e}}$, and the thermalisation term $Q_{\Delta ei}$, while external sources, like $\hat{S}_{\mathrm{tot}}$, $\Delta W_{\mathrm{e}}$ and $\Delta W$, are in principle known as hyperparameters of a given system. Therefore, in order to construct a deterministic set of equations, we require so-called \textit{closure} relations for the unknown variables, and it is the objective of transport theory to obtain closure expressions for these in terms of the fundamental variables. Finally, we merely note that, again, to fully solve the system of equations, we'd also need initial conditions as well as boundary conditions, but this is somewhat easier than determining closure relations, and is of farther interest in some following sections.
+
+\subsection{The MHD perspective}
+
+As discussed above, the system of equations given by the MHD model is not deterministic due to the lack of closure relations. An extensive development of general closure relations has already been somewhat accomplished, but the proposed models are too difficult to solve numerically. However, there are some approximations reasonably valid in certain regimes that we shall explore in this subsection.
+
+\vspace*{2.5pt}
+
+\quad The usual two-fluid magnetohydrodynamic equations are obtained by taking an asymptotic limit of the MHD equations above in which only the first non-vanishing order terms in the ratio of the ion Larmor radius to the system size are retained; this is sometimes called the finite Larmor radius (FLR) approximation. In principle, we only retain expressions for the ion stress tensor $\boldsymbol{\pi}_{\mathrm{i}}$ and ion and electron heat fluxes $\mathbf{q}_{\mathrm{i}}$ and $\mathbf{q}_{\mathrm{e}}$ that do not depend on collisions. This contribution to the ion stress tensor is usually known as the gyroviscous stress or gyroviscosity. Indeed, we shall attempt to derive some useful results for this specific case. We start by operating on (\ref{comp-1}) with $\iiint_{\mathbb{R}^3}m_{\sigma}\left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right)\,\mathrm{d}^3 \mathbf{v}$ as follows:
+
+\begin{equation*}
+    \iiint_{\mathbb{R}^3}m_\sigma\left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right)\left[\frac{\partial f_\sigma}{\partial t}+\frac{\partial}{\partial \mathbf{x}}\cdot\left(\mathbf{v}f_\sigma\right)+\frac{\partial}{\partial \mathbf{v}}\cdot\left(\left(\mathbf{E}+\mathbf{v}\times \mathbf{B}\right)f_\sigma\right)\right]\,\mathrm{d}^3 \mathbf{v}=\sum_{\rho}\hat{\mathcal{C}}_{\sigma\rho}+\hat{\mathcal{S}}_\sigma
+\end{equation*}
+
+where the calligraphic symbols on the right-hand side represent collisional and external sources of stress and, by assumption, vanish. Let us introduce the pressure tensor $\mathbf{P}_\sigma=\iiint_{\mathbb{R}^3}m_\sigma \left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right)f_\sigma\,\mathrm{d^3}\mathbf{v}$. Since $\mathbf{u}_\sigma=\mathbf{u}_\sigma(\mathbf{x},t)$, the partial derivatives with respect to time, position nor velocity commute with the integral kernel. It is therefore necessary to evaluate each term carefully by components:
+
+\begin{gather*}
+    \iiint_{\mathbb{R}^3}m_\sigma \left(v^j-{u}_\sigma^j\right)\left({v}^k-{u}^k_\sigma\right)\frac{\partial f_\sigma}{\partial t}\,\mathrm{d^3}\mathbf{v}=\frac{\partial }{\partial t}\iiiint_{\mathbb{R}^3}m_\sigma\left(v^j-{u}^j_\sigma\right)\left({v}^k-{u}^k_\sigma\right)f_\sigma+\\
+    -\iiint_{\mathbb{R}^3}\frac{\partial}{\partial t}\left(\left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)\right)f_\sigma\,\mathrm{d^3}\mathbf{v}=\bigg\{\frac{\partial \left(v^j-u_\sigma^j\right)}{\partial t}=-\frac{\partial u_\sigma^k}{\partial t}\bigg\}=\\
+    =\frac{\partial P_\sigma^{jk}}{\partial t}+\frac{\partial u_\sigma^j}{\partial t}\iiint_{\mathbb{R}^3}\left(v^k-u_\sigma^k\right)f_\sigma\,\mathrm{d^3}\mathbf{v}+\frac{\partial u_\sigma^k}{\partial t}\iiint_{\mathbb{R}^3}\left(v^j-u_\sigma^j\right)f_\sigma\,\mathrm{d^3}\mathbf{v}=\frac{\partial P_\sigma^{jk}}{\partial t}
+\end{gather*}
+
+Notice that the partial derivative $\frac{\partial \mathbf{u}_\sigma}{\partial t}$ can safely be taken outside of the integral, so the remaining term vanishes by symmetry. The partial derivative could safely be taken outside of the first integral, so we simply obtain $\frac{\partial \mathbf{P}_\sigma}{\partial t}$ from the first term. The advective term is then developped as follows:
+
+\begin{gather*}
+    \iiint_{\mathbb{R}^3}m_\sigma \left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)\frac{\partial}{\partial x^i}\left(v^if_\sigma\right)\,\mathrm{d^3}\mathbf{v}=\frac{\partial }{\partial x^i}\iiint_{\mathbb{R}^3}m_\sigma v^i\left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)f_\sigma\,\mathrm{d^3}\mathbf{v}+\\
+    +\frac{\partial u_\sigma^j}{\partial x^i}\iiint_{\mathbb{R}^3}\left(v^k-u_\sigma^k\right)\left(v^i-u_\sigma^i+u_\sigma^i\right)f_\sigma\,\mathrm{d^3}\mathbf{v}+\frac{\partial u_\sigma^k}{\partial x^i}\iiint_{\mathbb{R}^3}\left(v^j-u_\sigma^j\right)\left(v^i-u_\sigma^i+u_\sigma^i\right)\,\mathrm{d^3}\mathbf{v}=\\
+    =\frac{\partial }{\partial x^i}\iiint_{\mathbb{R}^3}\left(v^i-u_\sigma^i\right)\left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)f_\sigma\,\mathrm{d^3}\mathbf{v}+\frac{\partial }{\partial x^i}\left(u_\sigma^iP_\sigma^{jk}\right)+\frac{\partial u_\sigma^j}{\partial x^i}P_\sigma^{ki}+\frac{\partial u_\sigma^k}{\partial x^i}P_\sigma^{ji}=\\
+    =\frac{\partial Q_\sigma^{ijk}}{\partial x^i}+\frac{\partial u_\sigma^i}{\partial x^i}P_\sigma^{jk}+u_\sigma^i \frac{\partial P_\sigma^{jk}}{\partial x^i}+\frac{\partial u_\sigma^j}{\partial x^i}P_\sigma^{ki}+\left(\frac{\partial u_\sigma^j}{\partial x^i}P_\sigma^{ki}\right)^\top
+\end{gather*}
+
+The first term corresponds to the heat flux tensor density, while the other terms can be rewritten as $\mathbf{P}_\sigma \left(\nabla\cdot{\mathbf{u}_\sigma}\right)$, $\left(\mathbf{u}_\sigma\cdot\nabla\right)\mathbf{P}_\sigma$, and $\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma$. By the assumption of negligible heat flux, we shall immediately disregard the third-rank tensor term. We now focus on the velocity term, first the one containing the electric field:
+
+\begin{gather*}
+    \iiint_{\mathbb{R}^3}q_\sigma \left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)\frac{\partial }{\partial v^i}\left(E^if_\sigma\right)\,\mathrm{d^3}\mathbf{v}=E^i\iiint_{\mathbb{R}^3}q_\sigma \left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)\frac{\partial f_\sigma}{\partial v^i}\,\mathrm{d^3}\mathbf{v}=\\
+    =-E^i\iiint_{\mathbb{R}^3}q_\sigma\left(\delta_i^{\,j} \left(v^k-u_\sigma^k\right)+\delta_i^{\,k} \left(v^j-u_\sigma^j\right)\right)f_\sigma\,\mathrm{d^3}\mathbf{v}=0
+\end{gather*}
+
+where we first integrated partially, and then used the fact that both integrals in the last equality vanish by symmetry about the mean velocity. Now, on the other term:
+
+\begin{gather*}
+    \iiint_{\mathbb{R}^3}q_\sigma \left(v^j-u_\sigma^j\right)\left(v^k-u_\sigma^k\right)\frac{\partial }{\partial v^i}\left(\varepsilon^{ilm}v_l B_m f_\sigma\right)\,\mathrm{d^3}\mathbf{v}=\\
+    =-\iiint_{\mathbb{R}^3}q_\sigma\varepsilon^{ilm}v_l B_m\delta_i^{\,j}\left(v^k-u_\sigma^k\right)f_\sigma\,\mathrm{d^3}\mathbf{v}-\iiint_{\mathbb{R}^3}q_\sigma\varepsilon^{ilm}v_l B_m \left(v^j-u_\sigma^j\right) \delta_i^{\,k}f_\sigma\,\mathrm{d^3}\mathbf{v}=\\
+    =-\frac{q_\sigma}{m_\sigma}\varepsilon^{jlm}P_{\sigma l}^{\,k}B_m-\frac{q_\sigma}{m_\sigma}\varepsilon^{klm}P_{\sigma l}^{\,j}B_m
+\end{gather*}
+
+This last equality can be rewritten as $q_\sigma \left(\mathbf{P}_\sigma\times \mathbf{B}-\mathbf{B}\times \mathbf{P}_\sigma\right)$. Indeed:
+
+\begin{gather*}
+    \mathbf{P}_\sigma\times \mathbf{B}=P^j_{\,l}B_m \mathbf{e}_j\otimes \left(\mathbf{e}^l\times \mathbf{e}^m\right)=\varepsilon^{klm}P^j_{\,l}B_m \mathbf{e}_j\otimes\mathbf{e}_k\\
+    \mathbf{B}\times \mathbf{P}_\sigma = P_{l}^{\,k}B_m \left(\mathbf{e}^m\times \mathbf{e}^l\right)\otimes \mathbf{e}_k=\varepsilon^{jml}P_l^{\,k}B_m \mathbf{e}_j\otimes \mathbf{e}_k\\
+    \mathbf{P}_\sigma\times \mathbf{B}-\mathbf{B}\times \mathbf{P}_\sigma=\left(\varepsilon^{klm}P_l^{\,j}B_m-\varepsilon^{jml}P_l^{\,k}B_m\right)\mathbf{e}_j\otimes \mathbf{e}_k=\left(\varepsilon^{klm}P_l^{\,j}B_m+\varepsilon^{jlm}P_l^{\,k}B_m\right)\mathbf{e}_j\otimes \mathbf{e}_k
+\end{gather*}   
+
+Gathering all terms, we obtain:
+
+\begin{equation}
+    \frac{\mathrm{D}\mathbf{P}_\sigma}{\mathrm{D}t}+\mathbf{P}_\sigma \left(\nabla\cdot{\mathbf{u}_\sigma}\right)+\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma+\left(\mathbf{P}_\sigma \cdot\nabla \mathbf{u}_\sigma\right)^\top=\frac{q_\sigma}{m_\sigma}\left(\mathbf{P}_\sigma\times \mathbf{B}-\mathbf{B}\times \mathbf{P}_{\sigma}\right)
+\end{equation}
+
+Now, we apply the FLR approximation. In principle, the finite Larmor radius limit corresponds to a regime where the considered plasma is submitted to a sufficiently strong magnetic field which induces extremely fast, small cyclotronic oscillations of all charges such that the characteristic time evolution scale of the system is much longer than the typical cyclotron periods. Therefore, the inertial terms like the convective derivative are all negligible compared to cyclotron-like terms:
+
+\begin{equation*}
+    \mathbf{P}_\sigma \left(\nabla\cdot{\mathbf{u}_\sigma}\right)+\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma+\left(\mathbf{P}_\sigma \cdot\nabla \mathbf{u}_\sigma\right)^\top\simeq\frac{q_\sigma}{m_\sigma}\left(\mathbf{P}_\sigma\times \mathbf{B}-\mathbf{B}\times \mathbf{P}_{\sigma}\right)
+\end{equation*}
+
+With the assumption of an \textit{almost} isotropic pressure, we can safely say that the diagonal terms of $\mathbf{P}_\sigma$ are much greater than the off-diagonal ones. In the virtue of our considerations above, we decompose $\mathbf{P}_\sigma=p_\sigma \mathbf{\hat{1}}+\boldsymbol{\pi}_\sigma$. Notice that the anticommutator of the vector product $\mathbf{P}_\sigma\times\mathbf{B}$ essentially extracts the anisotropic contribution $\boldsymbol{\pi}_\sigma$ since $\mathbf{\hat{1}}$ commutes with the vector product. Therefore, the above equation, now specifically applied to ions, becomes:
+
+\begin{equation}
+    \label{comp-31}
+    p_{\mathrm{i}}\left(\nabla\cdot{\mathbf{u}_{\mathrm{i}}}\right)\mathbf{\hat{1}}+p_{\mathrm{i}}\nabla \mathbf{u}_{\mathrm{i}}+p_{\mathrm{i}}\left(\nabla \mathbf{u}_{\mathrm{i}}\right)^\top=:p_{\mathrm{i}}\mathbf{W}=\frac{q_{\mathrm{i}}}{m_{\mathrm{i}}}\left(\boldsymbol{\pi}_{\mathrm{i}}\times \mathbf{B}-\mathbf{B}\times\boldsymbol{\pi}_{\mathrm{i}}\right)
+\end{equation}
+
+where we introduced $\mathbf{W}=\left(\nabla\cdot{\mathbf{u}_{\mathrm{i}}}\right)\mathbf{\hat{1}}+\nabla \mathbf{u}_{\mathrm{i}}+\left(\nabla \mathbf{u}_{\mathrm{i}}\right)^\top$ for convenience. We now have a purely algebraic equation for $\boldsymbol{\pi}_{\mathrm{i}}$. Let $\mathbf{\hat{b}}=\mathbf{B}/\|\mathbf{B}\|$, $\frac{p_{\mathrm{i}}m_{\mathrm{i}}}{q_{\mathrm{i}}\left\|\mathbf{B}\right\|}\mathbf{W}=\mathbf{A}$ and $\boldsymbol{\pi}_{\mathrm{i}}\equiv\boldsymbol{\pi}$ for the sake of clarity. We can extract the gyroviscous tensor by taking different products of the equation with the unit vector, and we shall do this by components to make the reader familiar with tensor algebra: 
+
+\begin{equation*}
+    A^{jk}=\varepsilon^{jlm}\pi_{l}^{\,k}b_m+\varepsilon^{klm}\pi_{l}^{\,j}b_m\stackrel{\cdot \mathbf{b}}{\implies}A^{jk}b_k=\varepsilon^{lmj}b_m \left(\pi_l^{\,k}b_k\right)+\varepsilon^{klm}b_k b_m\pi_l^{\,j}=\varepsilon^{jlm}\left(\pi_l^{\,k}b_k\right) b_m
+\end{equation*}
+
+since the second term contains the vector product $\mathbf{b}\times \mathbf{b}=\mathbf{0}$. We can now take the vector product of the last equation with $\mathbf{b}$ as follows:
+
+\begin{equation*}
+    \left(-\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\right)_i=\varepsilon_{ijn}A^{jk}b_kb^n=\varepsilon_{ijn}\varepsilon^{jlm}\pi_l^{\,k}b_k b_mb^n=\left(b^l\pi_l^{\,k}b_k\right)b_i-\pi_i^{\,k}b_k
+\end{equation*}
+
+where we have identified the unit vector norm $b_nb^n=1$, and separated the projection $\mathbf{b}\cdot\boldsymbol{\pi}\cdot \mathbf{b}$. In fact, the $\mathbf{b}\mathbf{b}$ component cannot be extracted from (\ref{comp-31}) since the dyadic $\mathbf{b}\mathbf{b}$ belongs to the kernel of the operator $\cdot\times \mathbf{b}-\mathbf{b}\times\cdot$. We will therefore search for the stress tensor orthogonal to the kernel subspace, such that $\mathbf{b}\cdot\boldsymbol{\pi}_\perp\cdot \mathbf{b}=0$. We proceed:
+
+\begin{gather*}
+    \left(\mathbf{A}\times \mathbf{b}\right)^{j}_{\,i}=\varepsilon_{ikn}A^{jk}b^n=\varepsilon_{ikn}\varepsilon^{jlm}\pi_{l}^{\,k}b_m b^n+\varepsilon_{ikn}\varepsilon^{klm}\pi_{l}^{\,j}b_mb^n=\varepsilon_{ikn}\varepsilon^{jlm}\pi_l^{\,k} b_mb^n+\pi_l^{\,j}b_ib^l-\pi_i^{\,j}\\
+    \left(\mathbf{b}\times \mathbf{A}\right)_{i}^{\,j}=\varepsilon_{ink}b^nA^{kj}=\varepsilon_{ink}\varepsilon^{klm}\pi_l^{\,j}b_mb^n+\varepsilon_{ink}b^n \varepsilon^{jlm}\pi_l^{\,k}b_mb^n=\varepsilon_{ink}\varepsilon^{jlm}\pi_l^{\,k}b_mb^n+\pi_i^{\,j}-\pi_l^{\,j}b_ib^l
+\end{gather*}
+
+We now use $\varepsilon_{ikn}\varepsilon^{jlm} = \delta_i^j(\delta_k^l\delta_n^m - \delta_k^m\delta_n^l) - \delta_k^j(\delta_i^l\delta_n^m - \delta_i^m\delta_n^l) + \delta_n^j(\delta_i^l\delta_k^m - \delta_k^l\delta_i^m)$, and find:
+
+\begin{gather*}
+    \delta_i^{\,j}\left(\delta_k^{\,l}\delta_n^{\,m}-\delta_k^{\,m}\delta_n^{\,l}\right)\pi_{l}^{\,k}b_m b^n=\delta_i^{\,j}\left(\pi_k^{\,k}b_m b^{m}-\pi_m^{\,k}b_kb^{m}\right)=0\\
+    \delta_k^{\,j}(\delta_i^{\,l}\delta_n^{\,m} - \delta_i^{\,m}\delta_n^{\,l})\pi_{l}^{\,k}b_m b^n=\pi_i^{\,j}-\pi_m^jb_ib^m\\
+    \delta_n^{\,j}(\delta_i^{\,l}\delta_k^{\,m} - \delta_k^{\,l}\delta_i^{\,m})\pi_l^{\,k}b_mb^n=\pi_i^{\,k}b_kb^j-\pi_k^{\,k}b_i b^j=\pi_i^{\,k}b_kb^j\\
+    (\mathbf{A}\times \mathbf{b})_{\,i}^{j}=-2\pi_i^{\,j}+2b^k\pi_k^{\,j}b_i+b^j\pi_i^{\,k}b_k=-2\pi_i^{\,j}+2b^j\left(\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\right)_i+\left(\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\right)^jb_i\\
+    (\mathbf{b}\times \mathbf{A})_i^{\,j}=2\pi_i^{\,j}-2b^k\pi_k^{\,j}b_i+\pi_i^{\,k}b_kb^j=2\pi_i^{\,j}-2b^j \left(\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\right)_i - \left(\mathbf{b} \times \mathbf{A}\cdot \mathbf{b}\right)^jb_i\\
+    4\pi_i^{\,j}=(\mathbf{b}\times \mathbf{A})_i^{\,j}-\left(\mathbf{A} \times \mathbf{b}\right)^j_{\,i}+4b^j \left(\mathbf{b}\times \mathbf{A} \cdot \mathbf{b}\right)_{i}+2b_i\left(\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\right)^j
+\end{gather*}
+
+We expect the gyroviscous stress tensor to be symmetric; indeed, the symmetry is already present in the above expression, we shall merely add the symmetric pairs of indices together to obtain a more elegant form. Notice that $\mathbf{b}\times \mathbf{A}-\left(\mathbf{A}\times \mathbf{b}\right)^\top$ is already symmetric by construction:
+
+\begin{equation*}
+    \boldsymbol{\pi}=\frac{1}{4}\left(\mathbf{b}\times \mathbf{A}-\left(\mathbf{A}\times \mathbf{b}\right)^\top\right)+\frac{3}{4}\left(\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\mathbf{b}+\left(\mathbf{b}\times \mathbf{A}\cdot \mathbf{b}\mathbf{b}\right)^\top\right)
+\end{equation*}
+
+The vector product is antisymmetric upon transposition; we can extract $\mathbf{b}\times \mathbf{A}$, and thus obtain:
+
+\begin{equation}
+    \label{comp-32}
+    \boldsymbol{\pi}_{\mathrm{i}\perp}^{\mathrm{gyr}}=\frac{p_{\mathrm{i}}m_{\mathrm{i}}}{4 q_{\mathrm{i}}\|\mathbf{B}\|}\left\{\mathbf{b}\times \mathbf{W}\cdot \left(\mathbf{\hat{1}}+3 \mathbf{b}\mathbf{b}\right)+\left[\mathbf{b}\times \mathbf{W}\cdot \left(\mathbf{\hat{1}}+3 \mathbf{b}\mathbf{b}\right)\right]^\top\right\}
+\end{equation}
+
+where we recall $\mathbf{W}=\left(\nabla\cdot \mathbf{u}\right)\mathbf{\hat{1}}+\nabla \mathbf{u}+\left(\nabla \mathbf{u}\right)^\top$. Since the magnetic Lorentz force is blind to movement along the magnetic field, it would be necessary to thus artificially add a term along $\mathbf{b}\mathbf{b}$, which would necessarily depend on collisions. It is quite celebrative to say that we have performed our first derivation of a closure relation!
+
+\vspace*{2.5pt}
+
+\quad However, (\ref{comp-32}) is difficult, or rather expensive, to implement computationally, so we shall find an alternative to account for the gyroviscous force present in (\ref{comp-25}) through (\ref{comp-29}). Indeed, if we were to write the exact time evolution equation for the pressure tensor by retaining the collisional, heat flux and source terms:
+
+\begin{equation}
+    \frac{\mathrm{D}\mathbf{P}_\sigma}{\mathrm{D}t}+\mathbf{P}_\sigma \left(\nabla\cdot{\mathbf{u}_\sigma}\right)+\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma+\left(\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma\right)^\top = \frac{q_\sigma}{m_\sigma}\left(\mathbf{P}_\sigma\times \mathbf{B}-\mathbf{B}\times \mathbf{P}_\sigma\right)-\nabla\cdot \mathbf{Q}_{\mathbf{P}_{\sigma}}+\sum_{\rho}\mathbf{F}_{\sigma\rho} + \mathbf{W}_{\sigma}
+\end{equation}
+
+where $\mathbf{F}_\sigma=\iiint_{\mathbb{R}^3}m_\sigma \left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right)C_{\sigma\rho}\,\mathrm{d^3}\mathbf{v}$ is the collisional force-like tensor density, $\mathbf{Q}_{\sigma}$ is the third-rank heat flux-related tensor, and $\mathbf{W}_\sigma =\iiint_{\mathbb{R}^3}m_\sigma \left(\mathbf{v}-\mathbf{u}_\sigma\right)\left(\mathbf{v}-\mathbf{u}_\sigma\right)S_\sigma\,\mathrm{d^3}\mathbf{v}$ is the source term. Since $\mathbf{P}_\sigma = p_\sigma \mathbf{\hat{1}}+\boldsymbol{\pi}_\sigma$, we can determine via (\ref{comp-24}) the time evolution equation for the stress tensor by a simple linear combination:
+
+\begin{equation*}
+    \frac{\mathrm{D}\boldsymbol{\pi}_\sigma}{\mathrm{D}t}+\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma + \left(\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma\right)^\top+\boldsymbol{\pi}_{\sigma}\left(\nabla\cdot{\mathbf{u}_\sigma}\right)=\frac{q_\sigma}{m_\sigma}\left(\mathbf{P}_\sigma\times \mathbf{B}-\mathbf{B}\times \mathbf{P}_\sigma\right)+
+\end{equation*}
+
+\begin{equation}
+    \label{comp-24-x}
+    +\frac{2}{3}\mathbf{\hat{1}}\left(p_\sigma \nabla\cdot{\mathbf{u}_\sigma}+\boldsymbol{\pi}_\sigma : \nabla \mathbf{u}_\sigma+ \nabla\cdot{\mathbf{q}}-Q_{\Delta\sigma}\right)-\nabla\cdot \mathbf{Q}_{\sigma}+\sum_{\rho}\mathbf{F}_{\sigma\rho}
+\end{equation}
+
+Notice that we have already developped a meaningful way to solve (\ref{comp-24-x}), specifically through the magnetic anticommutator term. Formally, let $\mathcal{L}(\mathbf{X})=\mathbf{X}\times \mathbf{b}-\mathbf{b}\times \mathbf{X}$, where $\mathbf{b}$ is the unit vector along the magnetic field. Therefore, we have the following implication. Let $\mathbf{X}$ be a traceless tensor orthogonal to the subspace spanned by $\mathbf{b}\mathbf{b}$; then $\mathbf{X}$ is equivalent to $\boldsymbol{\pi}_{\mathrm{i}\perp}^{\mathrm{gyr}}$, and one has:
+
+\begin{equation}
+    \mathcal{L}(\mathbf{X})=\mathbf{Y}\implies \mathbf{X}=\mathcal{L}^{-1}(\mathbf{Y})=\frac{1}{4}\left\{\mathbf{b}\times \mathbf{Y}\cdot \left(\mathbf{\hat{1}}+3 \mathbf{b}\mathbf{b}\right)+\left[\mathbf{b}\times \mathbf{Y}\cdot \left(\mathbf{\hat{1}}+3 \mathbf{b}\mathbf{b}\right)\right]^\top\right\}
+\end{equation}
+
+Now, we introduce the so-called Chew-Goldberger-Low (CGL) stress tensor $\mathbf{P}_\sigma^{\mathrm{CGL}}=p_\sigma^{\perp}\left(\mathbf{\hat{1}}-\mathbf{b}\mathbf{b}+p_\parallel \mathbf{b}\mathbf{b}\right)$, and moreover $\mathbf{P}_\sigma^{\mathrm{CGL}}=p_\sigma \mathbf{\hat{1}}+\boldsymbol{\pi}_{\sigma}^{\parallel}$, and let the gyroscopic stress tensor be given by $\boldsymbol{\pi}_{\sigma}^{\mathrm{gyr}}=\mathbf{P}_\sigma-\mathbf{P}_\sigma^{\mathrm{CGL}}$. We has thus constructed a general traceless stress tensor $\boldsymbol{\pi}_\sigma^{\mathrm{gyr}}$ orthogonal to the operator kernel. By construction, we have that $\mathcal{L}^{-1}\left(\mathcal{L}\left(\mathbf{P}_\sigma\right)\right)=\mathbf{P}_\sigma - \mathbf{P}_\sigma^{\mathrm{CGL}}\equiv\boldsymbol{\pi}_\sigma^{\mathrm{gyr}}$. It is now useful to introduce $\boldsymbol{\Omega}_\sigma=\frac{q_\sigma}{m_\sigma}\mathbf{B}$ and $\Omega_\sigma=\|\boldsymbol{\Omega}_\sigma\|$, and rewrite the time evolution equation for the gyroscopic stress tensor as follows:
+
+\begin{equation*}
+    \boldsymbol{\pi}_\sigma^{\mathrm{gyr}}=\frac{1}{\Omega_\sigma}\mathcal{L}^{-1}\left(\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma + \left[\mathbf{P}_\sigma\cdot\nabla \mathbf{u}_\sigma\right]^\top\right)+\frac{1}{\Omega_\sigma}\mathcal{L}^{-1}\left(\frac{\mathrm{D}\boldsymbol{\pi}_\sigma^{\mathrm{gyr}}}{\mathrm{D}t}\right)+\\
+\end{equation*}
+
+\begin{equation}
+    \label{comp-26-gyr}
+    +\frac{1}{\Omega_\sigma}\left(\nabla\cdot{\mathbf{u}_\sigma}\right)\mathcal{L}^{-1}\left(\boldsymbol{\pi}_\sigma^\mathrm{gyr}\right)+\frac{1}{\Omega_\sigma}\mathcal{L}^{-1}\left(\nabla\cdot \mathbf{Q}_\sigma\right)-\sum_{\rho}\frac{1}{\Omega}\mathcal{L}^{-1}\left(\mathbf{F}_{\sigma\rho}\right)
+\end{equation}
+
+where the terms multiplied by $\mathbf{\hat{1}}$ in (\ref{comp-24-x}) became absorbed into the CGL tensor.
+
+\vspace*{2.5pt}
+
