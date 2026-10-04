@@ -1,0 +1,50 @@
+\tikzset{
+    arw/.style args={#1and#2with step#3}{%
+    postaction=decorate,
+    decoration={
+      markings,
+      mark={between positions #1 and #2 step #3 with \arrow{Stealth[bend]}}
+    }
+  }
+}
+\usepgfplotslibrary{colormaps}
+\usetikzlibrary{pgfplots.colormaps}
+\begin{tikzpicture}
+\pgfmathsetmacro{\R}{4}
+\pgfmathsetmacro{\r}{2}
+\pgfplotsset{/pgfplots/colormap={gray}{rgb255=(100, 100, 100) rgb255=(100, 100, 100)}} 
+    \begin{axis}[view={0}{30}, axis lines=none, samples=31, domain=0:150, y domain=0:360]
+        \addplot3[surf, opacity=0.3, shader=interp] (
+            {cos(x) * (\R + \r * cos(y))},
+            {sin(x) * (\R + \r * cos(y))},
+            {\r * sin(y)}
+        );
+        \addplot3[very thick, black, samples=20, domain=0:150, samples y=0, smooth, arw=0.125 and 1 with step 0.2] (
+            {cos(x) * (\R + \r * cos(2 * x + 10))},
+            {sin(x) * (\R + \r * cos(2 * x + 10))},
+            {\r * sin(2 * x + 10)}
+        );
+        \addplot3[very thick, black, samples=20, domain=0:150, samples y=0, smooth] (
+            {cos(x) * \R},
+            {sin(x) * \R},
+            0
+        );
+        \addplot3[very thick, black, dashed, samples=20, domain=0:360, samples y=0, smooth] (
+            {cos(0) * (\R + \r * cos(x))},
+            {sin(0) * (\R + \r * cos(x))},
+            {\r * sin(x)}
+        );
+        \addplot3[very thick, black, dashed, samples=20, domain=0:360, samples y=0, smooth] (
+            {cos(150) * (\R + \r * cos(x))},
+            {sin(150) * (\R + \r * cos(x))},
+            {\r * sin(x)}
+        );
+        \pgfplotsinvokeforeach {0, 10, ..., 150} {
+            \addplot3[thick, black] coordinates {
+            ({cos(#1) * \R}, {sin(#1) * \R}, 0) ({cos(#1) * (\R + \r * cos(10 + 2 * #1))}, {sin(#1) * (\R + \r * cos(10 + 2 * #1))}, {\r * sin(10 + 2 * #1)})
+            };
+        }
+        \addplot3[black, mark=*, only marks] coordinates {({cos(0) * \R}, {sin(0) * \R}, 0) ({cos(150) * \R}, {sin(150) * \R}, 0)
+        };
+    \end{axis}
+\end{tikzpicture}

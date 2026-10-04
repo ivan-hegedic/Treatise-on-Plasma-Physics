@@ -1,0 +1,81 @@
+\usepgfplotslibrary{colormaps}
+\usetikzlibrary{pgfplots.colormaps}
+
+\begin{tikzpicture}
+\pgfmathsetmacro{\R}{4}
+\pgfmathsetmacro{\r}{1}
+
+\pgfplotsset{/pgfplots/colormap={gray}{rgb255=(100, 100, 100) rgb255=(255, 255, 255)}} 
+
+\begin{axis}[view={40}{60}, axis lines=none, samples=61, domain=0:360, y domain=0:360, z buffer=auto]
+
+\addplot3[surf, point meta=z, opacity=0.3, shader=interp] (
+    {cos(x) * (\R + \r * cos(y))},
+    {sin(x) * (\R + \r * cos(y))},
+    {\r * sin(y)}
+);
+
+\addplot3[very thick, gray, samples=101, domain=0:576, samples y=0, smooth, opacity=0.2, shader=interp] (
+    {cos(x) * (\R + \r * cos(5*x))},
+    {sin(x) * (\R + \r * cos(5*x))},
+    {\r * sin(5*x)}
+);
+
+\addplot3[very thick, blue, samples=61, domain=0:576, samples y=0, smooth, restrict expr to domain={cos(x - 5*x + 60)}{0.2:1}] (
+    {cos(x) * (\R + \r * cos(5*x))},
+    {sin(x) * (\R + \r * cos(5*x))},
+    {\r * sin(5*x)}
+);
+
+\draw[thick, -Stealth, black] (0, 0, -0.35) -- (0, 0, 0.55) node[anchor=east, pos=0.35] {\small$\mathbf{\hat{z}}$};
+
+\draw[thick, blue, fill] (
+    {cos(-35) * (4 + cos(5*-35))},
+    {sin(-35) * (4 + cos(5*-35))},
+    {sin(5*-35)}
+    ) circle (1pt);
+
+\draw[thick, -Stealth, blue] (
+    {cos(-35) * (4 + cos(5*-35))},
+    {sin(-35) * (4 + cos(5*-35))},
+    {sin(5*-35)}
+    ) -- (
+    {cos(-35) * (4 + cos(5*-35)) + 0.4 * 2.07988},
+    {sin(-35) * (4 + cos(5*-35)) + 0.4 * 2.21062},
+    {sin(5*-35) - 0.4 * 4.98097}
+    ) node[pos=0.55, anchor=east, blue] {\small$\mathbf{B}$};
+
+\draw[thick, black, fill] (
+    {4*cos(-41},
+    {4*sin(-41},
+    0
+    ) circle (1pt);
+
+\draw[thick, black, -Stealth] (
+    {4*cos(-41},
+    {4*sin(-41},
+    0
+    ) -- (
+    {cos(-35) * (4 + cos(5*-35))},
+    {sin(-35) * (4 + cos(5*-35))},
+    {sin(5*-35)}
+    ) node[midway, anchor=east] {\small$\mathbf{R}$};
+
+\draw[thick, red, -Stealth] (
+    {cos(-35) * (4 + cos(5*-35))},
+    {sin(-35) * (4 + cos(5*-35))},
+    {sin(5*-35)}
+    ) -- (
+    {cos(-35) * (4 + cos(5*-35)) + 0.4 * 3.03876 + 0.25},
+    {sin(-35) * (4 + cos(5*-35)) + 0.4 * 3.88337},
+    {sin(5*-35) + 0.4 * 2.99237 - 0.4}
+    );
+
+\node[red] at (
+    {cos(-35) * (4 + cos(5*-35)) + 0.2 * 3.03876 - 0.75},
+    {sin(-35) * (4 + cos(5*-35)) + 0.2 * 3.88337 + 0.5},
+    {sin(5*-35) + 0.2 * 2.99237 - 0.2}
+    ) {\small$q\mathbf{v}_\text{d}$};
+
+\end{axis}
+\end{tikzpicture}

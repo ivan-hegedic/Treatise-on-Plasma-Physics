@@ -1,0 +1,146 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Preface}{ii}{chapter*.1}%
+\contentsline {chapter}{Contents}{v}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Preliminaries}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Fundamental plasma parameters}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Logical scheme of plasma physics}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Debye Shielding}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Quasi-neutrality}{6}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Collisions in plasmas: first considerations}{6}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Digression: cross-sections}{8}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Collisions with small and large angles of deflection}{9}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Slowing down of a mono-energetic beam}{12}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Types and frequencies of collisional phenomena}{14}{subsection.1.5.4}%
+\contentsline {subsubsection}{\numberline {1.5.4.1}Frequencies of momentum dissipation}{14}{subsubsection.1.5.4.1}%
+\contentsline {subsubsection}{\numberline {1.5.4.2}Electron-electron collisions}{14}{subsubsection.1.5.4.2}%
+\contentsline {subsubsection}{\numberline {1.5.4.3}Ion-ion collisions}{14}{subsubsection.1.5.4.3}%
+\contentsline {subsubsection}{\numberline {1.5.4.4}Electron-ion collisions}{14}{subsubsection.1.5.4.4}%
+\contentsline {subsubsection}{\numberline {1.5.4.5}Ion-electron collisions}{15}{subsubsection.1.5.4.5}%
+\contentsline {subsubsection}{\numberline {1.5.4.6}Comparison of momentum dissipation frequencies}{15}{subsubsection.1.5.4.6}%
+\contentsline {section}{\numberline {1.6}Simple transport phenomena}{15}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Electrical resistivity}{15}{subsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.6.1.1}Dreicer electric field}{16}{subsubsection.1.6.1.1}%
+\contentsline {subsection}{\numberline {1.6.2}Temperature equilibration}{16}{subsection.1.6.2}%
+\contentsline {chapter}{\numberline {2}Motion of a single plasma particle}{18}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Hamilton-Lagrange formalism applied to a plasma particle}{18}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Concepts from classical mechanics}{19}{subsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.1.1}Action-angle variables and adiabatic invariants}{19}{subsubsection.2.1.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.1.2}Interlude to magnetic confinement and the magnetic moment}{27}{subsubsection.2.1.1.2}%
+\contentsline {section}{\numberline {2.2}Constant uniform electric field}{31}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Constant uniform magnetic field}{31}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Constant uniform magnetic and electric fields}{32}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Constant uniform magnetic field and force field}{33}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Constant non-uniform magnetic field}{33}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Direction of variation perpendicular to the field}{33}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Direction of variation parallel to the field}{34}{subsection.2.6.2}%
+\contentsline {section}{\numberline {2.7}Magnetic field presenting a radius of curvature}{35}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Variable electric and constant magnetic field}{35}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Non-uniform electric and uniform magnetic field}{36}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Adiabatic invariants}{36}{section.2.10}%
+\contentsline {subsection}{\numberline {2.10.1}First adiabatic invariant}{37}{subsection.2.10.1}%
+\contentsline {subsection}{\numberline {2.10.2}Second adiabatic invariant}{38}{subsection.2.10.2}%
+\contentsline {subsection}{\numberline {2.10.3}Third adiabatic invariant}{39}{subsection.2.10.3}%
+\contentsline {section}{\numberline {2.11}Violation of adiabatic invariants}{40}{section.2.11}%
+\contentsline {subsection}{\numberline {2.11.1}Violation of the second adiabatic invariant}{40}{subsection.2.11.1}%
+\contentsline {subsection}{\numberline {2.11.2}Non-adiabatic motion in symmetric geometry}{41}{subsection.2.11.2}%
+\contentsline {subsection}{\numberline {2.11.3}Digression: Stream functions}{41}{subsection.2.11.3}%
+\contentsline {subsubsection}{\numberline {2.11.3.1}Lagrange Stream Function}{41}{subsubsection.2.11.3.1}%
+\contentsline {subsubsection}{\numberline {2.11.3.2}Stokes Stream Function}{42}{subsubsection.2.11.3.2}%
+\contentsline {subsection}{\numberline {2.11.4}Sudden temporal reversal of the magnetic field}{44}{subsection.2.11.4}%
+\contentsline {subsection}{\numberline {2.11.5}Sudden spatial reversal of the magnetic field}{45}{subsection.2.11.5}%
+\contentsline {chapter}{\numberline {3}Models of plasma dynamics}{47}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Distribution function and the Vlasov Equation}{47}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The two-fluid equations}{48}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Adiabatic and isothermal limits}{51}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Magnetohydrodynamics}{51}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conservative properties of a Vlasov-Maxwell system}{52}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Oscillations and waves in plasmas}{53}{chapter.4}%
+\contentsline {section}{\numberline {4.1}General procedure in studying plasma oscillations}{53}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Elementary plasma waves in ideal MHD description}{55}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Alfvén waves: fast and slow modes}{56}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Alfvén waves: shear and compressional modes}{57}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Elementary cold plasma waves in the two-fluid description}{57}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Obtaining dispersion relations via the dielectric tensor}{58}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Resonances and cut-offs}{59}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Clemmow-Mullaly-Allis diagram and taxonomy of modes}{61}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Elementary warm plasma waves in the two-fluid description}{63}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Perpendicular propagation in warm magnetised plasmas}{63}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Parallel propagation in warm magnetised plasmas}{65}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Non-linear cold unmagnetised waves in the two-fluid description}{66}{subsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.3.1}Soliton solution of a non-linear ion acoustic wave}{67}{subsubsection.4.4.3.1}%
+\contentsline {section}{\numberline {4.5}Vlasov-Poisson model of warm electrostatic waves}{68}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Two-stream instability}{69}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Treatment of electrostatic waves using Landau approach}{70}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Stability of distribution functions with a single global maximum}{73}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Landau damping of an ion-acoustic wave}{74}{subsection.4.5.4}%
+\contentsline {section}{\numberline {4.6}Kinetic description of waves in magnetised plasmas}{75}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Bernstein waves}{77}{subsection.4.6.1}%
+\contentsline {chapter}{\numberline {5}Magnetic field structure}{79}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Magnetic field-lines}{79}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Magnetic pressure and tension}{80}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Magnetic surfaces}{81}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Confinement in open systems via mirrors and cusps}{81}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Constructing magnetic surfaces in open systems}{82}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Constructing magnetic surfaces in toroidal systems}{82}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Elementary curvilinear coordinate systems}{83}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}General non-orthogonal coordinate systems}{83}{subsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.1}Cylindrical-toroidal or pseudo-toroidal system}{84}{subsubsection.5.3.1.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.2}Generalized cylindrical-toroidal system}{84}{subsubsection.5.3.1.2}%
+\contentsline {subsubsection}{\numberline {5.3.1.3}Illustrative example of the generalized cylindrical-toroidal system}{84}{subsubsection.5.3.1.3}%
+\contentsline {subsubsection}{\numberline {5.3.1.4}Interlude on the Clebsch coordinate systems}{85}{subsubsection.5.3.1.4}%
+\contentsline {section}{\numberline {5.4}Labelling magnetic surfaces}{85}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Labelling magnetic surfaces in toroidal systems}{86}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Rotational transform in toroidal systems}{87}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Magnetic axis}{87}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Labelling magnetic surfaces in open systems}{88}{subsection.5.4.4}%
+\contentsline {section}{\numberline {5.5}Flux coordinate systems}{88}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Boozer flux coordinate system}{88}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Flux-surface average}{90}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}Flux-surface average in axisymmetric systems}{91}{subsubsection.5.5.2.1}%
+\contentsline {subsection}{\numberline {5.5.3}Magnetic differential equation}{92}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Ideal-MHD-equilibrium conditions for toroidal systems}{93}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Symmetric flux coordinates in a tokamak}{94}{subsection.5.5.5}%
+\contentsline {subsection}{\numberline {5.5.6}General Clebsch-type flux coordinate systems}{95}{subsection.5.5.6}%
+\contentsline {subsection}{\numberline {5.5.7}Boozer-Grad flux coordinate system}{95}{subsection.5.5.7}%
+\contentsline {subsection}{\numberline {5.5.8}Hamada flux coordinate system}{97}{subsection.5.5.8}%
+\contentsline {section}{\numberline {5.6}Magnetic field structure in helical systems}{98}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Magnetic field-line Hamiltonian}{101}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Flux coordinate systems revisited}{101}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Canonical magnetic coordinates}{102}{subsection.5.7.2}%
+\contentsline {section}{\numberline {5.8}Quasi-symmetry of magnetic fields}{103}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Axisymmetric confinement}{104}{subsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.1.1}Canonical angular momentum}{105}{subsubsection.5.8.1.1}%
+\contentsline {subsubsection}{\numberline {5.8.1.2}Difficulties with axisymmetric confinements}{105}{subsubsection.5.8.1.2}%
+\contentsline {chapter}{\numberline {6}Magnetohydrodynamic equilibria}{106}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Magnetic field structure revisited}{106}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Force-free magnetic fields}{107}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Magnetohydrodynamic virial theorem}{107}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Flux preservation and inductance}{108}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Basic properties of ideal magnetohydrodynamics}{108}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Magnetic flux tubes}{108}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Magnetic helicity: interlude to the topology of magnetic field structure}{109}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}Transport of magnetic helicity}{112}{subsubsection.6.2.2.1}%
+\contentsline {section}{\numberline {6.3}Ideal magnetohydrostatic equilibria}{113}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Grad-Shafranov equation}{113}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}Solovev's solution to the Grad-Shafranov equation}{114}{subsubsection.6.3.1.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.2}Force-free solution under Solovev's hypotheses}{115}{subsubsection.6.3.1.2}%
+\contentsline {subsubsection}{\numberline {6.3.1.3}Properties of solutions to the Grad-Shafranov equation}{117}{subsubsection.6.3.1.3}%
+\contentsline {subsection}{\numberline {6.3.2}Outline of exact solutions to the Grad-Shafranov equation}{118}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}Digression: Frobenius method and hypergeometric functions}{118}{subsubsection.6.3.2.1}%
+\contentsline {subsection}{\numberline {6.3.3}Generalisation to helical systems}{126}{subsection.6.3.3}%
+\contentsline {chapter}{\numberline {7}Magnetohydrodynamic instabilities}{128}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Normal modes and instability}{128}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Energy principle}{129}{subsection.7.1.1}%
+\contentsline {chapter}{\numberline {8}Tokamaks and toroidally confined plasmas}{132}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Hamiltonian formalism applied to tokamaks}{132}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Action-angle variables for magnetic field-lines}{134}{subsection.8.1.1}%
+\contentsline {section}{\numberline {8.2}Single-null divertor tokamak}{134}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Equilibrium fields of toroidally confined plasmas}{138}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Equilibrium plasmas with circular cross-section}{138}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Elongated equilibrium plasmas}{138}{subsection.8.3.2}%
+\contentsline {chapter}{\numberline {9}Neoclassical transport in plasmas}{139}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Fokker-Planck collision theory}{139}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Fokker-Planck equation}{139}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Dissipation of momentum}{142}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Diffusion of kinetic energy}{146}{subsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.1.4}A more correct approach}{150}{subsection.9.1.4}%

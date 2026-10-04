@@ -1,0 +1,27 @@
+\begin{tikzpicture}[scale=1, every text node part/.style={align=center}, auto, line/.style ={draw, thick, -latex',shorten >=2pt}]
+    \coordinate (freq) at (6, 4);
+    \node[draw, thick] (frfr) at (freq) {Frequencies of phenomena};
+    \coordinate (wifi) at (8, 2.175);
+    \node[draw, thick] (hifi) at (wifi) {Plasma oscillations};
+    \matrix[row sep=0.5cm,column sep=0.5cm] {
+        & \node[draw, thick] (Debye) {Debye shielding}; \\
+        \node[draw] (Ruth) {Rutherford dispersion}; & \\
+        & \node[draw, thick] (Plas) {Collisionless behaviour}; \\
+        \node[draw] (Walk) {Random walk statistics}; & \\
+        & \node[draw, thick] (Vlas) {Vlasov equation}; \\
+    };
+    \draw[thick, -stealth] (Debye) -- (Plas);
+    \draw[thick, -stealth] (Ruth.east) -- (Plas);
+    \draw[thick, -stealth] (Walk.east) -- (Plas);
+    \draw[thick, -stealth] (Plas) -- (Vlas);
+    \coordinate (MHD) at (-0.2, -4);
+    \coordinate (2F) at (6, -4);
+    \node[draw, thick] (mhd) at (MHD) {Magnetohydrodynamics};
+    \node[draw, thick] (2f) at (2F) {Two-fluid equations};
+    \draw[thick, -stealth] (Vlas) -- (mhd);
+    \draw[thick, -stealth] (Vlas) -- (2f);
+    \coordinate (aux) at (7, 3.5);
+    \draw[thick, -stealth] (2f.east) to[out=0, in=0, looseness=1.5] (frfr.east);
+    \draw[thick, -stealth] (frfr) -- (hifi) node[pos=0.6, anchor=south west] {high};
+    \draw[thick, -stealth] (frfr) -- (Debye) node[pos=0.6, anchor=south east] {low};
+\end{tikzpicture}

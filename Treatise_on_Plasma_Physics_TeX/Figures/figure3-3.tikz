@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \coordinate (O) at (0, 0);
+    \node[black, anchor=north east] at (O) {$O$};
+    \draw[thick, black, fill] (O) circle (1.5pt);
+    \draw[thick, black] (O) ellipse (5cm and 1.25cm);
+    \draw[thick, -Stealth] (0, -1.25cm) -- (0.01cm, -1.25cm);
+    \draw[thick, Stealth-] (0cm, 1.25cm) -- (0.01cm, 1.25cm);
+    \coordinate (C) at (5cm, 0);
+    \draw[thick, black, fill] (C) circle (1.5pt);
+    \draw[black, thick, -Stealth] (O) -- (5, 0) node[midway, above] {$\mathbf{R}$};
+    \draw[dashed] (O) -- (2, -1.4);
+    \draw[thick, black, -Stealth] (1, -0.7) arc (-75:-48:3);
+    \node[thick, black] at (1, -0.3) {$\varphi$};
+    \node[thick, black, anchor=south west] at (-3, -1) {$\mathbf{B}=B_\varphi\,\mathbf{\hat{\varphi}}$};
+    \coordinate (drift) at (-3.75, -0.5);
+    \coordinate (end) at (-3.75, 0.5);
+    \draw[thick, -Stealth] (drift) -- (end) node[midway, anchor=west] {$q\mathbf{v}_\text{d}$};
+\end{tikzpicture}

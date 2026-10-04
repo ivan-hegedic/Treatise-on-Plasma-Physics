@@ -1,0 +1,39 @@
+\makeatletter
+\tikzset{use path/.code=\tikz@addmode{\pgfsyssoftpath@setcurrentpath#1}}
+\makeatother
+
+\pgfdeclarelayer{bg}
+\pgfsetlayers{bg, main}
+
+\begin{tikzpicture}
+    \coordinate (O) at (0, 0, 0);
+    
+    \draw[thick, black, -Stealth] (0, -3) -- (0, 3) node[anchor=north west] {$v_\perp$};
+    \draw[thick, black, -Stealth] (1, 2) -- (-1, -2) node[anchor=north west] {$v_\perp$};
+    
+    \draw[thick, black, fill=blue!10, dashed] (-4, 0) ellipse (0.5cm and 2cm);
+    \draw[thick, black, fill=blue!20, dashed] (4, 0) ellipse (0.5cm and 2cm);
+
+    \draw[thick, black, -Stealth] (-5, 0) -- (5, 0) node[anchor=north] {$v_\parallel$};
+    \draw[thick, -Stealth] (2, 0) arc (0:26.75:2);
+    \node at (1.33, 0.2875) {$\theta_c$};
+
+    \draw[thick, black, name path=silaz] (-4.5, 2.25) -- (4.5, -2.25);
+    \draw[thick, black, name path=uzlaz] (-4.5, -2.25) -- (4.5, 2.25);
+    
+    \path[name path=L] (-4, 2) -- (-4, -2);
+    \path[name path=R] (4, 2) -- (4, -2);
+    \path[name intersections={of=L and silaz, by=Lsilaz}];
+    \path[name intersections={of=L and uzlaz, by=Luzlaz}];
+    \path[name intersections={of=R and uzlaz, by=Ruzlaz}];
+    \path[name intersections={of=R and silaz, by=Rsilaz}];
+    \path[name intersections={of=silaz and uzlaz, by=mix}];
+
+    \begin{pgfonlayer}{bg}
+    \path[intersection segments={of=L and silaz, sequence={L2[reverse]--R2}}, name path=Lsilaz];
+    \path[fill=blue!10, intersection segments={of=Lsilaz and uzlaz, sequence={L2--R2}}];
+    \path[intersection segments={of=uzlaz and silaz, sequence={L2[reverse]--R2}}, name path=mix];
+    \path[fill=blue!10, intersection segments={of=mix and R, sequence={L2--R2}}];
+    \end{pgfonlayer}
+    
+\end{tikzpicture}

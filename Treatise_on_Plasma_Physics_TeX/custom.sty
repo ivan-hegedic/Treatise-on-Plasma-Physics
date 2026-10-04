@@ -1,0 +1,153 @@
+\ProvidesPackage{custom}
+
+\usepackage{tikz}
+\usetikzlibrary{3d,3dtools,calc,shapes.geometric}
+
+\usepackage[english]{babel}
+
+\usepackage{tensor}
+\usepackage[shortlabels]{enumitem}
+\usepackage{slashed}
+\usepackage{bbm}
+\usepackage{anyfontsize}
+
+\newlist{subpart}{enumerate}{1}
+\setlist[subpart,1]{label=(\alph*)}
+\setlist[itemize]{leftmargin=20pt}
+
+\usepackage{sectsty}
+
+\usepackage{xcolor}
+
+\usepackage[normalem]{ulem}
+\usepackage{xpatch}
+\usepackage{sectsty}
+\usepackage[explicit]{titlesec}
+\usepackage{cleveref}
+\usepackage[pdftex, colorlinks=true, linkcolor=black,
+    anchorcolor=black, citecolor=black,
+    filecolor=black, menucolor=black,
+    runcolor=black, urlcolor=black, bookmarks,
+    debug, linktocpage=true, hidelinks]{hyperref}
+\hypersetup{
+    pdftitle = {Treatise on Plasma Physics},
+    pdfauthor = {Ivan Hegedić}
+}
+\urlstyle{same}
+
+\usepackage{xparse}
+\usepackage{bm}
+
+\newsavebox{\foobox}
+\newcommand{\slantbox}[2][0]{\mbox{
+        \sbox{\foobox}{#2}%
+        \hskip\wd\foobox
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore}}
+\newcommand{\unslant}[2][-.15]{\slantbox[#1]{$#2$}}
+
+\g@addto@macro\bfseries{\boldmath}
+
+\usepackage{etoolbox}
+
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\subgr}{\subseteq}
+\newcommand{\subr}{\subseteq}
+\newcommand{\nsubgr}{\trianglelefteq}
+\newcommand{\dunion}{\sqcup}
+\newcommand{\incl}{\iota}
+\renewcommand{\mod}{\, \mathrm{mod}\, }
+\newcommand{\sdprod}{\rtimes}
+
+\DeclareMathOperator{\gcf}{gcf}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ai}{Ai}
+\DeclareMathOperator{\Bi}{Bi}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Pfaff}{Pfaff}
+\DeclareMathOperator{\Res}{Res}
+
+\DeclarePairedDelimiter\ket{|}{\rangle}
+\DeclarePairedDelimiter\bra{\langle}{|}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\bigbraket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\msbar}{\overline{\text{MS}}}
+\newcommand{\de}{\mathcal{D}}
+\newcommand{\op}{\mathcal{O}}
+
+\newcommand{\parity}{\widehat{P}}
+\newcommand{\Time}{\widehat{T}}
+\newcommand{\charge}{\widehat{C}}
+
+\newcommand{\enn}{\mathcal{N}}
+
+\usepackage{xspace}
+\newcommand{\eV}{\text{e\kern-0.15ex V}\xspace}
+\newcommand{\keV}{\text{k\eV}\xspace}
+\newcommand{\MeV}{\text{M\eV}\xspace}
+\newcommand{\GeV}{\text{G\eV}\xspace}
+\newcommand{\TeV}{\text{T\kern-0.1ex \eV}\xspace}
+
+\newcommand{\meV}{\text{m\eV}\xspace}
+\newcommand{\mueV}{\mu\text{\eV}\xspace}
+\newcommand{\neV}{\text{n\eV}\xspace}
+\newcommand{\peV}{\text{p\eV}\xspace}
+
+\newcommand{\cd}{\nabla}
+\newcommand{\scri}{\mathcal{I}}
+\newcommand{\ccd}[1]{\frac{\del x^{#1}}{\del x^{#1'}}}
+\newcommand{\ccu}[1]{\frac{\del x^{#1'}}{\del x^{#1}}}
+
+\newcommand{\Sun}{\odot}
+\newcommand{\Earth}{\oplus}
+
+\DeclareMathOperator{\expec}{\mathbb{E}}
+\DeclareMathOperator{\prob}{\mathbb{P}}
+\DeclareMathOperator{\indic}{\mathbbm{1}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\std}{std}
+\DeclareMathOperator{\lik}{lik}
+\DeclareMathOperator{\Pois}{Pois}
+\DeclareMathOperator{\betad}{beta}
+\DeclareMathOperator{\gammad}{gamma}
+\DeclareMathOperator{\erf}{erf}
+\newcommand*{\seteq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}=}
+\DeclareMathOperator{\Bias}{Bias}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\theoremstyle{definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Note}
+\newtheorem*{prop}{Prop}
+\newtheorem*{proofsketch}{Proof Sketch}
+\newcommand*{\Ker}{\text{\normalfont Ker\,}}
